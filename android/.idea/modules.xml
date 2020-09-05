@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Finance.iml" filepath="$PROJECT_DIR$/.idea/modules/Finance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Finance.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Finance.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1980497706/Finance.react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-1980497706/Finance.react-native-community_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1630036653/Finance.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-1630036653/Finance.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/532315619/Finance.react-native-device-info.iml" filepath="$PROJECT_DIR$/.idea/modules/532315619/Finance.react-native-device-info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1983107356/Finance.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/-1983107356/Finance.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1828212552/Finance.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-1828212552/Finance.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1850678861/Finance.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1850678861/Finance.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1451264677/Finance.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1451264677/Finance.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1157089840/Finance.react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/1157089840/Finance.react-native-splash-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1746787714/Finance.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/1746787714/Finance.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1873349774/Finance.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1873349774/Finance.react-native-vector-icons.iml" />
+    </modules>
+  </component>
+</project>
