@@ -81,11 +81,6 @@ def writeJson(path, jsondata):
     print "===写入成功=="
 
 def excel_table_by_index(sheet1):
-    if not os.path.exists(pathDir):# 如果不存在则创建目录
-        # 创建目录操作函数
-        os.makedirs(pathDir)
-        print pathDir+' 创建成功'
-    
     jsondata = quest_user_info(sheet1)
     pathName = ''
     if jsondata['name']:
@@ -117,6 +112,17 @@ def encode_apk(name):
 
 
 def main():
+    
+    if not os.path.exists('apk_list'):# 如果不存在历史记录文件夹
+        os.makedirs('apk_list')
+    if not os.path.exists(pathDir):# 如果不存在则创建目录
+        # 创建目录操作函数
+        os.makedirs(pathDir)
+        print pathDir+' 创建成功'
+    else:
+        output = excuteCommand('cp -r apk/ apk_list/')
+        output = excuteCommand('rm -r apk/')
+
     # 1、打开文件
     x1 = xlrd.open_workbook(filePath)
     sheets = x1.sheet_names()
