@@ -150,13 +150,13 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('/Users/zhangweixin/Downloads/Finance-master/android/app/android_test.keystore')
+            storeFile file('../../android/app/android_test.keystore')
             storePassword '123456'
             keyAlias 'android_test'
             keyPassword '123456'
         }
         release {
-            storeFile file('/Users/zhangweixin/Downloads/Finance-master/android/app/android_test.keystore')
+            storeFile file('../../android/app/android_test.keystore')
             storePassword '123456'
             keyAlias 'android_test'
             keyPassword '123456'
