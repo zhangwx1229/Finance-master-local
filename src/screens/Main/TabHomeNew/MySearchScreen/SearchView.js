@@ -26,8 +26,13 @@ export default class SearchView extends PureComponent {
     };
   }
   clickSearch = () => {
-    console.debug('====跳转我要查询===ss=', this.props.navigation.navigate);
     this.setState({isShowYear: true});
+  };
+  onYearCall = ({year}) => {
+    this.setState({isShowYear:false,year:year})
+  };
+  onDismiss= () => {
+    this.setState({isShowYear:false})
   };
   clickSelect = (index) => {
     switch (index) {
@@ -119,7 +124,7 @@ export default class SearchView extends PureComponent {
           {this.renderItem(3)}
           <Image style={styles.image_1} source={Images.search_image_button} />
         </ScrollView>
-        {isShowYear ? <DateSelectModel /> : null}
+        {isShowYear ? <DateSelectModel selectYear={year} onDismiss={this.onDismiss} onYearCall={this.onYearCall} /> : null}
       </View>
     );
   }

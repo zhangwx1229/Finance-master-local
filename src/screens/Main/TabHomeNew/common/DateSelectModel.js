@@ -3,58 +3,29 @@ import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
 import Modal from 'react-native-root-modal';
 import Images from '../../../../image';
 import UI from '../../../../UI';
+import DateSelect from './DateSelect';
 const TAG = 'DateSelectModel';
 
 type Props = {
   visible: boolean,
   style: Object,
   children: Object,
+  selectYear:Number,
   onDismiss: () => void,
+  onYearCall: (year) => void,
 };
 const Title_H = (UI.size.screenWidth * 183) / 1440;
 const Item_H = 40;
 export default class DateSelectModel extends React.Component<Props> {
-  constructor() {
-    super();
-    let years = [];
-    for (let i = 2019; i <= 2020; i++) {
-      years.push(i.toString());
-    }
-    this.state = {
-      years: years,
-      selectedYear: 2019,
-    };
-  }
-  updateYear(year) {
-    this.setState({
-      selectedYear: year,
-    });
-  }
-
   renderChildrens = () => {
+    const {style, onDismiss,onYearCall} = this.props;
     return (
       <View
         style={{
           justifyContent: 'center',
         }}
       >
-        <View
-          style={{
-            flexDirection: 'row',
-            height: Title_H,
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderBottomWidth: 1,
-            borderBottomColor: '#d4d4d4',
-          }}
-        >
-          <TouchableOpacity onPress={() => {}}>
-            <Image style={styles.touchImage} source={Images.icon_back_title} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}}>
-            <Image style={styles.touchImage} source={Images.icon_back_title} />
-          </TouchableOpacity>
-        </View>
+        <DateSelect selectedYear={this.props.selectYear} cureentYear={2020} onCancel={onDismiss} onSure={onYearCall}/>
       </View>
     );
   };
@@ -102,7 +73,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: 400,
+    height: 350,
     backgroundColor: '#fff',
   },
   touchImage: {width: 40, height: 20},
