@@ -14,6 +14,7 @@ import TabNav from '../TabNav';
 import SettingScreen from '../../screens/Main/TabMine/SettingScreen';
 import MySearchScreen from '../../screens/Main/TabHomeNew/MySearchScreen';
 import SearchView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchView';
+import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchDetailView';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ export default class StackNav extends Component {
         <Stack.Screen name="Setting" component={SettingScreen} />
         <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
         <Stack.Screen name="SearchView" component={SearchView} />
+        <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
       </Stack.Navigator>
     );
   }

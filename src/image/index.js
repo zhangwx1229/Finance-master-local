@@ -30,5 +30,7 @@ const Images = {
   search_image_button: require('./search_image_button.jpg'),
   icon_date_conform: require('./icon_date_conform.jpg'),
   icon_date_cancel: require('./icon_date_cancel.jpg'),
+  icon_search_right: require('./icon_search_right.jpg'),
+  p1_12: require('./p1_12.png'),
 };
 export default Images;

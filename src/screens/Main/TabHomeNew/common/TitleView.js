@@ -19,6 +19,7 @@ export default class TitleView extends PureComponent {
           <Image style={styles.backTitle} source={Images.icon_back_title} />
         </View>
         <Text style={styles.title}>{this.props.title}</Text>
+        {this.props.rightView?this.props.rightView():null}
       </View>
     );
   }

@@ -13,7 +13,7 @@ import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
 
 import DateSelectModel from '../common/DateSelectModel';
-export default class SearchView extends PureComponent {
+export default class SearchDetailView extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -52,40 +52,42 @@ export default class SearchView extends PureComponent {
         break;
     }
   };
+
   searchButton=()=>{
     const {navigation} = this.props;
-    navigation.navigate('SearchDetailView');
+    navigation.navigate('Register');
   }
-  renderYear = (year) => {
-    return (
-      <TouchableOpacity style={styles.click} onPress={this.clickSearch}>
-        <View style={styles.contentBg}>
-          <Text style={styles.subTitle}>年度</Text>
-          <Text style={styles.year}>{year}</Text>
-          <Image style={styles.contentImage} source={Images.p4_9} />
-        </View>
-      </TouchableOpacity>
-    );
-  };
+
+  rightView=()=><TouchableOpacity style={{position: 'absolute', right: 10}}  onPress={this.searchButton}>
+            <Image style={ {width: 15*171/47, height:15}} source={Images.icon_search_right} />
+          </TouchableOpacity>
+  
+  renderHeader = (index) => {
+    return  <View style={{flex:1,
+      backgroundColor: '#fff',
+      marginHorizontal:10,justifyContent:'center'}}>
+        <View style={{width:'100%',height:10,backgroundColor:'#f5f6f9'}}/>
+      <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:5,marginTop:10,alignItems:'center'}}>
+            <Text style={{
+    fontSize: 12,
+    color: '#333333',
+  }}>工资薪金</Text>
+            <Text style={{fontSize: 12,
+    color: '#333333'}}>2020-07</Text>
+          </View>
+          <View style={{flex:1,height:0.5,backgroundColor:'#9D9D9D'}}/>
+          <View style={{flexDirection:'row',justifyContent:'space-between',marginBottom:10,marginTop:5,alignItems:'center'}}>
+            <Text style={{
+    fontSize: 12,
+    color: '#333333',
+  }}>工资薪金</Text>
+            <Text style={{fontSize: 12,
+    color: '#333333',}}>2020-07</Text>
+          </View>
+      </View>
+  }
   renderItem = (index) => {
-    const dsds = ['工资薪金', '劳务报酬', '稿酬', '特许权使用费'];
-    let dss = null;
-    switch (index) {
-      case 0:
-        dss = this.state.select_0;
-        break;
-      case 1:
-        dss = this.state.select_1;
-        break;
-      case 2:
-        dss = this.state.select_2;
-        break;
-      case 3:
-        dss = this.state.select_3;
-        break;
-      default:
-        break;
-    }
+  
     return (
       <TouchableOpacity
         style={styles.click}
@@ -94,18 +96,21 @@ export default class SearchView extends PureComponent {
           this.clickSelect(index);
         }}
       >
-        <View style={styles.itemBg}>
-          <Image
-            style={styles.itemImage}
-            source={dss ? Images.icon_select_yes : Images.icon_select_no}
-          />
-          <Text style={styles.itemTitle}>{dsds[index]}</Text>
+        <View style={styles.contentBg}>
+          <View style={{width:'100%',height:10,backgroundColor:'#f5f6f9'}}/>
+          <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+            <Text style={styles.itemTitle}>工资薪金</Text>
+            <Text style={styles.itemDate}>2020-07</Text>
+          </View>
+          <Text style={styles.itemDetail}>工资薪金</Text>
+          <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+            <Text style={styles.itemDetail}>工资薪金</Text>
+          <Image style={{ width: 30, height:30,marginRight:-5}} source={Images.p1_12} />
+          </View>
+          <Text style={styles.itemDetail}>工资薪金</Text>
+          <Text style={[styles.itemDetail,{marginBottom:25}]}>工资薪金</Text>
+
         </View>
-        {index < 3 ? (
-          <View
-            style={{height: 0.5, marginLeft: 20, backgroundColor: '#d4d4d4'}}
-          />
-        ) : null}
       </TouchableOpacity>
     );
   };
@@ -114,23 +119,18 @@ export default class SearchView extends PureComponent {
     const {year, isShowYear} = this.state;
     return (
       <View style={styles.container}>
-        <TitleView title={'收入纳税明细查询'} navigation={navigation} />
+        <TitleView title={'收入纳税明细查询'} rightView={this.rightView} navigation={navigation} />
         <ScrollView
           style={styles.content}
           contentContainerStyle={styles.contentContainerStyle}
+          showsVerticalScrollIndicator={false}
         >
-          <Image style={styles.image} source={Images.search_image_0} />
-          {this.renderYear(year)}
-          <Image style={styles.image} source={Images.search_image_1} />
-          {this.renderItem(0)}
+          
+          {this.renderHeader(0)}
           {this.renderItem(1)}
           {this.renderItem(2)}
           {this.renderItem(3)}
-          <TouchableOpacity onPress={this.searchButton}>
-            <Image style={styles.image_1} source={Images.search_image_button} />
-          </TouchableOpacity>
         </ScrollView>
-        {isShowYear ? <DateSelectModel selectYear={year} onDismiss={this.onDismiss} onYearCall={this.onYearCall} /> : null}
       </View>
     );
   }
@@ -150,21 +150,19 @@ const styles = StyleSheet.create({
     height: (UI.size.screenWidth * 310) / 1440,
   },
   click: {
-    width: UI.size.screenWidth,
-    height: (UI.size.screenWidth * 183) / 1440,
+    
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
   contentBg: {
-    flexDirection: 'row',
+    flex:1,
     backgroundColor: '#fff',
-    justifyContent: 'space-between',
+    marginHorizontal:10
   },
   contentImage: {
     width: 23,
     height: 23,
     marginRight: 10,
-    // color: 'blue',
   },
   subTitle: {marginLeft: 20, fontSize: 12, color: '#333333'},
   year: {
@@ -181,7 +179,17 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 12,
     color: '#333333',
-    marginLeft: 10,
-    alignSelf: 'center',
+    marginTop:20
+  },
+  itemDate: {
+    fontSize: 12,
+    color: '#333333',
+    marginTop:15,
+    marginRight:30
+  },
+  itemDetail: {
+    fontSize: 12,
+    color: '#9D9D9D',
+    marginTop:5,
   },
 });
