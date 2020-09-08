@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   Image,
   StyleSheet,
@@ -26,34 +26,34 @@ export default class SearchView extends PureComponent {
     };
   }
   clickSearch = () => {
-    this.setState({isShowYear: true});
+    this.setState({ isShowYear: true });
   };
-  onYearCall = ({year}) => {
-    this.setState({isShowYear:false,year:year})
+  onYearCall = ({ year }) => {
+    this.setState({ isShowYear: false, year: year })
   };
-  onDismiss= () => {
-    this.setState({isShowYear:false})
+  onDismiss = () => {
+    this.setState({ isShowYear: false })
   };
   clickSelect = (index) => {
     switch (index) {
       case 0:
-        this.setState({select_0: !this.state.select_0});
+        this.setState({ select_0: !this.state.select_0 });
         break;
       case 1:
-        this.setState({select_1: !this.state.select_1});
+        this.setState({ select_1: !this.state.select_1 });
         break;
       case 2:
-        this.setState({select_2: !this.state.select_2});
+        this.setState({ select_2: !this.state.select_2 });
         break;
       case 3:
-        this.setState({select_3: !this.state.select_3});
+        this.setState({ select_3: !this.state.select_3 });
         break;
       default:
         break;
     }
   };
-  searchButton=()=>{
-    const {navigation} = this.props;
+  searchButton = () => {
+    const { navigation } = this.props;
     navigation.navigate('SearchDetailView');
   }
   renderYear = (year) => {
@@ -103,15 +103,15 @@ export default class SearchView extends PureComponent {
         </View>
         {index < 3 ? (
           <View
-            style={{height: 0.5, marginLeft: 20, backgroundColor: '#d4d4d4'}}
+            style={{ height: 0.5, marginLeft: 20, backgroundColor: '#d4d4d4' }}
           />
         ) : null}
       </TouchableOpacity>
     );
   };
-  render() {
-    const {navigation} = this.props;
-    const {year, isShowYear} = this.state;
+  render () {
+    const { navigation } = this.props;
+    const { year, isShowYear } = this.state;
     return (
       <View style={styles.container}>
         <TitleView title={'收入纳税明细查询'} navigation={navigation} />
@@ -136,8 +136,8 @@ export default class SearchView extends PureComponent {
   }
 }
 const styles = StyleSheet.create({
-  container: {flex: 1},
-  content: {flex: 1, backgroundColor: '#f5f6f9'},
+  container: { flex: 1 },
+  content: { flex: 1, backgroundColor: '#f5f6f9' },
   contentContainerStyle: {
     backgroundColor: UI.color.background,
   },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     // color: 'blue',
   },
-  subTitle: {marginLeft: 20, fontSize: 12, color: '#333333'},
+  subTitle: { marginLeft: 20, fontSize: 12, color: '#333333' },
   year: {
     position: 'absolute',
     left: UI.size.screenWidth / 2 - 40,
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#fff',
   },
-  itemImage: {width: 25, height: 25, marginLeft: 18},
+  itemImage: { width: 25, height: 25, marginLeft: 18 },
   itemTitle: {
     fontSize: 12,
     color: '#333333',

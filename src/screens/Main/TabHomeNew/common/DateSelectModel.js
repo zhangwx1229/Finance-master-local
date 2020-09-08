@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import Modal from 'react-native-root-modal';
 import Images from '../../../../image';
 import UI from '../../../../UI';
@@ -10,7 +10,7 @@ type Props = {
   visible: boolean,
   style: Object,
   children: Object,
-  selectYear:Number,
+  selectYear: Number,
   onDismiss: () => void,
   onYearCall: (year) => void,
 };
@@ -18,14 +18,14 @@ const Title_H = (UI.size.screenWidth * 183) / 1440;
 const Item_H = 40;
 export default class DateSelectModel extends React.Component<Props> {
   renderChildrens = () => {
-    const {style, onDismiss,onYearCall} = this.props;
+    const { style, onDismiss, onYearCall } = this.props;
     return (
       <View
         style={{
           justifyContent: 'center',
         }}
       >
-        <DateSelect selectedYear={this.props.selectYear} cureentYear={2020} onCancel={onDismiss} onSure={onYearCall}/>
+        <DateSelect selectedYear={this.props.selectYear} cureentYear={2020} onCancel={onDismiss} onSure={onYearCall} />
       </View>
     );
   };
@@ -43,8 +43,8 @@ export default class DateSelectModel extends React.Component<Props> {
     );
   };
 
-  render() {
-    const {style, onDismiss} = this.props;
+  render () {
+    const { style, onDismiss } = this.props;
     return (
       <Modal
         animationType={'slide'}
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     height: 350,
     backgroundColor: '#fff',
   },
-  touchImage: {width: 40, height: 20},
-  subTitle: {fontSize: 12, color: '#333333', alignSelf: 'center'},
+  touchImage: { width: 40, height: 20 },
+  subTitle: { fontSize: 12, color: '#333333', alignSelf: 'center' },
 });
 /**
  *
