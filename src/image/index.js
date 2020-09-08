@@ -32,5 +32,12 @@ const Images = {
   icon_date_cancel: require('./icon_date_cancel.jpg'),
   icon_search_right: require('./icon_search_right.jpg'),
   p1_12: require('./p1_12.png'),
+  icon_wenhao: require('./icon_wenhao.jpg'),
+  detail_info_0: require('./detail_info_0.jpg'),
+  detail_info_1: require('./detail_info_1.jpg'),
+  detail_info_2: require('./detail_info_2.jpg'),
+  detail_info_jian: require('./detail_info_jian.jpg'),
+  detail_jishu: require('./detail_jishu.jpg'),
+  detail_hear: require('./detail_hear.jpg'),
 };
 export default Images;

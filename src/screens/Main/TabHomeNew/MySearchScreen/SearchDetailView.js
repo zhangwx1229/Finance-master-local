@@ -48,13 +48,10 @@ export default class SearchDetailView extends PureComponent {
   };
 
   clickSelect = index => {
-    switch (index) {
-      case 0: this.setState({ select_0: !this.state.select_0 }); break;
-      case 1: this.setState({ select_1: !this.state.select_1 }); break;
-      case 2: this.setState({ select_2: !this.state.select_2 }); break;
-      case 3: this.setState({ select_3: !this.state.select_3 }); break;
-      default: break;
-    }
+    const {
+      navigation
+    } = this.props;
+    navigation.navigate('DetailInfoView');
   };
 
   searchButton = () => {
@@ -82,27 +79,24 @@ export default class SearchDetailView extends PureComponent {
   renderHeader = index => {
     return (
       <View style={{
-        flex: 1, backgroundColor: '#fff', marginHorizontal: 10, justifyContent: 'center',
+        flex: 1, backgroundColor: '#fff', justifyContent: 'center',
       }} >
-        <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }
-        }
-        />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5, marginTop: 10, alignItems: 'center', }
-        } >
+        <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
           <Text style={{ fontSize: 12, color: '#333333', }} >
-            工资薪金
+            收入合计 <Image style={{ width: 15, height: 15 }} source={Images.icon_wenhao} />：
           </Text>
           <Text style={{ fontSize: 12, color: '#333333' }} >
-            2020 - 07
+            0元
         </Text>
         </View >
         <View style={{ flex: 1, height: 0.5, backgroundColor: '#9D9D9D' }}
         />
         <View style={{
-          flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10, marginTop: 5, alignItems: 'center',
+          flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 15, marginTop: 7, alignItems: 'center',
         }} >
-          <Text style={{ fontSize: 12, color: '#333333', }} >工资薪金 </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} > 2020 - 07</Text>
+          <Text style={{ fontSize: 12, color: '#333333', }} >已申报税额合计： </Text>
+          <Text style={{ fontSize: 12, color: '#333333' }} > 10元</Text>
         </View >
       </View>
     );
@@ -115,17 +109,17 @@ export default class SearchDetailView extends PureComponent {
         onPress={() => { this.clickSelect(index); }} >
         <View style={styles.contentBg} >
           <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle} > 工资薪金 </Text>
-            <Text style={styles.itemDate} > 2020 - 07 </Text>
+            <Text style={styles.itemDate} > 2020-07 </Text>
           </View >
-          <Text style={styles.itemDetail} > 工资薪金 </Text>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }} >
-            <Text style={styles.itemDetail} > 工资薪金 </Text>
-            <Image style={{ width: 30, height: 30, marginRight: -5 }} source={Images.p1_12} />
+          <Text style={[styles.itemDetail, { marginLeft: 10 }]} > 所得项目小类： </Text>
+          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+            <Text style={styles.itemDetail} numberOfLines={1} > 扣缴义务人： </Text>
+            <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
           </View >
-          <Text style={styles.itemDetail} > 工资薪金 </Text>
-          <Text style={[styles.itemDetail, { marginBottom: 25 }]} > 工资薪金 </Text>
+          <Text style={[styles.itemDetail, { marginLeft: 10 }]} numberOfLines={1} > 收入：</Text>
+          <Text style={[styles.itemDetail, { marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额： </Text>
         </View >
       </TouchableOpacity>
     );
@@ -177,7 +171,6 @@ const styles = StyleSheet.create({
   contentBg: {
     flex: 1,
     backgroundColor: '#fff',
-    marginHorizontal: 10,
   },
   contentImage: {
     width: 23,
@@ -219,5 +212,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#9D9D9D',
     marginTop: 5,
+    marginRight: 30
   },
 });
