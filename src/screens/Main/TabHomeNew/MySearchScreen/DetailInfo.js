@@ -14,48 +14,12 @@ import TitleView from '../common/TitleView';
 
 import DateSelectModel from '../common/DateSelectModel';
 export default class DetailInfo extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      year: 2020,
-      select_0: false,
-      select_1: false,
-      select_2: false,
-      select_3: false,
-      isShowYear: false,
-    };
+  constructor(props) {
+    super(props);
+    const { route } = props;
+    this.data = route.params.data
   }
 
-  clickSearch = () => {
-    this.setState({
-      isShowYear: true
-    });
-  };
-
-  onYearCall = ({
-    year
-  }) => {
-    this.setState({
-      isShowYear: false,
-      year: year
-    });;
-  };
-
-  onDismiss = () => {
-    this.setState({
-      isShowYear: false
-    });;
-  };
-
-  clickSelect = index => {
-    switch (index) {
-      case 0: this.setState({ select_0: !this.state.select_0 }); break;
-      case 1: this.setState({ select_1: !this.state.select_1 }); break;
-      case 2: this.setState({ select_2: !this.state.select_2 }); break;
-      case 3: this.setState({ select_3: !this.state.select_3 }); break;
-      default: break;
-    }
-  };
 
   rightView = () => (
     <TouchableOpacity style={
@@ -87,14 +51,14 @@ export default class DetailInfo extends PureComponent {
             收入：
           </Text>
           <Text style={{ fontSize: 12, color: '#333333' }} >
-            0元
+            {this.data.item_4}元
         </Text>
         </View >
         <View style={{
           flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 5, marginTop: 7, alignItems: 'center',
         }} >
           <Text style={{ fontSize: 12, color: '#9D9D9D', }} >已申报税额： </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} > 10元</Text>
+          <Text style={{ fontSize: 12, color: '#333333' }} > {this.data.item_5}元</Text>
         </View >
         <Image
           style={{
@@ -117,90 +81,81 @@ export default class DetailInfo extends PureComponent {
   };
   renderItem_0 = () => {
     return (
-      <TouchableOpacity style={styles.click}
-        activeOpacity={1}
-        onPress={() => { this.clickSelect(index); }} >
-        <View style={styles.contentBg} >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 3, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 所得项目小类： </Text>
-            <Text style={styles.itemDate} > 正常工资薪金 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 扣缴义务人名称： </Text>
-            <Text style={styles.itemDate} > 正常工资薪金 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 扣缴义务人纳税人识别号： </Text>
-            <Text style={styles.itemDate} > 121233333 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 主管税务机关：</Text>
-            <Text style={styles.itemDate} > 1212333000000000000000000000000000033 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 申报渠道：</Text>
-            <Text style={styles.itemDate} > 其他 </Text>
-          </View >
-          <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 15, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 申报日期： </Text>
-            <Text style={styles.itemDate} > 2020-09-01 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 主税款所属期：</Text>
-            <Text style={styles.itemDate} > 2020-09 </Text>
-          </View >
-          <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
+      <View style={styles.contentBg} >
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 3, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 所得项目小类： </Text>
+          <Text style={styles.itemDate} > {this.data.item_1} </Text>
         </View >
-      </TouchableOpacity>
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 扣缴义务人名称： </Text>
+          <Text style={styles.itemDate} > {this.data.item_2} </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 扣缴义务人纳税人识别号： </Text>
+          <Text style={styles.itemDate} > {this.data.item_6} </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 主管税务机关：</Text>
+          <Text style={styles.itemDate} > {this.data.item_7} </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 申报渠道：</Text>
+          <Text style={styles.itemDate} > {this.data.item_8} </Text>
+        </View >
+        <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 15, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 申报日期： </Text>
+          <Text style={styles.itemDate} > {this.data.date} </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle} > 主税款所属期：</Text>
+          <Text style={styles.itemDate} > {this.data.item_9} </Text>
+        </View >
+        <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
+      </View >
     );
   };
   renderItem_1 = () => {
     return (
-      <TouchableOpacity style={styles.click}
-        activeOpacity={1}
-        onPress={() => { this.clickSelect(index); }} >
-        <View style={styles.contentBg} >
-          <Image
-            style={{
-              width: UI.size.screenWidth,
-              height: (UI.size.screenWidth * 270) / 810,
-            }}
-            source={Images.detail_info_2}
-          />
-          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginTop: 3, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle1} > 本期收入： </Text>
-            <Text style={styles.itemDate1} > 0元 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle1} > 本期免税收入： </Text>
-            <Text style={styles.itemDate1} > 0元 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle1} > 本期减免费用： </Text>
-            <Text style={styles.itemDate1} > 0元 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle1} > 本期专项扣除：</Text>
-            <Text style={styles.itemDate1} > 0元 <Image style={{ width: 13, height: 13 * 22 / 33, }} source={Images.detail_info_jian} /></Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle1} > 本期其他扣除：</Text>
-            <Text style={styles.itemDate1} > 0元 </Text>
-          </View >
-          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginBottom: 12, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle1} > 本期准予扣除的捐赠项目：</Text>
-            <Text style={styles.itemDate1} > 0元 </Text>
-          </View >
-          <View style={{ width: '100%', height: 80, backgroundColor: '#f5f6f9' }} />
+      <View style={styles.contentBg} >
+        <Image
+          style={{
+            width: UI.size.screenWidth,
+            height: (UI.size.screenWidth * 270) / 810,
+          }}
+          source={Images.detail_info_2}
+        />
+        <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginTop: 3, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle1} > 本期收入： </Text>
+          <Text style={styles.itemDate1} > {this.data.item_4}元 </Text>
         </View >
-      </TouchableOpacity>
+        <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle1} > 本期免税收入： </Text>
+          <Text style={styles.itemDate1} > {this.data.item_10}元 </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle1} > 本期减免费用： </Text>
+          <Text style={styles.itemDate1} > {this.data.item_11}元 </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 10, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle1} > 本期专项扣除：</Text>
+          <Text style={styles.itemDate1} > {this.data.item_12}元 <Image style={{ width: 13, height: 13 * 22 / 33, }} source={Images.detail_info_jian} /></Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle1} > 本期其他扣除：</Text>
+          <Text style={styles.itemDate1} > {this.data.item_13}元 </Text>
+        </View >
+        <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginBottom: 12, justifyContent: 'space-between' }} >
+          <Text style={styles.itemTitle1} > 本期准予扣除的捐赠项目：</Text>
+          <Text style={styles.itemDate1} > {this.data.item_14}元 </Text>
+        </View >
+        <View style={{ width: '100%', height: 80, backgroundColor: '#f5f6f9' }} />
+      </View >
     );
   };
 
   render () {
     const { navigation } = this.props;
-    const { year, isShowYear } = this.state;
     return (<View style={styles.container} >
       <TitleView title={'收入纳税明细查询'
       } rightView={this.rightView} navigation={navigation}
@@ -282,7 +237,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#333333',
     marginTop: 12,
-    maxWidth: UI.size.screenWidth - 120 - 20 - 10,
+    maxWidth: UI.size.screenWidth - 120 - 20 - 5,
     textAlign: 'right'
   },
   itemTitle1: {

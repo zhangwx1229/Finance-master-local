@@ -26,15 +26,22 @@ export default class SearchDetailView extends PureComponent {
         this.data = filejson[route.params.year + ''];
       }
     }
-    console.debug('=======', this.data)
 
+    this.total_0 = 0
+    this.total_1 = 0
+    for (const item of this.data) {
+      this.total_0 += item.item_4
+      this.total_1 += item.item_5
+    }
+    this.total_0 = Math.ceil(this.total_0 * 100) / 100
+    this.total_1 = Math.ceil(this.total_1 * 100) / 100
   }
 
-  clickSelect = index => {
+  clickSelect = data => {
     const {
       navigation
     } = this.props;
-    navigation.navigate('DetailInfoView');
+    navigation.navigate('DetailInfoView', { data });
   };
 
   rightView = () => (
@@ -49,7 +56,7 @@ export default class SearchDetailView extends PureComponent {
     </TouchableOpacity >
   );
 
-  renderHeader = index => {
+  renderHeader = () => {
     return (
       <View style={{
         flex: 1, backgroundColor: '#fff', justifyContent: 'center',
@@ -60,7 +67,7 @@ export default class SearchDetailView extends PureComponent {
             收入合计 <Image style={{ width: 15, height: 15 }} source={Images.icon_wenhao} />：
           </Text>
           <Text style={{ fontSize: 12, color: '#333333' }} >
-            0元
+            {this.total_0}元
         </Text>
         </View >
         <View style={{ flex: 1, height: 0.5, backgroundColor: '#9D9D9D' }}
@@ -69,7 +76,7 @@ export default class SearchDetailView extends PureComponent {
           flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 15, marginTop: 7, alignItems: 'center',
         }} >
           <Text style={{ fontSize: 12, color: '#333333', }} >已申报税额合计： </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} > 10元</Text>
+          <Text style={{ fontSize: 12, color: '#333333' }} > {this.total_1}元</Text>
         </View >
       </View>
     );
@@ -79,7 +86,7 @@ export default class SearchDetailView extends PureComponent {
     return (
       <TouchableOpacity style={styles.click}
         activeOpacity={1}
-        onPress={() => { this.clickSelect(index); }} >
+        onPress={() => { this.clickSelect(data); }} >
         <View style={styles.contentBg} >
           <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
           <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
