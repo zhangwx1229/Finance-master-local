@@ -43,7 +43,7 @@ def quest_user_list(sheet):
                 year = int(row[1])
                 listyear = []
                 continue
-            if row[0]!="" :
+            if row[0]!="" and row[0]!="申报日期" :
                 app['item_1'] = row[1]
                 app['item_2'] = row[2]
                 app['date'] = row[3]
