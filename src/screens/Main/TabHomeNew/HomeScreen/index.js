@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,27 +8,29 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import Images from '../../../../image';
-import {name} from '../../../../image/filename.json';
+import { name } from '../../../../image/filename.json';
 import UI from '../../../../UI';
 // import MySearchScreen from '../MySearchScreen';
 export default class HomeScreen extends PureComponent {
   clickSearch = () => {
     this.props.navigation.navigate('MySearchScreen');
   };
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.content}
           contentContainerStyle={styles.contentContainerStyle}
         >
-          <Text style={{fontSize: 30, color: '#909090'}}>{name}</Text>
-          <Image style={styles.image_0} source={Images.tab_home_image_0} />
+          <Text style={{ fontSize: 30, color: '#909090' }}>{name}</Text>
+          <View>
+            <Image style={styles.image_0} source={Images.tab_home_image_0} />
+            <TouchableWithoutFeedback onPress={this.clickSearch}>
+              <View style={styles.click} />
+            </TouchableWithoutFeedback>
+          </View>
           <Image style={styles.image_1} source={Images.tab_home_image_1} />
           <Image style={styles.image_2} source={Images.tab_home_image_2} />
-          <TouchableWithoutFeedback onPress={this.clickSearch}>
-            <View style={styles.click} />
-          </TouchableWithoutFeedback>
         </ScrollView>
       </View>
     );
@@ -36,8 +38,8 @@ export default class HomeScreen extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
-  content: {flex: 1},
+  container: { flex: 1 },
+  content: { flex: 1 },
   contentContainerStyle: {
     backgroundColor: UI.color.background,
   },

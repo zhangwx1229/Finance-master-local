@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   Image,
   StyleSheet,
@@ -27,14 +27,15 @@ export default class MySearchScreen extends PureComponent {
       </TouchableOpacity>
     );
   };
-  render() {
-    const {navigation} = this.props;
+  render () {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <TitleView title={'我要查询'} navigation={navigation} />
         <ScrollView
           style={styles.content}
           contentContainerStyle={styles.contentContainerStyle}
+          showsVerticalScrollIndicator={false}
         >
           <Image
             style={styles.image_0}
@@ -51,8 +52,8 @@ export default class MySearchScreen extends PureComponent {
   }
 }
 const styles = StyleSheet.create({
-  container: {flex: 1},
-  content: {flex: 1},
+  container: { flex: 1 },
+  content: { flex: 1 },
   contentContainerStyle: {
     backgroundColor: UI.color.background,
   },

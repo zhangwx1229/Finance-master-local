@@ -54,22 +54,12 @@ export default class SearchDetailView extends PureComponent {
     navigation.navigate('DetailInfoView');
   };
 
-  searchButton = () => {
-    const {
-      navigation
-    } = this.props;
-    navigation.navigate('Register');
-  };
-
   rightView = () => (
     <TouchableOpacity style={
       {
         position: 'absolute', right: 10
       }
-    }
-      onPress={
-        this.searchButton
-      } >
+    }>
       <Image style={{ width: (15 * 171) / 47, height: 15 }}
         source={Images.icon_search_right
         } />

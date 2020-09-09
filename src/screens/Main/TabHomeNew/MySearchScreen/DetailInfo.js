@@ -57,22 +57,12 @@ export default class DetailInfo extends PureComponent {
     }
   };
 
-  searchButton = () => {
-    const {
-      navigation
-    } = this.props;
-    navigation.navigate('Register');
-  };
-
   rightView = () => (
     <TouchableOpacity style={
       {
         position: 'absolute', right: 10
       }
-    }
-      onPress={
-        this.searchButton
-      } >
+    }>
       <Image style={{ width: 15 * 2, height: 15 }}
         source={Images.detail_hear
         } />
@@ -131,7 +121,7 @@ export default class DetailInfo extends PureComponent {
         activeOpacity={1}
         onPress={() => { this.clickSelect(index); }} >
         <View style={styles.contentBg} >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 3, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle} > 所得项目小类： </Text>
             <Text style={styles.itemDate} > 正常工资薪金 </Text>
           </View >
@@ -147,7 +137,7 @@ export default class DetailInfo extends PureComponent {
             <Text style={styles.itemTitle} > 主管税务机关：</Text>
             <Text style={styles.itemDate} > 1212333000000000000000000000000000033 </Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle} > 申报渠道：</Text>
             <Text style={styles.itemDate} > 其他 </Text>
           </View >
@@ -156,7 +146,7 @@ export default class DetailInfo extends PureComponent {
             <Text style={styles.itemTitle} > 申报日期： </Text>
             <Text style={styles.itemDate} > 2020-09-01 </Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle} > 主税款所属期：</Text>
             <Text style={styles.itemDate} > 2020-09 </Text>
           </View >
@@ -178,54 +168,31 @@ export default class DetailInfo extends PureComponent {
             }}
             source={Images.detail_info_2}
           />
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginTop: 3, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle1} > 本期收入： </Text>
             <Text style={styles.itemDate1} > 0元 </Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle1} > 本期免税收入： </Text>
             <Text style={styles.itemDate1} > 0元 </Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle1} > 本期减免费用： </Text>
             <Text style={styles.itemDate1} > 0元 </Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 10, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle1} > 本期专项扣除：</Text>
-            <Text style={styles.itemDate1} > 0元 </Text>
+            <Text style={styles.itemDate1} > 0元 <Image style={{ width: 13, height: 13 * 22 / 33, }} source={Images.detail_info_jian} /></Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle1} > 本期其他扣除：</Text>
             <Text style={styles.itemDate1} > 0元 </Text>
           </View >
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 10, justifyContent: 'space-between' }} >
+          <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginBottom: 12, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle1} > 本期准予扣除的捐赠项目：</Text>
             <Text style={styles.itemDate1} > 0元 </Text>
           </View >
-
           <View style={{ width: '100%', height: 80, backgroundColor: '#f5f6f9' }} />
-        </View >
-      </TouchableOpacity>
-    );
-  };
-  renderItem = index => {
-    return (
-      <TouchableOpacity style={styles.click}
-        activeOpacity={1}
-        onPress={() => { this.clickSelect(index); }} >
-        <View style={styles.contentBg} >
-          <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemTitle} > 工资薪金 </Text>
-            <Text style={styles.itemDate} > 2020-07 </Text>
-          </View >
-          <Text style={[styles.itemDetail, { marginLeft: 10 }]} > 所得项目小类： </Text>
-          <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemDetail} numberOfLines={1} > 扣缴义务人： </Text>
-            <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
-          </View >
-          <Text style={[styles.itemDetail, { marginLeft: 10 }]} numberOfLines={1} > 收入：</Text>
-          <Text style={[styles.itemDetail, { marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额： </Text>
         </View >
       </TouchableOpacity>
     );
@@ -306,7 +273,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: 12,
     color: '#9D9D9D',
-    marginTop: 5,
+    marginTop: 12,
     maxWidth: 120,
     textAlign: 'left'
   },
@@ -314,21 +281,21 @@ const styles = StyleSheet.create({
   itemDate: {
     fontSize: 12,
     color: '#333333',
-    marginTop: 5,
+    marginTop: 12,
     maxWidth: UI.size.screenWidth - 120 - 20 - 10,
     textAlign: 'right'
   },
   itemTitle1: {
     fontSize: 12,
     color: '#9D9D9D',
-    marginTop: 5,
+    marginTop: 12,
     maxWidth: 160,
     textAlign: 'left'
   },
   itemDate1: {
     fontSize: 12,
     color: '#333333',
-    marginTop: 5,
+    marginTop: 12,
     maxWidth: UI.size.screenWidth - 160 - 20 - 10,
     textAlign: 'right'
   },
