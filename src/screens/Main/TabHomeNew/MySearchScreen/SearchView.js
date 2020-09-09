@@ -11,13 +11,13 @@ import {
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
-
 import DateSelectModel from '../common/DateSelectModel';
+import filejson from '../../../../image/filename_02.json';
 export default class SearchView extends PureComponent {
   constructor() {
     super();
     this.state = {
-      year: 2020,
+      year: filejson.yearList[0],
       select_0: false,
       select_1: false,
       select_2: false,
@@ -54,7 +54,7 @@ export default class SearchView extends PureComponent {
   };
   searchButton = () => {
     const { navigation } = this.props;
-    navigation.navigate('SearchDetailView');
+    navigation.navigate('SearchDetailView', { year: this.state.year })
   }
   renderYear = (year) => {
     return (

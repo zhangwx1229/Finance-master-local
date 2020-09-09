@@ -16,6 +16,7 @@ import {
 import BirthDayPicker from './BirthDayPicker';
 import Images from '../../../../image';
 
+import filejson from '../../../../image/filename_02.json';
 type Props = {
   cureentYear: Number,
   selectedYear: Number,
@@ -32,7 +33,7 @@ export default class DateSelect extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.selectedYear = props.selectedYear;
-    this.yearList = this.getYearList(2, props.cureentYear);
+    this.yearList = this.getYearList(filejson.yearList.length, props.cureentYear);
     const yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
     this.state = {
       yearIndex: yearIndex

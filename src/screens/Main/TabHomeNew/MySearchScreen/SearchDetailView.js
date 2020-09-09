@@ -11,41 +11,24 @@ import {
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
-
+import filejson from '../../../../image/filename_02.json';
 import DateSelectModel from '../common/DateSelectModel';
 export default class SearchDetailView extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      year: 2020,
-      select_0: false,
-      select_1: false,
-      select_2: false,
-      select_3: false,
-      isShowYear: false,
-    };
+  static navigationOptions = ({ navigation }) => ({
+    title: `SearchDetailView with ${navigation.state.params.user}`,
+  });
+  constructor(props) {
+    super(props);
+    const { route } = props;
+    this.data = null;
+    if (route.params && route.params.year) {
+      if (filejson[route.params.year + '']) {
+        this.data = filejson[route.params.year + ''];
+      }
+    }
+    console.debug('=======', this.data)
+
   }
-
-  clickSearch = () => {
-    this.setState({
-      isShowYear: true
-    });
-  };
-
-  onYearCall = ({
-    year
-  }) => {
-    this.setState({
-      isShowYear: false,
-      year: year
-    });;
-  };
-
-  onDismiss = () => {
-    this.setState({
-      isShowYear: false
-    });;
-  };
 
   clickSelect = index => {
     const {
@@ -92,7 +75,7 @@ export default class SearchDetailView extends PureComponent {
     );
   };
 
-  renderItem = index => {
+  renderItem = (data) => {
     return (
       <TouchableOpacity style={styles.click}
         activeOpacity={1}
@@ -101,23 +84,32 @@ export default class SearchDetailView extends PureComponent {
           <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
           <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
             <Text style={styles.itemTitle} > 工资薪金 </Text>
-            <Text style={styles.itemDate} > 2020-07 </Text>
+            <Text style={styles.itemDate} > {data.date.slice(0, 7)} </Text>
           </View >
-          <Text style={[styles.itemDetail, { marginLeft: 10 }]} > 所得项目小类： </Text>
+          <Text style={[styles.itemDetail, { marginLeft: 10 }]} > 所得项目小类：{data.item_1}</Text>
           <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-            <Text style={styles.itemDetail} numberOfLines={1} > 扣缴义务人： </Text>
+            <Text style={styles.itemDetail} numberOfLines={1} > 扣缴义务人：{data.item_2}</Text>
             <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
           </View >
-          <Text style={[styles.itemDetail, { marginLeft: 10 }]} numberOfLines={1} > 收入：</Text>
-          <Text style={[styles.itemDetail, { marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额： </Text>
+          <Text style={[styles.itemDetail, { marginLeft: 10 }]} numberOfLines={1} > 收入：{data.item_4}</Text>
+          <Text style={[styles.itemDetail, { marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额：{data.item_5} </Text>
         </View >
       </TouchableOpacity>
     );
   };
+  renderList = () => {
+    const comList = []
+    for (const item of this.data) {
+      comList.push(this.renderItem(item))
+    }
+    return comList;
+  }
 
   render () {
+    if (this.data === null) {
+      return null
+    }
     const { navigation } = this.props;
-    const { year, isShowYear } = this.state;
     return (<View style={styles.container} >
       <TitleView title={'收入纳税明细查询'
       } rightView={this.rightView} navigation={navigation}
@@ -127,9 +119,7 @@ export default class SearchDetailView extends PureComponent {
         contentContainerStyle={styles.contentContainerStyle}
         showsVerticalScrollIndicator={false} >
         {this.renderHeader(0)}
-        {this.renderItem(1)}
-        {this.renderItem(2)}
-        {this.renderItem(3)}
+        {this.renderList()}
       </ScrollView>
     </View >
     );
