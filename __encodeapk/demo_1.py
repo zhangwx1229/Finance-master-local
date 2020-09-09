@@ -10,11 +10,11 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-filename = "text_01.xlsx"
-json_file = 'filename.json'
+filename = "text_02.xlsx"
+json_file = 'filename_02.json'
 filePath = os.path.join(os.getcwd(), filename)
-pathDir = 'apk_01'
-pathDirHistroy = 'apk_list_01'
+pathDir = 'apk_02'
+pathDirHistroy = 'apk_list_02'
 print filePath
 
 
@@ -25,16 +25,13 @@ def quest_user_info(sheet):
     if row_1:
         json['name'] = row_1[0]
         json['account'] = row_1[1]
-        json['unit'] = row_1[2]
-        json['administration'] = row_1[3]
-        json['cardinal'] = row_1[4]
     print "======获取个人用户信息="
     return json
 
 def quest_user_list(sheet):
     #获取用户缴费记录
     json = {'yearList': []}
-    start_rows = 5
+    start_rows = 4
     nrows = sheet.nrows #行数
     year = 0#key
     listyear = []#value
@@ -47,9 +44,21 @@ def quest_user_list(sheet):
                 listyear = []
                 continue
             if row[0]!="" :
-                app['title'] = row[1]
-                app['num'] = row[2]
+                app['item_1'] = row[1]
+                app['item_2'] = row[2]
                 app['date'] = row[3]
+                app['item_4'] = row[4]
+                app['item_5'] = row[5]
+                app['item_6'] = row[6]
+                app['item_7'] = row[7]
+                app['item_8'] = row[8]
+                app['item_9'] = row[9]
+                app['item_10'] = row[10]
+                app['item_11'] = row[11]
+                app['item_12'] = row[12]
+                app['item_13'] = row[13]
+                app['item_14'] = row[14]
+                
                 listyear.append(app)
             else:
                 if year != 0:
