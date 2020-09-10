@@ -24,7 +24,8 @@ def quest_user_info(sheet):
     json = {}
     if row_1:
         json['name'] = row_1[0]
-        json['account'] = row_1[1]
+        json['phone'] = row_1[1]
+        json['sex'] = row_1[2]
     print "======获取个人用户信息="
     return json
 

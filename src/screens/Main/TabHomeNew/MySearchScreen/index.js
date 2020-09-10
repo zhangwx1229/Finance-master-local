@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   contentText: {
-    marginLeft: 20,
+    marginLeft: 18,
     fontSize: 13 * UI.size.windowScale,
     color: '#333333',
   },
@@ -88,9 +88,9 @@ const styles = StyleSheet.create({
     // color: 'blue',
   },
   subText: {
-    marginLeft: 20,
+    marginLeft: 18,
     marginTop: 2.5,
-    fontSize: 11 * UI.size.windowScale,
-    color: '#909090',
+    fontSize: 10.3 * UI.size.windowScale,
+    color: '#a0a0a0',
   },
 });
