@@ -31,7 +31,7 @@ def quest_user_info(sheet):
 def quest_user_list(sheet):
     #获取用户缴费记录
     json = {'yearList': []}
-    start_rows = 4
+    start_rows = 5
     nrows = sheet.nrows #行数
     year = 0#key
     listyear = []#value

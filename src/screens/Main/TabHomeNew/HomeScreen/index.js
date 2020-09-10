@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import Images from '../../../../image';
-import { name } from '../../../../image/filename.json';
+import { name } from '../../../../image/filename_02.json';
 import UI from '../../../../UI';
 // import MySearchScreen from '../MySearchScreen';
 export default class HomeScreen extends PureComponent {

@@ -4,8 +4,8 @@ import Modal from 'react-native-root-modal';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import DateSelect from './DateSelect';
+import filejson from '../../../../image/filename_02.json';
 const TAG = 'DateSelectModel';
-
 type Props = {
   visible: boolean,
   style: Object,
@@ -25,7 +25,7 @@ export default class DateSelectModel extends React.Component<Props> {
           justifyContent: 'center',
         }}
       >
-        <DateSelect selectedYear={this.props.selectYear} cureentYear={2020} onCancel={onDismiss} onSure={onYearCall} />
+        <DateSelect selectedYear={this.props.selectYear} cureentYear={filejson.yearList[0]} onCancel={onDismiss} onSure={onYearCall} />
       </View>
     );
   };
