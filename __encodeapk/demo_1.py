@@ -117,12 +117,13 @@ def encode_apk(name):
     print "==拷贝新的json成功="
     if os.path.exists('../android/app/build/outputs'):
         output = excuteCommand('rm -r ../android/app/build/outputs')
-    output = excuteCommand('cd ../android && ./gradlew --stop')
-    output = excuteCommand('cd ../android && ./gradlew assembleRelease')
+
+    output = excuteCommand('cd ../android && ./gradlew --stop && ./gradlew assembleRelease')
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
         output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
         print "==拷贝新的apk到指定文件成功==="
 
+    output = excuteCommand('cd ../ && git checkout android')
 
 def main():
     
