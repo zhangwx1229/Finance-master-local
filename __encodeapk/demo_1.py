@@ -115,6 +115,7 @@ def excuteCommand(com):
 def encode_apk(name):
     output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
     print "==拷贝新的json成功="
+    output = excuteCommand('rm -r ../android/app/build/outputs')
     output = excuteCommand('cd ../android && ./gradlew assembleRelease')
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
         output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
