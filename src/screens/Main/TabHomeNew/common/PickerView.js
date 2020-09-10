@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, Text, Animated, Easing} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
 
 import UI from '../../../../UI';
 
@@ -14,18 +14,18 @@ export default class PickerView extends Component {
       hide: true,
     };
   }
-  componentDidMount() {
+  componentDidMount () {
     setTimeout(() => {
       this.show();
     }, 2000);
   }
-  componentWillUnMount() {
+  componentWillUnMount () {
     this.timer && clearTimeout(this.timer);
   }
 
-  render() {
+  render () {
     if (this.state.hide) {
-      return <View style={{width: 300, height: 300, backgroundColor: 'red'}} />;
+      return <View style={{ width: 300, height: 300, backgroundColor: 'red' }} />;
     } else {
       return (
         <View style={pickerStyles.container}>
@@ -49,7 +49,7 @@ export default class PickerView extends Component {
   /****************************** event ******************************/
   /******************** public ********************/
   // 设置Pickerview的数据源数组
-  setDataSource(array) {
+  setDataSource (array) {
     this.setState({
       choice: array[0],
       dataSource: array,
@@ -57,16 +57,16 @@ export default class PickerView extends Component {
   }
 
   // 显示Pickerview
-  show() {
+  show () {
     if (this.state.hide) {
-      this.setState({hide: false});
+      this.setState({ hide: false });
       this.in();
     }
   }
 
   /******************** private ********************/
   // 显示动画
-  in() {
+  in () {
     Animated.parallel([
       Animated.timing(this.state.opacity, {
         easing: Easing.linear,
@@ -83,7 +83,7 @@ export default class PickerView extends Component {
   }
 
   //隐藏动画
-  out() {
+  out () {
     Animated.parallel([
       Animated.timing(this.state.opacity, {
         easing: Easing.linear,
@@ -99,19 +99,19 @@ export default class PickerView extends Component {
     ]).start();
 
     this.timer = setTimeout(() => {
-      this.setState({hide: true});
+      this.setState({ hide: true });
     }, this.props.duration);
   }
 
   //取消
-  cancel(event) {
+  cancel (event) {
     if (!this.state.hide) {
       this.out();
     }
   }
 
   //选择
-  ok() {
+  ok () {
     if (!this.state.hide) {
       this.out();
       if (this.props.okCallback) {
@@ -155,12 +155,12 @@ const pickerStyles = StyleSheet.create({
   },
   cancelText: {
     color: '#ff9f45',
-    fontSize: 16,
+    fontSize: 16 * UI.size.windowScale,
     paddingLeft: 30,
   },
   okText: {
     color: '#ff9f45',
-    fontSize: 16,
+    fontSize: 16 * UI.size.windowScale,
     paddingRight: 30,
     fontWeight: 'bold',
   },

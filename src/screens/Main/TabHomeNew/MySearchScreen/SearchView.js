@@ -166,11 +166,11 @@ const styles = StyleSheet.create({
     marginRight: 10,
     // color: 'blue',
   },
-  subTitle: { marginLeft: 20, fontSize: 12, color: '#333333' },
+  subTitle: { marginLeft: 20, fontSize: 12 * UI.size.windowScale, color: '#333333' },
   year: {
     position: 'absolute',
     left: UI.size.screenWidth / 2 - 40,
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
   },
   itemBg: {
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   },
   itemImage: { width: 25, height: 25, marginLeft: 18 },
   itemTitle: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
     marginLeft: 10,
     alignSelf: 'center',

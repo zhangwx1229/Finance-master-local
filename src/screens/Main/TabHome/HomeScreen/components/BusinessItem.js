@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import UI from '../../../../../UI';
 
 export default class BusinessItem extends PureComponent {
-  render() {
-    const {title, desc} = this.props;
+  render () {
+    const { title, desc } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.content}>
@@ -46,14 +46,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 5,
   },
-  left: {flex: 1},
+  left: { flex: 1 },
   title: {
     color: UI.color.black,
-    fontSize: UI.fontSize.normal,
+    fontSize: UI.fontSize.normal * UI.size.windowScale,
   },
   desc: {
     color: UI.color.darkGray,
-    fontSize: UI.fontSize.small,
+    fontSize: UI.fontSize.small * UI.size.windowScale,
   },
   arrow: {
     width: 15,

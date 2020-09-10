@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
 import Swiper from 'react-native-swiper';
 import ShadowView from './ShadowView';
 
 export default class HomeSwiper extends PureComponent {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Swiper style={styles.wrapper} showsButtons={false} autoplay>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 30 * UI.size.windowScale,
     fontWeight: 'bold',
   },
   shadow: {

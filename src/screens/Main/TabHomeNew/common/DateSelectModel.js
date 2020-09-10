@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   touchImage: { width: 40, height: 20 },
-  subTitle: { fontSize: 12, color: '#333333', alignSelf: 'center' },
+  subTitle: { fontSize: 12 * UI.size.windowScale, color: '#333333', alignSelf: 'center' },
 });
 /**
  *

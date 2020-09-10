@@ -47,18 +47,18 @@ export default class DetailInfo extends PureComponent {
           source={Images.detail_info_0}
         />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 8, marginTop: 15, alignItems: 'center', }} >
-          <Text style={{ fontSize: 12, color: '#9D9D9D', }} >
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#9D9D9D', }} >
             收入：
           </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} >
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#333333' }} >
             {this.data.item_4}元
         </Text>
         </View >
         <View style={{
           flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 5, marginTop: 7, alignItems: 'center',
         }} >
-          <Text style={{ fontSize: 12, color: '#9D9D9D', }} >已申报税额： </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} > {this.data.item_5}元</Text>
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#9D9D9D', }} >已申报税额： </Text>
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#333333' }} > {this.data.item_5}元</Text>
         </View >
         <Image
           style={{
@@ -207,13 +207,13 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     marginLeft: 20,
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333'
   },
   year: {
     position: 'absolute',
     left: UI.size.screenWidth / 2 - 40,
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
   },
   itemBg: {
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     marginLeft: 18
   },
   itemTitle: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#9D9D9D',
     marginTop: 12,
     maxWidth: 120,
@@ -234,28 +234,28 @@ const styles = StyleSheet.create({
   },
 
   itemDate: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
     marginTop: 12,
     maxWidth: UI.size.screenWidth - 120 - 20 - 5,
     textAlign: 'right'
   },
   itemTitle1: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#9D9D9D',
     marginTop: 12,
     maxWidth: 160,
     textAlign: 'left'
   },
   itemDate1: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
     marginTop: 12,
     maxWidth: UI.size.screenWidth - 160 - 20 - 10,
     textAlign: 'right'
   },
   itemDetail: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#9D9D9D',
     marginTop: 5,
     marginRight: 30

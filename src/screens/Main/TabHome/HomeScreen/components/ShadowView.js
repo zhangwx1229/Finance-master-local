@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import UI from '../../../../../UI';
-import {BoxShadow} from 'react-native-shadow';
+import { BoxShadow } from 'react-native-shadow';
 export default class ShadowView extends PureComponent {
-  render() {
-    const {style} = this.props;
+  render () {
+    const { style } = this.props;
     const shadowOpt = {
       width: UI.size.screenWidth - 30,
       height: 100,
@@ -30,8 +30,8 @@ export default class ShadowView extends PureComponent {
   }
 }
 
-function Item(props) {
-  const {title} = props;
+function Item (props) {
+  const { title } = props;
   return (
     <TouchableOpacity style={styles.item}>
       <Image style={styles.itemImage} />
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   title: {
-    fontSize: UI.fontSize.normal,
+    fontSize: UI.fontSize.normal * UI.size.windowScale,
     color: UI.color.black,
   },
 });

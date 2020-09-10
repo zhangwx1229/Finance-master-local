@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   contentText: {
     marginLeft: 20,
-    fontSize: 12,
+    fontSize: 13 * UI.size.windowScale,
     color: '#333333',
   },
   contentImage: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   subText: {
     marginLeft: 20,
     marginTop: 2.5,
-    fontSize: 10,
+    fontSize: 11 * UI.size.windowScale,
     color: '#909090',
   },
 });

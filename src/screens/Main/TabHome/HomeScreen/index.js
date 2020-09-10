@@ -6,8 +6,8 @@
  * @Description:
  * @FilePath: /lvsejunying/src/screens/TabHome/HomeScreen/index.js
  */
-import React, {PureComponent} from 'react';
-import {Text, View, ScrollView, StyleSheet} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import HomeHeader from './components/HomeHeader';
 import HomeSwiper from './components/HomeSwiper';
 import Anounce from './components/Anounce';
@@ -15,7 +15,7 @@ import HotTopic from './components/HotTopic';
 import UI from '../../../../UI';
 import CommonBusiness from './components/CommonBusiness';
 export default class HomeScreen extends PureComponent {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <ScrollView
@@ -61,7 +61,7 @@ export default class HomeScreen extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: { flex: 1 },
   header: {
     position: 'absolute',
     left: 0,
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'rgba(255,0,255,0.2)',
   },
-  content: {flex: 1},
+  content: { flex: 1 },
   contentContainerStyle: {
     backgroundColor: UI.color.background,
   },
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 30 * UI.size.windowScale,
     fontWeight: 'bold',
   },
 });

@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import UI from '../../../../../UI';
 import Topic from './Topic';
 
 export default class HotTopic extends PureComponent {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <Topic title="热点专题" />
@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
   },
   contentTitle: {
     color: UI.color.black,
-    fontSize: UI.fontSize.large,
+    fontSize: UI.fontSize.large * UI.size.windowScale,
     fontWeight: 'bold',
   },
   contentText: {
     color: UI.color.darkGray,
-    fontSize: UI.fontSize.normal,
+    fontSize: UI.fontSize.normal * UI.size.windowScale,
   },
   arrow: {
     width: 15,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   buttonText: {
-    fontSize: UI.fontSize.normal,
+    fontSize: UI.fontSize.normal * UI.size.windowScale,
     color: UI.color.white,
   },
 });

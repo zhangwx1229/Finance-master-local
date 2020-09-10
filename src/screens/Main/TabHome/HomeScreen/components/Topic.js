@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View, Image, StyleSheet } from 'react-native';
 import UI from '../../../../../UI';
 
 export default class Topic extends PureComponent {
-  render() {
-    const {title} = this.props;
+  render () {
+    const { title } = this.props;
     return (
       <View style={styles.header}>
         <Image style={styles.headrImage} />
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
   topTitle: {
-    fontSize: UI.fontSize.large,
+    fontSize: UI.fontSize.large * UI.size.windowScale,
     fontWeight: 'bold',
     color: UI.color.black,
   },

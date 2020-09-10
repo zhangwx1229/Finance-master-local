@@ -13,8 +13,8 @@ sys.setdefaultencoding('utf-8')
 filename = "text_02.xlsx"
 json_file = 'filename_02.json'
 filePath = os.path.join(os.getcwd(), filename)
-pathDir = 'apk_02'
-pathDirHistroy = 'apk_list_02'
+pathDir = '../../apk_02'
+pathDirHistroy = '../../apk_list_02'
 print filePath
 
 
@@ -115,7 +115,9 @@ def excuteCommand(com):
 def encode_apk(name):
     output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
     print "==拷贝新的json成功="
-    output = excuteCommand('rm -r ../android/app/build/outputs')
+    if os.path.exists('../android/app/build/outputs'):
+        output = excuteCommand('rm -r ../android/app/build/outputs')
+    output = excuteCommand('cd ../android && ./gradlew --stop')
     output = excuteCommand('cd ../android && ./gradlew assembleRelease')
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
         output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)

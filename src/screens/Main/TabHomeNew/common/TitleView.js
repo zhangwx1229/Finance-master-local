@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   title: {
-    fontSize: 13.3,
+    fontSize: 13.3 * UI.size.windowScale,
     color: '#333333',
   },
 });

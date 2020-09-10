@@ -63,10 +63,10 @@ export default class SearchDetailView extends PureComponent {
       }} >
         <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
-          <Text style={{ fontSize: 12, color: '#333333', }} >
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#333333', }} >
             收入合计 <Image style={{ width: 15, height: 15 }} source={Images.icon_wenhao} />：
           </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} >
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#333333' }} >
             {this.total_0}元
         </Text>
         </View >
@@ -75,8 +75,8 @@ export default class SearchDetailView extends PureComponent {
         <View style={{
           flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 15, marginTop: 7, alignItems: 'center',
         }} >
-          <Text style={{ fontSize: 12, color: '#333333', }} >已申报税额合计： </Text>
-          <Text style={{ fontSize: 12, color: '#333333' }} > {this.total_1}元</Text>
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#333333', }} >已申报税额合计： </Text>
+          <Text style={{ fontSize: 12 * UI.size.windowScale, color: '#333333' }} > {this.total_1}元</Text>
         </View >
       </View>
     );
@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     marginLeft: 20,
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333'
   },
   year: {
     position: 'absolute',
     left: UI.size.screenWidth / 2 - 40,
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
   },
   itemBg: {
@@ -185,18 +185,18 @@ const styles = StyleSheet.create({
     marginLeft: 18
   },
   itemTitle: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
     marginTop: 20,
   },
   itemDate: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#333333',
     marginTop: 15,
     marginRight: 30,
   },
   itemDetail: {
-    fontSize: 12,
+    fontSize: 12 * UI.size.windowScale,
     color: '#9D9D9D',
     marginTop: 5,
     marginRight: 30

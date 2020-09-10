@@ -15,14 +15,17 @@ export default class HomeScreen extends PureComponent {
   clickSearch = () => {
     this.props.navigation.navigate('MySearchScreen');
   };
+  // 360 740 
+  // 392.72727272727275 850.9090909090909
   render () {
+    console.debug('======ddd======', UI.size.windowScale, UI.size.screenWidth, UI.size.screenHeight)
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.content}
           contentContainerStyle={styles.contentContainerStyle}
         >
-          <Text style={{ fontSize: 30, color: '#909090' }}>{name}</Text>
+          <Text style={{ fontSize: 30 * UI.size.windowScale, color: '#909090' }}>{name}</Text>
           <View>
             <Image style={styles.image_0} source={Images.tab_home_image_0} />
             <TouchableWithoutFeedback onPress={this.clickSearch}>
