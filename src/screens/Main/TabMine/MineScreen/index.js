@@ -12,7 +12,7 @@ export default class TaxScreen extends PureComponent {
     this.phone = ""
     const phoneStr = filename.phone + ''
     if (phoneStr.length === 11) {
-      this.phone = phoneStr.slice(0, 4) + '****' + phoneStr.slice(-4);
+      this.phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
     }
   }
   render () {
