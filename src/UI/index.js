@@ -15,4 +15,6 @@ const UI = {
   fontSize,
 };
 
+let widthList={}
+
 export default UI;
