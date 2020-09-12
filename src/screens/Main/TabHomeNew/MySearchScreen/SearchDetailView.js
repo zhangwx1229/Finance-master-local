@@ -83,9 +83,10 @@ export default class SearchDetailView extends PureComponent {
         );
     };
 
-    renderItem = (data) => {
+    renderItem = (data, index) => {
         return (
-            <TouchableOpacity style={styles.click}
+            <TouchableOpacity
+                key={index + ''} style={styles.click}
                 activeOpacity={1}
                 onPress={() => { this.clickSelect(data); }} >
                 <View style={styles.contentBg} >
@@ -113,8 +114,10 @@ export default class SearchDetailView extends PureComponent {
     };
     renderList = () => {
         const comList = []
+        let i = 0
         for (const item of this.data) {
-            comList.push(this.renderItem(item))
+            comList.push(this.renderItem(item, i))
+            i++
         }
         return comList;
     }

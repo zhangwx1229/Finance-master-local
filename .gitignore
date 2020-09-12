@@ -1,4 +1,2 @@
-node_modules/
-android/
-__encodeapk/apk_list
-__encodeapk/apk
+node_modules
+android/app/build

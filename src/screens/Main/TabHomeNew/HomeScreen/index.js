@@ -38,6 +38,7 @@ export default class HomeScreen extends PureComponent {
                 {textList.length > 0
                     ? textList.map(item => (
                         <Text
+                            key={item + ''}
                             onLayout={e => {
                                 const { width, height } = e.nativeEvent.layout;
                                 const key = Math.ceil(width);
