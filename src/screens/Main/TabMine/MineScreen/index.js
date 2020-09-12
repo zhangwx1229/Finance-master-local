@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1485) / 1080,
+        height: (UI.size.screenWidth * 1030) / 810,
     },
     header: {
         width: '100%',
