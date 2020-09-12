@@ -67,7 +67,7 @@ export default class MySearchScreen extends PureComponent {
 }
 const styles = StyleSheet.create({
     container: { flex: 1 },
-    content: { flex: 1 },
+    content: { flex: 1, backgroundColor: '#f5f6f9' },
     contentContainerStyle: {
         backgroundColor: UI.color.background,
     },
