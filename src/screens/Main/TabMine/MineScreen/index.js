@@ -44,6 +44,7 @@ export default class TaxScreen extends PureComponent {
                     </View>
                 </View>
                 <Image style={styles.image} source={Images.tab_mine_image} />
+                <View style={{ height: 60, backgroundColor: '#f5f6f9' }} />
             </ScrollView >
         );
     }
