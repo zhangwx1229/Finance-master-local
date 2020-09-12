@@ -15,6 +15,7 @@ export default class TaxScreen extends PureComponent {
         const phoneStr = filename.phone + ''
         if (phoneStr.length === 11) {
             this.phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
+        }
     }
     render() {
         font_12_5 = UI.fontSizeNew.font_12_5
