@@ -7,7 +7,7 @@
  * @FilePath: /lvsejunying/src/navigator/TabNav/index.js
  */
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, DeviceEventEmitter } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../screens/Main/TabHomeNew/HomeScreen';
 import MineScreen from '../../screens/Main/TabMine/MineScreen';
@@ -17,14 +17,28 @@ import TaxScreen from '../../screens/Main/TabTax/TaxScreen';
 import Images from '../../image';
 const Tab = createBottomTabNavigator();
 
-export default function TabNav() {
-    const font = UI.fontSizeNew.font_10
-    return (
-        < Tab.Navigator
+export default class TabNav extends React.Component {
+    componentDidMount() {
+        this.istener = DeviceEventEmitter.addListener('FontChange', this.fontChange)
+    }
+    fontChange = () => {
+        this.setState({});
+    }
+    componentWillUnmount() {
+        this.istener.remove()
+    }
+
+    render() {
+        const font = UI.fontSizeNew.font_10;
+        let labelStyle = {}
+        if (font) {
+            labelStyle = { fontSize: font }
+        }
+        return < Tab.Navigator
             tabBarOptions={{
                 activeTintColor: UI.color.primary,
                 inactiveTintColor: UI.color.darkGray,
-                labelStyle: { fontSize: font }
+                labelStyle: labelStyle
             }}
         >
             <Tab.Screen
@@ -82,7 +96,7 @@ export default function TabNav() {
                 }}
             />
         </Tab.Navigator >
-    );
+    }
 }
 
 const styles = StyleSheet.create({

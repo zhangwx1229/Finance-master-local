@@ -1,6 +1,6 @@
 import { isNumber } from 'lodash';
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View, Text, TouchableWithoutFeedback } from 'react-native';
+import { Image, StyleSheet, ScrollView, View, Text, TouchableWithoutFeedback, DeviceEventEmitter } from 'react-native';
 import Images from '../../../../image';
 import { name } from '../../../../image/filename_02.json';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
@@ -28,6 +28,7 @@ export default class HomeScreen extends PureComponent {
         // 360 740 3 
         // 432 768 2.5
         setWidthList(this.widthList)
+        DeviceEventEmitter.emit('FontChange')
     };
 
     render() {

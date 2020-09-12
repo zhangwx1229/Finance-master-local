@@ -89,7 +89,6 @@ export function setWidthList(list) {
         font_9_5: getFontSize(9.5)
     }
     UI.fontSizeNew = fonts;
-    console.debug('======UI.fontSizeNew====', UI.fontSizeNew)
 }
 
 export function getFontSize(size) {
@@ -99,7 +98,6 @@ export function getFontSize(size) {
     const key = widthList[size + ''];
     const scal = key / 360;
     if (360 === UI.size.screenWidth) {
-        console.debug('====size====', size)
         return size
     }
     const value = UI.size.screenWidth * scal

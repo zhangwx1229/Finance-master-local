@@ -31,6 +31,13 @@ export default class MySearchScreen extends PureComponent {
             </TouchableOpacity>
         );
     };
+    renderItemNew = () => {
+        return (
+            <TouchableOpacity style={styles.clickNew} onPress={this.clickSearch}>
+                <Image style={styles.contentImageBG} source={Images.tab_home_search_image_4} />
+            </TouchableOpacity>
+        );
+    };
     render() {
         const { navigation } = this.props;
         font_12_5 = UI.fontSizeNew.font_12_5
@@ -48,7 +55,7 @@ export default class MySearchScreen extends PureComponent {
                         style={styles.image_0}
                         source={Images.tab_home_search_image_0}
                     />
-                    {this.renderItem()}
+                    {this.renderItemNew()}
                     <Image
                         style={styles.image_1}
                         source={Images.tab_home_search_image_1}
@@ -78,6 +85,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         justifyContent: 'center',
     },
+    clickNew: {
+        width: UI.size.screenWidth,
+        height: (UI.size.screenWidth * 265) / 1440,
+        backgroundColor: '#fff',
+        // justifyContent: 'center',
+    },
     contentBg: {
         flexDirection: 'row',
         backgroundColor: '#fff',
@@ -88,8 +101,8 @@ const styles = StyleSheet.create({
         color: '#333333',
     },
     contentImage: {
-        width: 23,
-        height: 23,
+        width: 23 * UI.size.scale,
+        height: 23 * UI.size.scale,
         marginRight: 10,
         // color: 'blue',
     },
@@ -98,4 +111,8 @@ const styles = StyleSheet.create({
         marginTop: 2.5,
         color: '#a0a0a0',
     },
+    contentImageBG: {
+        width: "100%",
+        height: "100%",
+    }
 });
