@@ -5,6 +5,7 @@ import Images from '../../../../image';
 import { name } from '../../../../image/filename_02.json';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
 // import MySearchScreen from '../MySearchScreen';
+let font_12_5 = UI.fontSizeNew.font_12_5
 export default class HomeScreen extends PureComponent {
     constructor() {
         super();
@@ -31,11 +32,11 @@ export default class HomeScreen extends PureComponent {
         DeviceEventEmitter.emit('FontChange')
     };
 
-    render() {
+    renderText = () => {
         const { textList } = this.state;
-        return (
-            <View style={styles.container}>
-                {textList.length > 0
+        return (<View>
+            {
+                textList.length > 0
                     ? textList.map(item => (
                         <Text
                             key={item + ''}
@@ -59,7 +60,45 @@ export default class HomeScreen extends PureComponent {
                             都是借口
                         </Text>
                     ))
-                    : null}
+                    : null
+            }</View>)
+    }
+    renderHeader = () => {
+        return <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49, backgroundColor: 'red' }}>
+            <View style={{ flexDirection: 'row', marginLeft: 10, alignSelf: 'center', backgroundColor: 'blue' }}>
+                <Image style={{ width: 26, height: 26 }} source={Images.p1_1} />
+                <Text style={{
+                    alignSelf: 'center',
+                    marginLeft: 3,
+                    color: '#fff',
+                    fontSize: font_12_5,
+                }}>个人所得税</Text>
+            </View>
+            <View style={{ flexDirection: 'row', marginRight: 10, alignSelf: 'center', backgroundColor: 'blue' }}>
+                <Image style={{ width: 26, height: 26, marginRight: 5 }} source={Images.p1_2} />
+                <Image style={{ width: 26, height: 26, marginRight: 5 }} source={Images.p1_3} />
+                <View>
+                    <Image style={{ width: 26, height: 26 }} source={Images.p1_4} />
+                    <View style={{ position: 'absolute', right: 0, width: 10, height: 10, backgroundColor: 'red', borderRadius: 5 }}>
+                        <Text style={{
+                            alignSelf: 'center',
+                            marginLeft: 3,
+                            color: '#fff',
+                            fontSize: font_12_5,
+                        }}>4</Text>
+                    </View>
+
+                </View>
+            </View>
+        </View>
+    }
+
+    render() {
+        font_12_5 = UI.fontSizeNew.font_12_5
+        return (
+            <View style={styles.container}>
+                {this.renderText()}
+                {this.renderHeader()}
                 <ScrollView
                     style={styles.content}
                     contentContainerStyle={styles.contentContainerStyle}

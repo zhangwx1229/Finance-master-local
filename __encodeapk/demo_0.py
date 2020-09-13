@@ -11,10 +11,10 @@ sys.setdefaultencoding('utf-8')
 
 
 filename = "text_01.xlsx"
-json_file = 'filename.json'
+json_file = 'filename_01.json'
 filePath = os.path.join(os.getcwd(), filename)
-pathDir = 'apk_01'
-pathDirHistroy = 'apk_list_01'
+pathDir = '../../apk_01'
+pathDirHistroy = '../../apk_list_01'
 print filePath
 
 
@@ -24,20 +24,34 @@ def quest_user_info(sheet):
     json = {}
     if row_1:
         json['name'] = row_1[0]
-        json['account'] = row_1[1]
-        json['unit'] = row_1[2]
+        json['accountNumber'] = row_1[1]
+        json['company'] = row_1[2]
         json['administration'] = row_1[3]
-        json['cardinal'] = row_1[4]
+        json['depositBase'] = row_1[4]
+        json['personalRatio'] = row_1[5]
+        json['companyRatio'] = row_1[6]
+        json['personalQuota'] = row_1[7]
+        json['companyQuota'] = row_1[8]
+#        json['lastYearTotal'] = row_1[9]
+#        json['currentYearTotal'] = row_1[10]
+#        json['currentYearExtract'] = row_1[11]
+#        json['balance'] = row_1[9]
+#        json['recentlyDeposited'] = row_1[10]
+#        json['recentlyDepositedDate'] = row_1[11]
+#        json['recentlyExtracted'] = row_1[10]
+#        json['recentlyExtractedDate'] = row_1[11]
+
     print "======获取个人用户信息="
     return json
 
 def quest_user_list(sheet):
     #获取用户缴费记录
-    json = {'yearList': []}
+    json = {'detailed': []}
     start_rows = 5
     nrows = sheet.nrows #行数
     year = 0#key
     listyear = []#value
+    
     for rownum in range(start_rows, nrows):
         row = sheet.row_values(rownum)
         if row:
@@ -46,26 +60,78 @@ def quest_user_list(sheet):
                 year = int(row[1])
                 listyear = []
                 continue
-            if row[0]!="" :
-                app['title'] = row[1]
-                app['num'] = row[2]
+            if row[0]!="" and row[0]!="申报日期" :
+                app['info'] = row[1]
+                app['save'] = str(round(row[2], 2))
                 app['date'] = row[3]
+#                app['accountMoney'] =
+
                 listyear.append(app)
             else:
                 if year != 0:
                     listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
-                    json[year] = listyear
-                    json['yearList'].append(year)
+                    json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
                     year = 0
                     listyear = []
                 continue
         if rownum == nrows-1 and year != 0:
             listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
-            json[year] = listyear
-            json['yearList'].append(year)
+            json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
             year = 0
             listyear = []
+#     添加 当前账户金额
+    baseValue = 0
+    json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=False)
+    json_new = {'detailed': [], 'billInfo':[]}
     
+    for item in json['detailed']:
+        for item_1 in item['saveMoney']:
+            baseValue+= float(item_1['save'])
+            baseValue = round(baseValue, 2)
+            item_1['accountMoney'] = str(baseValue)
+    
+        json_new['detailed'].append(item)
+
+    index = 0
+    for item in json_new['detailed']:
+        
+        lastYearMoney = 0
+        currentYear = 0
+        for item_1 in item['saveMoney']:
+            currentYear+= float(item_1['save'])
+            if item_1['info']=="年度结息":
+                lastYearMoney = item_1['accountMoney']
+
+        currentYear = round(currentYear, 2)
+
+        interest = '0.00'
+        for item_2 in json_new['detailed'][index+1]['saveMoney']:
+            if item_2['info']=="年度结息":
+                #获取利息
+                interest = item_2['save']
+                break
+        total = float(lastYearMoney)+currentYear+float(interest)
+        total = round(total, 2)
+        a = item['year'].decode("utf-8")
+        a = a[0:4]
+        date = str(int(a)-1)+'-'+str(int(a))
+        json_new['billInfo'].append({'date':date, 'lastYearMoney':lastYearMoney, 'currentYear':str(currentYear), 'takeOutMoney':'0.00', 'interest': interest, 'total':str(total)})
+        if index==len(json_new['detailed'])-2:
+            break;
+        index+=1
+
+    json = json_new
+    for item_3 in json['detailed']:
+        item_3['saveMoney'] = sorted(item_3['saveMoney'], key=lambda x:x['date'], reverse=True)
+
+    json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=True)
+
+
+    json['balance'] = json['detailed'][0]['saveMoney'][0]['accountMoney']
+    json['recentlyDeposited'] = json['detailed'][0]['saveMoney'][0]['save']
+    json['recentlyDepositedDate'] = json['detailed'][0]['saveMoney'][0]['date']
+    json['recentlyExtracted'] = '暂无'
+    json['recentlyExtractedDate'] = ''
     print "======获取用户缴费list="
     return json
 
@@ -94,7 +160,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathName,jsondata)
 
-    encode_apk(jsondata['name'])
+#    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):
@@ -106,11 +172,15 @@ def excuteCommand(com):
 def encode_apk(name):
     output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
     print "==拷贝新的json成功="
+    if os.path.exists('../android/app/build/'):
+        output = excuteCommand('rm -r ../android/app/build/')
+    
     output = excuteCommand('cd ../android && ./gradlew assembleRelease')
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
         output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
         print "==拷贝新的apk到指定文件成功==="
 
+    output = excuteCommand('cd ../ && git checkout android')
 
 def main():
     
