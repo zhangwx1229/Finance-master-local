@@ -64,7 +64,7 @@ export default class HomeScreen extends PureComponent {
             }</View>)
     }
     renderHeader = () => {
-        return <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49, backgroundColor: 'red' }}>
+        return <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49, backgroundColor: '#0C79FC' }}>
             <View style={{ flexDirection: 'row', marginLeft: 10, alignSelf: 'center', backgroundColor: 'blue' }}>
                 <Image style={{ width: 26, height: 26 }} source={Images.p1_1} />
                 <Text style={{
@@ -98,7 +98,7 @@ export default class HomeScreen extends PureComponent {
         return (
             <View style={styles.container}>
                 {this.renderText()}
-                {this.renderHeader()}
+                {/* {this.renderHeader()} */}
                 <ScrollView
                     style={styles.content}
                     contentContainerStyle={styles.contentContainerStyle}
