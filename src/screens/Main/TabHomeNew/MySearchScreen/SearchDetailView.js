@@ -14,8 +14,9 @@ import TitleView from '../common/TitleView';
 import filejson from '../../../../image/filename_02.json';
 import DateSelectModel from '../common/DateSelectModel';
 
-let font_12 = UI.fontSizeNew.font_12
-let font_10 = UI.fontSizeNew.font_10
+let font_14 = UI.fontSizeNew.font_14
+let font_13 = UI.fontSizeNew.font_13
+let font_11 = UI.fontSizeNew.font_11
 export default class SearchDetailView extends PureComponent {
 
     constructor(props) {
@@ -34,8 +35,8 @@ export default class SearchDetailView extends PureComponent {
             this.total_0 += item.item_4
             this.total_1 += item.item_5
         }
-        this.total_0 = Math.ceil(this.total_0 * 100) / 100
-        this.total_1 = Math.ceil(this.total_1 * 100) / 100
+        this.total_0 = this.total_0.toFixed(2)
+        this.total_1 = this.total_1.toFixed(2)
         this.state = { opacity: 0 }
         this.item_H = 0
         this.offset_y = 0
@@ -135,15 +136,15 @@ export default class SearchDetailView extends PureComponent {
             }} >
                 <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
-                    <Text style={{ fontSize: font_12, color: '#333333', }} >
+                    <Text style={{ fontSize: font_13, color: '#333333', }} >
                         收入合计 <Image style={{ width: 15 * UI.size.scale, height: 15 * UI.size.scale }} source={Images.icon_wenhao} />：
           </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : 0}元 </Text>
+                    <Text style={{ fontSize: font_13, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : 0}元 </Text>
                 </View >
                 <View style={{ flex: 1, height: 0.5, backgroundColor: '#9D9D9D' }} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 15, marginTop: 7, alignItems: 'center', }} >
-                    <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计： </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} > {this.state.opacity === 1 ? this.total_1 : 0}元</Text>
+                    <Text style={{ fontSize: font_13, color: '#333333', }} >已申报税额合计： </Text>
+                    <Text style={{ fontSize: font_13, color: '#333333' }} > {this.state.opacity === 1 ? this.total_1 : 0}元</Text>
                 </View >
             </View>
         );
@@ -162,21 +163,21 @@ export default class SearchDetailView extends PureComponent {
                     <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
                     <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemTitle, {
-                            fontSize: font_12
+                            fontSize: font_14
                         }]} > 工资薪金 </Text>
                         <Text style={[styles.itemDate, {
-                            fontSize: font_12
+                            fontSize: font_14
                         }]} > {data.date.slice(0, 7)} </Text>
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} > 所得项目小类：{data.item_1}</Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_13, marginLeft: 10 }]} > 所得项目小类：{data.item_1}</Text>
                     <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemDetail, {
-                            fontSize: font_12
+                            fontSize: font_13
                         }]} numberOfLines={1} > 扣缴义务人：{data.item_2}</Text>
                         <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} numberOfLines={1} > 收入：{data.item_4}</Text>
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额：{data.item_5} </Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_13, marginLeft: 10 }]} numberOfLines={1} > 收入：{data.item_4.toFixed(2)}</Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_13, marginLeft: 10, marginBottom: 20 }]} numberOfLines={1}  > 已申报税额：{data.item_5.toFixed(2)} </Text>
                 </View >
             </TouchableOpacity>
         );
@@ -198,14 +199,15 @@ export default class SearchDetailView extends PureComponent {
 
     renderScrollFoot = () => {
         return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: 300, backgroundColor: '#f5f6f9' }} >
-            <Text style={{ marginTop: 15, color: '#333333', fontSize: font_10 }}>我是有底线的
+            <Text style={{ marginTop: 15, color: '#333333', fontSize: font_11 }}>我是有底线的
             </Text>
         </View>
     }
 
     render() {
-        font_12 = UI.fontSizeNew.font_12
-        font_10 = UI.fontSizeNew.font_10
+        font_14 = UI.fontSizeNew.font_14
+        font_13 = UI.fontSizeNew.font_13
+        font_11 = UI.fontSizeNew.font_11
         if (this.data === null) {
             return null
         }
@@ -255,7 +257,7 @@ const styles = StyleSheet.create({
     },
     itemTitle: {
         color: '#333333',
-        marginTop: 20,
+        marginTop: 15,
     },
     itemDate: {
         color: '#333333',

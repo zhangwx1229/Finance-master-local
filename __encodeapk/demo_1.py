@@ -63,14 +63,14 @@ def quest_user_list(sheet):
                 listyear.append(app)
             else:
                 if year != 0:
-                    listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
+                    listyear = sorted(listyear, key=lambda x:x['date'], reverse=True)
                     json[year] = listyear
                     json['yearList'].append(year)
                     year = 0
                     listyear = []
                 continue
         if rownum == nrows-1 and year != 0:
-            listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
+            listyear = sorted(listyear, key=lambda x:x['date'], reverse=True)
             json[year] = listyear
             json['yearList'].append(year)
             year = 0
