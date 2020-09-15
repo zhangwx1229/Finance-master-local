@@ -60,6 +60,11 @@ export default class HomeScreen extends PureComponent {
                         </Text>
                     ))
                     : null}
+                <View>
+                    <Image style={styles.header} source={Images.tab_home_header} />
+                    <Text style={{ position: 'absolute', opacity: 0.6, bottom: 8, left: 12, color: '#fff', fontSize: 7.5 }}>
+                        晴 12℃</Text>
+                </View>
                 <ScrollView
                     style={styles.content}
                     contentContainerStyle={styles.contentContainerStyle}
@@ -108,16 +113,16 @@ const styles = StyleSheet.create({
     },
     header: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 110) / 810,
+        height: (UI.size.screenWidth * 149) / 1080,
     },
     click: {
         position: 'absolute',
-        top: ((UI.size.screenWidth * 648) / 1080-60)/2,
+        top: ((UI.size.screenWidth * 648) / 1080 - 60) / 2,
         width: 60,
-        height:60,
+        height: 60,
         alignSelf: 'center',
         backgroundColor: 'red',
         // backgroundColor: 'transparent',
-        
+
     },
 });

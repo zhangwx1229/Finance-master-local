@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View,TouchableWithoutFeedback } from 'react-native';
+import { Image, StyleSheet, ScrollView, View, TouchableWithoutFeedback } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 
@@ -15,15 +15,15 @@ export default class AccumulationScreen extends PureComponent {
             >
                 <Image style={styles.image0} source={Images.accumulation_header} />
                 <View>
-                <Image style={styles.image1} source={Images.accumulation_image_1} />
-                        <TouchableWithoutFeedback onPress={this.clickSearch}>
-                            <View style={styles.click} />
-                        </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={this.clickSearch}>
-                            <View style={styles.click1} />
-                        </TouchableWithoutFeedback>
-                    </View>
-                
+                    <Image style={styles.image1} source={Images.accumulation_image_1} />
+                    <TouchableWithoutFeedback onPress={this.clickSearch}>
+                        <View style={styles.click} />
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={this.clickSearch}>
+                        <View style={styles.click1} />
+                    </TouchableWithoutFeedback>
+                </View>
+
                 <Image style={styles.image2} source={Images.accumulation_image_2} />
             </ScrollView>
         );
@@ -49,24 +49,24 @@ const styles = StyleSheet.create({
     },
     click: {
         position: 'absolute',
-        top:10,
+        top: 10,
         left: 12,
-        width: (UI.size.screenWidth-12*2-40)/2,
-        height:40,
+        width: (UI.size.screenWidth - 12 * 2 - 40) / 2,
+        height: 40,
         alignSelf: 'center',
         backgroundColor: 'red',
         // backgroundColor: 'transparent',
-        
+
     },
     click1: {
         position: 'absolute',
-        top:80,
+        top: 80,
         left: 12,
-        width: (UI.size.screenWidth-12*2-40)/2,
-        height:40,
+        width: (UI.size.screenWidth - 12 * 2 - 40) / 2,
+        height: 40,
         alignSelf: 'center',
         backgroundColor: 'red',
         // backgroundColor: 'transparent',
-        
+
     },
 });

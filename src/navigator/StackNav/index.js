@@ -19,31 +19,33 @@ import GestureScreen from '../../screens/Main/TabMine/MineScreen/GestureScreen';
 import CivicCentreScreen from '../../screens/Main/TabHomeNew/HomeScreen/CivicCentreScreen';
 import AccumulationScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationScreen';
 import AccumulationServerScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationServerScreen';
+import AccumulationInfoScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationInfoScreen';
 
 const Stack = createStackNavigator();
 
 export default class StackNav extends Component {
-  render () {
-    return (
-      <Stack.Navigator
-        headerMode="none"
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          animationEnabled: false,
-        }}
-      >
-        <Stack.Screen name="Home" component={TabNav} />
-        <Stack.Screen name="GestureScreen" component={GestureScreen} />
-        <Stack.Screen name="CivicCentreScreen" component={CivicCentreScreen} />
-        <Stack.Screen name="AccumulationScreen" component={AccumulationScreen} />
-        <Stack.Screen name="AccumulationServerScreen" component={AccumulationServerScreen} />
-        
-        
-        <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
-        <Stack.Screen name="SearchView" component={SearchView} />
-        <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
-        <Stack.Screen name="DetailInfoView" component={DetailInfoView} />
-      </Stack.Navigator>
-    );
-  }
+    render() {
+        return (
+            <Stack.Navigator
+                headerMode="none"
+                screenOptions={{
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                    animationEnabled: false,
+                }}
+            >
+                <Stack.Screen name="Home" component={TabNav} />
+                <Stack.Screen name="GestureScreen" component={GestureScreen} />
+                <Stack.Screen name="CivicCentreScreen" component={CivicCentreScreen} />
+                <Stack.Screen name="AccumulationScreen" component={AccumulationScreen} />
+                <Stack.Screen name="AccumulationServerScreen" component={AccumulationServerScreen} />
+                <Stack.Screen name="AccumulationInfoScreen" component={AccumulationInfoScreen} />
+
+
+                <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
+                <Stack.Screen name="SearchView" component={SearchView} />
+                <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
+                <Stack.Screen name="DetailInfoView" component={DetailInfoView} />
+            </Stack.Navigator>
+        );
+    }
 }

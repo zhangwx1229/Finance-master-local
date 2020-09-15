@@ -11,6 +11,7 @@ const Images = {
     tab_mine: require('./5/tab_4_normal.png'),
     tab_mine_p4_avatar_2: require('./p4_avatar_2.png'),
     tab_mine_p4_avatar_3: require('./p4_avatar_3.png'),
+    tab_home_header: require('./1/tab_home_header.jpg'),
     tab_home_image_0: require('./1/tab_home_1.jpg'),
     tab_home_image_1: require('./1/tab_home_2.jpg'),
     tab_home_image_2: require('./1/tab_home_3.jpg'),
@@ -35,11 +36,13 @@ const Images = {
     accumulation_image_1: require('./1/gjj_scond_0.jpg'),
     accumulation_image_2: require('./1/gjj_scond_1.jpg'),
     accumulation_server_image: require('./1/gjj_thire.jpg'),
-    
+    accumulation_info_header: require('./1/gjj_four_header.jpg'),
+    alipay_15: require('./5/alipay_15.png'),
+
 
 
     tab_mine_p4_bg: require('./p4_bg.png'),
-    
+
     tab_home_image_header: require('./tab_home_image_header.jpg'),
     tab_tax_image: require('./tab_tax_image.jpg'),
     tab_service_image: require('./tab_service_image.jpg'),

@@ -1,25 +1,25 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, View,TouchableWithoutFeedback } from 'react-native';
+import { Image, StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 
 export default class AccumulationServerScreen extends PureComponent {
     clickSearch = () => {
-        this.props.navigation.navigate('AccumulationServerScreen');
+        this.props.navigation.navigate('AccumulationInfoScreen');
     };
 
     render() {
         return (
-                <View
+            <View
                 style={styles.content}
             >
-                
+
                 <View>
-                <Image style={styles.image1} source={Images.accumulation_server_image} />
-                        <TouchableWithoutFeedback onPress={this.clickSearch}>
-                            <View style={styles.click} />
-                        </TouchableWithoutFeedback>
-                    </View>
+                    <Image style={styles.image1} source={Images.accumulation_server_image} />
+                    <TouchableWithoutFeedback onPress={this.clickSearch}>
+                        <View style={styles.click} />
+                    </TouchableWithoutFeedback>
+                </View>
             </View>
         );
     }
@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
     },
     click: {
         position: 'absolute',
-        bottom:5,
+        bottom: 5,
         left: 12,
-        width: UI.size.screenWidth-12*2,
-        height:40,
+        width: UI.size.screenWidth - 12 * 2,
+        height: 40,
         backgroundColor: 'red',
         // backgroundColor: 'transparent',
-        
+
     },
 });
