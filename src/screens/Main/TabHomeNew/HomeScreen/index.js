@@ -20,7 +20,7 @@ export default class HomeScreen extends PureComponent {
     }
 
     clickSearch = () => {
-        this.props.navigation.navigate('MySearchScreen');
+        this.props.navigation.navigate('CivicCentreScreen');
     };
 
     svaeTextList = () => {

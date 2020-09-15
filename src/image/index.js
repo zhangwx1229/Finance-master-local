@@ -26,6 +26,16 @@ const Images = {
     tab_msg_header: require('./4/tab_msg_0.jpg'),
     tab_msg_image_1: require('./4/tab_msg_1.jpg'),
     tab_msg_image_2: require('./4/tab_msg_2.jpg'),
+    civic_centre_header: require('./1/gjj_first_00.jpg'),
+    civic_centre_image_1: require('./1/gjj_first_0.jpg'),
+    civic_centre_image_2: require('./1/gjj_first_1.jpg'),
+    civic_centre_image_3: require('./1/gjj_first_2.jpg'),
+    civic_centre_image_4: require('./1/gjj_first_3.jpg'),
+    accumulation_header: require('./1/gjj_scond_00.jpg'),
+    accumulation_image_1: require('./1/gjj_scond_0.jpg'),
+    accumulation_image_2: require('./1/gjj_scond_1.jpg'),
+    accumulation_server_image: require('./1/gjj_thire.jpg'),
+    
 
 
     tab_mine_p4_bg: require('./p4_bg.png'),
