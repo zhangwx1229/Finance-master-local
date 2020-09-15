@@ -14,6 +14,7 @@ import MineScreen from '../../screens/Main/TabMine/MineScreen';
 import UI from '../../UI';
 import ServiceScreen from '../../screens/Main/TabService/ServiceScreen';
 import TaxScreen from '../../screens/Main/TabTax/TaxScreen';
+import MessageScreen from '../../screens/Main/TabMessage';
 import Images from '../../image';
 const Tab = createBottomTabNavigator();
 
@@ -58,7 +59,7 @@ export default class TabNav extends React.Component {
                 name="Learn"
                 component={TaxScreen}
                 options={{
-                    tabBarLabel: '办税',
+                    tabBarLabel: '理财',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={focused ? Images.tab_tax_selected : Images.tab_tax}
@@ -71,7 +72,7 @@ export default class TabNav extends React.Component {
                 name="Note"
                 component={ServiceScreen}
                 options={{
-                    tabBarLabel: '服务',
+                    tabBarLabel: '口碑',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={
@@ -83,10 +84,23 @@ export default class TabNav extends React.Component {
                 }}
             />
             <Tab.Screen
+                name="Message"
+                component={MessageScreen}
+                options={{
+                    tabBarLabel: '消息',
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <Image
+                            source={focused ? Images.tab_msg_selected : Images.tab_msg}
+                            style={styles.icon}
+                        />
+                    ),
+                }}
+            />
+            <Tab.Screen
                 name="Mine"
                 component={MineScreen}
                 options={{
-                    tabBarLabel: '个人中心',
+                    tabBarLabel: '我的',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={focused ? Images.tab_mine_selected : Images.tab_mine}

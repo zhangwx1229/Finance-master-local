@@ -72,6 +72,8 @@ export default class HomeScreen extends PureComponent {
                     </View>
                     <Image style={styles.image_1} source={Images.tab_home_image_1} />
                     <Image style={styles.image_2} source={Images.tab_home_image_2} />
+                    <Image style={styles.image_3} source={Images.tab_home_image_3} />
+                    <Image style={styles.image_4} source={Images.tab_home_image_4} />
                 </ScrollView>
             </View>
         );
@@ -86,15 +88,23 @@ const styles = StyleSheet.create({
     },
     image_0: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1996) / 1440,
+        height: (UI.size.screenWidth * 648) / 1080,
     },
     image_1: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 2211) / 1440,
+        height: (UI.size.screenWidth * 1145) / 1080,
     },
     image_2: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1298) / 1440,
+        height: (UI.size.screenWidth * 695) / 1080,
+    },
+    image_3: {
+        width: UI.size.screenWidth,
+        height: (UI.size.screenWidth * 1044) / 1080,
+    },
+    image_4: {
+        width: UI.size.screenWidth,
+        height: (UI.size.screenWidth * 1080) / 1080,
     },
     header: {
         width: UI.size.screenWidth,
@@ -102,10 +112,12 @@ const styles = StyleSheet.create({
     },
     click: {
         position: 'absolute',
-        top: (450 * UI.size.screenWidth) / 810,
-        width: 70,
-        height: 70,
+        top: ((UI.size.screenWidth * 648) / 1080-60)/2,
+        width: 60,
+        height:60,
         alignSelf: 'center',
-        backgroundColor: 'transparent',
+        backgroundColor: 'red',
+        // backgroundColor: 'transparent',
+        
     },
 });

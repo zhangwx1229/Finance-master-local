@@ -11,12 +11,11 @@ import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import TabNav from '../TabNav';
-import SettingScreen from '../../screens/Main/TabMine/SettingScreen';
 import MySearchScreen from '../../screens/Main/TabHomeNew/MySearchScreen';
 import SearchView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchView';
 import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchDetailView';
 import DetailInfoView from '../../screens/Main/TabHomeNew/MySearchScreen/DetailInfo';
-
+import GestureScreen from '../../screens/Main/TabMine/MineScreen/GestureScreen';
 const Stack = createStackNavigator();
 
 export default class StackNav extends Component {
@@ -30,7 +29,10 @@ export default class StackNav extends Component {
         }}
       >
         <Stack.Screen name="Home" component={TabNav} />
-        <Stack.Screen name="Setting" component={SettingScreen} />
+        <Stack.Screen name="GestureScreen" component={GestureScreen} />
+        
+
+
         <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
         <Stack.Screen name="SearchView" component={SearchView} />
         <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
