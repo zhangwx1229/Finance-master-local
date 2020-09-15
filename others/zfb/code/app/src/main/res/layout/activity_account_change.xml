@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f4f9"
+    android:orientation="vertical">
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24dp"
+        android:text="你公积金账号下的所有账户"
+        android:layout_marginLeft="@dimen/_12dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_36dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:orientation="vertical"
+        android:background="@color/color_ffffff">
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="阿里巴巴网络技术有限公司"
+            android:textColor="@color/color_000000"
+            android:layout_marginLeft="@dimen/_12dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_36dp"
+        android:orientation="vertical"
+        android:background="@color/color_ffffff">
+        <TextView
+            android:id="@+id/tv_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="中心销售部"
+            android:textColor="@color/color_000000"
+            android:layout_marginLeft="@dimen/_12dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+</LinearLayout>

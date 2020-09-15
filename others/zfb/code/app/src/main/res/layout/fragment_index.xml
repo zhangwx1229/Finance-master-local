@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_layout"
+    android:background="#0C79FC"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_cityname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16dp"
+                    android:text="北京"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="@dimen/ts_12"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_cityname"
+                    android:layout_marginLeft="@dimen/_2dp"
+                    android:src="@drawable/alipay_29"/>
+                <TextView
+                    android:id="@+id/tv_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_cityname"
+                    android:layout_marginLeft="@dimen/_16dp"
+                    android:textSize="@dimen/ts_9"
+                    android:textColor="#82BEFD"
+                    android:layout_marginTop="@dimen/_1dp"
+                    android:text="晴24℃"/>
+
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="@dimen/_0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/index_title"/>
+        </LinearLayout>
+
+        <com.bjcxx.kkm.ui.custom.BigView
+            android:id="@+id/bigview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+<!--        <com.bjcxx.kkm.ui.custom.CircleProgress-->
+<!--            android:id="@+id/circle_progress_bar1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            app:antiAlias="false"-->
+<!--            app:arcWidth="@dimen/_15dp"-->
+<!--            app:bgArcColor="@color/colorAccent"-->
+<!--            app:bgArcWidth="@dimen/_15dp"-->
+<!--            app:hint="截止当前已走"-->
+<!--            app:hintSize="15sp"-->
+<!--            app:maxValue="100"-->
+<!--            app:startAngle="135"-->
+<!--            app:sweepAngle="270"-->
+<!--            app:unit="步"-->
+<!--            app:unitSize="15sp"-->
+<!--            app:value="100"-->
+<!--            app:valueSize="25sp" />-->
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_1dp"-->
+<!--            android:background="@color/color_000000"/>-->
+
+<!--        <com.bjcxx.kkm.ui.custom.CircleProgress-->
+<!--            android:id="@+id/circle_progress_bar2"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            app:antiAlias="true"-->
+<!--            app:arcWidth="@dimen/small"-->
+<!--            app:bgArcColor="@color/colorAccent"-->
+<!--            app:bgArcWidth="@dimen/small"-->
+<!--            app:hint="百分比"-->
+<!--            app:hintSize="@dimen/text_size_15"-->
+<!--            app:maxValue="100"-->
+<!--            app:startAngle="135"-->
+<!--            app:sweepAngle="270"-->
+<!--            app:textOffsetPercentInRadius="0.5"-->
+<!--            app:unit="%"-->
+<!--            app:unitSize="@dimen/text_size_15"-->
+<!--            app:value="75"-->
+<!--            app:valueSize="@dimen/text_size_20" />-->
+
+<!--        <com.bjcxx.kkm.ui.custom.CircleProgress-->
+<!--            android:id="@+id/circle_progress_bar3"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            app:antiAlias="true"-->
+<!--            app:arcWidth="@dimen/small"-->
+<!--            app:bgArcColor="@android:color/darker_gray"-->
+<!--            app:bgArcWidth="@dimen/small"-->
+<!--            app:hint="当前进度"-->
+<!--            app:hintSize="@dimen/text_size_25"-->
+<!--            app:maxValue="100"-->
+<!--            app:startAngle="270"-->
+<!--            app:sweepAngle="360"-->
+<!--            app:unit="%"-->
+<!--            app:unitSize="@dimen/text_size_25"-->
+<!--            app:value="100"-->
+<!--            app:valueSize="@dimen/text_size_35" />-->
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_title_bar_back"
+        style="@style/ImageView.TitleBar"
+        android:src="@drawable/alipay_17"
+        />
+    <TextView
+        android:id="@+id/tv_title_bar_back"
+        style="@style/TextView.TitleBarBack"
+        android:layout_toRightOf="@+id/img_title_bar_back"
+        />
+
+    <TextView
+        android:id="@+id/tv_title_bar_title"
+        android:layout_marginLeft="@dimen/_8dp"
+        android:textColor="@color/color_000000"
+        android:layout_toRightOf="@id/tv_title_bar_back"
+        style="@style/TextView.Title" />
+
+    <ImageView
+        android:id="@+id/img_title_bar_right1"
+        style="@style/ImageView.TitleBar"
+        android:layout_toLeftOf="@+id/img_title_bar_right2"
+         />
+
+    <ImageView
+        android:id="@+id/img_title_bar_right2"
+        style="@style/ImageView.TitleBar"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/alipay_19"
+         />
+
+
+    <TextView
+        android:id="@+id/tv_title_bar_right"
+        style="@style/TextView.TitleBarRight"
+        android:layout_alignParentRight="true"
+        />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        />
+</merge>
