@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f5f4f9"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:orientation="vertical"
+        android:background="@color/color_ffffff"
+        android:layout_weight="1.1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24dp"
+            android:src="@drawable/alipay_7"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="公积金服务"
+            android:textSize="16sp"
+            android:textColor="@color/color_000000"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="为缴存用户提供个人信息、账户明细\n查询等网上办事服务."
+            android:textSize="12sp"
+            android:textColor="@color/color_898a8c"
+            android:gravity="center_horizontal"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:orientation="vertical"
+        android:layout_weight="2.2">
+
+        <Button
+            android:id="@+id/btn_use"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_48dp"
+            android:layout_marginTop="@dimen/_32dp"
+            android:layout_marginLeft="@dimen/_17dp"
+            android:layout_marginRight="@dimen/_17dp"
+            android:textColor="@color/color_ffffff"
+            android:textSize="15sp"
+            android:background="@drawable/shape_white_solid_corners"
+            android:text="使用服务"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
