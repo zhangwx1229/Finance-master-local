@@ -13,7 +13,7 @@ import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
 import DateSelectModel from '../common/DateSelectModel';
 import filejson from '../../../../image/filename_02.json';
-let font_13 = UI.fontSizeNew.font_13
+let font_12 = UI.fontSizeNew.font_12
 export default class SearchView extends PureComponent {
     constructor() {
         super();
@@ -61,8 +61,8 @@ export default class SearchView extends PureComponent {
         return (
             <TouchableOpacity style={styles.click} onPress={this.clickSearch}>
                 <View style={styles.contentBg}>
-                    <Text style={[styles.subTitle, { fontSize: font_13 }]}>年度</Text>
-                    <Text style={[styles.year, { fontSize: font_13 }]}>{year}</Text>
+                    <Text style={[styles.subTitle, { fontSize: font_12 }]}>年度</Text>
+                    <Text style={[styles.year, { fontSize: font_12 }]}>{year}</Text>
                     <Image style={styles.contentImage} source={Images.p4_9} />
                 </View>
             </TouchableOpacity>
@@ -100,7 +100,7 @@ export default class SearchView extends PureComponent {
                         style={styles.itemImage}
                         source={dss ? Images.icon_select_yes : Images.icon_select_no}
                     />
-                    <Text style={[styles.itemTitle, { fontSize: font_13 }]}>{dsds[index]}</Text>
+                    <Text style={[styles.itemTitle, { fontSize: font_12 }]}>{dsds[index]}</Text>
                 </View>
                 {index < 3 ? (
                     <View
@@ -111,7 +111,7 @@ export default class SearchView extends PureComponent {
         );
     };
     render() {
-        font_13 = UI.fontSizeNew.font_13
+        font_12 = UI.fontSizeNew.font_12
         const { navigation } = this.props;
         const { year, isShowYear } = this.state;
         return (
