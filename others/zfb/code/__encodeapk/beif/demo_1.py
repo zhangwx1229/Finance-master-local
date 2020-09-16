@@ -124,7 +124,7 @@ def quest_user_list(sheet):
                 interest = item_2['save']
                 total_11 = item_2['accountMoney']
                 break
-        currentYear = float(total_11)+float(takeOutMoney)-float(interest)-float(lastYearMoney)
+        currentYear = float(total_11)-float(lastYearMoney)-float(interest)
         currentYear = round(currentYear, 2)
         a = item['year'].decode("utf-8")
         a = a[0:4]
@@ -150,14 +150,10 @@ def quest_user_list(sheet):
     json['recentlyDepositedDate'] = json['detailed'][0]['year'][0:4]+'-'+ json['detailed'][0]['saveMoney'][0]['date']
     json['recentlyExtracted'] = '暂无'
     json['recentlyExtractedDate'] = ''
-    indis = 0;
     for item_1 in json['detailed'][0]['saveMoney']:
-        if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
-            if item_1['info']=="年度结息":
-                json['lastYearTotal'] = item_1['accountMoney']
-        else :
-            indis = item_1['save']
-    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal'])+float(indis), 2)
+        if item_1['info']=="年度结息":
+            json['lastYearTotal'] = item_1['accountMoney']
+    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal']), 2)
     json['currentYearTotal'] = str(currentYearTotal)
     
     
