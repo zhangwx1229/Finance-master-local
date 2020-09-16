@@ -9,7 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-filename = "text_01.xlsx"
+filename = "8个客户.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../apk_01'
@@ -115,21 +115,27 @@ def quest_user_list(sheet):
                 if item_1['info']=="年度结息":
                     lastYearMoney = item_1['accountMoney']
             else :
-                takeOutMoney = item_1['save']
+                if item_1['date']>"06-30":
+                    takeOutMoney += float(item_1['save'])
         
         interest = '0.00'
         for item_2 in json_new['detailed'][index+1]['saveMoney']:
-            if item_2['info']=="年度结息":
+            if item_2['info']=="年度结息" or item_2['info']=="汇缴分配":
+                if item_2['info']=="年度结息":
                 #获取利息
-                interest = item_2['save']
-                total_11 = item_2['accountMoney']
-                break
+                    interest = item_2['save']
+                    total_11 = item_2['accountMoney']
+#                break
+            else :
+                if item_2['date']<"07-01":
+                    takeOutMoney += float(item_2['save'])
+        
+            
         currentYear = float(total_11)+float(takeOutMoney)-float(interest)-float(lastYearMoney)
         currentYear = round(currentYear, 2)
         a = item['year'].decode("utf-8")
         a = a[0:4]
         date = str(int(a))+'-'+str(int(a)+1)
-#        takeOutMoney = round(takeOutMoney, 2)
         
         json_new['billInfo'].append({'date':date, 'lastYearMoney':lastYearMoney, 'currentYear':str(currentYear), 'takeOutMoney':str(takeOutMoney), 'interest': interest, 'total':str(total_11)})
         if index==len(json_new['detailed'])-2:
@@ -156,7 +162,9 @@ def quest_user_list(sheet):
             if item_1['info']=="年度结息":
                 json['lastYearTotal'] = item_1['accountMoney']
         else :
-            indis = item_1['save']
+            if item_1['date']>"06-30":
+                indis += float(item_1['save'])
+                
     currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal'])+float(indis), 2)
     json['currentYearTotal'] = str(currentYearTotal)
     

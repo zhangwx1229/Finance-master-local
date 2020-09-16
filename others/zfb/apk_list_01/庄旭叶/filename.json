@@ -40,7 +40,7 @@
     "companyQuota": 2376.0,
     "companyRatio": 12.0,
     "currentYearExtract": "4500.0",
-    "currentYearTotal": "9750.0",
+    "currentYearTotal": "14250.0",
     "depositBase": 19800.0,
     "detailed": [],
     "lastYearTotal": "45942.31",
@@ -887,40 +887,40 @@
     ],
     "weatherList": [
         {
-            "data": "2020-09-15",
-            "weather": "晴 30℃"
-        },
-        {
             "data": "2020-09-16",
-            "weather": "晴 31℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-17",
-            "weather": "晴 32℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-18",
-            "weather": "晴 33℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-19",
-            "weather": "晴 34℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-20",
-            "weather": "晴 35℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-21",
-            "weather": "晴 36℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-22",
-            "weather": "晴 37℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-23",
-            "weather": "晴 38℃"
+            "weather": "晴 27℃"
+        },
+        {
+            "data": "2020-09-24",
+            "weather": "晴 27℃"
         }
     ]
 }
