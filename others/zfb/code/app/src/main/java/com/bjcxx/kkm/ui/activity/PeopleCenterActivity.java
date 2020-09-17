@@ -61,6 +61,7 @@ public class PeopleCenterActivity extends BaseActivity {
             //加载图片
             is = this.getResources().getAssets().open("people_center.jpg");
             bigview.setRect(0.58f,0.74f,0.19f,0.30f);
+            bigview.setBackRect(this,0.028f,0.060f,0.028f,0.060f);
             bigview.setImage(is,GongjijinActivity.class);
         } catch (Exception e) {
             e.printStackTrace();

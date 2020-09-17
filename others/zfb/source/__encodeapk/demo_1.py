@@ -9,8 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
-filename = "text_01.xlsx"
+filename = "8个客户.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../apk_01'
@@ -86,13 +85,20 @@ def quest_user_list(sheet):
             year = 0
             listyear = []
 #     添加 当前账户金额
+    row_1 = sheet.row_values(1)
     baseValue = 0
+    if row_1:
+        baseValue = float(row_1[9])
+    
     json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=False)
     json_new = {'detailed': [], 'billInfo':[]}
     
     for item in json['detailed']:
         for item_1 in item['saveMoney']:
-            baseValue+= float(item_1['save'])
+            if item_1['info']=="汇缴分配" or item_1['info']=="年度结息" :
+                baseValue+= float(item_1['save'])
+            else:
+                baseValue-= float(item_1['save'])
             baseValue = round(baseValue, 2)
             item_1['accountMoney'] = str(baseValue)
     
@@ -102,30 +108,40 @@ def quest_user_list(sheet):
     for item in json_new['detailed']:
         
         lastYearMoney = 0
-        currentYear = 0
+        total_11 = 0
+        takeOutMoney = 0
         for item_1 in item['saveMoney']:
-            currentYear+= float(item_1['save'])
-            if item_1['info']=="年度结息":
-                lastYearMoney = item_1['accountMoney']
-
-        currentYear = round(currentYear, 2)
-
+            if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+                if item_1['info']=="年度结息":
+                    lastYearMoney = item_1['accountMoney']
+            else :
+                if item_1['date']>"06-30":
+                    takeOutMoney += float(item_1['save'])
+        
         interest = '0.00'
         for item_2 in json_new['detailed'][index+1]['saveMoney']:
-            if item_2['info']=="年度结息":
+            if item_2['info']=="年度结息" or item_2['info']=="汇缴分配":
+                if item_2['info']=="年度结息":
                 #获取利息
-                interest = item_2['save']
-                break
-        total = float(lastYearMoney)+currentYear+float(interest)
-        total = round(total, 2)
+                    interest = item_2['save']
+                    total_11 = item_2['accountMoney']
+#                break
+            else :
+                if item_2['date']<"07-01":
+                    takeOutMoney += float(item_2['save'])
+        
+            
+        currentYear = float(total_11)+float(takeOutMoney)-float(interest)-float(lastYearMoney)
+        currentYear = round(currentYear, 2)
         a = item['year'].decode("utf-8")
         a = a[0:4]
-        date = str(int(a)-1)+'-'+str(int(a))
-        json_new['billInfo'].append({'date':date, 'lastYearMoney':lastYearMoney, 'currentYear':str(currentYear), 'takeOutMoney':'0.00', 'interest': interest, 'total':str(total)})
+        date = str(int(a))+'-'+str(int(a)+1)
+        
+        json_new['billInfo'].append({'date':date, 'lastYearMoney':lastYearMoney, 'currentYear':str(currentYear), 'takeOutMoney':str(takeOutMoney), 'interest': interest, 'total':str(total_11)})
         if index==len(json_new['detailed'])-2:
             break;
         index+=1
-
+    json_new['billInfo'] = sorted(json_new['billInfo'], key=lambda x:x['date'], reverse=True)
     json = json_new
     for item_3 in json['detailed']:
         item_3['saveMoney'] = sorted(item_3['saveMoney'], key=lambda x:x['date'], reverse=True)
@@ -135,15 +151,57 @@ def quest_user_list(sheet):
 
     json['balance'] = json['detailed'][0]['saveMoney'][0]['accountMoney']
     json['recentlyDeposited'] = json['detailed'][0]['saveMoney'][0]['save']
-    json['recentlyDepositedDate'] = json['detailed'][0]['saveMoney'][0]['date']
+    
+    print "===fff===",json['detailed'][0]['year'][0:4]
+    json['recentlyDepositedDate'] = json['detailed'][0]['year'][0:4]+'-'+ json['detailed'][0]['saveMoney'][0]['date']
     json['recentlyExtracted'] = '暂无'
     json['recentlyExtractedDate'] = ''
+    indis = 0;
     for item_1 in json['detailed'][0]['saveMoney']:
-        if item_1['info']=="年度结息":
-            json['lastYearTotal'] = item_1['accountMoney']
-    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal']), 2)
+        if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+            if item_1['info']=="年度结息":
+                json['lastYearTotal'] = item_1['accountMoney']
+        else :
+            if item_1['date']>"06-30":
+                indis += float(item_1['save'])
+                
+    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal'])+float(indis), 2)
     json['currentYearTotal'] = str(currentYearTotal)
+    
+    
+    saveDetailed = []
+    takeOutDetailed = []
+    for item_4 in json['detailed']:
+        detailed_list = []
+        detailed_list1 = []
+        for item_5 in item_4['saveMoney']:
+            if item_5['info']=="汇缴分配" or item_5['info']=="年度结息" :
+                detailed_list.append(item_5)
+            else:
+                detailed_list1.append(item_5)
+        if len(detailed_list) > 0:
+            saveDetailed.append({'year':item_4['year'], 'saveMoney': detailed_list})
+        if len(detailed_list1) > 0:
+            takeOutDetailed.append({'year':item_4['year'], 'saveMoney': detailed_list1})
+    json['saveDetailed'] = saveDetailed
+    json['takeOutDetailed'] = takeOutDetailed
     json['currentYearExtract'] = '0.00'
+    if len(json['takeOutDetailed']) > 0:
+        print "======获取用户缴费list=4",'05-05'>'06-30'
+        print "======获取用户缴费list=4",'05-05'<'06-30'
+        if  json['takeOutDetailed'][0]['year']==json['saveDetailed'][0]['year'] and len(json['takeOutDetailed'][0]['saveMoney']) > 0:
+            currentYearExtract = 0;
+            for itmm in json['takeOutDetailed'][0]['saveMoney']:
+                if itmm['date']>'06-30':
+                    currentYearExtract+=float(itmm['save'])
+            currentYearExtract = round(currentYearExtract, 2)
+            json['currentYearExtract'] = str(currentYearExtract)
+    
+    if len(takeOutDetailed) > 0:
+        json['recentlyExtracted'] = json['takeOutDetailed'][0]['saveMoney'][0]['save']
+        json['recentlyExtractedDate'] = json['takeOutDetailed'][0]['year'][0:4]+'-'+json['takeOutDetailed'][0]['saveMoney'][0]['date']
+    json['totalDetailed'] =  json['detailed']
+    json['detailed'] =  []
     print "======获取用户缴费list="
     return json
 
@@ -192,7 +250,7 @@ def encode_apk(name):
         output = excuteCommand('cp -r ../app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
         print "==拷贝新的apk到指定文件成功==="
 
-#    output = excuteCommand('cd ../ && git checkout android')
+    output = excuteCommand('cd ../ && git checkout app')
 
 def main():
     

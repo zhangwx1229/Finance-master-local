@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.bjcxx.kkm.R;
 import com.bjcxx.kkm.ui.entity.Data;
 import com.bjcxx.kkm.ui.entity.ZfbData;
+import com.bjcxx.kkm.ui.utils.MoneyFormat;
 
 import java.util.List;
 
@@ -19,10 +20,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NestedRcvAdapter extends RecyclerView.Adapter<NestedRcvAdapter.ViewHolder>{
-    private List<ZfbData.DetailedBean> dataList;
+    private List<ZfbData.SaveDetailedBean> dataList;
     public Context mContext;
 
-    public NestedRcvAdapter(List<ZfbData.DetailedBean> dataList, Context mContext){
+    public NestedRcvAdapter(List<ZfbData.SaveDetailedBean> dataList, Context mContext){
         this.dataList = dataList;
         this.mContext = mContext;
     }
@@ -35,7 +36,7 @@ public class NestedRcvAdapter extends RecyclerView.Adapter<NestedRcvAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ZfbData.DetailedBean data = dataList.get(position);
+        ZfbData.SaveDetailedBean data = dataList.get(position);
         if(data != null && !TextUtils.isEmpty(data.getYear())){
             String year = data.getYear().substring(0,4);
             String nian = data.getYear().substring(4);
@@ -73,10 +74,10 @@ public class NestedRcvAdapter extends RecyclerView.Adapter<NestedRcvAdapter.View
     }
 
     public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ChildViewHolder>{
-        public List<ZfbData.DetailedBean.SaveMoneyBean> childList;
+        public List<ZfbData.SaveDetailedBean.SaveMoneyBean> childList;
         public int parentIndex;
 
-        public ChildAdapter(List<ZfbData.DetailedBean.SaveMoneyBean> childList, int parentIndex){
+        public ChildAdapter(List<ZfbData.SaveDetailedBean.SaveMoneyBean> childList, int parentIndex){
             this.childList = childList;
             this.parentIndex = parentIndex;
         }
@@ -89,10 +90,10 @@ public class NestedRcvAdapter extends RecyclerView.Adapter<NestedRcvAdapter.View
 
         @Override
         public void onBindViewHolder(ChildViewHolder holder, final int position) {
-            ZfbData.DetailedBean.SaveMoneyBean childBean = childList.get(position);
+            ZfbData.SaveDetailedBean.SaveMoneyBean childBean = childList.get(position);
             holder.tvContent.setText(childBean.getInfo());
             holder.tvIndex.setText(childBean.getDate());
-            holder.tvChildValue.setText(childBean.getSave());
+            holder.tvChildValue.setText(MoneyFormat.addComma(childBean.getSave()));
 //            if(position == 0){
 //                holder.tvTopLine.setVisibility(View.INVISIBLE);
 //            }else{ //important
@@ -106,7 +107,7 @@ public class NestedRcvAdapter extends RecyclerView.Adapter<NestedRcvAdapter.View
             holder.mContentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(mContext, "parent " + parentIndex + " child item " + position + " is clicked", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "parent " + parentIndex + " child item " + position + " is clicked", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -116,7 +117,7 @@ public class NestedRcvAdapter extends RecyclerView.Adapter<NestedRcvAdapter.View
             return childList == null ? 0 : childList.size();
         }
 
-        public void setData(List<ZfbData.DetailedBean.SaveMoneyBean> childList) {
+        public void setData(List<ZfbData.SaveDetailedBean.SaveMoneyBean> childList) {
             this.childList = childList;
         }
 

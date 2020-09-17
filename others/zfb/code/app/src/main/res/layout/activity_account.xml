@@ -22,6 +22,7 @@
             android:layout_height="@dimen/_40dp"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/alipay_25"

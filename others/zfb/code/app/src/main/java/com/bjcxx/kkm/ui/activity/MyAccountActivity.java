@@ -2,8 +2,10 @@ package com.bjcxx.kkm.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bjcxx.kkm.R;
@@ -54,6 +56,8 @@ public class MyAccountActivity extends BaseActivity {
     TextView tvCurrentyearTakeout;
     @BindView(R.id.tv_myaccount)
     TextView tvMyaccount;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     @Override
     public int getLayoutId() {
@@ -76,37 +80,58 @@ public class MyAccountActivity extends BaseActivity {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         getTitleBarView().setVisibility(View.GONE);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         String locaData = SharedPreUtil.getString(Constant.SP_NAME.SETTING, Constant.SP_KEY.LOCAL_DATA);
         if (!TextUtils.isEmpty(locaData)) {
             data = new Gson().fromJson(locaData, ZfbData.class);
             if (data != null) {
                 String name = data.getName();
-                name = name.replace(name.substring(0,1),"*");
-                tvMyaccount.setText(name+"的账户");
-                tvTotal.setText(MoneyFormat.addComma(data.getBalance()));
-                tvSave.setText(MoneyFormat.addComma(data.getRecentlyDeposited()));
+                name = name.replace(name.substring(0, 1), "*");
+                tvMyaccount.setText(name + "的账户");
+                String total = MoneyFormat.addComma(data.getBalance());
+                String totalStart = total.substring(0,total.length()-3);
+                String totalEnd = total.substring(total.length()-3,total.length());
+                String str2 = totalStart+"<font><small>"+totalEnd+"</small></font>";
+                tvTotal.setText(Html.fromHtml(str2));
+                String save = MoneyFormat.addComma(data.getRecentlyDeposited());
+                String saveStart = save.substring(0,save.length()-3);
+                String saveEnd = save.substring(save.length()-3,save.length());
+                String str3 = saveStart+"<font><small>"+saveEnd+"</small></font>";
+                tvSave.setText(Html.fromHtml(str3));
                 tvAccountNum.setText(data.getAccountNumber());
                 tvCompany.setText(data.getCompany());
                 tvManager.setText(data.getAdministration());
-                String base = data.getDepositBase();
-                if (base.contains("元")) {
-                    base = data.getDepositBase().replace("元", "");
-                }
-                tvSaveBase.setText(MoneyFormat.addComma(base) + "元");
-                tvPersonalRabit.setText(data.getPersonalRatio()+"%");
-                tvCompanyRabit.setText(data.getCompanyRatio()+"%");
-                tvPersonalSave.setText(MoneyFormat.addComma(data.getPersonalQuota()) + "元");
-                tvCompanySave.setText(MoneyFormat.addComma(data.getCompanyQuota()) + "元");
+                float base = data.getDepositBase();
+                tvSaveBase.setText(MoneyFormat.addComma(base + "") + "元");
+                tvPersonalRabit.setText(MoneyFormat.addComma(data.getPersonalRatio() + "") + "%");
+                tvCompanyRabit.setText(MoneyFormat.addComma(data.getCompanyRatio() + "") + "%");
+                tvPersonalSave.setText(MoneyFormat.addComma(data.getPersonalQuota() + "") + "元");
+                tvCompanySave.setText(MoneyFormat.addComma(data.getCompanyQuota() + "") + "元");
                 tvLastyearSave.setText(MoneyFormat.addComma(data.getLastYearTotal()) + "元");
                 tvCurrentyearSave.setText(MoneyFormat.addComma(data.getCurrentYearTotal()) + "元");
                 double a = Double.parseDouble(data.getCurrentYearExtract());
                 if (a == 0) {
                     tvCurrentyearTakeout.setText("0.00" + "元");
                 } else {
-                    tvCurrentyearTakeout.setText(MoneyFormat.addComma(data.getCurrentYearExtract()) + "元");
+                    if (a >= 0 && a < 1) {
+                        tvCurrentyearTakeout.setText("0" + MoneyFormat.addComma(data.getCurrentYearExtract()) + "元");
+                    } else {
+                        tvCurrentyearTakeout.setText(MoneyFormat.addComma(data.getCurrentYearExtract()) + "元");
+                    }
+
                 }
             }
         }
     }
+//    private String formatFloat(float result){
+//        DecimalFormat decimalFormat=new DecimalFormat("0.00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+//        String resultString =decimalFormat.format(result);
+//        return resultString;
+//    }
 
 }

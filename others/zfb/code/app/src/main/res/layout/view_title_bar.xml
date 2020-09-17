@@ -8,10 +8,20 @@
         style="@style/ImageView.TitleBar"
         android:src="@drawable/alipay_17"
         />
+
+    <ImageView
+        android:id="@+id/img_title_del_back"
+        android:layout_height="@dimen/_24dp"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/alipay_18"
+        android:layout_marginBottom="@dimen/_5dp"
+        android:layout_toRightOf="@+id/img_title_bar_back"
+        />
     <TextView
         android:id="@+id/tv_title_bar_back"
         style="@style/TextView.TitleBarBack"
-        android:layout_toRightOf="@+id/img_title_bar_back"
+        android:layout_toRightOf="@+id/img_title_del_back"
         />
 
     <TextView

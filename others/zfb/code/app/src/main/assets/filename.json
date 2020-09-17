@@ -1,103 +1,118 @@
 {
-    "accountNumber": "GJJ07021325",
-    "administration": "中关村管理部",
-    "balance": "122550.0",
+    "accountNumber": "GJJ004553073",
+    "administration": "西城管理部",
+    "balance": "63889.73",
     "billInfo": [
         {
-            "currentYear": "61275.0",
+            "currentYear": "41184.0",
+            "date": "2019-2020",
+            "interest": "752.74",
+            "lastYearMoney": "8998.99",
+            "takeOutMoney": "0",
+            "total": "50935.73"
+        },
+        {
+            "currentYear": "35424.0",
             "date": "2018-2019",
-            "interest": "867.0",
-            "lastYearMoney": "31071.0",
-            "takeOutMoney": "0.00",
-            "total": "93213.0"
+            "interest": "132.99",
+            "lastYearMoney": "118888.77",
+            "takeOutMoney": "145446.77",
+            "total": "8998.99"
+        },
+        {
+            "currentYear": "33120.0",
+            "date": "2017-2018",
+            "interest": "1756.98",
+            "lastYearMoney": "84011.79",
+            "takeOutMoney": "0",
+            "total": "118888.77"
+        },
+        {
+            "currentYear": "31680.0",
+            "date": "2016-2017",
+            "interest": "251.28",
+            "lastYearMoney": "52080.51",
+            "takeOutMoney": "0",
+            "total": "84011.79"
         }
     ],
-    "company": "阿里巴巴网络技术有限公司",
-    "companyQuota": 6360.0,
+    "company": "北京城市排水集团有限责任公司",
+    "companyQuota": 2159.0,
     "companyRatio": 12.0,
     "currentYearExtract": "0.00",
-    "currentYearTotal": "30204.0",
-    "depositBase": 53000.0,
-    "detailed": [
+    "currentYearTotal": "12954.0",
+    "depositBase": 17994.0,
+    "detailed": [],
+    "lastYearTotal": "50935.73",
+    "name": "周广芹",
+    "personalQuota": 2159.0,
+    "personalRatio": 12.0,
+    "recentlyDeposited": "4318.0",
+    "recentlyDepositedDate": "2020-09-16",
+    "recentlyExtracted": "145446.77",
+    "recentlyExtractedDate": "2019-03-22",
+    "saveDetailed": [
         {
             "saveMoney": [
                 {
-                    "accountMoney": "122550.0",
-                    "date": "12-24",
+                    "accountMoney": "63889.73",
+                    "date": "09-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "4318.0"
                 },
                 {
-                    "accountMoney": "117516.0",
-                    "date": "11-24",
+                    "accountMoney": "59571.73",
+                    "date": "08-18",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "4318.0"
                 },
                 {
-                    "accountMoney": "112482.0",
-                    "date": "10-24",
+                    "accountMoney": "55253.73",
+                    "date": "07-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "4318.0"
                 },
                 {
-                    "accountMoney": "107448.0",
-                    "date": "09-24",
-                    "info": "汇缴分配",
-                    "save": "5034.0"
-                },
-                {
-                    "accountMoney": "102414.0",
-                    "date": "08-24",
-                    "info": "汇缴分配",
-                    "save": "5034.0"
-                },
-                {
-                    "accountMoney": "97380.0",
-                    "date": "07-24",
-                    "info": "汇缴分配",
-                    "save": "5034.0"
-                },
-                {
-                    "accountMoney": "92346.0",
+                    "accountMoney": "50935.73",
                     "date": "06-30",
                     "info": "年度结息",
-                    "save": "867.0"
+                    "save": "752.74"
                 },
                 {
-                    "accountMoney": "91479.0",
-                    "date": "06-24",
+                    "accountMoney": "50182.99",
+                    "date": "06-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "86445.0",
-                    "date": "05-24",
+                    "accountMoney": "46750.99",
+                    "date": "05-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "81411.0",
-                    "date": "04-24",
+                    "accountMoney": "43318.99",
+                    "date": "04-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "76377.0",
-                    "date": "03-24",
+                    "accountMoney": "39886.99",
+                    "date": "03-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "71343.0",
-                    "date": "02-24",
+                    "accountMoney": "36454.99",
+                    "date": "02-18",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "66309.0",
-                    "date": "01-24",
+                    "accountMoney": "33022.99",
+                    "date": "01-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 }
             ],
             "year": "2020年"
@@ -105,131 +120,790 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "61275.0",
-                    "date": "12-24",
+                    "accountMoney": "29590.99",
+                    "date": "12-18",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "56241.0",
-                    "date": "11-24",
+                    "accountMoney": "26158.99",
+                    "date": "11-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "51207.0",
-                    "date": "10-24",
+                    "accountMoney": "22726.99",
+                    "date": "10-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "46173.0",
-                    "date": "09-24",
+                    "accountMoney": "19294.99",
+                    "date": "09-18",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "41139.0",
-                    "date": "08-24",
+                    "accountMoney": "15862.99",
+                    "date": "08-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "36105.0",
-                    "date": "07-24",
+                    "accountMoney": "12430.99",
+                    "date": "07-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "3432.0"
                 },
                 {
-                    "accountMoney": "31071.0",
+                    "accountMoney": "8998.99",
                     "date": "06-30",
                     "info": "年度结息",
-                    "save": "867.0"
+                    "save": "132.99"
                 },
                 {
-                    "accountMoney": "30204.0",
-                    "date": "06-24",
+                    "accountMoney": "8866.0",
+                    "date": "06-18",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "2952.0"
                 },
                 {
-                    "accountMoney": "25170.0",
-                    "date": "05-24",
+                    "accountMoney": "5914.0",
+                    "date": "05-16",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "2962.0",
+                    "date": "04-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "145456.77",
+                    "date": "03-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "142504.77",
+                    "date": "02-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "139552.77",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                }
+            ],
+            "year": "2019年"
+        },
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "136600.77",
+                    "date": "12-18",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "133648.77",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "130696.77",
+                    "date": "10-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "127744.77",
+                    "date": "09-18",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "124792.77",
+                    "date": "08-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "121840.77",
+                    "date": "07-16",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "118888.77",
+                    "date": "06-30",
                     "info": "年度结息",
-                    "save": "5034.0"
+                    "save": "1756.98"
                 },
                 {
-                    "accountMoney": "20136.0",
-                    "date": "04-24",
+                    "accountMoney": "117131.79",
+                    "date": "06-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "2760.0"
                 },
                 {
-                    "accountMoney": "15102.0",
-                    "date": "03-24",
+                    "accountMoney": "114371.79",
+                    "date": "05-15",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "2760.0"
                 },
                 {
-                    "accountMoney": "10068.0",
-                    "date": "02-24",
+                    "accountMoney": "111611.79",
+                    "date": "04-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "2760.0"
                 },
                 {
-                    "accountMoney": "5034.0",
-                    "date": "01-24",
+                    "accountMoney": "108851.79",
+                    "date": "03-16",
                     "info": "汇缴分配",
-                    "save": "5034.0"
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "106091.79",
+                    "date": "02-13",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "103331.79",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                }
+            ],
+            "year": "2018年"
+        },
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "100571.79",
+                    "date": "12-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "97811.79",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "95051.79",
+                    "date": "10-18",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "92291.79",
+                    "date": "09-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "89531.79",
+                    "date": "08-18",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "86771.79",
+                    "date": "07-18",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "84011.79",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "251.28"
+                },
+                {
+                    "accountMoney": "83760.51",
+                    "date": "06-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "81120.51",
+                    "date": "05-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "78480.51",
+                    "date": "04-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "75840.51",
+                    "date": "03-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "73200.51",
+                    "date": "02-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "70560.51",
+                    "date": "01-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                }
+            ],
+            "year": "2017年"
+        },
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "67920.51",
+                    "date": "12-16",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "65280.51",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "62640.51",
+                    "date": "10-12",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "60000.51",
+                    "date": "09-12",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "57360.51",
+                    "date": "08-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "54720.51",
+                    "date": "07-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "52080.51",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "155.77"
+                },
+                {
+                    "accountMoney": "51924.74",
+                    "date": "06-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "49612.74",
+                    "date": "05-18",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "47300.74",
+                    "date": "04-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "44988.74",
+                    "date": "03-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "42676.74",
+                    "date": "02-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "40364.74",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                }
+            ],
+            "year": "2016年"
+        }
+    ],
+    "takeOutDetailed": [
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "10.0",
+                    "date": "03-22",
+                    "info": "提取资金支付",
+                    "save": "145446.77"
                 }
             ],
             "year": "2019年"
         }
     ],
-    "lastYearTotal": "92346.0",
-    "name": "张硕",
-    "personalQuota": 6360.0,
-    "personalRatio": 12.0,
-    "recentlyDeposited": "5034.0",
-    "recentlyDepositedDate": "12-24",
-    "recentlyExtracted": "暂无",
-    "recentlyExtractedDate": "",
-    "weatherList": [
+    "totalDetailed": [
         {
-            "data": "2020-09-15",
-            "weather": "晴 30℃"
+            "saveMoney": [
+                {
+                    "accountMoney": "63889.73",
+                    "date": "09-16",
+                    "info": "汇缴分配",
+                    "save": "4318.0"
+                },
+                {
+                    "accountMoney": "59571.73",
+                    "date": "08-18",
+                    "info": "汇缴分配",
+                    "save": "4318.0"
+                },
+                {
+                    "accountMoney": "55253.73",
+                    "date": "07-16",
+                    "info": "汇缴分配",
+                    "save": "4318.0"
+                },
+                {
+                    "accountMoney": "50935.73",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "752.74"
+                },
+                {
+                    "accountMoney": "50182.99",
+                    "date": "06-15",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "46750.99",
+                    "date": "05-15",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "43318.99",
+                    "date": "04-16",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "39886.99",
+                    "date": "03-16",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "36454.99",
+                    "date": "02-18",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "33022.99",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                }
+            ],
+            "year": "2020年"
         },
         {
+            "saveMoney": [
+                {
+                    "accountMoney": "29590.99",
+                    "date": "12-18",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "26158.99",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "22726.99",
+                    "date": "10-15",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "19294.99",
+                    "date": "09-18",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "15862.99",
+                    "date": "08-15",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "12430.99",
+                    "date": "07-16",
+                    "info": "汇缴分配",
+                    "save": "3432.0"
+                },
+                {
+                    "accountMoney": "8998.99",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "132.99"
+                },
+                {
+                    "accountMoney": "8866.0",
+                    "date": "06-18",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "5914.0",
+                    "date": "05-16",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "2962.0",
+                    "date": "04-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "10.0",
+                    "date": "03-22",
+                    "info": "提取资金支付",
+                    "save": "145446.77"
+                },
+                {
+                    "accountMoney": "145456.77",
+                    "date": "03-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "142504.77",
+                    "date": "02-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "139552.77",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                }
+            ],
+            "year": "2019年"
+        },
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "136600.77",
+                    "date": "12-18",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "133648.77",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "130696.77",
+                    "date": "10-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "127744.77",
+                    "date": "09-18",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "124792.77",
+                    "date": "08-15",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "121840.77",
+                    "date": "07-16",
+                    "info": "汇缴分配",
+                    "save": "2952.0"
+                },
+                {
+                    "accountMoney": "118888.77",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "1756.98"
+                },
+                {
+                    "accountMoney": "117131.79",
+                    "date": "06-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "114371.79",
+                    "date": "05-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "111611.79",
+                    "date": "04-16",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "108851.79",
+                    "date": "03-16",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "106091.79",
+                    "date": "02-13",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "103331.79",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                }
+            ],
+            "year": "2018年"
+        },
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "100571.79",
+                    "date": "12-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "97811.79",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "95051.79",
+                    "date": "10-18",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "92291.79",
+                    "date": "09-15",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "89531.79",
+                    "date": "08-18",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "86771.79",
+                    "date": "07-18",
+                    "info": "汇缴分配",
+                    "save": "2760.0"
+                },
+                {
+                    "accountMoney": "84011.79",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "251.28"
+                },
+                {
+                    "accountMoney": "83760.51",
+                    "date": "06-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "81120.51",
+                    "date": "05-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "78480.51",
+                    "date": "04-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "75840.51",
+                    "date": "03-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "73200.51",
+                    "date": "02-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "70560.51",
+                    "date": "01-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                }
+            ],
+            "year": "2017年"
+        },
+        {
+            "saveMoney": [
+                {
+                    "accountMoney": "67920.51",
+                    "date": "12-16",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "65280.51",
+                    "date": "11-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "62640.51",
+                    "date": "10-12",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "60000.51",
+                    "date": "09-12",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "57360.51",
+                    "date": "08-18",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "54720.51",
+                    "date": "07-15",
+                    "info": "汇缴分配",
+                    "save": "2640.0"
+                },
+                {
+                    "accountMoney": "52080.51",
+                    "date": "06-30",
+                    "info": "年度结息",
+                    "save": "155.77"
+                },
+                {
+                    "accountMoney": "51924.74",
+                    "date": "06-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "49612.74",
+                    "date": "05-18",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "47300.74",
+                    "date": "04-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "44988.74",
+                    "date": "03-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "42676.74",
+                    "date": "02-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                },
+                {
+                    "accountMoney": "40364.74",
+                    "date": "01-15",
+                    "info": "汇缴分配",
+                    "save": "2312.0"
+                }
+            ],
+            "year": "2016年"
+        }
+    ],
+    "weatherList": [
+        {
             "data": "2020-09-16",
-            "weather": "晴 31℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-17",
-            "weather": "晴 32℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-18",
-            "weather": "晴 33℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-19",
-            "weather": "晴 34℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-20",
-            "weather": "晴 35℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-21",
-            "weather": "晴 36℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-22",
-            "weather": "晴 37℃"
+            "weather": "晴 27℃"
         },
         {
             "data": "2020-09-23",
-            "weather": "晴 38℃"
+            "weather": "晴 27℃"
+        },
+        {
+            "data": "2020-09-24",
+            "weather": "晴 27℃"
         }
     ]
 }

@@ -10,6 +10,7 @@ import com.bjcxx.kkm.ui.base.BaseActivity;
 import com.bjcxx.kkm.ui.custom.TitleBarView;
 import com.bjcxx.kkm.ui.entity.QueryMoneyEntity;
 import com.bjcxx.kkm.ui.entity.ZfbData;
+import com.bjcxx.kkm.ui.utils.MoneyFormat;
 import com.google.gson.Gson;
 
 import butterknife.BindView;
@@ -60,10 +61,10 @@ public class CurrentYearMoneyActivity extends BaseActivity {
         String str = getIntent().getStringExtra("bean");
         ZfbData.BillInfoBean entity = new Gson().fromJson(str, ZfbData.BillInfoBean.class);
         tvData.setText(entity.getDate());
-        tvLastyear.setText(entity.getLastYearMoney());
-        tvCurrentyear.setText(entity.getCurrentYear());
-        tvPull.setText(entity.getTakeOutMoney());
-        tvLixi.setText(entity.getInterest());
-        tvMy.setText(entity.getTotal());
+        tvLastyear.setText(MoneyFormat.addComma(entity.getLastYearMoney()));
+        tvCurrentyear.setText(MoneyFormat.addComma(entity.getCurrentYear()));
+        tvPull.setText(MoneyFormat.addComma(entity.getTakeOutMoney()));
+        tvLixi.setText(MoneyFormat.addComma(entity.getInterest()));
+        tvMy.setText(MoneyFormat.addComma(entity.getTotal()));
     }
 }

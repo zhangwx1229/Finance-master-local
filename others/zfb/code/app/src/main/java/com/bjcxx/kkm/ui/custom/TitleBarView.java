@@ -30,6 +30,9 @@ public class TitleBarView extends RelativeLayout {
     @BindView(R.id.img_title_bar_back)
     ImageView imgBack;
 
+    @BindView(R.id.img_title_del_back)
+    ImageView delBack;
+
     @BindView(R.id.tv_title_bar_title)
     TextView tvTitle;
 
@@ -81,6 +84,7 @@ public class TitleBarView extends RelativeLayout {
             imgRight1.setVisibility(GONE);
             imgRight2.setVisibility(GONE);
             tvRight.setVisibility(VISIBLE);
+            delBack.setVisibility(GONE);
             break;
 
         /* 右边一张图片 */
@@ -88,12 +92,14 @@ public class TitleBarView extends RelativeLayout {
             tvRight.setVisibility(GONE);
             imgRight1.setVisibility(GONE);
             imgRight2.setVisibility(VISIBLE);
+            delBack.setVisibility(VISIBLE);
             break;
 
         /* 右边两张图片 */
         case TITLE_BAR_TYPE_RIGHT_2_IMAGE:
             tvRight.setVisibility(GONE);
             imgRight1.setVisibility(VISIBLE);
+            delBack.setVisibility(GONE);
             imgRight2.setVisibility(VISIBLE);
             break;
 
@@ -102,12 +108,23 @@ public class TitleBarView extends RelativeLayout {
             imgRight1.setVisibility(GONE);
             imgRight2.setVisibility(GONE);
             tvRight.setVisibility(GONE);
+            delBack.setVisibility(GONE);
         default:
             break;
         }
         tvTitle.setText(title);
         imgBack.setVisibility(haveBack ? VISIBLE : GONE);
         imgBack.setOnClickListener(backClickListener);
+        delBack.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (context instanceof BaseActivity) {
+                    BaseActivity activity = (BaseActivity) context;
+                if(activity != null){
+                    activity.finish();
+                }}
+            }
+        });
         tvTitleBarBack.setVisibility(haveBack ? VISIBLE : GONE);
         tvTitleBarBack.setOnClickListener(backClickListener);
 
@@ -178,6 +195,13 @@ public class TitleBarView extends RelativeLayout {
      */
     public void hideLine() {
         viewLine.setVisibility(View.GONE);
+    }
+
+    /**
+     * 隐藏线
+     */
+    public void hideDel() {
+        delBack.setVisibility(View.GONE);
     }
 
     private OnClickListener backClickListener = new OnClickListener() {

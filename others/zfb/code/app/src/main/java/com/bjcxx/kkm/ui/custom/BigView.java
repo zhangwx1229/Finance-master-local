@@ -1,5 +1,6 @@
 package com.bjcxx.kkm.ui.custom;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -47,6 +48,12 @@ public class BigView extends View implements GestureDetector.OnGestureListener, 
     private float maxY;
     private float minY;
 
+    private float maxBackX;
+    private float minBackX;
+    private float maxBackY;
+    private float minBackY;
+
+    private Activity activity;
     public BigView(Context context) {
         this(context, null, 0);
     }
@@ -80,6 +87,14 @@ public class BigView extends View implements GestureDetector.OnGestureListener, 
         this.maxX = maxX;
         this.minY = minY;
         this.maxY = maxY;
+    }
+
+    public void setBackRect(Activity activity,float minX, float maxX, float minY, float maxY){
+        this.activity = activity;
+        this.minBackX = minX;
+        this.maxBackX = maxX;
+        this.minBackY = minY;
+        this.maxBackY = maxY;
     }
 
     /**
@@ -258,6 +273,14 @@ public class BigView extends View implements GestureDetector.OnGestureListener, 
         float perX = x/width;
         float perY = y/height;
         Log.i("xuecq0830", "dstX:" + x + "+++ dstY" + y);
+        if ((maxBackX >= perX && perX >= minBackX)&&(maxBackY >= perY && perY >= minBackY)) {//头部
+            Log.i("xuecq0830", "点击了头部");
+            if(activity != null){
+                activity.finish();
+            }
+            return true;
+        }
+
         if ((maxX >= perX && perX >= minX)&&(maxY >= perY && perY >= minY)) {//头部
             Log.i("xuecq0830", "点击了头部");
             if(cls != null){

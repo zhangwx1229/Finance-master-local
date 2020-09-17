@@ -60,6 +60,7 @@ public class GongjijinActivity extends BaseActivity {
             //加载图片
             is = this.getResources().getAssets().open("gongjijin.jpg");
             bigview.setRect(0.046f,0.370f,0.265f,0.344f);
+            bigview.setBackRect(this,0.028f,0.060f,0.028f,0.060f);
             bigview.setImage(is,ServerActivity.class);
         } catch (Exception e) {
             e.printStackTrace();

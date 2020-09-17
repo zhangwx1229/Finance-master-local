@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bjcxx.kkm.R;
 import com.bjcxx.kkm.ui.adapter.NestedRcvAdapter;
 import com.bjcxx.kkm.ui.adapter.NestedRcvAdapter2;
+import com.bjcxx.kkm.ui.adapter.NestedRcvAdapter3;
 import com.bjcxx.kkm.ui.base.BaseActivity;
 import com.bjcxx.kkm.ui.base.Constant;
 import com.bjcxx.kkm.ui.custom.TitleBarView;
@@ -49,7 +50,10 @@ public class DetailedActivity extends BaseActivity {
 
     private NestedRcvAdapter adapter;
     private NestedRcvAdapter2 adapter2;
-    private List<ZfbData.DetailedBean> dataList;
+    private NestedRcvAdapter3 adapter3;
+    private List<ZfbData.SaveDetailedBean> dataList;
+    private List<ZfbData.TakeOutDetailedBean> takeOutDetailedList;
+    private List<ZfbData.TotalDetailedBean> totalDetailedBeanList;
 
     ZfbData data;
 
@@ -98,6 +102,7 @@ public class DetailedActivity extends BaseActivity {
                 selectBtn(1);
                 break;
             case R.id.tv_pull:
+
                 selectBtn(2);
                 break;
         }
@@ -112,7 +117,7 @@ public class DetailedActivity extends BaseActivity {
                 if (rcvParent != null) {
                     rcvParent.setVisibility(View.VISIBLE);
                 }
-                initData();
+                initData2();
                 initView3();
                 llGet.setVisibility(View.GONE);
                 break;
@@ -129,10 +134,25 @@ public class DetailedActivity extends BaseActivity {
             case 2:
                 tvPull.setTextColor(getResources().getColor(R.color.color_1573fa));
                 viewPull.setBackgroundColor(getResources().getColor(R.color.color_1573fa));
-                if (rcvParent != null) {
-                    rcvParent.setVisibility(View.GONE);
+                if(data != null){
+                    List<ZfbData.TakeOutDetailedBean> list = data.getTakeOutDetailed();
+                    if(list != null && list.size() > 0){
+                        if (rcvParent != null) {
+                            rcvParent.setVisibility(View.VISIBLE);
+                            takeOutDetailedList = new ArrayList<>();
+                            takeOutDetailedList.addAll(data.getTakeOutDetailed());
+                            initView4();
+                        }
+
+                    }else {
+                        if (rcvParent != null) {
+                            rcvParent.setVisibility(View.GONE);
+                        }
+                        llGet.setVisibility(View.VISIBLE);
+                    }
                 }
-                llGet.setVisibility(View.VISIBLE);
+
+
                 break;
         }
     }
@@ -151,53 +171,15 @@ public class DetailedActivity extends BaseActivity {
     private void initData() {
         dataList = new ArrayList<>();
         if(data != null){
-            dataList.addAll(data.getDetailed());
+            dataList.addAll(data.getSaveDetailed());
         }
-//        for (int i = 0; i < 3; i++) {
-//            Data data = new Data();
-//            int currentMonth = 0;
-//            int totalMonth = 13;
-//            if (i == 0) {
-//                data.setTitle("2020年");
-//                currentMonth = 0;
-//                totalMonth = 9;
-//            } else if (i == 1) {
-//                data.setTitle("2019年");
-//            } else {
-//                data.setTitle("2018年");
-//                currentMonth = 8;
-//            }
-//
-//            List<Data.ChildBean> childBeanList = new ArrayList<>();
-//
-//            for (int j = totalMonth; j > currentMonth; j--) {
-//                Data.ChildBean childBean = new Data.ChildBean();
-//                childBean.setContent("汇缴分配");
-//                childBean.setChildValue("1,464.00");
-//                if (data.getTitle().equals("2020年")) {
-//                    childBean.setChildValue("1,848.00");
-//                }
-//                if (j <= 6) {
-//                    childBean.setDate("0" + j + "-25");
-//                } else if (j == 7) {
-//                    childBean.setDate("06-30");
-//                    childBean.setContent("年度结息");
-//                    childBean.setChildValue("677.84");
-//                } else {
-//                    if ((j - 1) < 10) {
-//                        childBean.setDate("0" + (j - 1) + "-30");
-//                    } else {
-//                        childBean.setDate((j - 1) + "-25");
-//                    }
-//                    if (data.getTitle().equals("2019年")) {
-//                        childBean.setChildValue("1,848.00");
-//                    }
-//                }
-//                childBeanList.add(childBean);
-//            }
-//            data.setChildBeanList(childBeanList);
-//            dataList.add(data);
-//        }
+    }
+
+    private void initData2() {
+        totalDetailedBeanList = new ArrayList<>();
+        if(data != null){
+            totalDetailedBeanList.addAll(data.getTotalDetailed());
+        }
     }
 
     private void initView2() {
@@ -208,9 +190,16 @@ public class DetailedActivity extends BaseActivity {
     }
 
     private void initView3() {
-        adapter2 = new NestedRcvAdapter2(dataList, this);
+        adapter2 = new NestedRcvAdapter2(totalDetailedBeanList, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvParent.setLayoutManager(linearLayoutManager);
         rcvParent.setAdapter(adapter2);
+    }
+
+    private void initView4() {
+        adapter3 = new NestedRcvAdapter3(takeOutDetailedList, this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rcvParent.setLayoutManager(linearLayoutManager);
+        rcvParent.setAdapter(adapter3);
     }
 }

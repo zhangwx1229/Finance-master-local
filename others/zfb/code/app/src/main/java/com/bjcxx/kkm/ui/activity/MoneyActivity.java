@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -105,11 +106,22 @@ public class MoneyActivity extends BaseActivity {
                 tvMoney.setText(total);
                 String name = data.getName();
                 name = name.replace(name.substring(0,1),"*");
-                tvName.setText(name+"|"+data.getAccountNumber());
+                String str1 = name+"<font color= \"#ffffff46\"> | </font>"+data.getAccountNumber();
+                tvName.setText(Html.fromHtml(str1));
                 tvJiaocunData.setText("最近缴存"+data.getRecentlyDepositedDate());
-                tvJiaocunMoney.setText(MoneyFormat.addComma(data.getRecentlyDeposited()));
-                tvTakeoutData.setText("最近提取");
-                tvTakeoutMoney.setText("暂无");
+                String save = data.getRecentlyDeposited();
+                if(TextUtils.isEmpty(save) || save.equals("暂无")){
+                    tvJiaocunMoney.setText("暂无");
+                }else{
+                    tvJiaocunMoney.setText(MoneyFormat.addComma(save));
+                }
+                tvTakeoutData.setText("最近提取"+data.getRecentlyExtractedDate());
+                String takeout = data.getRecentlyExtracted();
+                if(TextUtils.isEmpty(takeout) || takeout.equals("暂无")){
+                    tvTakeoutMoney.setText("暂无");
+                }else{
+                    tvTakeoutMoney.setText(MoneyFormat.addComma(takeout));
+                }
             }
         }else{
             readStr = getJson("filename.json",this);
@@ -125,11 +137,21 @@ public class MoneyActivity extends BaseActivity {
                     tvMoney.setText(total);
                     String name = data.getName();
                     name = name.replace(name.substring(0,1),"*");
-                    tvName.setText(name+"|"+data.getAccountNumber());
+                    tvName.setText(name+" | "+data.getAccountNumber());
                     tvJiaocunData.setText("最近缴存"+data.getRecentlyDepositedDate());
-                    tvJiaocunMoney.setText(MoneyFormat.addComma(data.getRecentlyDeposited()));
-                    tvTakeoutData.setText("最近提取");
-                    tvTakeoutMoney.setText("暂无");
+                    String save = data.getRecentlyDeposited();
+                    if(TextUtils.isEmpty(save) || save.equals("暂无")){
+                        tvJiaocunMoney.setText("暂无");
+                    }else{
+                        tvJiaocunMoney.setText(MoneyFormat.addComma(save));
+                    }
+                    tvTakeoutData.setText("最近提取"+data.getRecentlyExtractedDate());
+                    String takeout = data.getRecentlyExtracted();
+                    if(TextUtils.isEmpty(takeout) || takeout.equals("暂无")){
+                        tvTakeoutMoney.setText("暂无");
+                    }else{
+                        tvTakeoutMoney.setText(MoneyFormat.addComma(takeout));
+                    }
                 }
             }
         }

@@ -47,6 +47,7 @@ public class ServerActivity extends BaseActivity {
         ButterKnife.bind(this);
         StatusBarUtil.setColor(this,getResources().getColor(R.color.color_ffffff));
         getTitleBarView().initView(TitleBarView.TITLE_BAR_TYPE_RIGHT_IMAGE,"公积金服务",true);
+        getTitleBarView().hideDel();
     }
 
     @OnClick(R.id.btn_use)

@@ -230,7 +230,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathName,jsondata)
 
-#    encode_apk(jsondata['name'])
+    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):
@@ -250,7 +250,7 @@ def encode_apk(name):
         output = excuteCommand('cp -r ../app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
         print "==拷贝新的apk到指定文件成功==="
 
-#    output = excuteCommand('cd ../ && git checkout android')
+    output = excuteCommand('cd ../ && git checkout app')
 
 def main():
     

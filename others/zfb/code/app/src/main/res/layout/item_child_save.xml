@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/tv_index"
             android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1.6"
             android:layout_height="wrap_content"
             android:paddingRight="8dp"
             android:gravity="left"
@@ -28,7 +28,7 @@
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="0dp"
-            android:layout_weight="3.5"
+            android:layout_weight="3.3"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:textColor="@color/color_000000"
@@ -39,7 +39,7 @@
         <TextView
             android:id="@+id/tv_child_value"
             android:layout_width="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="2.4"
             android:gravity="right"
             android:layout_height="wrap_content"
             android:text="1,848.00"

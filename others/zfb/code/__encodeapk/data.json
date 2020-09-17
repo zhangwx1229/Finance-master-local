@@ -1,0 +1,95 @@
+{
+    "name": "张硕", //姓名
+    // "balance": "53000.0", //账户余额
+    "accountNumber": "GJJ07021325", //账户编号
+    // "recentlyDeposited": "1848.00", //最近缴存金额
+    // "recentlyDepositedDate": "2020-08-25", //最近缴存日期
+    // "recentlyExtracted": "暂无", //最近提取金额
+    // "recentlyExtractedDate": "", //最近提取日期
+    "company": "阿里巴巴网络技术有限公司", //缴存单位
+    "administration": "中关村管理部", //所属管理部门名称
+    "depositBase": "10000元", //缴存基数
+    "personalRatio": "12.00%", //个人比例
+    "companyRatio": "12.00%", //单位比例
+    "personalQuota": "9240.00", //个人月缴存额
+    "companyQuota": "9240.00", //单位月缴存额
+    "lastYearTotal": "9240.00", //上年结转额
+    "currentYearTotal": "9240.00", //本年缴存额
+    "currentYearExtract": "0.00", //本年支取额
+    "detailed": [
+        //明细
+        {
+            "year": "2020年", //年度
+            "saveMoney": [
+                {
+                    "date": "08-25", //日期
+                    "info": "汇缴分配", //缴存信息
+                    "save": "1848.00", //缴存金额
+                    "accountMoney": "81370.21" //当前账户金额
+                },
+                {
+                    "date": "09-30",
+                    "info": "汇缴分配",
+                    "save": "1848.00",
+                    "accountMoney": "81370.21"
+                },
+                {
+                    "date": "10-30",
+                    "info": "汇缴分配",
+                    "save": "1848.00",
+                    "accountMoney": "81370.21"
+                }
+            ]
+        },
+        {
+            "year": "2020年",
+            "saveMoney": [
+                {
+                    "date": "08-30",
+                    "info": "汇缴分配",
+                    "save": "1848.00",
+                    "accountMoney": "81370.21"
+                },
+                {
+                    "date": "09-30",
+                    "info": "汇缴分配",
+                    "save": "1848.00",
+                    "accountMoney": "81370.21"
+                },
+                {
+                    "date": "10-30",
+                    "info": "汇缴分配",
+                    "save": "1848.00",
+                    "accountMoney": "81370.21"
+                }
+            ]
+        }
+    ],
+    "billInfo": [
+        //账单信息
+        {
+            "date": "2019-2020", //年度
+            "lastYearMoney": "54509.55", //上年结转金额
+            "currentYear": "22176.00", //当年缴存金额
+            "takeOutMoney": "0.00", //当年提取金额
+            "interest": "988.66", //利息
+            "total": "77674.21" //本息合计
+        },
+        {
+            "date": "2019-2020",
+            "lastYearMoney": "54509.55",
+            "currentYear": "22176.00",
+            "takeOutMoney": "0.00",
+            "interest": "988.66",
+            "total": "77674.21"
+        },
+        {
+            "date": "2019-2020",
+            "lastYearMoney": "54509.55",
+            "currentYear": "22176.00",
+            "takeOutMoney": "0.00",
+            "interest": "988.66",
+            "total": "77674.21"
+        }
+    ]
+}

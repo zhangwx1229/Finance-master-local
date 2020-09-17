@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.bjcxx.kkm.R;
 import com.bjcxx.kkm.ui.entity.QueryMoneyEntity;
 import com.bjcxx.kkm.ui.entity.ZfbData;
+import com.bjcxx.kkm.ui.utils.MoneyFormat;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.google.gson.Gson;
@@ -38,7 +39,7 @@ public class QueryMoneyAdapter extends BaseQuickAdapter<ZfbData.BillInfoBean, Ba
         TextView data = baseViewHolder.getView(R.id.tv_data);
         TextView total = baseViewHolder.getView(R.id.tv_total);
         data.setText(commonAddEntity.getDate());
-        total.setText(commonAddEntity.getTotal()+">");
+        total.setText(MoneyFormat.addComma(commonAddEntity.getTotal()));
     }
 
 }
