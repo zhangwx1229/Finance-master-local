@@ -1,4 +1,3 @@
-import { getFontSize } from "..";
 
 const fontSize = {
     huge: 26,
