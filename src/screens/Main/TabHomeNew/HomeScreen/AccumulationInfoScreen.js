@@ -13,17 +13,25 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
 import filejson from '../../../../image/filename_02.json';
+import filejson1 from '../../../../image/filename.json';
 import DateSelectModel from '../common/DateSelectModel';
-
+// let font_13 = UI.fontSizeNew.font_13
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
 let font_10 = UI.fontSizeNew.font_10
+let font_10_5 = UI.fontSizeNew.font_10_5
+let font_30 = UI.fontSizeNew.font_30
+let font_8 = UI.fontSizeNew.font_8
 export default class AccumulationInfoScreen extends PureComponent {
 
     constructor(props) {
         super(props);
+        this.state = { isShowUser: false }
+
+        console.debug('=========',)
         const { route } = props;
         this.data = filejson[2020 + ''];
+
 
 
         this.total_0 = 0
@@ -50,6 +58,14 @@ export default class AccumulationInfoScreen extends PureComponent {
         } = this.props;
         navigation.navigate('DetailInfoView', { data });
     };
+
+    clickShowUser = () => {
+        this.setState({ isShowUser: !this.state.isShowUser })
+    }
+    clickUser = () => {
+        this.setState({ isShowUser: !this.state.isShowUser })
+    }
+
     clickBack = () => {
         const {
             navigation
@@ -145,44 +161,51 @@ export default class AccumulationInfoScreen extends PureComponent {
                 }}>
                     <Text style={{
                         color: '#fff',
-                        fontSize: font_13,
+                        fontSize: font_12,
                         alignSelf: 'center'
-                    }} numberOfLines={1} > 账户余额(元)</Text>
-                    <Text style={{
-                        color: '#fff',
-                        fontSize: UI.fontSizeNew.font_25,
-                        alignSelf: 'center', marginTop: 4
-                    }} numberOfLines={1} > *但是</Text>
-                    <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 4 }}>
+                    }} numberOfLines={1} >账户余额(元)</Text>
+                    <View style={{ alignSelf: 'center', flexDirection: 'row' }}>
                         <Text style={{
                             color: '#fff',
-                            fontSize: font_12,
-                            alignSelf: 'center'
-                        }} numberOfLines={1} > *但是</Text>
-                        <View style={{ marginHorizontal: 8, marginTop: 1, width: 1, height: 15, alignSelf: 'center', opacity: 0.6, backgroundColor: '#fff' }} />
-                        <Text style={{
-                            color: '#fff',
-                            fontSize: font_12,
-                            alignSelf: 'center',
-                        }} numberOfLines={1} > GJKJO9008HJI99</Text>
+                            lineHeight: 40,
+                            fontSize: font_30,
+                            alignSelf: 'center', marginTop: 4
+                        }} numberOfLines={1} >{'    '}{this.state.isShowUser ? UI.getNumString(filejson1.balance) : '***'}</Text>
+                        <TouchableWithoutFeedback onPress={this.clickShowUser}>
+                            <Image style={{
+                                marginLeft: 5,
+                                marginTop: 4,
+                                alignSelf: 'center',
+                                width: 30,
+                                height: this.state.isShowUser ? 30 * 57 / 84 : 15,
+                            }} source={this.state.isShowUser ? Images.alipay_23 : Images.alipay_14} />
+                        </TouchableWithoutFeedback>
                     </View>
-                    {/* <View style={{ justifyContent: 'center', height: 40, borderRadius: 20, borderWidth: 1, borderColor: "#fff" }}> */}
+
+                    <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+                        <Text style={{
+                            color: '#fff',
+                            fontSize: font_10_5,
+                            alignSelf: 'center'
+                        }} numberOfLines={1} >{UI.getNumNick(filejson1.name)}</Text>
+                        <View style={{ marginHorizontal: 8, marginTop: 1, width: 1, height: 12, alignSelf: 'center', opacity: 0.6, backgroundColor: '#fff' }} />
+                        <Text style={{
+                            color: '#fff',
+                            fontSize: font_10_5,
+                            alignSelf: 'center',
+                        }} numberOfLines={1} >{filejson1.accountNumber}</Text>
+                    </View>
                     <Text style={{
                         lineHeight: 30, borderRadius: 30, borderWidth: 1, borderColor: "#fff",
                         color: '#fff',
                         fontSize: font_12,
                         alignSelf: 'center',
-                        marginTop: 15,
+                        marginTop: 13,
                         backgroundColor: '#ffffff32'
-                    }} numberOfLines={1} >      查看账户信息      </Text>
-                    {/* </View> */}
+                    }} numberOfLines={1}
+                        onPress={this.clickUser}>      查看账户信息      </Text>
+
                 </View>
-                <TouchableWithoutFeedback onPress={this.clickBack}>
-                    <View style={{ position: 'absolute', left: 5, width: 30, height: 30 }} />
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={this.clickClose}>
-                    <View style={{ position: 'absolute', left: 40, width: 30, height: 30 }} />
-                </TouchableWithoutFeedback>
             </View>
         );
     };
@@ -203,48 +226,45 @@ export default class AccumulationInfoScreen extends PureComponent {
         );
     };
 
-    renderItem = (data, index) => {
-        return (
-            <TouchableOpacity
-                key={index + ''} style={styles.click}
-                activeOpacity={1}
-                onPress={() => { this.clickSelect(data); }} >
-                <View style={styles.contentBg} onLayout={(e) => {
-                    const { height, width } = e.nativeEvent.layout;
-                    this.item_H = height
-                }} >
-                    <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                    <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-                        <Text style={[styles.itemTitle, {
-                            fontSize: font_13
-                        }]} > 工资薪金 </Text>
-                        <Text style={[styles.itemDate, {
-                            fontSize: font_13
-                        }]} > {data.date.slice(0, 7)} </Text>
-                    </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} > 所得项目小类：{data.item_1}</Text>
-                    <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
-                        <Text style={[styles.itemDetail, {
-                            fontSize: font_12
-                        }]} numberOfLines={1} > 扣缴义务人：{data.item_2}</Text>
-                        <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
-                    </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} numberOfLines={1} > 收入：{data.item_4.toFixed(2)}</Text>
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额：{data.item_5.toFixed(2)} </Text>
-                </View >
-            </TouchableOpacity>
-        );
+
+
+    renderItem_1 = (data, index) => {
+        return <View style={{ paddingVertical: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#fff' }}>
+            <View style={{ marginLeft: 20 }}>
+                <Text style={{
+                    fontSize: font_12, color: '#333333'
+                }} >我的缴存</Text>
+                <Text style={{
+                    fontSize: font_8, color: '#9D9D9D', marginTop: 5
+                }} >最近缴存{filejson1.recentlyDepositedDate} </Text>
+                <Text style={{
+                    fontSize: font_13, color: '#9D9D9D'
+                }} >{UI.getNumString(filejson1.recentlyDeposited)}</Text>
+            </View>
+            <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.3, backgroundColor: '#9D9D9D' }} />
+            <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5 + 20 }}>
+                <Text style={{
+                    fontSize: font_12, color: '#333333'
+                }} >我的提取</Text>
+                <Text style={{
+                    fontSize: font_8, color: '#9D9D9D', marginTop: 5
+                }} >最近提取{filejson1.recentlyExtractedDate}</Text>
+                <Text style={{
+                    fontSize: font_13, color: '#9D9D9D'
+                }} >{filejson1.recentlyExtractedDate.length > 0 ? UI.getNumString(filejson1.recentlyExtracted) : "暂无"}</Text>
+            </View>
+
+        </View >
+    };
+    renderItem_2 = (data, index) => {
+        return <View >
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: (UI.size.screenWidth * 539) / 1080,
+            }} source={Images.gjj_four_4} />
+        </View >
     };
 
-    renderList = () => {
-        const comList = []
-        let i = 0
-        for (const item of this.data) {
-            comList.push(this.renderItem(item, i))
-            i++
-        }
-        return comList;
-    }
 
     renderScrollHeader = () => {
         return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f6f9' }} />
@@ -261,6 +281,9 @@ export default class AccumulationInfoScreen extends PureComponent {
         font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
         font_10 = UI.fontSizeNew.font_10
+        font_8 = UI.fontSizeNew.font_8
+        font_10_5 = UI.fontSizeNew.font_10_5
+        font_30 = UI.fontSizeNew.font_30
         if (this.data === null) {
             return null
         }
@@ -281,7 +304,10 @@ export default class AccumulationInfoScreen extends PureComponent {
 
                 {this.renderScrollHeader()}
                 {this.renderHeader()}
-                {this.renderList()}
+                {this.renderItem_1()}
+                {this.renderItem_2()}
+
+                <View style={{ height: 300 }} />
                 {this.renderScrollFoot()}
             </ScrollView>
         </View >

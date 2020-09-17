@@ -38,7 +38,9 @@ const Images = {
     accumulation_server_image: require('./1/gjj_thire.jpg'),
     accumulation_info_header: require('./1/gjj_four_header.jpg'),
     alipay_15: require('./5/alipay_15.png'),
-
+    alipay_23: require('./5/alipay_23.png'),
+    alipay_14: require('./5/alipay_14.png'),
+    gjj_four_4: require('./1/gjj_four_4.jpg'),
 
 
     tab_mine_p4_bg: require('./p4_bg.png'),

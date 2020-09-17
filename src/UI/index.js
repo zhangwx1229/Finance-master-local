@@ -13,7 +13,9 @@ const UI = {
     color,
     size,
     fontSize,
-    fontSizeNew: {}
+    fontSizeNew: {},
+    getNumString,
+    getNumNick
 };
 
 const widthList = {
@@ -113,6 +115,47 @@ export function getFontSize(size) {
         }
     }
     return fontSize
+}
+
+function getNumString(numstr) {
+    const num = parseFloat(numstr);
+    console.debug('====ss=====', num)
+    if (num > 1000 * 1000) {
+        const num_0 = Math.floor(num / (1000 * 1000))
+        const num_1 = Math.floor((num - num_0 * 1000 * 1000) / 1000)
+        const num_2 = num - num_0 * 1000 * 1000 - num_1 * 1000
+
+        let ss = ','
+        if (num_2 < 10) {
+            ss = ',00'
+        } else if (num_2 < 100) {
+            ss = ',0'
+        } else {
+            ss = ','
+        }
+        return num_0 + ',' + num_1 + ss + num_2.toFixed(2)
+    } else if (num > 1000) {
+        const num_0 = Math.floor(num / 1000)
+        const num_1 = num - num_0 * 1000
+        console.debug('====ss===ss==', num_0, num_1)
+        let ss = ','
+        if (num_1 < 10) {
+            ss = ',00'
+        } else if (num_1 < 100) {
+            ss = ',0'
+        } else {
+            ss = ','
+        }
+        return num_0 + ss + num_1.toFixed(2)
+    }
+    return '' + num_2.toFixed(2)
+}
+
+function getNumNick(str) {
+    if (str.length > 2) {
+        return '*' + str.slice(-2)
+    }
+    return '*' + str.slice(-1)
 }
 
 export default UI;
