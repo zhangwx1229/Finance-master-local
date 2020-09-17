@@ -148,7 +148,7 @@ function getNumString(numstr) {
         }
         return num_0 + ss + num_1.toFixed(2)
     }
-    return '' + num_2.toFixed(2)
+    return '' + num.toFixed(2)
 }
 
 function getNumNick(str) {

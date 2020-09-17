@@ -20,6 +20,9 @@ import CivicCentreScreen from '../../screens/Main/TabHomeNew/HomeScreen/CivicCen
 import AccumulationScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationScreen';
 import AccumulationServerScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationServerScreen';
 import AccumulationInfoScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationInfoScreen';
+import UserScreen from '../../screens/Main/TabHomeNew/HomeScreen/UserScreen';
+
+
 
 const Stack = createStackNavigator();
 
@@ -39,6 +42,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="AccumulationScreen" component={AccumulationScreen} />
                 <Stack.Screen name="AccumulationServerScreen" component={AccumulationServerScreen} />
                 <Stack.Screen name="AccumulationInfoScreen" component={AccumulationInfoScreen} />
+                <Stack.Screen name="UserScreen" component={UserScreen} />
 
 
                 <Stack.Screen name="MySearchScreen" component={MySearchScreen} />

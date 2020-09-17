@@ -4,17 +4,12 @@ import {
     StyleSheet,
     ScrollView,
     View,
-    TouchableOpacity,
-    FlatList,
     Text,
     TouchableWithoutFeedback
 } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import TitleView from '../common/TitleView';
-import filejson from '../../../../image/filename_02.json';
-import filejson1 from '../../../../image/filename.json';
-import DateSelectModel from '../common/DateSelectModel';
+import filejson from '../../../../image/filename.json';
 // let font_13 = UI.fontSizeNew.font_13
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
@@ -26,23 +21,7 @@ export default class AccumulationInfoScreen extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = { isShowUser: false }
-
-        console.debug('=========',)
-        const { route } = props;
-        this.data = filejson[2020 + ''];
-
-
-
-        this.total_0 = 0
-        this.total_1 = 0
-        for (const item of this.data) {
-            this.total_0 += item.item_4
-            this.total_1 += item.item_5
-        }
-        this.total_0 = this.total_0.toFixed(2)
-        this.total_1 = this.total_1.toFixed(2)
-        this.state = { opacity: 0 }
+        this.state = { isShowUser: false, opacity: 0 }
         this.item_H = 0
         this.offset_y = 0
         this.offset_olf_y = 0
@@ -52,17 +31,14 @@ export default class AccumulationInfoScreen extends PureComponent {
         this.foot_H = 0
     }
 
-    clickSelect = data => {
+    clickUser = data => {
         const {
             navigation
         } = this.props;
-        navigation.navigate('DetailInfoView', { data });
+        navigation.navigate('UserScreen');
     };
 
     clickShowUser = () => {
-        this.setState({ isShowUser: !this.state.isShowUser })
-    }
-    clickUser = () => {
         this.setState({ isShowUser: !this.state.isShowUser })
     }
 
@@ -78,6 +54,21 @@ export default class AccumulationInfoScreen extends PureComponent {
             navigation
         } = this.props;
         navigation.pop()
+    }
+    clickLeft = () => {
+        this.setState({ isShowUser: !this.state.isShowUser })
+    }
+
+    clickRight = () => {
+        this.setState({ isShowUser: !this.state.isShowUser })
+    }
+
+    clickSearch1 = () => {
+        this.setState({ isShowUser: !this.state.isShowUser })
+    }
+
+    clickSearch2 = () => {
+        this.setState({ isShowUser: !this.state.isShowUser })
     }
 
     componentWillUnmount() {
@@ -107,8 +98,6 @@ export default class AccumulationInfoScreen extends PureComponent {
                     if (this.scrollRef) {
                         if (this.offset_y < this.header_H) {
                             this.scrollRef.scrollTo({ y: this.header_H, animated: true });
-                        } else if (this.offset_y > this.data.length * this.item_H + this.header_H - this.scroll_style.height) {
-                            this.scrollRef.scrollTo({ y: this.data.length * this.item_H + this.header_H - this.scroll_style.height, animated: true });
                         }
                     }
                 }
@@ -120,8 +109,6 @@ export default class AccumulationInfoScreen extends PureComponent {
                 if (this.scrollRef) {
                     if (this.offset_y < this.header_H) {
                         this.scrollRef.scrollTo({ y: this.header_H, animated: true });
-                    } else if (this.offset_y > this.data.length * this.item_H + this.header_H - this.scroll_style.height) {
-                        this.scrollRef.scrollTo({ y: this.data.length * this.item_H + this.header_H - this.scroll_style.height, animated: true });
                     }
                 }
             }
@@ -170,7 +157,7 @@ export default class AccumulationInfoScreen extends PureComponent {
                             lineHeight: 40,
                             fontSize: font_30,
                             alignSelf: 'center', marginTop: 4
-                        }} numberOfLines={1} >{'    '}{this.state.isShowUser ? UI.getNumString(filejson1.balance) : '***'}</Text>
+                        }} numberOfLines={1} >{'    '}{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
                         <TouchableWithoutFeedback onPress={this.clickShowUser}>
                             <Image style={{
                                 marginLeft: 5,
@@ -187,13 +174,13 @@ export default class AccumulationInfoScreen extends PureComponent {
                             color: '#fff',
                             fontSize: font_10_5,
                             alignSelf: 'center'
-                        }} numberOfLines={1} >{UI.getNumNick(filejson1.name)}</Text>
+                        }} numberOfLines={1} >{UI.getNumNick(filejson.name)}</Text>
                         <View style={{ marginHorizontal: 8, marginTop: 1, width: 1, height: 12, alignSelf: 'center', opacity: 0.6, backgroundColor: '#fff' }} />
                         <Text style={{
                             color: '#fff',
                             fontSize: font_10_5,
                             alignSelf: 'center',
-                        }} numberOfLines={1} >{filejson1.accountNumber}</Text>
+                        }} numberOfLines={1} >{filejson.accountNumber}</Text>
                     </View>
                     <Text style={{
                         lineHeight: 30, borderRadius: 30, borderWidth: 1, borderColor: "#fff",
@@ -234,24 +221,32 @@ export default class AccumulationInfoScreen extends PureComponent {
                 <Text style={{
                     fontSize: font_12, color: '#333333'
                 }} >我的缴存</Text>
-                <Text style={{
-                    fontSize: font_8, color: '#9D9D9D', marginTop: 5
-                }} >最近缴存{filejson1.recentlyDepositedDate} </Text>
-                <Text style={{
-                    fontSize: font_13, color: '#9D9D9D'
-                }} >{UI.getNumString(filejson1.recentlyDeposited)}</Text>
+                <TouchableWithoutFeedback onPress={this.clickLeft}>
+                    <View>
+                        <Text style={{
+                            fontSize: font_8, color: '#9D9D9D', marginTop: 5
+                        }} >最近缴存{filejson.recentlyDepositedDate} </Text>
+                        <Text style={{
+                            fontSize: font_13, color: '#9D9D9D'
+                        }} >{UI.getNumString(filejson.recentlyDeposited)}</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
             <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.3, backgroundColor: '#9D9D9D' }} />
             <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5 + 20 }}>
                 <Text style={{
                     fontSize: font_12, color: '#333333'
                 }} >我的提取</Text>
-                <Text style={{
-                    fontSize: font_8, color: '#9D9D9D', marginTop: 5
-                }} >最近提取{filejson1.recentlyExtractedDate}</Text>
-                <Text style={{
-                    fontSize: font_13, color: '#9D9D9D'
-                }} >{filejson1.recentlyExtractedDate.length > 0 ? UI.getNumString(filejson1.recentlyExtracted) : "暂无"}</Text>
+                <TouchableWithoutFeedback onPress={this.clickRight}>
+                    <View>
+                        <Text style={{
+                            fontSize: font_8, color: '#9D9D9D', marginTop: 5
+                        }} >最近提取{filejson.recentlyExtractedDate}</Text>
+                        <Text style={{
+                            fontSize: font_13, color: '#9D9D9D'
+                        }} >{filejson.recentlyExtractedDate.length > 0 ? UI.getNumString(filejson.recentlyExtracted) : "暂无"}</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
 
         </View >
@@ -262,7 +257,14 @@ export default class AccumulationInfoScreen extends PureComponent {
                 width: UI.size.screenWidth,
                 height: (UI.size.screenWidth * 539) / 1080,
             }} source={Images.gjj_four_4} />
+            <TouchableWithoutFeedback onPress={this.clickSearch1} >
+                <View style={{ position: 'absolute', left: 20, top: 20, width: 50, height: 50 }} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.clickSearch2} >
+                <View style={{ position: 'absolute', left: 60 + 50, top: 20, width: 50, height: 50 }} />
+            </TouchableWithoutFeedback>
         </View >
+
     };
 
 
@@ -284,9 +286,6 @@ export default class AccumulationInfoScreen extends PureComponent {
         font_8 = UI.fontSizeNew.font_8
         font_10_5 = UI.fontSizeNew.font_10_5
         font_30 = UI.fontSizeNew.font_30
-        if (this.data === null) {
-            return null
-        }
         const { navigation } = this.props;
         return (<View style={styles.container} >
             {this.renderTitle()}
@@ -294,7 +293,7 @@ export default class AccumulationInfoScreen extends PureComponent {
                 ref={(e) => { this.scrollRef = e }}
                 style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
                 onLayout={this.onLayout}
-                contentContainerStyle={styles.contentContainerStyle}
+                contentContainerStyle={this.scroll_style.width ? { width: this.scroll_style.width, height: this.scroll_style.height + this.header_H } : styles.contentContainerStyle}
                 onScrollEndDrag={this.onScrollEndDrag}
                 onScroll={(e) => {
                     const { contentOffset } = e.nativeEvent;
@@ -307,7 +306,7 @@ export default class AccumulationInfoScreen extends PureComponent {
                 {this.renderItem_1()}
                 {this.renderItem_2()}
 
-                <View style={{ height: 300 }} />
+                <View style={{ height: 800 }} />
                 {this.renderScrollFoot()}
             </ScrollView>
         </View >
