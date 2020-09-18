@@ -21,6 +21,7 @@ import AccumulationScreen from '../../screens/Main/TabHomeNew/HomeScreen/Accumul
 import AccumulationServerScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationServerScreen';
 import AccumulationInfoScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationInfoScreen';
 import UserScreen from '../../screens/Main/TabHomeNew/HomeScreen/UserScreen';
+import DetailScreen from '../../screens/Main/TabHomeNew/HomeScreen/DetailScreen';
 
 
 
@@ -43,6 +44,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="AccumulationServerScreen" component={AccumulationServerScreen} />
                 <Stack.Screen name="AccumulationInfoScreen" component={AccumulationInfoScreen} />
                 <Stack.Screen name="UserScreen" component={UserScreen} />
+                <Stack.Screen name="DetailScreen" component={DetailScreen} />
 
 
                 <Stack.Screen name="MySearchScreen" component={MySearchScreen} />

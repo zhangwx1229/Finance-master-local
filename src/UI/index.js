@@ -119,7 +119,6 @@ export function getFontSize(size) {
 
 function getNumString(numstr) {
     const num = parseFloat(numstr);
-    console.debug('====ss=====', num)
     if (num > 1000 * 1000) {
         const num_0 = Math.floor(num / (1000 * 1000))
         const num_1 = Math.floor((num - num_0 * 1000 * 1000) / 1000)
@@ -137,7 +136,6 @@ function getNumString(numstr) {
     } else if (num > 1000) {
         const num_0 = Math.floor(num / 1000)
         const num_1 = num - num_0 * 1000
-        console.debug('====ss===ss==', num_0, num_1)
         let ss = ','
         if (num_1 < 10) {
             ss = ',00'

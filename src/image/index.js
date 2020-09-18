@@ -45,6 +45,7 @@ const Images = {
     alipay_26: require('./5/alipay_26.png'),
     icon_1: require('./1/icon_1.jpg'),
     icon_2: require('./1/icon_2.jpg'),
+    icon_12: require('./1/icon_12.jpg'),
 
     tab_mine_p4_bg: require('./p4_bg.png'),
 

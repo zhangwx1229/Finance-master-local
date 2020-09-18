@@ -56,11 +56,17 @@ export default class AccumulationInfoScreen extends PureComponent {
         navigation.pop()
     }
     clickLeft = () => {
-        this.setState({ isShowUser: !this.state.isShowUser })
+        const {
+            navigation
+        } = this.props;
+        navigation.navigate('DetailScreen', 0);
     }
 
     clickRight = () => {
-        this.setState({ isShowUser: !this.state.isShowUser })
+        const {
+            navigation
+        } = this.props;
+        navigation.navigate('DetailScreen', 1);
     }
 
     clickSearch1 = () => {
