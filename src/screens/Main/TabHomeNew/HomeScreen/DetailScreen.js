@@ -99,18 +99,23 @@ export default class DetailScreen extends PureComponent {
     onLayout = (e) => {
         const { height, width } = e.nativeEvent.layout;
         if (!this.scroll_style.width) {
-            if (this.scrollRef) {
-                if (this.offset_y < this.header_H) {
-                    this.scrollRef.scrollTo({ y: this.header_H, animated: false, });
-                }
-            }
             this.scroll_style = { height, width }
-            setTimeout(() => {
-                if (this.isDestroy) {
-                    return
+            this.setState({}, () => {
+                if (this.scrollRef) {
+                    if (this.offset_y < this.header_H) {
+                        this.scrollRef.scrollTo({ y: this.header_H, animated: false, });
+                    }
                 }
-                this.setState({ opacity: 1 })
-            });
+                setTimeout(() => {
+                    if (this.isDestroy) {
+                        return
+                    }
+                    this.setState({ opacity: 1 })
+                });
+            })
+
+
+
         }
     }
 
@@ -179,8 +184,8 @@ export default class DetailScreen extends PureComponent {
         date,
         info,
         save
-    }, isLast = false) => {
-        return (<View style={{ flexDirection: 'row', backgroundColor: '#fff' }}>
+    }, key, isLast = false) => {
+        return (<View key={key} style={{ flexDirection: 'row', backgroundColor: '#fff' }}>
             <Text style={{ marginLeft: 10, alignSelf: 'center', fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >{date}</Text>
             <View style={{ flex: 1, height: 45, borderBottomColor: '#9D9D9D32', borderBottomWidth: isLast ? 0 : 1, flexDirection: 'row', marginLeft: 10, justifyContent: 'space-between' }}>
                 <Text numberOfLines={1} style={{ alignSelf: 'center', maxWidth: UI.size.screenWidth - 100 - 10 * 3 - 40, fontSize: font_12, color: '#333333' }} >{info}</Text>
@@ -193,8 +198,8 @@ export default class DetailScreen extends PureComponent {
         date,
         info,
         save
-    }, isLast = false) => {
-        return (<View style={{ flexDirection: 'row', paddingVertical: 7, justifyContent: 'space-between', backgroundColor: '#fff', }}>
+    }, key, isLast = false) => {
+        return (<View key={key} style={{ flexDirection: 'row', paddingVertical: 7, justifyContent: 'space-between', backgroundColor: '#fff', }}>
             <View style={{ marginLeft: 10, width: UI.size.screenWidth - 100 - 20 }}>
                 <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_12, color: '#333333' }} >{info}</Text>
                 <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_10, color: '#9D9D9D' }} >{date}</Text>
@@ -208,7 +213,7 @@ export default class DetailScreen extends PureComponent {
     };
 
     renderItemSub = (year) => {
-        return (<View style={{ flexDirection: 'row', height: 50, borderBottomColor: '#9D9D9D32', borderTopWidth: 1, borderTopColor: '#9D9D9D32', borderBottomWidth: 1, backgroundColor: '#f5f4f8' }}>
+        return (<View key={year} style={{ flexDirection: 'row', height: 50, borderBottomColor: '#9D9D9D32', borderTopWidth: 1, borderTopColor: '#9D9D9D32', borderBottomWidth: 1, backgroundColor: '#f5f4f8' }}>
             <Text style={{ marginLeft: 10, alignSelf: 'center', fontSize: font_13, color: '#333333' }} >
                 {year.slice(0, 4)}
                 <Text style={{ alignSelf: 'center', marginBottom: 0, fontSize: font_10, color: '#333333' }} >年</Text></Text>
@@ -222,7 +227,7 @@ export default class DetailScreen extends PureComponent {
                 list.push(this.renderItemSub(year))
                 for (let j = 0; j < saveMoney.length; j++) {
                     const element = saveMoney[j];
-                    list.push(this.renderItem_2(element, j === saveMoney.length - 1))
+                    list.push(this.renderItem_2(element, year + element.date, j === saveMoney.length - 1))
                 }
             }
         } else if (this.state.selectedIndex === 1) {
@@ -231,7 +236,7 @@ export default class DetailScreen extends PureComponent {
                 list.push(this.renderItemSub(year))
                 for (let j = 0; j < saveMoney.length; j++) {
                     const element = saveMoney[j];
-                    list.push(this.renderItem_1(element, j === saveMoney.length - 1))
+                    list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
                 }
             }
         } else {
@@ -240,7 +245,7 @@ export default class DetailScreen extends PureComponent {
                 list.push(this.renderItemSub(year))
                 for (let j = 0; j < saveMoney.length; j++) {
                     const element = saveMoney[j];
-                    list.push(this.renderItem_1(element, j === saveMoney.length - 1))
+                    list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
                 }
             }
         }
@@ -273,7 +278,7 @@ export default class DetailScreen extends PureComponent {
                 ref={(e) => { this.scrollRef = e }}
                 style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
                 onLayout={this.onLayout}
-                contentContainerStyle={this.scroll_style.width ? { minHeight: this.scroll_style.height + this.header_H } : styles.contentContainerStyle}
+                contentContainerStyle={this.scroll_style.width ? { minHeight: this.scroll_style.height + this.header_H } : { minHeight: UI.size.screenHeight + this.foot_H + this.header_H }}
                 onScrollEndDrag={this.onScrollEndDrag}
                 onScroll={(e) => {
                     const { contentOffset } = e.nativeEvent;
