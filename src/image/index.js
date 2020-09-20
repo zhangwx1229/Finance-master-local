@@ -46,8 +46,16 @@ const Images = {
     icon_1: require('./1/icon_1.jpg'),
     icon_2: require('./1/icon_2.jpg'),
     icon_12: require('./1/icon_12.jpg'),
-
+    icon_6: require('./1/icon_6.jpg'),
+    icon_4: require('./1/icon_4.jpg'),
+    icon_5: require('./1/icon_5.jpg'),
+    icon_15: require('./1/icon_15.jpg'),
+    icon_17: require('./1/icon_17.jpg'),
     tab_mine_p4_bg: require('./p4_bg.png'),
+    gjj_thire_0: require('./1/gjj_thire_0.jpg'),
+    gjj_thire: require('./1/gjj_thire.jpg'),
+
+
 
     tab_home_image_header: require('./tab_home_image_header.jpg'),
     tab_tax_image: require('./tab_tax_image.jpg'),

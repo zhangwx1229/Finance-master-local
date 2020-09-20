@@ -42,14 +42,12 @@ export default class DetailScreen extends PureComponent {
             navigation
         } = this.props;
         navigation.pop()
-        navigation.pop()
-        navigation.pop()
     }
     clickClose = () => {
         const {
             navigation
         } = this.props;
-        navigation.pop()
+        navigation.navigate("AccumulationScreen")
     }
 
     componentWillUnmount() {

@@ -27,8 +27,8 @@ export default class UserScreen extends PureComponent {
         this.isDestroy = false;
         this.header_H = 80
         this.foot_H = 0
+        this.contentH = 0
     }
-
 
     clickBack = () => {
         const {
@@ -281,20 +281,22 @@ export default class UserScreen extends PureComponent {
                 ref={(e) => { this.scrollRef = e }}
                 style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
                 onLayout={this.onLayout}
-                contentContainerStyle={this.scroll_style.width ? { width: this.scroll_style.width, height: this.scroll_style.height + this.header_H } : styles.contentContainerStyle}
+                contentContainerStyle={this.scroll_style.width ? { width: this.scroll_style.width, height: this.contentH > (this.scroll_style.height + this.header_H) ? this.contentH : this.scroll_style.height + this.header_H } : styles.contentContainerStyle}
                 onScrollEndDrag={this.onScrollEndDrag}
                 onScroll={(e) => {
                     const { contentOffset } = e.nativeEvent;
                     this.offset_y = contentOffset.y
                 }}
-                showsVerticalScrollIndicator={false} >
-
+                showsVerticalScrollIndicator={false}
+                onContentSizeChange={(w, h) => {
+                    this.contentH = h - 400;
+                }}
+            >
                 {this.renderScrollHeader()}
                 {this.renderHeader()}
                 {this.renderItem_1()}
                 {this.renderItem_2()}
-
-                <View style={{ height: 800 }} />
+                <View style={{ height: this.contentH > 0 ? 40 : 400 }} />
                 {this.renderScrollFoot()}
             </ScrollView>
             {this.renderTitle()}

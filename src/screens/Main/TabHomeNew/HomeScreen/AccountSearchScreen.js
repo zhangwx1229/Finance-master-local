@@ -39,11 +39,18 @@ export default class AccountSearchScreen extends PureComponent {
         } = this.props;
         navigation.pop()
     }
-    clickSearch = () => {
+    clickClose = () => {
         const {
             navigation
         } = this.props;
-        navigation.navigate("AccumulationInfoScreen")
+        navigation.navigate("AccumulationScreen")
+    }
+
+    clickItem = (item) => {
+        const {
+            navigation
+        } = this.props;
+        navigation.navigate('AccountSearchScreen', item);
     }
 
     componentWillUnmount() {
@@ -99,6 +106,7 @@ export default class AccountSearchScreen extends PureComponent {
                 }
             }
             this.scroll_style = { height, width }
+            console.debug('=====kkk====', this.scroll_style.height, this.contentH)
             setTimeout(() => {
                 if (this.isDestroy) {
                     return
@@ -110,13 +118,46 @@ export default class AccountSearchScreen extends PureComponent {
 
     renderItem_1 = (itme) => {
         return <View style={{ backgroundColor: '#fff' }}>
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: (UI.size.screenWidth * 841) / 1080,
-            }} source={Images.gjj_thire} />
-            <TouchableWithoutFeedback onPress={this.clickSearch}>
-                <View style={{ position: 'absolute', left: 20, right: 20, bottom: 5, height: 50, backgroundColor: 'red' }} />
-            </TouchableWithoutFeedback>
+            <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f6f9' }} />
+            <View style={{
+                flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >年度</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{itme.date}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >上年结转金额</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.lastYearMoney)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年缴存金额</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.currentYear)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年提取金额</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.takeOutMoney)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >利息</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.interest)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginVertical: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >本息合计</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >
+                    {UI.getNumString(itme.total)}
+                </Text>
+            </View >
+
         </View >
     };
 
@@ -138,11 +179,13 @@ export default class AccountSearchScreen extends PureComponent {
                 <Image style={{
                     width: UI.size.screenWidth,
                     height: (UI.size.screenWidth * 144) / 1080,
-                }} source={Images.gjj_thire_0} />
+                }} source={Images.icon_15} />
                 <TouchableWithoutFeedback onPress={this.clickBack}>
                     <View style={{ position: 'absolute', left: 5, width: 30, height: 30 }} />
                 </TouchableWithoutFeedback>
-
+                <TouchableWithoutFeedback onPress={this.clickClose}>
+                    <View style={{ position: 'absolute', left: 40, width: 30, height: 30 }} />
+                </TouchableWithoutFeedback>
             </View>
         );
     };
@@ -175,6 +218,12 @@ export default class AccountSearchScreen extends PureComponent {
             >
                 {this.renderScrollHeader()}
                 {this.renderItem_1(route.params)}
+                <View style={{ paddingTop: 25, paddingBottom: 45, backgroundColor: '#fff' }}>
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 257) / 1080,
+                    }} source={Images.icon_17} />
+                </View>
                 <View style={{ height: this.contentH > 0 ? 40 : 400 }} />
                 {this.renderScrollFoot()}
             </ScrollView>
