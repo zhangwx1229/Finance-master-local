@@ -17,6 +17,16 @@ const Images = {
     tab_home_image_2: require('./1/tab_home_3.jpg'),
     tab_home_image_3: require('./1/tab_home_4.jpg'),
     tab_home_image_4: require('./1/tab_home_5.jpg'),
+
+    tab_licai_header: require('./2/licai_header.jpg'),
+    tab_licai_image_0: require('./2/licai_0.jpg'),
+    tab_licai_image_1: require('./2/licai_1.jpg'),
+    tab_licai_image_2: require('./2/licai_2.jpg'),
+    tab_licai_image_3: require('./2/licai_3.jpg'),
+    tab_licai_image_4: require('./2/licai_4.jpg'),
+    tab_licai_image_5: require('./2/licai_5.jpg'),
+    tab_licai_image_6: require('./2/licai_6.jpg'),
+
     tab_mine_header: require('./2/tab_mine_0.jpg'),
     tab_mine_image_1: require('./2/tab_mine_2.jpg'),
     tab_mine_image_2: require('./2/tab_mine_3.jpg'),

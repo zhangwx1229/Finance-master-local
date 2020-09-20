@@ -11,7 +11,6 @@ import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import TabNav from '../TabNav';
-import GestureScreen from '../../screens/Main/TabMine/MineScreen/GestureScreen';
 import CivicCentreScreen from '../../screens/Main/TabHomeNew/HomeScreen/CivicCentreScreen';
 import AccumulationScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationScreen';
 import AccumulationServerScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationServerScreen';
@@ -38,7 +37,6 @@ export default class StackNav extends Component {
                 }}
             >
                 <Stack.Screen name="Home" component={TabNav} />
-                <Stack.Screen name="GestureScreen" component={GestureScreen} />
                 <Stack.Screen name="CivicCentreScreen" component={CivicCentreScreen} />
                 <Stack.Screen name="AccumulationScreen" component={AccumulationScreen} />
                 <Stack.Screen name="AccumulationServerScreen" component={AccumulationServerScreen} />

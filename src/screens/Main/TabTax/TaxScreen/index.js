@@ -5,25 +5,55 @@ import UI from '../../../../UI';
 
 export default class TaxScreen extends PureComponent {
     render() {
-        const image_h = UI.size.screenWidth-50*2
+        const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>
-                <Image style={styles.header} source={Images.tab_mine_header} />
-                <View style={{alignSelf:'center'}}>
-                    <View style={{width:image_h *0.25,height:image_h *0.25,alignSelf:'center',backgroundColor:'red',marginTop:40}}/>
-                <Image style={{width:image_h ,
-        height: image_h ,alignSelf:'center',marginTop:20,}} source={Images.tab_mine_image_1} />
-                <Image style={{width: image_h *0.4,
-        height: (image_h *0.4 * 48) / 276,alignSelf:'center',marginTop:40}} source={Images.tab_mine_image_2} />
-                    </View>
+                <Image style={styles.header} source={Images.tab_licai_header} />
+                <ScrollView
+                    style={styles.content}
+                    contentContainerStyle={styles.contentContainerStyle}
+                >
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1078 / 1080
+                    }} source={Images.tab_licai_image_0} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1455 / 1080
+                    }} source={Images.tab_licai_image_1} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 720 / 1080
+                    }} source={Images.tab_licai_image_2} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 983 / 1080
+                    }} source={Images.tab_licai_image_3} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1451 / 1080
+                    }} source={Images.tab_licai_image_4} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1530 / 1080
+                    }} source={Images.tab_licai_image_5} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1176 / 1080
+                    }} source={Images.tab_licai_image_6} />
+                </ScrollView>
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1,backgroundColor:'#fff' },
+    container: { flex: 1, backgroundColor: '#fff' },
+    content: { flex: 1, backgroundColor: '#f5f6f9' },
+    contentContainerStyle: {
+        backgroundColor: UI.color.background,
+    },
     header: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 142) / 1080,
+        height: (UI.size.screenWidth * 144) / 1080,
     },
 });
