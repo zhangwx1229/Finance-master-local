@@ -54,8 +54,7 @@ const styles = StyleSheet.create({
         width: (UI.size.screenWidth - 12 * 2 - 40) / 2,
         height: 40,
         alignSelf: 'center',
-        backgroundColor: 'red',
-        // backgroundColor: 'transparent',
+        backgroundColor: 'transparent',
 
     },
     click1: {
@@ -65,8 +64,6 @@ const styles = StyleSheet.create({
         width: (UI.size.screenWidth - 12 * 2 - 40) / 2,
         height: 40,
         alignSelf: 'center',
-        backgroundColor: 'red',
-        // backgroundColor: 'transparent',
-
+        backgroundColor: 'transparent',
     },
 });

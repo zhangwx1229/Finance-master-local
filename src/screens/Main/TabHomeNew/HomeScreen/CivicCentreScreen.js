@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View,TouchableWithoutFeedback } from 'react-native';
+import { Image, StyleSheet, ScrollView, View, TouchableWithoutFeedback } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 
@@ -14,15 +14,15 @@ export default class CivicCentreScreen extends PureComponent {
                 style={styles.content}
                 contentContainerStyle={styles.contentContainerStyle}
             >
-                
+
                 <Image style={styles.image0} source={Images.civic_centre_header} />
                 <View>
-                <Image style={styles.image1} source={Images.civic_centre_image_1} />
-                        <TouchableWithoutFeedback onPress={this.clickSearch}>
-                            <View style={styles.click} />
-                        </TouchableWithoutFeedback>
-                    </View>
-                
+                    <Image style={styles.image1} source={Images.civic_centre_image_1} />
+                    <TouchableWithoutFeedback onPress={this.clickSearch}>
+                        <View style={styles.click} />
+                    </TouchableWithoutFeedback>
+                </View>
+
                 <Image style={styles.image2} source={Images.civic_centre_image_2} />
                 <Image style={styles.image3} source={Images.civic_centre_image_3} />
                 <Image style={styles.image4} source={Images.civic_centre_image_4} />
@@ -58,12 +58,11 @@ const styles = StyleSheet.create({
     },
     click: {
         position: 'absolute',
-        right: 12+(UI.size.screenWidth-12*2)/5,
-        width: (UI.size.screenWidth-12*2)/5,
-        height:(UI.size.screenWidth-12*2)/5,
+        right: 12 + (UI.size.screenWidth - 12 * 2) / 5,
+        width: (UI.size.screenWidth - 12 * 2) / 5,
+        height: (UI.size.screenWidth - 12 * 2) / 5,
         alignSelf: 'center',
-        backgroundColor: 'red',
-        // backgroundColor: 'transparent',
-        
+        backgroundColor: 'transparent',
+
     },
 });

@@ -121,8 +121,6 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         alignSelf: 'center',
-        backgroundColor: 'red',
-        // backgroundColor: 'transparent',
-
+        backgroundColor: 'transparent',
     },
 });
