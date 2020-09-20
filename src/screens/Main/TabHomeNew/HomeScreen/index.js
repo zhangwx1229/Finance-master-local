@@ -2,8 +2,8 @@ import { isNumber } from 'lodash';
 import React, { PureComponent } from 'react';
 import { Image, StyleSheet, ScrollView, View, Text, TouchableWithoutFeedback, DeviceEventEmitter } from 'react-native';
 import Images from '../../../../image';
-import { name } from '../../../../image/filename_02.json';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
+import filejson from '../../../../image/filename.json';
 // import MySearchScreen from '../MySearchScreen';
 export default class HomeScreen extends PureComponent {
     constructor() {
@@ -16,7 +16,10 @@ export default class HomeScreen extends PureComponent {
             textList: textList,
         };
         this.widthList = {};
-        this.sds = {}
+        // {
+        //     "data": "2020-09-16",
+        //         "weather": "晴 27℃"
+        // },
     }
 
     clickSearch = () => {
@@ -43,13 +46,6 @@ export default class HomeScreen extends PureComponent {
                                 const { width, height } = e.nativeEvent.layout;
                                 const key = Math.ceil(width);
                                 this.widthList[item] = key;
-                                if (Math.floor(item) !== item) {
-                                    this.sds['font_' + Math.floor(item) + '_5'] = 'getFontSize(' + item + ')'
-
-                                } else {
-                                    this.sds['font_' + item] = 'getFontSize(' + item + ')'
-
-                                }
                                 if (Object.keys(this.widthList).length === textList.length) {
                                     this.svaeTextList();
                                 }
@@ -62,7 +58,7 @@ export default class HomeScreen extends PureComponent {
                     : null}
                 <View>
                     <Image style={styles.header} source={Images.tab_home_header} />
-                    <Text style={{ position: 'absolute', opacity: 0.6, bottom: 8, left: 12, color: '#fff', fontSize: 7.5 }}>
+                    <Text style={{ position: 'absolute', opacity: 0.6, bottom: 8, left: 12, color: '#fff', fontSize: UI.fontSizeNew.font_7_5 }}>
                         晴 12℃</Text>
                 </View>
                 <ScrollView

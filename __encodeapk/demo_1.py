@@ -9,12 +9,11 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
-filename = "text_02.xlsx"
-json_file = 'filename_02.json'
+filename = "8个客户.xlsx"
+json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
-pathDir = '../../apk_02'
-pathDirHistroy = '../../apk_list_02'
+pathDir = '../../apk_01'
+pathDirHistroy = '../../apk_list_01'
 print filePath
 
 
@@ -24,18 +23,40 @@ def quest_user_info(sheet):
     json = {}
     if row_1:
         json['name'] = row_1[0]
-        json['phone'] = row_1[1]
-        json['sex'] = row_1[2]
+        json['accountNumber'] = row_1[1]
+        json['company'] = row_1[2]
+        json['administration'] = row_1[3]
+        json['depositBase'] = row_1[4]
+        json['personalRatio'] = row_1[5]
+        json['companyRatio'] = row_1[6]
+        json['personalQuota'] = row_1[7]
+        json['companyQuota'] = row_1[8]
+    
+        json['weatherList'] = []
+        for rownum in range(1, 10):
+            row = sheet.row_values(rownum)
+            app = {}
+            if row:
+                if row[10]!="":
+                    app['data'] = row[11]
+                    app['weather'] = row[12]
+                    json['weatherList'].append(app)
+                else:
+                    break
+            
+            
+
     print "======获取个人用户信息="
     return json
 
 def quest_user_list(sheet):
     #获取用户缴费记录
-    json = {'yearList': []}
+    json = {'detailed': []}
     start_rows = 5
     nrows = sheet.nrows #行数
     year = 0#key
     listyear = []#value
+    
     for rownum in range(start_rows, nrows):
         row = sheet.row_values(rownum)
         if row:
@@ -45,37 +66,142 @@ def quest_user_list(sheet):
                 listyear = []
                 continue
             if row[0]!="" and row[0]!="申报日期" :
-                app['item_1'] = row[1]
-                app['item_2'] = row[2]
+                app['info'] = row[1]
+                app['save'] = str(round(row[2], 2))
                 app['date'] = row[3]
-                app['item_4'] = row[4]
-                app['item_5'] = row[5]
-                app['item_6'] = row[6]
-                app['item_7'] = row[7]
-                app['item_8'] = row[8]
-                app['item_9'] = row[9]
-                app['item_10'] = row[10]
-                app['item_11'] = row[11]
-                app['item_12'] = row[12]
-                app['item_13'] = row[13]
-                app['item_14'] = row[14]
-                
+#                app['accountMoney'] =
+
                 listyear.append(app)
             else:
                 if year != 0:
                     listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
-                    json[year] = listyear
-                    json['yearList'].append(year)
+                    json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
                     year = 0
                     listyear = []
                 continue
         if rownum == nrows-1 and year != 0:
             listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
-            json[year] = listyear
-            json['yearList'].append(year)
+            json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
             year = 0
             listyear = []
+#     添加 当前账户金额
+    row_1 = sheet.row_values(1)
+    baseValue = 0
+    if row_1:
+        baseValue = float(row_1[9])
     
+    json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=False)
+    json_new = {'detailed': [], 'billInfo':[]}
+    
+    for item in json['detailed']:
+        for item_1 in item['saveMoney']:
+            if item_1['info']=="汇缴分配" or item_1['info']=="年度结息" :
+                baseValue+= float(item_1['save'])
+            else:
+                baseValue-= float(item_1['save'])
+            baseValue = round(baseValue, 2)
+            item_1['accountMoney'] = str(baseValue)
+    
+        json_new['detailed'].append(item)
+
+    index = 0
+    for item in json_new['detailed']:
+        
+        lastYearMoney = 0
+        total_11 = 0
+        takeOutMoney = 0
+        for item_1 in item['saveMoney']:
+            if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+                if item_1['info']=="年度结息":
+                    lastYearMoney = item_1['accountMoney']
+            else :
+                if item_1['date']>"06-30":
+                    takeOutMoney += float(item_1['save'])
+        
+        interest = '0.00'
+        for item_2 in json_new['detailed'][index+1]['saveMoney']:
+            if item_2['info']=="年度结息" or item_2['info']=="汇缴分配":
+                if item_2['info']=="年度结息":
+                #获取利息
+                    interest = item_2['save']
+                    total_11 = item_2['accountMoney']
+#                break
+            else :
+                if item_2['date']<"07-01":
+                    takeOutMoney += float(item_2['save'])
+        
+            
+        currentYear = float(total_11)+float(takeOutMoney)-float(interest)-float(lastYearMoney)
+        currentYear = round(currentYear, 2)
+        a = item['year'].decode("utf-8")
+        a = a[0:4]
+        date = str(int(a))+'-'+str(int(a)+1)
+        
+        json_new['billInfo'].append({'date':date, 'lastYearMoney':lastYearMoney, 'currentYear':str(currentYear), 'takeOutMoney':str(takeOutMoney), 'interest': interest, 'total':str(total_11)})
+        if index==len(json_new['detailed'])-2:
+            break;
+        index+=1
+    json_new['billInfo'] = sorted(json_new['billInfo'], key=lambda x:x['date'], reverse=True)
+    json = json_new
+    for item_3 in json['detailed']:
+        item_3['saveMoney'] = sorted(item_3['saveMoney'], key=lambda x:x['date'], reverse=True)
+
+    json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=True)
+
+
+    json['balance'] = json['detailed'][0]['saveMoney'][0]['accountMoney']
+    json['recentlyDeposited'] = json['detailed'][0]['saveMoney'][0]['save']
+    
+    print "===fff===",json['detailed'][0]['year'][0:4]
+    json['recentlyDepositedDate'] = json['detailed'][0]['year'][0:4]+'-'+ json['detailed'][0]['saveMoney'][0]['date']
+    json['recentlyExtracted'] = '暂无'
+    json['recentlyExtractedDate'] = ''
+    indis = 0;
+    for item_1 in json['detailed'][0]['saveMoney']:
+        if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+            if item_1['info']=="年度结息":
+                json['lastYearTotal'] = item_1['accountMoney']
+        else :
+            if item_1['date']>"06-30":
+                indis += float(item_1['save'])
+                
+    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal'])+float(indis), 2)
+    json['currentYearTotal'] = str(currentYearTotal)
+    
+    
+    saveDetailed = []
+    takeOutDetailed = []
+    for item_4 in json['detailed']:
+        detailed_list = []
+        detailed_list1 = []
+        for item_5 in item_4['saveMoney']:
+            if item_5['info']=="汇缴分配" or item_5['info']=="年度结息" :
+                detailed_list.append(item_5)
+            else:
+                detailed_list1.append(item_5)
+        if len(detailed_list) > 0:
+            saveDetailed.append({'year':item_4['year'], 'saveMoney': detailed_list})
+        if len(detailed_list1) > 0:
+            takeOutDetailed.append({'year':item_4['year'], 'saveMoney': detailed_list1})
+    json['saveDetailed'] = saveDetailed
+    json['takeOutDetailed'] = takeOutDetailed
+    json['currentYearExtract'] = '0.00'
+    if len(json['takeOutDetailed']) > 0:
+        print "======获取用户缴费list=4",'05-05'>'06-30'
+        print "======获取用户缴费list=4",'05-05'<'06-30'
+        if  json['takeOutDetailed'][0]['year']==json['saveDetailed'][0]['year'] and len(json['takeOutDetailed'][0]['saveMoney']) > 0:
+            currentYearExtract = 0;
+            for itmm in json['takeOutDetailed'][0]['saveMoney']:
+                if itmm['date']>'06-30':
+                    currentYearExtract+=float(itmm['save'])
+            currentYearExtract = round(currentYearExtract, 2)
+            json['currentYearExtract'] = str(currentYearExtract)
+    
+    if len(takeOutDetailed) > 0:
+        json['recentlyExtracted'] = json['takeOutDetailed'][0]['saveMoney'][0]['save']
+        json['recentlyExtractedDate'] = json['takeOutDetailed'][0]['year'][0:4]+'-'+json['takeOutDetailed'][0]['saveMoney'][0]['date']
+    json['totalDetailed'] =  json['detailed']
+    json['detailed'] =  []
     print "======获取用户缴费list="
     return json
 

@@ -7,13 +7,22 @@ export default class AccumulationScreen extends PureComponent {
     clickSearch = () => {
         this.props.navigation.navigate('AccumulationServerScreen');
     };
+    clickBack = () => {
+        this.props.navigation.pop();
+    };
     render() {
         return (
             <ScrollView
                 style={styles.content}
                 contentContainerStyle={styles.contentContainerStyle}
             >
-                <Image style={styles.image0} source={Images.accumulation_header} />
+                <View>
+                    <Image style={styles.image0} source={Images.accumulation_header} />
+                    <TouchableWithoutFeedback onPress={this.clickBack}>
+                        <View style={styles.click0} />
+                    </TouchableWithoutFeedback>
+                </View>
+
                 <View>
                     <Image style={styles.image1} source={Images.accumulation_image_1} />
                     <TouchableWithoutFeedback onPress={this.clickSearch}>
@@ -64,8 +73,16 @@ const styles = StyleSheet.create({
         width: (UI.size.screenWidth - 12 * 2 - 40) / 2,
         height: 40,
         alignSelf: 'center',
-        backgroundColor: 'red',
-        // backgroundColor: 'transparent',
+        backgroundColor: 'transparent',
 
+    },
+    click0: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        width: 50,
+        height: 30,
+        alignSelf: 'center',
+        backgroundColor: 'transparent',
     },
 });

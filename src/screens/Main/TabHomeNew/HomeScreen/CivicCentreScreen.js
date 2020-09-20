@@ -8,14 +8,22 @@ export default class CivicCentreScreen extends PureComponent {
     clickSearch = () => {
         this.props.navigation.navigate('AccumulationScreen');
     };
+
+    clickBack = () => {
+        this.props.navigation.pop();
+    };
     render() {
         return (
             <ScrollView
                 style={styles.content}
                 contentContainerStyle={styles.contentContainerStyle}
             >
-
-                <Image style={styles.image0} source={Images.civic_centre_header} />
+                <View>
+                    <Image style={styles.image0} source={Images.civic_centre_header} />
+                    <TouchableWithoutFeedback onPress={this.clickBack}>
+                        <View style={styles.click0} />
+                    </TouchableWithoutFeedback>
+                </View>
                 <View>
                     <Image style={styles.image1} source={Images.civic_centre_image_1} />
                     <TouchableWithoutFeedback onPress={this.clickSearch}>
@@ -26,7 +34,7 @@ export default class CivicCentreScreen extends PureComponent {
                 <Image style={styles.image2} source={Images.civic_centre_image_2} />
                 <Image style={styles.image3} source={Images.civic_centre_image_3} />
                 <Image style={styles.image4} source={Images.civic_centre_image_4} />
-            </ScrollView>
+            </ScrollView >
         );
     }
 }
@@ -61,6 +69,15 @@ const styles = StyleSheet.create({
         right: 12 + (UI.size.screenWidth - 12 * 2) / 5,
         width: (UI.size.screenWidth - 12 * 2) / 5,
         height: (UI.size.screenWidth - 12 * 2) / 5,
+        alignSelf: 'center',
+        backgroundColor: 'transparent',
+    },
+    click0: {
+        position: 'absolute',
+        top: 10,
+        left: 10,
+        width: 50,
+        height: 30,
         alignSelf: 'center',
         backgroundColor: 'transparent',
     },
