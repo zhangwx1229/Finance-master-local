@@ -11,10 +11,6 @@ import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import TabNav from '../TabNav';
-import MySearchScreen from '../../screens/Main/TabHomeNew/MySearchScreen';
-import SearchView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchView';
-import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchDetailView';
-import DetailInfoView from '../../screens/Main/TabHomeNew/MySearchScreen/DetailInfo';
 import GestureScreen from '../../screens/Main/TabMine/MineScreen/GestureScreen';
 import CivicCentreScreen from '../../screens/Main/TabHomeNew/HomeScreen/CivicCentreScreen';
 import AccumulationScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationScreen';
@@ -24,6 +20,8 @@ import UserScreen from '../../screens/Main/TabHomeNew/HomeScreen/UserScreen';
 import DetailScreen from '../../screens/Main/TabHomeNew/HomeScreen/DetailScreen';
 import AccountStatementScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccountStatementScreen';
 import AccountSearchScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccountSearchScreen';
+import LoanSearch from '../../screens/Main/TabHomeNew/HomeScreen/LoanSearch';
+
 
 
 
@@ -49,12 +47,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="DetailScreen" component={DetailScreen} />
                 <Stack.Screen name="AccountStatementScreen" component={AccountStatementScreen} />
                 <Stack.Screen name="AccountSearchScreen" component={AccountSearchScreen} />
-
-
-                <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
-                <Stack.Screen name="SearchView" component={SearchView} />
-                <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
-                <Stack.Screen name="DetailInfoView" component={DetailInfoView} />
+                <Stack.Screen name="LoanSearch" component={LoanSearch} />
             </Stack.Navigator>
         );
     }

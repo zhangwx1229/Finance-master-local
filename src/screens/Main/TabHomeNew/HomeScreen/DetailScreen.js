@@ -10,6 +10,7 @@ import {
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import filejson from '../../../../image/filename.json';
+import TitleView from '../common/TitleView';
 // let font_13 = UI.fontSizeNew.font_13
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
@@ -34,20 +35,6 @@ export default class DetailScreen extends PureComponent {
         this.isDestroy = false;
         this.header_H = 300
         this.foot_H = 80
-    }
-
-
-    clickBack = () => {
-        const {
-            navigation
-        } = this.props;
-        navigation.pop()
-    }
-    clickClose = () => {
-        const {
-            navigation
-        } = this.props;
-        navigation.navigate("AccumulationScreen")
     }
 
     componentWillUnmount() {
@@ -162,20 +149,12 @@ export default class DetailScreen extends PureComponent {
     };
 
     renderTitle = () => {
-        return (
-            <View style={{ justifyContent: 'center' }}>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 143) / 1080,
-                }} source={Images.icon_12} />
-                <TouchableWithoutFeedback onPress={this.clickBack}>
-                    <View style={{ position: 'absolute', left: 5, width: 30, height: 30 }} />
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={this.clickClose}>
-                    <View style={{ position: 'absolute', left: 40, width: 30, height: 30 }} />
-                </TouchableWithoutFeedback>
-            </View>
-        );
+        return <TitleView navigation={this.props.navigation} imageComponent={() =>
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: (UI.size.screenWidth * 143) / 1080,
+            }} source={Images.icon_12} />
+        } />
     };
 
     renderItem_1 = ({

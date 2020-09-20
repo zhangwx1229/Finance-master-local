@@ -10,6 +10,7 @@ import {
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import filejson from '../../../../image/filename.json';
+import TitleView from '../common/TitleView';
 // let font_13 = UI.fontSizeNew.font_13
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
@@ -42,18 +43,6 @@ export default class AccumulationInfoScreen extends PureComponent {
         this.setState({ isShowUser: !this.state.isShowUser })
     }
 
-    clickBack = () => {
-        const {
-            navigation
-        } = this.props;
-        navigation.pop()
-    }
-    clickClose = () => {
-        const {
-            navigation
-        } = this.props;
-        navigation.navigate("AccumulationScreen")
-    }
     clickLeft = () => {
         const {
             navigation
@@ -76,7 +65,11 @@ export default class AccumulationInfoScreen extends PureComponent {
     }
 
     clickSearch2 = () => {
-        this.setState({ isShowUser: !this.state.isShowUser })
+
+        const {
+            navigation
+        } = this.props;
+        navigation.navigate('LoanSearch', 0);
     }
 
     componentWillUnmount() {
@@ -167,13 +160,26 @@ export default class AccumulationInfoScreen extends PureComponent {
                             alignSelf: 'center', marginTop: 4
                         }} numberOfLines={1} >{'    '}{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
                         <TouchableWithoutFeedback onPress={this.clickShowUser}>
-                            <Image style={{
+                            <View style={{
                                 marginLeft: 5,
-                                marginTop: 4,
+                                marginTop: 0,
                                 alignSelf: 'center',
-                                width: 30,
-                                height: this.state.isShowUser ? 30 * 57 / 84 : 15,
-                            }} source={this.state.isShowUser ? Images.alipay_23 : Images.alipay_14} />
+                                width: 25,
+                                justifyContent: 'center',
+                                height: this.state.isShowUser ? 25 * 53 / 76 : 25 / 2
+                            }}>
+                                <Image style={{
+                                    position: 'absolute',
+                                    width: 25,
+                                    height: this.state.isShowUser ? 25 * 53 / 76 : 25 / 2,
+                                }} source={this.state.isShowUser ? Images.alipay_23_1 : Images.alipay_14} />
+                                <Image style={{
+                                    position: 'absolute',
+                                    width: 10,
+                                    alignSelf: 'center',
+                                    height: this.state.isShowUser ? 10 : 15,
+                                }} source={this.state.isShowUser ? Images.alipay_23 : Images.alipay_14} />
+                            </View>
                         </TouchableWithoutFeedback>
                     </View>
 
@@ -190,35 +196,31 @@ export default class AccumulationInfoScreen extends PureComponent {
                             alignSelf: 'center',
                         }} numberOfLines={1} >{filejson.accountNumber}</Text>
                     </View>
-                    <Text style={{
-                        lineHeight: 30, borderRadius: 30, borderWidth: 1, borderColor: "#fff",
-                        color: '#fff',
-                        fontSize: font_12,
-                        alignSelf: 'center',
-                        marginTop: 13,
-                        backgroundColor: '#ffffff32'
-                    }} numberOfLines={1}
-                        onPress={this.clickUser}>      查看账户信息      </Text>
-
+                    <View style={{
+                        backgroundColor: '#ffffff32', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, borderWidth: 1, borderColor: "#fff", width: 150, height: 40, marginTop: 20,
+                    }}>
+                        <Text style={{
+                            // lineHeight: 40,
+                            color: '#fff',
+                            fontSize: font_12,
+                            alignSelf: 'center',
+                        }} numberOfLines={1}
+                            onPress={this.clickUser}>
+                            查看账户信息
+                        </Text>
+                    </View>
                 </View>
-            </View>
+            </View >
         );
     };
+
     renderTitle = () => {
-        return (
-            <View style={{ justifyContent: 'center' }}>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 143) / 1080,
-                }} source={Images.accumulation_info_header} />
-                <TouchableWithoutFeedback onPress={this.clickBack}>
-                    <View style={{ position: 'absolute', left: 5, width: 30, height: 30 }} />
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={this.clickClose}>
-                    <View style={{ position: 'absolute', left: 40, width: 30, height: 30 }} />
-                </TouchableWithoutFeedback>
-            </View>
-        );
+        return <TitleView navigation={this.props.navigation} imageComponent={() =>
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: (UI.size.screenWidth * 143) / 1080,
+            }} source={Images.accumulation_info_header} />
+        } />
     };
 
 
@@ -260,16 +262,17 @@ export default class AccumulationInfoScreen extends PureComponent {
         </View >
     };
     renderItem_2 = (data, index) => {
+        const H = (UI.size.screenWidth * 539) / 1080
         return <View >
             <Image style={{
                 width: UI.size.screenWidth,
-                height: (UI.size.screenWidth * 539) / 1080,
+                height: H,
             }} source={Images.gjj_four_4} />
             <TouchableWithoutFeedback onPress={this.clickSearch1} >
-                <View style={{ position: 'absolute', left: 20, top: 20, width: 50, height: 50 }} />
+                <View style={{ position: 'absolute', left: 15, top: 20, width: H / 2 - 20, height: H / 2 - 20 }} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.clickSearch2} >
-                <View style={{ position: 'absolute', left: 60 + 50, top: 20, width: 50, height: 50 }} />
+                <View style={{ position: 'absolute', left: H / 2 + 15, top: 20, width: H / 2 - 20, height: H / 2 - 20 }} />
             </TouchableWithoutFeedback>
         </View >
 

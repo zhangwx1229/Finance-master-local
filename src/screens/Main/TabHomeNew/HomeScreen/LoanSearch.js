@@ -18,9 +18,12 @@ let font_10 = UI.fontSizeNew.font_10
 let font_10_5 = UI.fontSizeNew.font_10_5
 let font_30 = UI.fontSizeNew.font_30
 let font_8 = UI.fontSizeNew.font_8
-export default class AccountStatementScreen extends PureComponent {
+export default class LoanSearch extends PureComponent {
     constructor(props) {
         super(props);
+        const { route } = props;
+        console.debug('=========', route.params)
+
         this.state = { opacity: 0 }
         this.offset_y = 0
         this.offset_olf_y = 0
@@ -35,7 +38,7 @@ export default class AccountStatementScreen extends PureComponent {
         const {
             navigation
         } = this.props;
-        navigation.navigate('AccountSearchScreen', item);
+        navigation.navigate('LoanSearch', item);
     }
 
     componentWillUnmount() {
@@ -101,61 +104,51 @@ export default class AccountStatementScreen extends PureComponent {
         }
     }
 
-    renderItem_1 = () => {
+    renderItem_1 = (itme) => {
         return <View style={{ backgroundColor: '#fff' }}>
-            <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 193 / 1080 }} source={Images.icon_4} />
+            <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f6f9' }} />
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >个人账号</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{filejson.accountNumber}</Text>
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >年度</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{itme.date}</Text>
             </View >
             <View style={{
-                flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >姓名</Text>
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >上年结转金额</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.lastYearMoney)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年缴存金额</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.currentYear)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年提取金额</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.takeOutMoney)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >利息</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.interest)}</Text>
+            </View >
+            <View style={{
+                flexDirection: 'row', marginVertical: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+            }} >
+                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >本息合计</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >
-                    {UI.getNumNick(filejson.name)}
+                    {UI.getNumString(itme.total)}
                 </Text>
             </View >
+
         </View >
     };
-    renderList = () => {
-        const list = [];
-        list.push(
-            <Image key={'0000'} style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 190 / 1080 }} source={Images.icon_5} />
-        );
-        for (let i = 0; i < filejson.billInfo.length; i++) {
-            list.push(this.renderItem_2(filejson.billInfo[i]))
-        }
-        return list
-    }
 
-
-    renderItem_2 = (itme) => {
-        const { date, total } = itme
-        return (
-            <TouchableWithoutFeedback key={date} onPress={() => {
-                this.clickItem(itme)
-            }}>
-                <View style={{ flexDirection: 'row', paddingVertical: 7, justifyContent: 'space-between', backgroundColor: '#fff', }}>
-                    <View style={{ marginLeft: 15, width: UI.size.screenWidth - 100 - 20 * 2 - 20 }}>
-                        <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_12, color: '#9D9D9D' }} >{date}</Text>
-                    </View >
-                    <View style={{ width: 100 }}>
-                        <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_12, color: '#FEB415' }} >{UI.getNumString(total)}</Text>
-                        <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_10, color: '#9D9D9D' }}>本息合计</Text>
-                    </View >
-                    <View style={{ marginRight: 15 }}>
-                        <Text numberOfLines={1} style={{ fontSize: font_12 }} >
-                            {' '}
-                            <Image style={{ width: 12 * 23 / 38, height: 12 }} source={Images.icon_6} />
-                        </Text>
-                    </View >
-                </View>
-            </TouchableWithoutFeedback >
-        )
-    };
 
     renderScrollHeader = () => {
         return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f6f9' }} />
@@ -177,7 +170,6 @@ export default class AccountStatementScreen extends PureComponent {
             }} source={Images.icon_15} />
         } />
     };
-
     render() {
         font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
@@ -185,7 +177,8 @@ export default class AccountStatementScreen extends PureComponent {
         font_8 = UI.fontSizeNew.font_8
         font_10_5 = UI.fontSizeNew.font_10_5
         font_30 = UI.fontSizeNew.font_30
-        const { navigation } = this.props;
+        const { navigation, route } = this.props;
+        console.debug('=========', route.params)
         return (<View style={styles.container} >
             {this.renderTitle()}
             <ScrollView
@@ -204,8 +197,12 @@ export default class AccountStatementScreen extends PureComponent {
                 }}
             >
                 {this.renderScrollHeader()}
-                {this.renderItem_1()}
-                {this.renderList()}
+                <Image style={{
+                    marginTop: 120,
+                    alignSelf: 'center',
+                    width: UI.size.screenWidth - 120 * 2,
+                    height: ((UI.size.screenWidth - 120 * 2) * 514) / 428,
+                }} source={Images.icon_7} />
                 <View style={{ height: this.contentH > 0 ? 40 : 400 }} />
                 {this.renderScrollFoot()}
             </ScrollView>
@@ -215,7 +212,8 @@ export default class AccountStatementScreen extends PureComponent {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#f5f6f9'
     },
     content: {
         flex: 1,
