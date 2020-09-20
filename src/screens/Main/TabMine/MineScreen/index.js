@@ -1,29 +1,72 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View } from 'react-native';
+import { Image, StyleSheet, ScrollView, View, Text } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 
-export default class MineScreen extends PureComponent {
+export default class TaxMince extends PureComponent {
     render() {
-        const image_h = UI.size.screenWidth-50*2
+        const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>
-                <Image style={styles.header} source={Images.tab_mine_header} />
-                <View style={{alignSelf:'center'}}>
-                    <View style={{width:image_h *0.25,height:image_h *0.25,alignSelf:'center',backgroundColor:'red',marginTop:40}}/>
-                <Image style={{width:image_h ,
-        height: image_h ,alignSelf:'center',marginTop:20,}} source={Images.tab_mine_image_1} />
-                <Image style={{width: image_h *0.4,
-        height: (image_h *0.4 * 48) / 276,alignSelf:'center',marginTop:40}} source={Images.tab_mine_image_2} />
+                <Image style={styles.header} source={Images.tab_mine_new_header} />
+                <ScrollView
+                    style={styles.content}
+                    contentContainerStyle={styles.contentContainerStyle}
+                >
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 15, backgroundColor: '#0c79fc' }}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{
+                                marginLeft: 15,
+                                width: 52,
+                                height: 52,
+                                borderColor: '#ffffff3c',
+                                borderRadius: 6,
+                                borderWidth: 2,
+                                overflow: 'hidden'
+                            }}>
+                                <Image style={{
+                                    width: '100%',
+                                    height: '100%',
+                                }} source={Images.tab_mine_new_0} />
+                            </View>
+                            <View style={{ marginLeft: 15, marginRight: 15, alignSelf: 'center' }}>
+                                <Text style={{
+                                    fontSize: UI.fontSizeNew.font_12, width: 200, alignSelf: 'center', color: "#fff"
+                                }} >多久啊搜索</Text>
+                                <Text style={{
+                                    fontSize: UI.fontSizeNew.font_9, width: 200, alignSelf: 'center', opacity: 0.6, color: "#fff"
+                                }} >zahnfhsdj@ww.com</Text>
+                            </View>
+                        </View>
+                        <Image style={{
+                            width: 12,
+                            height: 12,
+                            alignSelf: 'center',
+                            marginRight: 15
+                        }} source={Images.alipay_29} />
                     </View>
+
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1134 / 1080
+                    }} source={Images.tab_mine_new_0} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: UI.size.screenWidth * 1333 / 1080
+                    }} source={Images.tab_mine_new_1} />
+                </ScrollView>
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1,backgroundColor:'#fff' },
+    container: { flex: 1, backgroundColor: '#fff' },
+    content: { flex: 1, backgroundColor: '#f5f6f9' },
+    contentContainerStyle: {
+        backgroundColor: UI.color.background,
+    },
     header: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 142) / 1080,
+        height: (UI.size.screenWidth * 144) / 1080,
     },
 });

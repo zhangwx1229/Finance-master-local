@@ -27,6 +27,11 @@ const Images = {
     tab_licai_image_5: require('./2/licai_5.jpg'),
     tab_licai_image_6: require('./2/licai_6.jpg'),
 
+    tab_mine_new_header: require('./2/tab_mine_new_header.jpg'),
+    tab_mine_new_0: require('./2/tab_mine_new_0.jpg'),
+    tab_mine_new_1: require('./2/tab_mine_new_1.jpg'),
+    alipay_29: require('./5/alipay_29.png'),
+
     tab_mine_header: require('./2/tab_mine_0.jpg'),
     tab_mine_image_1: require('./2/tab_mine_2.jpg'),
     tab_mine_image_2: require('./2/tab_mine_3.jpg'),
