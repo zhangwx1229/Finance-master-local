@@ -142,7 +142,6 @@ export default class AccountSearchScreen extends PureComponent {
                 <TouchableWithoutFeedback onPress={this.clickBack}>
                     <View style={{ position: 'absolute', left: 5, width: 30, height: 30 }} />
                 </TouchableWithoutFeedback>
-
             </View>
         );
     };
