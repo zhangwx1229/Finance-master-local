@@ -9,17 +9,35 @@ export default class HomeScreen extends PureComponent {
     constructor() {
         super();
         const textList = [];
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 80; i++) {
             textList.push(i / 2 + 6);
         }
         this.state = {
             textList: textList,
         };
         this.widthList = {};
-        // {
-        //     "data": "2020-09-16",
-        //         "weather": "晴 27℃"
-        // },
+
+
+        const date = new Date();
+
+        const year = date.getFullYear().toString();
+        let month = (date.getMonth() + 1).toString();
+        let day = date.getDate().toString();
+
+        if (month < 10) {
+            month = "0" + month
+        }
+
+        if (day < 10) {
+            day = "0" + day
+        }
+        const dateStr = year + "-" + month + '-' + day;
+        for (let i = 0; i < filejson.weatherList.length; i++) {
+            const { data, weather } = filejson.weatherList[i];
+            if (data === dateStr) {
+                this.weather = weather;
+            }
+        }
     }
 
     clickSearch = () => {
@@ -59,7 +77,8 @@ export default class HomeScreen extends PureComponent {
                 <View>
                     <Image style={styles.header} source={Images.tab_home_header} />
                     <Text style={{ position: 'absolute', opacity: 0.6, bottom: 8, left: 12, color: '#fff', fontSize: UI.fontSizeNew.font_7_5 }}>
-                        晴 12℃</Text>
+                        {this.weather}
+                    </Text>
                 </View>
                 <ScrollView
                     style={styles.content}

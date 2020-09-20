@@ -155,14 +155,13 @@ export default class AccumulationInfoScreen extends PureComponent {
                     <View style={{ alignSelf: 'center', flexDirection: 'row' }}>
                         <Text style={{
                             color: '#fff',
-                            lineHeight: 40,
-                            fontSize: font_30,
+                            fontSize: UI.fontSizeNew.font_35,
                             alignSelf: 'center', marginTop: 4
-                        }} numberOfLines={1} >{'    '}{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
+                        }} numberOfLines={1} >{'  '}{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
                         <TouchableWithoutFeedback onPress={this.clickShowUser}>
                             <View style={{
                                 marginLeft: 5,
-                                marginTop: 0,
+                                marginTop: this.state.isShowUser ? 6 : 0,
                                 alignSelf: 'center',
                                 width: 25, backgroundColor: 'transparent',
                                 justifyContent: 'center',
