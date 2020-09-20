@@ -22,10 +22,10 @@ export default class TitleView extends PureComponent {
             <View style={{ justifyContent: 'center' }}>
                 {this.props.imageComponent()}
                 <TouchableWithoutFeedback onPress={this.clickBack}>
-                    <View style={{ position: 'absolute', left: 5, width: H - 10 * 2, height: H - 10 * 2 }} />
+                    <View style={{ position: 'absolute', left: 5, width: H - 10 * 2, height: H - 10 * 2, backgroundColor: 'transparent', }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickClose}>
-                    <View style={{ position: 'absolute', left: 5 + H - 10 * 2 + 10, width: H - 10 * 2, height: H - 10 * 2 }} />
+                    <View style={{ position: 'absolute', left: 5 + H - 10 * 2 + 10, width: H - 10 * 2, height: H - 10 * 2, backgroundColor: 'transparent', }} />
                 </TouchableWithoutFeedback>
             </View>
         );

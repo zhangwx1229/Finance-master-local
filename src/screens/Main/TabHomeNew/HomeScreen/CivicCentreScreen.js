@@ -63,6 +63,5 @@ const styles = StyleSheet.create({
         height: (UI.size.screenWidth - 12 * 2) / 5,
         alignSelf: 'center',
         backgroundColor: 'transparent',
-
     },
 });

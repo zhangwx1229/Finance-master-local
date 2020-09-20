@@ -164,7 +164,7 @@ export default class AccumulationInfoScreen extends PureComponent {
                                 marginLeft: 5,
                                 marginTop: 0,
                                 alignSelf: 'center',
-                                width: 25,
+                                width: 25, backgroundColor: 'transparent',
                                 justifyContent: 'center',
                                 height: this.state.isShowUser ? 25 * 53 / 76 : 25 / 2
                             }}>
@@ -232,7 +232,7 @@ export default class AccumulationInfoScreen extends PureComponent {
                     fontSize: font_12, color: '#333333'
                 }} >我的缴存</Text>
                 <TouchableWithoutFeedback onPress={this.clickLeft}>
-                    <View>
+                    <View style={{ backgroundColor: 'transparent', }}>
                         <Text style={{
                             fontSize: font_8, color: '#9D9D9D', marginTop: 5
                         }} >最近缴存{filejson.recentlyDepositedDate} </Text>
@@ -248,7 +248,7 @@ export default class AccumulationInfoScreen extends PureComponent {
                     fontSize: font_12, color: '#333333'
                 }} >我的提取</Text>
                 <TouchableWithoutFeedback onPress={this.clickRight}>
-                    <View>
+                    <View style={{ backgroundColor: 'transparent' }}>
                         <Text style={{
                             fontSize: font_8, color: '#9D9D9D', marginTop: 5
                         }} >最近提取{filejson.recentlyExtractedDate}</Text>
@@ -269,10 +269,10 @@ export default class AccumulationInfoScreen extends PureComponent {
                 height: H,
             }} source={Images.gjj_four_4} />
             <TouchableWithoutFeedback onPress={this.clickSearch1} >
-                <View style={{ position: 'absolute', left: 15, top: 20, width: H / 2 - 20, height: H / 2 - 20 }} />
+                <View style={{ position: 'absolute', left: 15, top: 20, width: H / 2 - 20, height: H / 2 - 20, backgroundColor: 'transparent', }} />
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.clickSearch2} >
-                <View style={{ position: 'absolute', left: H / 2 + 15, top: 20, width: H / 2 - 20, height: H / 2 - 20 }} />
+                <View style={{ position: 'absolute', left: H / 2 + 15, top: 20, width: H / 2 - 20, height: H / 2 - 20, backgroundColor: 'transparent', }} />
             </TouchableWithoutFeedback>
         </View >
 

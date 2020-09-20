@@ -115,7 +115,7 @@ export default class AccountSearchScreen extends PureComponent {
                 height: (UI.size.screenWidth * 841) / 1080,
             }} source={Images.gjj_thire} />
             <TouchableWithoutFeedback onPress={this.clickSearch}>
-                <View style={{ position: 'absolute', left: 20, right: 20, bottom: 5, height: 50 }} />
+                <View style={{ position: 'absolute', left: 20, right: 20, bottom: 5, height: 50, backgroundColor: 'transparent', }} />
             </TouchableWithoutFeedback>
         </View >
     };
@@ -140,7 +140,7 @@ export default class AccountSearchScreen extends PureComponent {
                     height: (UI.size.screenWidth * 144) / 1080,
                 }} source={Images.gjj_thire_0} />
                 <TouchableWithoutFeedback onPress={this.clickBack}>
-                    <View style={{ position: 'absolute', left: 5, width: 30, height: 30 }} />
+                    <View style={{ position: 'absolute', left: 5, width: 30, height: 30, backgroundColor: 'transparent', }} />
                 </TouchableWithoutFeedback>
             </View>
         );
