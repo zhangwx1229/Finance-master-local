@@ -19,9 +19,9 @@ export default class AccumulationScreen extends PureComponent {
                     <TouchableWithoutFeedback onPress={this.clickSearch}>
                         <View style={styles.click} />
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={this.clickSearch}>
+                    {/* <TouchableWithoutFeedback onPress={this.clickSearch}>
                         <View style={styles.click1} />
-                    </TouchableWithoutFeedback>
+                    </TouchableWithoutFeedback> */}
                 </View>
 
                 <Image style={styles.image2} source={Images.accumulation_image_2} />
@@ -64,6 +64,8 @@ const styles = StyleSheet.create({
         width: (UI.size.screenWidth - 12 * 2 - 40) / 2,
         height: 40,
         alignSelf: 'center',
-        backgroundColor: 'transparent',
+        backgroundColor: 'red',
+        // backgroundColor: 'transparent',
+
     },
 });
