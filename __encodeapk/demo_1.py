@@ -250,7 +250,6 @@ def encode_apk(name):
     output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
     output = excuteCommand('cp -r images/'+imageName+pathDir+'/'+name+'/'+imageName)
     output = excuteCommand('mv '+pathDir+'/'+name+'/'+imageName+' ../src/image/headImage.jpeg')
-    return
     print "==拷贝新的json成功="
     if os.path.exists('../android/app/build/'):
         output = excuteCommand('rm -r ../android/app/build/')
