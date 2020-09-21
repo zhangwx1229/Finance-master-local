@@ -230,11 +230,11 @@ export default class DetailScreen extends PureComponent {
     }
 
     renderScrollHeader = () => {
-        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f6f9' }} />
+        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f4f8' }} />
     }
 
     renderScrollFoot = () => {
-        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f6f9' }} >
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f4f8' }} >
             <Text style={{ marginTop: 15, color: '#9D9D9D', fontSize: font_10 }}>没有更多数据了...
             </Text>
         </View>
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        backgroundColor: '#f5f6f9',
+        backgroundColor: '#f5f4f8',
     },
     contentContainerStyle: {
         backgroundColor: UI.color.background,

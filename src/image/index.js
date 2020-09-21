@@ -31,6 +31,11 @@ const Images = {
     tab_mine_new_0: require('./2/tab_mine_new_0.jpg'),
     tab_mine_new_1: require('./2/tab_mine_new_1.jpg'),
     alipay_29: require('./5/alipay_29.png'),
+    icon_30: require('./2/icon_30.jpg'),
+    icon_31: require('./2/icon_31.jpg'),
+    icon_32: require('./2/icon_32.jpg'),
+    icon_33: require('./2/icon_33.jpg'),
+    icon_34: require('./2/icon_34.jpg'),
 
     tab_mine_header: require('./2/tab_mine_0.jpg'),
     tab_mine_image_1: require('./2/tab_mine_2.jpg'),
@@ -71,6 +76,14 @@ const Images = {
     gjj_thire_0: require('./1/gjj_thire_0.jpg'),
     gjj_thire: require('./1/gjj_thire.jpg'),
     icon_7: require('./1/icon_7.jpg'),
+    alipay_28: require('./5/alipay_28.png'),
+
+
+
+
+
+
+
 
 
     tab_home_image_header: require('./tab_home_image_header.jpg'),

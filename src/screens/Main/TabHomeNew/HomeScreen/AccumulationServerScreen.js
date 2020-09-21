@@ -122,11 +122,11 @@ export default class AccountSearchScreen extends PureComponent {
 
 
     renderScrollHeader = () => {
-        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f6f9' }} />
+        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f4f8' }} />
     }
 
     renderScrollFoot = () => {
-        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f6f9' }} >
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f4f8' }} >
             <Text style={{ marginTop: 15, color: '#333333', fontSize: font_10 }}>我是有底线的
             </Text>
         </View>
@@ -184,11 +184,11 @@ export default class AccountSearchScreen extends PureComponent {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f6f9'
+        backgroundColor: '#f5f4f8'
     },
     content: {
         flex: 1,
-        backgroundColor: '#f5f6f9',
+        backgroundColor: '#f5f4f8',
     },
     contentContainerStyle: {
         backgroundColor: UI.color.background,

@@ -15,8 +15,11 @@ const UI = {
     fontSize,
     fontSizeNew: {},
     getNumString,
-    getNumNick
+    getNumNick,
+    getNumPhone
 };
+
+
 
 const widthList = {
     "10": 50,
@@ -252,5 +255,16 @@ function getNumNick(str) {
     }
     return '*' + str.slice(-1)
 }
+
+function getNumPhone(str) {
+    let phone = ''
+    const phoneStr = str + ''
+    if (phoneStr.length === 11) {
+        phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
+    }
+    return phone
+}
+
+
 
 export default UI;

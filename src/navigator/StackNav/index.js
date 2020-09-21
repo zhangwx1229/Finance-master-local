@@ -20,8 +20,8 @@ import DetailScreen from '../../screens/Main/TabHomeNew/HomeScreen/DetailScreen'
 import AccountStatementScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccountStatementScreen';
 import AccountSearchScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccountSearchScreen';
 import LoanSearch from '../../screens/Main/TabHomeNew/HomeScreen/LoanSearch';
-
-
+import MineUserInfo from '../../screens/Main/TabMine/MineScreen/MineUserInfo';
+import ShippingAddress from '../../screens/Main/TabMine/MineScreen/ShippingAddress';
 
 
 const Stack = createStackNavigator();
@@ -46,6 +46,10 @@ export default class StackNav extends Component {
                 <Stack.Screen name="AccountStatementScreen" component={AccountStatementScreen} />
                 <Stack.Screen name="AccountSearchScreen" component={AccountSearchScreen} />
                 <Stack.Screen name="LoanSearch" component={LoanSearch} />
+                <Stack.Screen name="MineUserInfo" component={MineUserInfo} />
+                <Stack.Screen name="ShippingAddress" component={ShippingAddress} />
+
+
             </Stack.Navigator>
         );
     }

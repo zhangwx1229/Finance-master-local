@@ -107,7 +107,7 @@ export default class AccountSearchScreen extends PureComponent {
 
     renderItem_1 = (itme) => {
         return <View style={{ backgroundColor: '#fff' }}>
-            <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f6f9' }} />
+            <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f4f8' }} />
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
@@ -152,11 +152,11 @@ export default class AccountSearchScreen extends PureComponent {
 
 
     renderScrollHeader = () => {
-        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f6f9' }} />
+        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f4f8' }} />
     }
 
     renderScrollFoot = () => {
-        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f6f9' }} >
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f4f8' }} >
             <Text style={{ marginTop: 15, color: '#333333', fontSize: font_10 }}>我是有底线的
             </Text>
         </View>
@@ -215,11 +215,11 @@ export default class AccountSearchScreen extends PureComponent {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f6f9'
+        backgroundColor: '#f5f4f8'
     },
     content: {
         flex: 1,
-        backgroundColor: '#f5f6f9',
+        backgroundColor: '#f5f4f8',
     },
     contentContainerStyle: {
         backgroundColor: UI.color.background,
