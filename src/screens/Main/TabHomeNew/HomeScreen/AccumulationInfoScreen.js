@@ -194,9 +194,14 @@ export default class AccumulationInfoScreen extends PureComponent {
                             fontSize: font_10_5,
                             alignSelf: 'center',
                         }} numberOfLines={1} >{filejson.accountNumber}</Text>
+                        <Image style={{
+                            width: 25,
+                            alignSelf: 'center',
+                            height: 25,
+                        }} source={Images.alipay_22} />
                     </View>
                     <View style={{
-                        backgroundColor: '#ffffff32', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, borderWidth: 1, borderColor: "#fff", width: 150, height: 40, marginTop: 20,
+                        backgroundColor: '#ffffff32', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, borderWidth: 1, borderColor: "#fff", width: 150, height: 40, marginTop: 15,
                     }}>
                         <Text style={{
                             // lineHeight: 40,

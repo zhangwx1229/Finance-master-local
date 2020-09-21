@@ -101,7 +101,7 @@ export default class UserScreen extends PureComponent {
 
     renderHeader = () => {
         const balance = UI.getNumString(filejson.balance)
-        const companyQuota = UI.getNumString(filejson.companyQuota)
+        const recentlyDeposited = UI.getNumString(filejson.recentlyDeposited)
         return (
             <View style={{}}>
                 <Image style={{
@@ -129,11 +129,11 @@ export default class UserScreen extends PureComponent {
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_19, color: '#fff', textAlign: 'center'
                         }} >
-                            {companyQuota.substr(0, companyQuota.length - 2)}
+                            {recentlyDeposited.substr(0, recentlyDeposited.length - 2)}
                             <Text style={{
                                 fontSize: font_13, color: '#fff', textAlign: 'center'
                             }} >
-                                {companyQuota.substr(-2)}
+                                {recentlyDeposited.substr(-2)}
                             </Text>
                         </Text>
                         <Text style={{
@@ -231,7 +231,7 @@ export default class UserScreen extends PureComponent {
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >单位月缴存额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.companyQuota)}元
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.recentlyDeposited)}元
                 </Text>
             </View >
             <View style={{
