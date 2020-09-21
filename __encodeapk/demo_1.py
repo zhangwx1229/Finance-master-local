@@ -31,6 +31,12 @@ def quest_user_info(sheet):
         json['companyRatio'] = row_1[6]
         json['personalQuota'] = row_1[7]
         json['companyQuota'] = row_1[8]
+        json['item_tmp_1'] = row_1[13]
+        json['item_tmp_2'] = row_1[14]
+        json['item_tmp_3'] = row_1[15]
+        json['item_tmp_4'] = row_1[16]
+        json['item_tmp_5'] = row_1[17]
+        json['item_tmp_6'] = row_1[18]
     
         json['weatherList'] = []
         for rownum in range(1, 10):
@@ -240,7 +246,11 @@ def excuteCommand(com):
     return out.decode()
 
 def encode_apk(name):
+    imageName = name+'.jpeg '
     output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
+    output = excuteCommand('cp -r images/'+imageName+pathDir+'/'+name+'/'+imageName)
+    output = excuteCommand('mv '+pathDir+'/'+name+'/'+imageName+' ../src/image/headImage.jpeg')
+    return
     print "==拷贝新的json成功="
     if os.path.exists('../android/app/build/'):
         output = excuteCommand('rm -r ../android/app/build/')

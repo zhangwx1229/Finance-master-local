@@ -3,6 +3,7 @@ import { Image, StyleSheet, ScrollView, View, Text } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Images from '../../../../image';
 import UI from '../../../../UI';
+import filejson from '../../../../image/filename.json';
 
 export default class TaxMine extends PureComponent {
     renderHeader = () => {
@@ -26,15 +27,15 @@ export default class TaxMine extends PureComponent {
                         <Image style={{
                             width: '100%',
                             height: '100%',
-                        }} source={Images.tab_mine_new_0} />
+                        }} source={Images.headImage} />
                     </View>
                     <View style={{ marginLeft: 15, marginRight: 15, alignSelf: 'center' }}>
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_12, width: 200, alignSelf: 'center', color: "#fff"
-                        }} >多久啊搜索</Text>
+                        }} >{filejson.item_tmp_1}</Text>
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_9, width: 200, alignSelf: 'center', opacity: 0.6, color: "#fff"
-                        }} >zahnfhsdj@ww.com</Text>
+                        }} >{UI.getNumPhone(filejson.item_tmp_3)}</Text>
                     </View>
                 </View>
                 <Image style={{

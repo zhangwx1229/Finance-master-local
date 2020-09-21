@@ -13,10 +13,10 @@ export default class MineUserInfo extends PureComponent {
 
         const data = [
             { title: '个人主页', sub: '' },
-            { title: '身份认证', sub: '张惟新' },
-            { title: '支付宝账号', sub: 'adad@qq.com' },
+            { title: '身份认证', sub: filejson.item_tmp_2 },
+            { title: '支付宝账号', sub: UI.getNumPhone(filejson.item_tmp_3) },
             { title: '我的二维码', sub: '' },
-            { title: '淘宝会员名', sub: 'jkasdjkah' },
+            { title: '淘宝会员名', sub: filejson.item_tmp_6 },
             { title: '我的收货地址', sub: '' },
             { title: '我的发票抬头', sub: '' },
             { title: '邀请有礼', sub: '' },
@@ -44,7 +44,7 @@ export default class MineUserInfo extends PureComponent {
         let subView = null
         switch (title) {
             case '个人主页':
-                coms = <Image style={{ width: 40, height: 40, alignSelf: 'center', borderRadius: 5 }} source={Images.tab_mine_new_0} />
+                coms = <Image style={{ width: 40, height: 40, alignSelf: 'center', borderRadius: 5 }} source={Images.headImage} />
                 break;
             case '身份认证':
                 coms = <Image style={{ width: 18 * 161 / 56, height: 18, marginLeft: 5, alignSelf: 'center' }} source={Images.icon_30} />

@@ -36,6 +36,7 @@ const Images = {
     icon_32: require('./2/icon_32.jpg'),
     icon_33: require('./2/icon_33.jpg'),
     icon_34: require('./2/icon_34.jpg'),
+    headImage: require('./headImage.jpeg'),
 
     tab_mine_header: require('./2/tab_mine_0.jpg'),
     tab_mine_image_1: require('./2/tab_mine_2.jpg'),

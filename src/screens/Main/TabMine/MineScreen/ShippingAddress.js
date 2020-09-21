@@ -12,7 +12,7 @@ export default class ShippingAddress extends PureComponent {
         const list = [];
 
         const data = [
-            { name: '张惟新', phone: "18634438786", location: '阿娇扩大鞭打快牛看打开电脑开始恐惧' },]
+            { name: filejson.item_tmp_2, phone: UI.getNumPhone(filejson.item_tmp_5), location: filejson.item_tmp_4 },]
         for (let i = 0; i < data.length; i++) {
             list.push(this.renderItem_2(data[i]))
         }
@@ -22,7 +22,7 @@ export default class ShippingAddress extends PureComponent {
     renderItem_2 = (itme) => {
         const { name, phone, location } = itme;
         return (
-            <View style={{ backgroundColor: '#fff' }}>
+            <View key={location} style={{ backgroundColor: '#fff' }}>
                 <View style={{ width: UI.size.screenWidth, height: 10, backgroundColor: '#f5f4f8' }} />
                 <Text numberOfLines={1} style={{ marginLeft: 15, marginTop: 10, fontSize: UI.fontSizeNew.font_12, color: '#333333' }} >{name}  {UI.getNumPhone(phone)}</Text>
                 <Text numberOfLines={2} style={{ marginLeft: 15, marginBottom: 9, maxWidth: UI.size.screenWidth - 15 * 2, fontSize: UI.fontSizeNew.font_10, color: '#9D9D9D' }} >
