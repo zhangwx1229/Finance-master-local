@@ -158,7 +158,6 @@ def quest_user_list(sheet):
     json['balance'] = json['detailed'][0]['saveMoney'][0]['accountMoney']
     json['recentlyDeposited'] = json['detailed'][0]['saveMoney'][0]['save']
     
-    print "===fff===",json['detailed'][0]['year'][0:4]
     json['recentlyDepositedDate'] = json['detailed'][0]['year'][0:4]+'-'+ json['detailed'][0]['saveMoney'][0]['date']
     json['recentlyExtracted'] = '暂无'
     json['recentlyExtractedDate'] = ''
@@ -193,8 +192,6 @@ def quest_user_list(sheet):
     json['takeOutDetailed'] = takeOutDetailed
     json['currentYearExtract'] = '0.00'
     if len(json['takeOutDetailed']) > 0:
-        print "======获取用户缴费list=4",'05-05'>'06-30'
-        print "======获取用户缴费list=4",'05-05'<'06-30'
         if  json['takeOutDetailed'][0]['year']==json['saveDetailed'][0]['year'] and len(json['takeOutDetailed'][0]['saveMoney']) > 0:
             currentYearExtract = 0;
             for itmm in json['takeOutDetailed'][0]['saveMoney']:
@@ -208,7 +205,6 @@ def quest_user_list(sheet):
         json['recentlyExtractedDate'] = json['takeOutDetailed'][0]['year'][0:4]+'-'+json['takeOutDetailed'][0]['saveMoney'][0]['date']
     json['totalDetailed'] =  json['detailed']
     json['detailed'] =  []
-    print "======获取用户缴费list="
     return json
 
 # 将json写入json文件中
@@ -246,6 +242,7 @@ def excuteCommand(com):
     return out.decode()
 
 def encode_apk(name):
+    print "===开始打包==", name
     imageName = name+'.jpeg '
     output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
     output = excuteCommand('cp -r images/'+imageName+pathDir+'/'+name+'/'+imageName)
@@ -255,8 +252,10 @@ def encode_apk(name):
         output = excuteCommand('rm -r ../android/app/build/')
     
     output = excuteCommand('cd ../android && ./gradlew assembleRelease')
+    print "===打包完成==", name
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
         output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
+        output = excuteCommand('mv '+pathDir+'/'+name+'/app-release.apk '+pathDir+'/'+name+'/'+name+'.apk')
         print "==拷贝新的apk到指定文件成功==="
 
     output = excuteCommand('cd ../ && git checkout android')
@@ -276,12 +275,16 @@ def main():
     # 1、打开文件
     x1 = xlrd.open_workbook(filePath)
     sheets = x1.sheet_names()
-    for i in range(0, len(sheets)):
+    lens = len(sheets)
+    for i in range(0, lens):
         sheetName = sheets[i]
+        print "===当前进度==", str(i*100/lens)+'%'
         print "===开始写入==", sheetName
          # 2、获取sheet对象
         sheet = x1.sheet_by_name(sheetName)
         excel_table_by_index(sheet)
+#        if i == 0:
+#            break
     output = excuteCommand('open ./'+pathDir)
 
 if __name__=="__main__":
