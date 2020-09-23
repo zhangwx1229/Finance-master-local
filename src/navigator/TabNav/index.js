@@ -30,23 +30,25 @@ export default class TabNav extends React.Component {
     }
 
     render() {
-        const font = UI.fontSizeNew.font_10;
+        const font = UI.fontSizeNew.font_7;
         let labelStyle = {}
         if (font) {
-            labelStyle = { fontSize: font }
+            labelStyle = { fontSize: font, marginBottom: 6, marginTop: -5 }
         }
         return < Tab.Navigator
+            initialRouteName={'Note'}
             tabBarOptions={{
-                activeTintColor: UI.color.primary,
-                inactiveTintColor: UI.color.darkGray,
-                labelStyle: labelStyle
+                activeTintColor: '#cd3a40',
+                inactiveTintColor: '#333333',
+                labelStyle: labelStyle,
+
             }}
         >
             <Tab.Screen
                 name="TabHome"
                 component={HomeScreen}
                 options={{
-                    tabBarLabel: '首页',
+                    tabBarLabel: '消息',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={focused ? Images.tab_home_selected : Images.tab_home}
@@ -59,7 +61,7 @@ export default class TabNav extends React.Component {
                 name="Learn"
                 component={TaxScreen}
                 options={{
-                    tabBarLabel: '理财',
+                    tabBarLabel: '办事',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={focused ? Images.tab_tax_selected : Images.tab_tax}
@@ -72,13 +74,13 @@ export default class TabNav extends React.Component {
                 name="Note"
                 component={ServiceScreen}
                 options={{
-                    tabBarLabel: '口碑',
+                    tabBarLabel: '北京通',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={
                                 focused ? Images.tab_service_selected : Images.tab_service
                             }
-                            style={styles.icon}
+                            style={{ width: 30, height: 30 }}
                         />
                     ),
                 }}
@@ -87,7 +89,7 @@ export default class TabNav extends React.Component {
                 name="Message"
                 component={MessageScreen}
                 options={{
-                    tabBarLabel: '消息',
+                    tabBarLabel: '头条',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={focused ? Images.tab_msg_selected : Images.tab_msg}
@@ -115,7 +117,7 @@ export default class TabNav extends React.Component {
 
 const styles = StyleSheet.create({
     icon: {
-        width: 28,
-        height: 28,
+        width: 23,
+        height: 23,
     },
 });

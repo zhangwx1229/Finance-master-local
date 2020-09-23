@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, ScrollView, View } from 'react-native';
 import Images from '../../../image';
 import UI from '../../../UI';
+import JJRefresh from '../TabHomeNew/HomeScreen/JJRefresh';
 
 export default class MessageScreen extends PureComponent {
     render() {
