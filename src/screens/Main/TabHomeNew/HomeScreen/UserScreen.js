@@ -231,7 +231,7 @@ export default class UserScreen extends PureComponent {
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >单位月缴存额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.recentlyDeposited)}元
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.companyQuota)}元
                 </Text>
             </View >
             <View style={{
