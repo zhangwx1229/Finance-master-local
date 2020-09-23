@@ -9,8 +9,6 @@ const Images = {
     tab_msg: require('./5/tab_3_normal.png'),
     tab_mine_selected: require('./5/tab_4_sel.png'),
     tab_mine: require('./5/tab_4_normal.png'),
-    tab_mine_p4_avatar_2: require('./p4_avatar_2.png'),
-    tab_mine_p4_avatar_3: require('./p4_avatar_3.png'),
     tab_home_header: require('./1/tab_home_header.jpg'),
     tab_home_image_0: require('./1/tab_home_1.jpg'),
     tab_home_image_1: require('./1/tab_home_2.jpg'),
@@ -74,48 +72,9 @@ const Images = {
     icon_5: require('./1/icon_5.jpg'),
     icon_15: require('./1/icon_15.jpg'),
     icon_17: require('./1/icon_17.jpg'),
-    tab_mine_p4_bg: require('./p4_bg.png'),
     gjj_thire_0: require('./1/gjj_thire_0.jpg'),
     gjj_thire: require('./1/gjj_thire.jpg'),
     icon_7: require('./1/icon_7.jpg'),
     alipay_28: require('./5/alipay_28.png'),
-
-
-
-
-
-
-
-
-
-    tab_home_image_header: require('./tab_home_image_header.jpg'),
-    tab_tax_image: require('./tab_tax_image.jpg'),
-    tab_service_image: require('./tab_service_image.jpg'),
-    tab_service_image_header: require('./tab_service_image_header.jpg'),
-    tab_mine_image: require('./tab_mine_image.jpg'),
-    tab_mine_image_header: require('./tab_mine_image_header.jpg'),
-    tab_home_search_image_0: require('./tab_home_search_image_0.jpg'),
-    tab_home_search_image_4: require('./tab_home_search_image_4.jpg'),
-    tab_home_search_image_1: require('./tab_home_search_image_1.jpg'),
-    tab_home_search_image_header: require('./tab_home_search_image_header.jpg'),
-    p4_9: require('./p4_9.png'),
-    icon_back: require('./icon_back.jpg'),
-    icon_back_title: require('./icon_back_title.jpg'),
-    icon_select_no: require('./icon_select_no.jpg'),
-    icon_select_yes: require('./icon_select_yes.jpg'),
-    search_image_0: require('./search_image_0.jpg'),
-    search_image_1: require('./search_image_1.jpg'),
-    search_image_button: require('./search_image_button.jpg'),
-    icon_date_conform: require('./icon_date_conform.jpg'),
-    icon_date_cancel: require('./icon_date_cancel.jpg'),
-    icon_search_right: require('./icon_search_right.jpg'),
-    p1_12: require('./p1_12.png'),
-    icon_wenhao: require('./icon_wenhao.jpg'),
-    detail_info_0: require('./detail_info_0.jpg'),
-    detail_info_1: require('./detail_info_1.jpg'),
-    detail_info_2: require('./detail_info_2.jpg'),
-    detail_info_jian: require('./detail_info_jian.jpg'),
-    detail_jishu: require('./detail_jishu.jpg'),
-    detail_hear: require('./detail_hear.jpg'),
 };
 export default Images;

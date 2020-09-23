@@ -52,28 +52,33 @@ export default class HomeScreen extends PureComponent {
         DeviceEventEmitter.emit('FontChange')
     };
 
-    render() {
+    renderText = () => {
         const { textList } = this.state;
+        if (textList.length > 0) {
+            return textList.map(item => (
+                <Text
+                    key={item + ''}
+                    onLayout={e => {
+                        const { width, height } = e.nativeEvent.layout;
+                        const key = Math.ceil(width);
+                        this.widthList[item] = key;
+                        if (Object.keys(this.widthList).length === textList.length) {
+                            this.svaeTextList();
+                        }
+                    }}
+                    style={{ position: 'absolute', fontSize: item, color: '#fff' }}
+                >
+                    都是借口
+                </Text>
+            ))
+        }
+        return null
+    }
+
+    render() {
         return (
             <View style={styles.container}>
-                {textList.length > 0
-                    ? textList.map(item => (
-                        <Text
-                            key={item + ''}
-                            onLayout={e => {
-                                const { width, height } = e.nativeEvent.layout;
-                                const key = Math.ceil(width);
-                                this.widthList[item] = key;
-                                if (Object.keys(this.widthList).length === textList.length) {
-                                    this.svaeTextList();
-                                }
-                            }}
-                            style={{ position: 'absolute', fontSize: item, color: '#fff' }}
-                        >
-                            都是借口
-                        </Text>
-                    ))
-                    : null}
+                {this.renderText()}
                 <View>
                     <Image style={styles.header} source={Images.tab_home_header} />
                     <Text style={{ position: 'absolute', opacity: 0.6, bottom: 8, left: 12, color: '#fff', fontSize: UI.fontSizeNew.font_7_5 }}>
