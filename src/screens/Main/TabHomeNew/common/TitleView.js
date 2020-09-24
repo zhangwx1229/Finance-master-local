@@ -14,7 +14,7 @@ export default class TitleView extends PureComponent {
         const {
             navigation
         } = this.props;
-        navigation.navigate("AccumulationScreen")
+        navigation.navigate("AccumulationServerScreen")
     }
     render() {
         const H = (UI.size.screenWidth * 144) / 1080
