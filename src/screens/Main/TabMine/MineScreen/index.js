@@ -13,7 +13,7 @@ export default class TaxMine extends PureComponent {
             } = this.props;
             navigation.navigate('MineUserInfo');
         }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 15, backgroundColor: '#0c79fc' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 15, backgroundColor: '#1578ff' }}>
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{
                         marginLeft: 15,

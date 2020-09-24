@@ -115,9 +115,9 @@ export default class DetailScreen extends PureComponent {
                 }}>
                     <View style={{ height: 45, width: "33.33%", justifyContent: 'center' }}>
                         <Text style={{
-                            fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 0 ? '#3e8ee3' : "#333333", textAlign: 'center'
+                            fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 0 ? '#118eea' : "#333333", textAlign: 'center'
                         }} >全部</Text>
-                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1, backgroundColor: this.state.selectedIndex === 0 ? '#3e8ee3' : "#fff" }} />
+                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1.5, backgroundColor: this.state.selectedIndex === 0 ? '#118eea' : "#fff" }} />
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => {
@@ -127,9 +127,9 @@ export default class DetailScreen extends PureComponent {
                 }}>
                     <View style={{ height: 45, width: "33.33%", justifyContent: 'center' }}>
                         <Text style={{
-                            fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 1 ? '#3e8ee3' : "#333333", textAlign: 'center'
+                            fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 1 ? '#118eea' : "#333333", textAlign: 'center'
                         }} >缴存</Text>
-                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1, backgroundColor: this.state.selectedIndex === 1 ? '#3e8ee3' : "#fff" }} />
+                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1.5, backgroundColor: this.state.selectedIndex === 1 ? '#118eea' : "#fff" }} />
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => {
@@ -139,9 +139,9 @@ export default class DetailScreen extends PureComponent {
                 }}>
                     <View style={{ height: 45, width: "33.33%", justifyContent: 'center' }}>
                         <Text style={{
-                            fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 2 ? '#3e8ee3' : "#333333", textAlign: 'center'
+                            fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 2 ? '#118eea' : "#333333", textAlign: 'center'
                         }} >提取</Text>
-                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1, backgroundColor: this.state.selectedIndex === 2 ? '#3e8ee3' : "#fff" }} />
+                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1.5, backgroundColor: this.state.selectedIndex === 2 ? '#118eea' : "#fff" }} />
                     </View>
                 </TouchableWithoutFeedback>
             </View >
@@ -191,9 +191,9 @@ export default class DetailScreen extends PureComponent {
 
     renderItemSub = (year) => {
         return (<View key={year} style={{ flexDirection: 'row', height: 50, borderBottomColor: '#9D9D9D32', borderTopWidth: 1, borderTopColor: '#9D9D9D32', borderBottomWidth: 1, backgroundColor: '#f5f4f8' }}>
-            <Text style={{ marginLeft: 10, alignSelf: 'center', fontSize: font_13, color: '#333333' }} >
+            <Text style={{ marginLeft: 10, alignSelf: 'center', fontSize: UI.fontSizeNew.font_15, color: '#000' }} >
                 {year.slice(0, 4)}
-                <Text style={{ alignSelf: 'center', marginBottom: 0, fontSize: font_10, color: '#333333' }} >年</Text></Text>
+                <Text style={{ alignSelf: 'center', marginBottom: 0, fontSize: UI.fontSizeNew.font_10, color: '#333333' }} >年</Text></Text>
         </View >)
     };
     renderList = () => {

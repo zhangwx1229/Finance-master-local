@@ -19,4 +19,9 @@ export default {
   // black: '#ccc',
   orange: '#eb795c',
   darkGray: '#999999',
+
+textBlack:"#333333",
+textGrayBig:"#888888",
+
+textGrayBig1:"#8d96a3",
 };

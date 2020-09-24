@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     title: {
-        color: '#333333',
+        color: UI.color.textBlack,
     },
 });

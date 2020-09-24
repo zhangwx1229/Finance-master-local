@@ -154,10 +154,11 @@ export default class AccumulationInfoScreen extends PureComponent {
                     }} numberOfLines={1} >账户余额(元)</Text>
                     <View style={{ alignSelf: 'center', flexDirection: 'row' }}>
                         <Text style={{
+                            paddingLeft:30,
                             color: '#fff',
                             fontSize: UI.fontSizeNew.font_35,
                             alignSelf: 'center', marginTop: 4
-                        }} numberOfLines={1} >{'  '}{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
+                        }} numberOfLines={1} >{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
                         <TouchableWithoutFeedback onPress={this.clickShowUser}>
                             <View style={{
                                 marginLeft: 5,
@@ -231,33 +232,33 @@ export default class AccumulationInfoScreen extends PureComponent {
 
     renderItem_1 = (data, index) => {
         return <View style={{ paddingVertical: 10, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#fff' }}>
-            <View style={{ marginLeft: 20 }}>
+            <View style={{ marginLeft: 30 }}>
                 <Text style={{
                     fontSize: font_12, color: '#333333'
                 }} >我的缴存</Text>
                 <TouchableWithoutFeedback onPress={this.clickLeft}>
                     <View style={{ backgroundColor: 'transparent', }}>
                         <Text style={{
-                            fontSize: font_8, color: '#9D9D9D', marginTop: 5
+                            fontSize: font_8, color: '#8d96a3', marginTop: 5
                         }} >最近缴存{filejson.recentlyDepositedDate} </Text>
                         <Text style={{
-                            fontSize: font_13, color: '#9D9D9D'
+                            fontSize: UI.fontSizeNew.font_14, color: '#8d96a3'
                         }} >{UI.getNumString(filejson.recentlyDeposited)}</Text>
                     </View>
                 </TouchableWithoutFeedback>
             </View>
             <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.3, backgroundColor: '#9D9D9D' }} />
-            <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5 + 20 }}>
+            <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5 + 30 }}>
                 <Text style={{
                     fontSize: font_12, color: '#333333'
                 }} >我的提取</Text>
                 <TouchableWithoutFeedback onPress={this.clickRight}>
                     <View style={{ backgroundColor: 'transparent' }}>
                         <Text style={{
-                            fontSize: font_8, color: '#9D9D9D', marginTop: 5
+                            fontSize: font_8, color: '#8d96a3', marginTop: 5
                         }} >最近提取{filejson.recentlyExtractedDate}</Text>
                         <Text style={{
-                            fontSize: font_13, color: '#9D9D9D'
+                            fontSize: UI.fontSizeNew.font_14, color: '#8d96a3'
                         }} >{filejson.recentlyExtractedDate.length > 0 ? UI.getNumString(filejson.recentlyExtracted) : "暂无"}</Text>
                     </View>
                 </TouchableWithoutFeedback>

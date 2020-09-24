@@ -191,20 +191,20 @@ export default class UserScreen extends PureComponent {
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >个人账号</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >个人账号</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {filejson.accountNumber}</Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >缴存单位</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >缴存单位</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {filejson.company}
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >所属管理部名称</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >所属管理部名称</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {filejson.administration}</Text>
             </View >
         </View >
@@ -215,55 +215,55 @@ export default class UserScreen extends PureComponent {
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >缴存基数</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >缴存基数</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.depositBase)}元</Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >个人比例</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >个人比例</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.personalRatio)}%
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >单位比例</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >单位比例</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.companyRatio)}%
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >个人月缴存额</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >个人月缴存额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.personalQuota)}元
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >单位月缴存额</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >单位月缴存额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.companyQuota)}元
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >上年结转额</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >上年结转额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.lastYearTotal)}元
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >本年缴存额</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >本年缴存额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.currentYearTotal)}元
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >本年支取额</Text>
+                <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >本年支取额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.currentYearExtract)}元</Text>
             </View >
         </View >
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
         marginRight: 30,
     },
     itemDetail: {
-        color: '#9D9D9D',
+        color: UI.color.textGrayBig,
         marginTop: 5,
         marginRight: 30
     },
