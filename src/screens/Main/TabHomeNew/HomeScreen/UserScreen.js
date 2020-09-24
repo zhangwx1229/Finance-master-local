@@ -100,45 +100,57 @@ export default class UserScreen extends PureComponent {
     }
 
     renderHeader = () => {
-        const balance = UI.getNumString(filejson.balance)
+        const balance = UI.getNumString(275776.56)//filejson.balance
         const recentlyDeposited = UI.getNumString(filejson.recentlyDeposited)
+        const left = 0
+        const right = 0.5
         return (
             <View style={{}}>
+                <View >
                 <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 582) / 1125,
-                }} source={Images.alipay_15} />
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 111) / 2160,
+                    }} source={Images.alipay_115_1} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 961) / 2160,
+                    }} source={Images.alipay_115} />
+                    </View>
                 <View style={{ position: 'absolute', bottom: 35, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <View style={{ marginLeft: 20, marginRight: 20, flex: 1, }}>
+                    <View style={{ marginLeft: left, marginRight: right, flex: 1 }}>
+                        <View >
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_19, color: '#fff', textAlign: 'center'
                         }} >
                             {balance.substr(0, balance.length - 2)}
                             <Text style={{
-                                fontSize: font_13, color: '#fff', textAlign: 'center'
+                                fontSize: font_13, color: '#fff', 
                             }} >
                                 {balance.substr(-2)}
                             </Text>
                         </Text>
+                            </View>
                         <Text style={{
                             fontSize: font_12, color: '#fff', opacity: 0.5, textAlign: 'center'
-                        }} >账户余额(元) </Text>
+                        }} >账户余额(元)</Text>
                     </View>
-                    <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.3, backgroundColor: '#9D9D9D' }} />
-                    <View style={{ marginRight: 20, flex: 1 }}>
+                    <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.2, backgroundColor: '#fff' }} />
+                    <View style={{ marginLeft: right, marginRight: left, flex: 1,}}>
+                    <View >
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_19, color: '#fff', textAlign: 'center'
                         }} >
                             {recentlyDeposited.substr(0, recentlyDeposited.length - 2)}
                             <Text style={{
-                                fontSize: font_13, color: '#fff', textAlign: 'center'
+                                fontSize: font_13, color: '#fff', 
                             }} >
                                 {recentlyDeposited.substr(-2)}
-                            </Text>
+                                </Text>
                         </Text>
+                            </View>
                         <Text style={{
                             fontSize: font_12, color: '#fff', opacity: 0.5, textAlign: 'center'
-                        }} >月缴存额(元) </Text>
+                        }} >月缴存额(元)</Text>
                     </View>
                 </View >
             </View>
@@ -157,7 +169,7 @@ export default class UserScreen extends PureComponent {
                 <TouchableWithoutFeedback onPress={this.clickBack}>
                     <Image style={{
                         width: 30,
-                        height: 30, marginRight: 5, alignSelf: 'center'
+                        height: 30, marginRight: 5,marginLeft: 5, alignSelf: 'center'
                     }} source={Images.alipay_25} />
                 </TouchableWithoutFeedback>
                 <Text style={{
