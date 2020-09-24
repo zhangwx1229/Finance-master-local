@@ -218,7 +218,7 @@ export default class DetailScreen extends PureComponent {
         } else {
             for (let i = 0; i < filejson.takeOutDetailed.length; i++) {
                 const { year, saveMoney } = filejson.takeOutDetailed[i];
-                list.push(this.renderItemSub(year))
+                list.push(this.renderItemSub(year, i === 0))
                 for (let j = 0; j < saveMoney.length; j++) {
                     const element = saveMoney[j];
                     list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
