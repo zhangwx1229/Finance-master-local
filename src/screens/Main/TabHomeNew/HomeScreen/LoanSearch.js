@@ -34,12 +34,6 @@ export default class LoanSearch extends PureComponent {
         this.contentH = 0
     }
 
-    clickItem = (item) => {
-        const {
-            navigation
-        } = this.props;
-        navigation.navigate('LoanSearch', item);
-    }
 
     componentWillUnmount() {
         this.isDestroy = true;
@@ -104,52 +98,6 @@ export default class LoanSearch extends PureComponent {
         }
     }
 
-    renderItem_1 = (itme) => {
-        return <View style={{ backgroundColor: '#fff' }}>
-            <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f4f8' }} />
-            <View style={{
-                flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
-            }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >年度</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{itme.date}</Text>
-            </View >
-            <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
-            }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >上年结转金额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.lastYearMoney)}</Text>
-            </View >
-            <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
-            }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年缴存金额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.currentYear)}</Text>
-            </View >
-            <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
-            }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年提取金额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.takeOutMoney)}</Text>
-            </View >
-            <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
-            }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >利息</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.interest)}</Text>
-            </View >
-            <View style={{
-                flexDirection: 'row', marginVertical: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
-            }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >本息合计</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >
-                    {UI.getNumString(itme.total)}
-                </Text>
-            </View >
-
-        </View >
-    };
-
-
     renderScrollHeader = () => {
         return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f4f8' }} />
     }
@@ -167,7 +115,7 @@ export default class LoanSearch extends PureComponent {
             <Image style={{
                 width: UI.size.screenWidth,
                 height: (UI.size.screenWidth * 144) / 1080,
-            }} source={Images.icon_15} />
+            }} source={Images.icon_112} />
         } />
     };
     render() {
