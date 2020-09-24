@@ -107,7 +107,7 @@ export default class AccountSearchScreen extends PureComponent {
 
     renderItem_1 = (itme) => {
         return <View style={{ backgroundColor: '#fff' }}>
-            <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f4f8' }} />
+            <View style={{ width: UI.size.screenWidth, height: 15, backgroundColor: '#f5f4f8' }} />
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
@@ -115,25 +115,25 @@ export default class AccountSearchScreen extends PureComponent {
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{itme.date}</Text>
             </View >
             <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+                flexDirection: 'row', marginTop: 15, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >上年结转金额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.lastYearMoney)}</Text>
             </View >
             <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+                flexDirection: 'row', marginTop: 15, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年缴存金额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.currentYear)}</Text>
             </View >
             <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+                flexDirection: 'row', marginTop: 15, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >当年提取金额</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.takeOutMoney)}</Text>
             </View >
             <View style={{
-                flexDirection: 'row', marginTop: 20, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
+                flexDirection: 'row', marginTop: 15, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >利息</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{UI.getNumString(itme.interest)}</Text>
@@ -199,7 +199,7 @@ export default class AccountSearchScreen extends PureComponent {
             >
                 {this.renderScrollHeader()}
                 {this.renderItem_1(route.params)}
-                <View style={{ paddingTop: 25, paddingBottom: 45, backgroundColor: '#fff' }}>
+                <View style={{ paddingTop: 8, paddingBottom: 35, backgroundColor: '#fff' }}>
                     <Image style={{
                         width: UI.size.screenWidth,
                         height: (UI.size.screenWidth * 257) / 1080,
