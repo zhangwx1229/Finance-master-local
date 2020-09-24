@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {
     Image,
     StyleSheet,
-    ScrollView,
+    TouchableOpacity,
     View,
     Text,
     TouchableWithoutFeedback
@@ -11,6 +11,7 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import filejson from '../../../../image/filename.json';
 import TitleView from '../common/TitleView';
+import JJRefresh from './JJRefresh';
 // let font_13 = UI.fontSizeNew.font_13
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
@@ -26,15 +27,8 @@ export default class DetailScreen extends PureComponent {
         if (route.params && route.params === 1) {
             index = 2
         }
-
-
-        this.state = { opacity: 0, selectedIndex: index }
-        this.offset_y = 0
-        this.offset_olf_y = 0
-        this.scroll_style = {}
+        this.state = { selectedIndex: index, data: { 0: 20, 1: 20, 2: 20 }, compearList: { 0: false, 1: false, 2: false } }
         this.isDestroy = false;
-        this.header_H = 300
-        this.foot_H = 80
     }
 
     componentWillUnmount() {
@@ -44,65 +38,6 @@ export default class DetailScreen extends PureComponent {
         }
     }
 
-    onScrollEndDrag = (e) => {
-        const { contentOffset } = e.nativeEvent;
-        if (this.scrollTimer) {
-            clearInterval(this.scrollTimer)
-        }
-        this.scrollTimer = setInterval(() => {
-            if (this.isDestroy) {
-                if (this.scrollTimer) {
-                    clearInterval(this.scrollTimer)
-                }
-                return
-            }
-            if (Math.abs(this.offset_olf_y - this.offset_y) > 0) {
-                if (Math.abs(this.offset_olf_y - this.offset_y) < 5) {
-                    if (this.scrollTimer) {
-                        clearInterval(this.scrollTimer)
-                    }
-                    if (this.scrollRef) {
-                        if (this.offset_y < this.header_H) {
-                            this.scrollRef.scrollTo({ y: this.header_H, animated: true });
-                        }
-                    }
-                }
-                this.offset_olf_y = this.offset_y
-            } else {
-                if (this.scrollTimer) {
-                    clearInterval(this.scrollTimer)
-                }
-                if (this.scrollRef) {
-                    if (this.offset_y < this.header_H) {
-                        this.scrollRef.scrollTo({ y: this.header_H, animated: true });
-                    }
-                }
-            }
-        }, 50);
-    }
-
-    onLayout = (e) => {
-        const { height, width } = e.nativeEvent.layout;
-        if (!this.scroll_style.width) {
-            this.scroll_style = { height, width }
-            this.setState({}, () => {
-                if (this.scrollRef) {
-                    if (this.offset_y < this.header_H) {
-                        this.scrollRef.scrollTo({ y: this.header_H, animated: false, });
-                    }
-                }
-                setTimeout(() => {
-                    if (this.isDestroy) {
-                        return
-                    }
-                    this.setState({ opacity: 1 })
-                });
-            })
-
-
-
-        }
-    }
 
     renderHeader = () => {
         return (
@@ -197,43 +132,100 @@ export default class DetailScreen extends PureComponent {
     };
     renderList = () => {
         const list = [];
+        const num = this.state.data[this.state.selectedIndex]
+        let len = 0
         if (this.state.selectedIndex === 0) {
+
             for (let i = 0; i < filejson.totalDetailed.length; i++) {
                 const { year, saveMoney } = filejson.totalDetailed[i];
                 list.push(this.renderItemSub(year, i === 0))
-                for (let j = 0; j < saveMoney.length; j++) {
+                let itemNum = saveMoney.length
+                len += itemNum
+                if (num < len) {
+                    itemNum = num - (len - itemNum)
+                }
+                for (let j = 0; j < itemNum; j++) {
                     const element = saveMoney[j];
                     list.push(this.renderItem_2(element, year + element.date, j === saveMoney.length - 1))
+                }
+                if (itemNum < saveMoney.length) {
+                    break;
+                }
+                if (i === filejson.totalDetailed.length - 1 && !this.state.compearList[0]) {
+                    setTimeout(() => {
+                        this.setState({ compearList: { ...this.state.compearList, 0: true } })
+                    });
                 }
             }
         } else if (this.state.selectedIndex === 1) {
             for (let i = 0; i < filejson.saveDetailed.length; i++) {
                 const { year, saveMoney } = filejson.saveDetailed[i];
                 list.push(this.renderItemSub(year, i === 0))
-                for (let j = 0; j < saveMoney.length; j++) {
+                let itemNum = saveMoney.length
+                len += itemNum
+                if (num < len) {
+                    itemNum = num - (len - itemNum)
+                }
+                for (let j = 0; j < itemNum; j++) {
                     const element = saveMoney[j];
                     list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
+                }
+                if (itemNum < saveMoney.length) {
+                    break;
+                }
+                if (i === filejson.saveDetailed.length - 1 && !this.state.compearList[1]) {
+                    setTimeout(() => {
+                        this.setState({ compearList: { ...this.state.compearList, 1: true } })
+                    });
                 }
             }
         } else {
             for (let i = 0; i < filejson.takeOutDetailed.length; i++) {
                 const { year, saveMoney } = filejson.takeOutDetailed[i];
                 list.push(this.renderItemSub(year, i === 0))
-                for (let j = 0; j < saveMoney.length; j++) {
+                let itemNum = saveMoney.length
+                len += itemNum
+                if (num < len) {
+                    itemNum = num - (len - itemNum)
+                }
+                for (let j = 0; j < itemNum; j++) {
                     const element = saveMoney[j];
                     list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
+                }
+                if (itemNum < saveMoney.length) {
+                    break;
+                }
+                if (i === filejson.takeOutDetailed.length - 1 && !this.state.compearList[2]) {
+                    setTimeout(() => {
+                        this.setState({ compearList: { ...this.state.compearList, 2: true } })
+                    });
                 }
             }
         }
         return list
     }
 
-    renderScrollHeader = () => {
-        return <View style={{ width: '100%', height: this.header_H, backgroundColor: '#f5f4f8' }} />
-    }
 
     renderScrollFoot = () => {
-        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f4f8', borderTopWidth: this.state.selectedIndex === 0 ? 0 : 1, borderTopColor: '#9D9D9D32' }} >
+        if (this.state.compearList[this.state.selectedIndex] === false) {
+            return <TouchableOpacity onPress={() => {
+                if (this.state.selectedIndex === 0 && !this.state.compearList[0]) {
+                    this.setState({ data: { ...this.state.data, 0: this.state.data[0] + 10 } })
+                } else if (this.state.selectedIndex === 1 && !this.state.compearList[1]) {
+                    this.setState({ data: { ...this.state.data, 1: this.state.data[1] + 10 } })
+                } else if (this.state.selectedIndex === 2 && !this.state.compearList[2]) {
+                    this.setState({ data: { ...this.state.data, 2: this.state.data[2] + 10 } })
+                }
+
+            }}>
+                <View style={{ backgroundColor: '#fff', marginBottom: 15 }}>
+                    <Text style={{ alignSelf: 'center', marginVertical: 12, color: '#11a4e0', fontSize: UI.fontSizeNew.font_10_5 }}>
+                        点击加载更多
+            </Text>
+                </View>
+            </TouchableOpacity>
+        }
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: 60, backgroundColor: '#f5f4f8', borderTopWidth: this.state.selectedIndex === 0 ? 0 : 1, borderTopColor: '#9D9D9D32' }} >
             <Text style={{ marginTop: 15, color: '#9D9D9D', fontSize: font_10 }}>没有更多数据了...
             </Text>
         </View>
@@ -248,25 +240,20 @@ export default class DetailScreen extends PureComponent {
         font_10_5 = UI.fontSizeNew.font_10_5
         font_30 = UI.fontSizeNew.font_30
         const { navigation } = this.props;
+        console.debug('=====render====', this.state)
         return (<View style={styles.container} >
             {this.renderTitle()}
-            <ScrollView
-                ref={(e) => { this.scrollRef = e }}
-                style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
-                onLayout={this.onLayout}
-                contentContainerStyle={this.scroll_style.width ? { minHeight: this.scroll_style.height + this.header_H } : { minHeight: UI.size.screenHeight + this.foot_H + this.header_H }}
-                onScrollEndDrag={this.onScrollEndDrag}
-                onScroll={(e) => {
-                    const { contentOffset } = e.nativeEvent;
-                    this.offset_y = contentOffset.y
-                }}
-                showsVerticalScrollIndicator={false} >
+            <JJRefresh
+                foot_H={0}
 
-                {this.renderScrollHeader()}
-                {this.renderHeader()}
-                {this.renderList()}
-                {this.renderScrollFoot()}
-            </ScrollView>
+                contentView={() => {
+                    return <View>
+                        {this.renderHeader()}
+                        {this.renderList()}
+                        {this.renderScrollFoot()}
+                    </View>
+                }}
+            />
         </View >
         );
     }

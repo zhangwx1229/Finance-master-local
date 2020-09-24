@@ -1,24 +1,26 @@
+import { prop } from 'ramda';
 import React, { PureComponent } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
-
+type Props = {
+    contentView: Function,
+    footView: Function,
+    headerView: Function,
+    onScroll: Function,
+    isShowFoot: Boolean,
+    isShowHeader: Boolean,
+    header_H: Number,
+    foot_H: Number
+};
 export default class JJRefresh extends PureComponent {
-    static propTypes = {
-        contentView: Function,
-        footView: Function,
-        headerView: Function,
-        isShowFoot: Boolean,
-        isShowHeader: Boolean,
-    };
-
     constructor(props) {
         super(props);
 
-        this.state = { opacity: 0 };
+        this.state = { opacity: 0, isRefresh: false };
         this.offset_y = 0;
         this.scroll_style = {};
         this.isDestroy = false;
-        this.header_H = 180;
-        this.foot_H = 100;
+        this.header_H = props.header_H >= 0 ? props.header_H : 180;
+        this.foot_H = props.foot_H >= 0 ? props.foot_H : 100;
         this.header_xx_H = 0;
         this.foot_xx_H = 0;
         this.contentH = 0;
@@ -95,12 +97,6 @@ export default class JJRefresh extends PureComponent {
                 }
             }
             this.scroll_style = { height, width };
-            setTimeout(() => {
-                if (this.isDestroy) {
-                    return;
-                }
-                this.setState({ opacity: 1 });
-            });
         }
     };
 
@@ -112,8 +108,17 @@ export default class JJRefresh extends PureComponent {
     };
 
     onLayoutContent = e => {
-        const { height } = e.nativeEvent.layout;
-        this.contentH = height;
+        let { height } = e.nativeEvent.layout;
+        if (this.contentH !== height) {
+            this.contentH = height;
+            setTimeout(() => {
+                if (this.isDestroy) {
+                    return;
+                }
+                this.setState({ opacity: 1, isRefresh: !this.state.isRefresh });
+            });
+        } else {
+        }
     };
 
     onLayoutFoot = e => {
@@ -126,12 +131,20 @@ export default class JJRefresh extends PureComponent {
     getContentContainerStyle = () => {
         const style = this.scroll_style.width
             ? {
-                  width: this.scroll_style.width,
-                  height:
-                      this.contentH > this.scroll_style.height
-                          ? this.contentH + this.header_H + this.foot_H
-                          : this.scroll_style.height + this.header_H + this.foot_H,
-              }
+                width: this.scroll_style.width,
+                height:
+                    this.contentH > this.scroll_style.height
+                        ? this.contentH +
+                        this.header_H +
+                        this.foot_H +
+                        this.header_xx_H +
+                        this.foot_xx_H
+                        : this.scroll_style.height +
+                        this.header_H +
+                        this.foot_H +
+                        this.header_xx_H +
+                        this.foot_xx_H,
+            }
             : styles.contentContainerStyle;
         return style;
     };
@@ -143,6 +156,9 @@ export default class JJRefresh extends PureComponent {
     onScroll = e => {
         const { contentOffset } = e.nativeEvent;
         this.offset_y = contentOffset.y;
+        if (this.props.onScroll) {
+            this.props.onScroll(this.offset_y)
+        }
     };
 
     renderScrollHeader = () => <View style={{ width: '100%', height: this.header_H }} />;
