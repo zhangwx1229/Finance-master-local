@@ -107,13 +107,13 @@ export default class AccountStatementScreen extends PureComponent {
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >个人账号</Text>
+                <Text style={{ fontSize: font_12, color: '#8d96a3', backgroundColor: '#fff' }} >个人账号</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >{filejson.accountNumber}</Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between', marginHorizontal: 15 * UI.size.scale, alignItems: 'center'
             }} >
-                <Text style={{ fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >姓名</Text>
+                <Text style={{ fontSize: font_12, color: '#8d96a3', backgroundColor: '#fff' }} >姓名</Text>
                 <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} >
                     {UI.getNumNick(filejson.name)}
                 </Text>
@@ -138,20 +138,21 @@ export default class AccountStatementScreen extends PureComponent {
             <TouchableWithoutFeedback key={date} onPress={() => {
                 this.clickItem(itme)
             }}>
-                <View style={{ flexDirection: 'row', paddingVertical: 7, justifyContent: 'space-between', backgroundColor: '#fff', }}>
+                <View style={{ flexDirection: 'row', paddingTop: 9, paddingBottom: 6, justifyContent: 'space-between', backgroundColor: '#fff', }}>
                     <View style={{ marginLeft: 15, width: UI.size.screenWidth - 100 - 20 * 2 - 20 }}>
-                        <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_12, color: '#9D9D9D' }} >{date}</Text>
+                        <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_12, color: '#8d96a3' }} >{date}</Text>
                     </View >
-                    <View style={{ width: 100 }}>
-                        <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_12, color: '#FEB415' }} >{UI.getNumString(total)}</Text>
-                        <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_10, color: '#9D9D9D' }}>本息合计</Text>
-                    </View >
-                    <View style={{ marginRight: 15 }}>
-                        <Text numberOfLines={1} style={{ fontSize: font_12 }} >
-                            {' '}
-                            <Image style={{ width: 12 * 23 / 38, height: 12 }} source={Images.icon_6} />
-                        </Text>
-                    </View >
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ width: 100 }}>
+                            <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_12, color: '#FEB415' }} >{UI.getNumString(total)}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 100, marginTop: 2, textAlign: 'right', fontSize: font_10, color: '#8d96a3' }}>本息合计</Text>
+                        </View >
+                        <View style={{ marginRight: 15, marginLeft: 4 }}>
+                            <Text numberOfLines={1} style={{ fontSize: font_12 }} >
+                                {' '}<Image style={{ width: 12 * 23 / 38, height: 12 }} source={Images.icon_6} />
+                            </Text>
+                        </View >
+                    </View>
                 </View>
             </TouchableWithoutFeedback >
         )
@@ -242,7 +243,7 @@ const styles = StyleSheet.create({
         marginRight: 30,
     },
     itemDetail: {
-        color: '#9D9D9D',
+        color: '#8d96a3',
         marginTop: 5,
         marginRight: 30
     },

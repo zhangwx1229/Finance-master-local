@@ -107,7 +107,6 @@ export default class DetailScreen extends PureComponent {
     renderHeader = () => {
         return (
             <View style={{ width: UI.size.screenWidth, backgroundColor: "#fff", flexDirection: 'row' }}>
-                <View style={{ position: 'absolute', top: 0, width: UI.size.screenWidth, height: 1, backgroundColor: '#9D9D9D32' }} />
                 <TouchableWithoutFeedback onPress={() => {
                     if (this.state.selectedIndex !== 0) {
                         this.setState({ selectedIndex: 0 })
@@ -117,7 +116,7 @@ export default class DetailScreen extends PureComponent {
                         <Text style={{
                             fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 0 ? '#118eea' : "#333333", textAlign: 'center'
                         }} >全部</Text>
-                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1.5, backgroundColor: this.state.selectedIndex === 0 ? '#118eea' : "#fff" }} />
+                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: this.state.selectedIndex === 0 ? 2 : 1, backgroundColor: this.state.selectedIndex === 0 ? '#118eea' : '#9D9D9D5a' }} />
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => {
@@ -129,7 +128,7 @@ export default class DetailScreen extends PureComponent {
                         <Text style={{
                             fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 1 ? '#118eea' : "#333333", textAlign: 'center'
                         }} >缴存</Text>
-                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1.5, backgroundColor: this.state.selectedIndex === 1 ? '#118eea' : "#fff" }} />
+                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: this.state.selectedIndex === 1 ? 2 : 1, backgroundColor: this.state.selectedIndex === 1 ? '#118eea' : '#9D9D9D5a' }} />
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => {
@@ -141,7 +140,7 @@ export default class DetailScreen extends PureComponent {
                         <Text style={{
                             fontSize: font_12, width: "33.33%", alignSelf: 'center', color: this.state.selectedIndex === 2 ? '#118eea' : "#333333", textAlign: 'center'
                         }} >提取</Text>
-                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: 1.5, backgroundColor: this.state.selectedIndex === 2 ? '#118eea' : "#fff" }} />
+                        <View style={{ position: 'absolute', bottom: 0, width: '100%', height: this.state.selectedIndex === 2 ? 2 : 1, backgroundColor: this.state.selectedIndex === 2 ? '#118eea' : '#9D9D9D5a' }} />
                     </View>
                 </TouchableWithoutFeedback>
             </View >
@@ -163,10 +162,10 @@ export default class DetailScreen extends PureComponent {
         save
     }, key, isLast = false) => {
         return (<View key={key} style={{ flexDirection: 'row', backgroundColor: '#fff' }}>
-            <Text style={{ marginLeft: 10, alignSelf: 'center', fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >{date}</Text>
-            <View style={{ flex: 1, height: 45, borderBottomColor: '#9D9D9D32', borderBottomWidth: isLast ? 0 : 1, flexDirection: 'row', marginLeft: 10, justifyContent: 'space-between' }}>
-                <Text numberOfLines={1} style={{ alignSelf: 'center', maxWidth: UI.size.screenWidth - 100 - 10 * 3 - 40, fontSize: font_12, color: '#333333' }} >{info}</Text>
-                <Text numberOfLines={1} style={{ alignSelf: 'center', marginRight: 10, maxWidth: 100, fontSize: font_12, color: '#333333' }} >{UI.getNumString(save)}</Text>
+            <Text style={{ marginLeft: 15, alignSelf: 'center', fontSize: font_12, color: '#9D9D9D', backgroundColor: '#fff' }} >{date}</Text>
+            <View style={{ flex: 1, height: 42, borderBottomColor: '#9D9D9D32', borderBottomWidth: isLast ? 0 : 1, flexDirection: 'row', marginLeft: 15, justifyContent: 'space-between' }}>
+                <Text numberOfLines={1} style={{ alignSelf: 'center', maxWidth: UI.size.screenWidth - 100 - 15 * 3 - 40, fontSize: font_12, color: '#333333' }} >{info}</Text>
+                <Text numberOfLines={1} style={{ alignSelf: 'center', marginRight: 15, maxWidth: 100, fontSize: font_12, color: '#333333' }} >{UI.getNumString(save)}</Text>
             </View>
         </View >)
     };
@@ -177,21 +176,21 @@ export default class DetailScreen extends PureComponent {
         save
     }, key, isLast = false) => {
         return (<View key={key} style={{ flexDirection: 'row', paddingVertical: 7, justifyContent: 'space-between', backgroundColor: '#fff', }}>
-            <View style={{ marginLeft: 10, width: UI.size.screenWidth - 100 - 20 }}>
-                <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_12, color: '#333333' }} >{info}</Text>
+            <View style={{ marginLeft: 15 }}>
+                <Text numberOfLines={1} style={{ maxWidth: UI.size.screenWidth - 130 - 15 * 2 - 20, fontSize: font_12, color: '#333333' }} >{info}</Text>
                 <Text numberOfLines={1} style={{ maxWidth: 100, fontSize: font_10, color: '#9D9D9D' }} >{date}</Text>
             </View >
-            <View style={{ marginRight: 10, width: 100 }}>
-                <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_12, color: '#333333' }} >{UI.getNumString(save)}</Text>
-                <Text numberOfLines={1} style={{ maxWidth: 100, textAlign: 'right', fontSize: font_10, color: '#9D9D9D' }} >{UI.getNumString(accountMoney)}</Text>
+            <View style={{ marginRight: 15, marginTop: 2 }}>
+                <Text numberOfLines={1} style={{ maxWidth: 130, textAlign: 'right', fontSize: font_12, color: '#333333' }} >{UI.getNumString(save)}</Text>
+                <Text numberOfLines={1} style={{ maxWidth: 130, textAlign: 'right', fontSize: font_10, color: '#9D9D9D' }} >{UI.getNumString(accountMoney)}</Text>
             </View >
-            {isLast ? null : <View style={{ position: 'absolute', right: 0, bottom: 0, width: UI.size.screenWidth - 10, height: 1, backgroundColor: '#9D9D9D32' }} />}
+            {isLast ? null : <View style={{ position: 'absolute', right: 0, bottom: 0, width: UI.size.screenWidth - 15, height: 1, backgroundColor: '#9D9D9D32' }} />}
         </View>)
     };
 
-    renderItemSub = (year) => {
-        return (<View key={year} style={{ flexDirection: 'row', height: 50, borderBottomColor: '#9D9D9D32', borderTopWidth: 1, borderTopColor: '#9D9D9D32', borderBottomWidth: 1, backgroundColor: '#f5f4f8' }}>
-            <Text style={{ marginLeft: 10, alignSelf: 'center', fontSize: UI.fontSizeNew.font_15, color: '#000' }} >
+    renderItemSub = (year, isFirst = false) => {
+        return (<View key={year} style={{ flexDirection: 'row', height: this.state.selectedIndex === 0 ? 46 : 53, borderTopWidth: this.state.selectedIndex === 0 ? 0 : (isFirst ? 0 : 1), borderTopColor: '#9D9D9D32', borderBottomWidth: this.state.selectedIndex === 0 ? 0 : 1, borderBottomColor: '#9D9D9D32', backgroundColor: '#f5f4f8' }}>
+            <Text style={{ marginLeft: 15, alignSelf: 'center', fontSize: UI.fontSizeNew.font_15, color: '#000' }} >
                 {year.slice(0, 4)}
                 <Text style={{ alignSelf: 'center', marginBottom: 0, fontSize: UI.fontSizeNew.font_10, color: '#333333' }} >年</Text></Text>
         </View >)
@@ -201,7 +200,7 @@ export default class DetailScreen extends PureComponent {
         if (this.state.selectedIndex === 0) {
             for (let i = 0; i < filejson.totalDetailed.length; i++) {
                 const { year, saveMoney } = filejson.totalDetailed[i];
-                list.push(this.renderItemSub(year))
+                list.push(this.renderItemSub(year, i === 0))
                 for (let j = 0; j < saveMoney.length; j++) {
                     const element = saveMoney[j];
                     list.push(this.renderItem_2(element, year + element.date, j === saveMoney.length - 1))
@@ -210,7 +209,7 @@ export default class DetailScreen extends PureComponent {
         } else if (this.state.selectedIndex === 1) {
             for (let i = 0; i < filejson.saveDetailed.length; i++) {
                 const { year, saveMoney } = filejson.saveDetailed[i];
-                list.push(this.renderItemSub(year))
+                list.push(this.renderItemSub(year, i === 0))
                 for (let j = 0; j < saveMoney.length; j++) {
                     const element = saveMoney[j];
                     list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
@@ -234,7 +233,7 @@ export default class DetailScreen extends PureComponent {
     }
 
     renderScrollFoot = () => {
-        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f4f8' }} >
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: this.foot_H, backgroundColor: '#f5f4f8', borderTopWidth: this.state.selectedIndex === 0 ? 0 : 1, borderTopColor: '#9D9D9D32' }} >
             <Text style={{ marginTop: 15, color: '#9D9D9D', fontSize: font_10 }}>没有更多数据了...
             </Text>
         </View>

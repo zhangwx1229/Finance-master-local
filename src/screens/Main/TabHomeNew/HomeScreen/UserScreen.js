@@ -107,7 +107,7 @@ export default class UserScreen extends PureComponent {
         return (
             <View style={{}}>
                 <View >
-                <Image style={{
+                    <Image style={{
                         width: UI.size.screenWidth,
                         height: (UI.size.screenWidth * 111) / 2160,
                     }} source={Images.alipay_115_1} />
@@ -115,41 +115,41 @@ export default class UserScreen extends PureComponent {
                         width: UI.size.screenWidth,
                         height: (UI.size.screenWidth * 961) / 2160,
                     }} source={Images.alipay_115} />
-                    </View>
+                </View>
                 <View style={{ position: 'absolute', bottom: 35, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View style={{ marginLeft: left, marginRight: right, flex: 1 }}>
                         <View >
-                        <Text style={{
-                            fontSize: UI.fontSizeNew.font_19, color: '#fff', textAlign: 'center'
-                        }} >
-                            {balance.substr(0, balance.length - 2)}
                             <Text style={{
-                                fontSize: font_13, color: '#fff', 
+                                fontSize: UI.fontSizeNew.font_18, color: '#fff', textAlign: 'center'
                             }} >
-                                {balance.substr(-2)}
+                                {balance.substr(0, balance.length - 2)}
+                                <Text style={{
+                                    fontSize: font_12, color: '#fff',
+                                }} >
+                                    {balance.substr(-2)}
+                                </Text>
                             </Text>
-                        </Text>
-                            </View>
+                        </View>
                         <Text style={{
-                            fontSize: font_12, color: '#fff', opacity: 0.5, textAlign: 'center'
+                            fontSize: UI.fontSizeNew.font_11, color: '#fff', opacity: 0.5, textAlign: 'center'
                         }} >账户余额(元)</Text>
                     </View>
                     <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.2, backgroundColor: '#fff' }} />
-                    <View style={{ marginLeft: right, marginRight: left, flex: 1,}}>
-                    <View >
-                        <Text style={{
-                            fontSize: UI.fontSizeNew.font_19, color: '#fff', textAlign: 'center'
-                        }} >
-                            {recentlyDeposited.substr(0, recentlyDeposited.length - 2)}
+                    <View style={{ marginLeft: right, marginRight: left, flex: 1, }}>
+                        <View >
                             <Text style={{
-                                fontSize: font_13, color: '#fff', 
+                                fontSize: UI.fontSizeNew.font_18, color: '#fff', textAlign: 'center'
                             }} >
-                                {recentlyDeposited.substr(-2)}
+                                {recentlyDeposited.substr(0, recentlyDeposited.length - 2)}
+                                <Text style={{
+                                    fontSize: font_12, color: '#fff',
+                                }} >
+                                    {recentlyDeposited.substr(-2)}
                                 </Text>
-                        </Text>
-                            </View>
+                            </Text>
+                        </View>
                         <Text style={{
-                            fontSize: font_12, color: '#fff', opacity: 0.5, textAlign: 'center'
+                            fontSize: UI.fontSizeNew.font_11, color: '#fff', opacity: 0.5, textAlign: 'center'
                         }} >月缴存额(元)</Text>
                     </View>
                 </View >
@@ -169,7 +169,7 @@ export default class UserScreen extends PureComponent {
                 <TouchableWithoutFeedback onPress={this.clickBack}>
                     <Image style={{
                         width: 30,
-                        height: 30, marginRight: 5,marginLeft: 5, alignSelf: 'center'
+                        height: 30, marginRight: 5, marginLeft: 5, alignSelf: 'center'
                     }} source={Images.alipay_25} />
                 </TouchableWithoutFeedback>
                 <Text style={{

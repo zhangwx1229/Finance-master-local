@@ -154,14 +154,14 @@ export default class AccumulationInfoScreen extends PureComponent {
                     }} numberOfLines={1} >账户余额(元)</Text>
                     <View style={{ alignSelf: 'center', flexDirection: 'row' }}>
                         <Text style={{
-                            paddingLeft:30,
+                            paddingLeft: 30,
                             color: '#fff',
                             fontSize: UI.fontSizeNew.font_35,
                             alignSelf: 'center', marginTop: 4
-                        }} numberOfLines={1} >{this.state.isShowUser ? UI.getNumString(filejson.balance) : '***'}</Text>
+                        }} numberOfLines={1} >{this.state.isShowUser ? UI.getNumString(141802.91) : '***'}</Text>
                         <TouchableWithoutFeedback onPress={this.clickShowUser}>
                             <View style={{
-                                marginLeft: 5,
+                                marginLeft: this.state.isShowUser ? 10 : 5,
                                 marginTop: this.state.isShowUser ? 6 : 0,
                                 alignSelf: 'center',
                                 width: 25, backgroundColor: 'transparent',
@@ -170,8 +170,8 @@ export default class AccumulationInfoScreen extends PureComponent {
                             }}>
                                 <Image style={{
                                     position: 'absolute',
-                                    width: 25,
-                                    height: this.state.isShowUser ? 25 * 53 / 76 : 25 / 2,
+                                    width: 27,
+                                    height: this.state.isShowUser ? 27 * 53 / 76 : 27 / 2,
                                 }} source={this.state.isShowUser ? Images.alipay_23_1 : Images.alipay_14} />
                                 <Image style={{
                                     position: 'absolute',
@@ -202,13 +202,13 @@ export default class AccumulationInfoScreen extends PureComponent {
                         }} source={Images.alipay_22} />
                     </View>
                     <View style={{
-                        backgroundColor: '#ffffff32', justifyContent: 'center', alignSelf: 'center', borderRadius: 40, borderWidth: 1, borderColor: "#fff", width: 150, height: 40, marginTop: 15,
+                        backgroundColor: '#ffffff22', justifyContent: 'center', alignSelf: 'center', borderRadius: 36, borderWidth: 1, borderColor: "#fff", height: 36, marginTop: 10, paddingHorizontal: 36 / 2
                     }}>
                         <Text style={{
                             // lineHeight: 40,
                             color: '#fff',
                             fontSize: font_12,
-                            alignSelf: 'center',
+                            // alignSelf: 'center',
                         }} numberOfLines={1}
                             onPress={this.clickUser}>
                             查看账户信息
