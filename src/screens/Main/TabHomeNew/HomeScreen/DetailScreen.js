@@ -146,7 +146,7 @@ export default class DetailScreen extends PureComponent {
                 }
                 for (let j = 0; j < itemNum; j++) {
                     const element = saveMoney[j];
-                    list.push(this.renderItem_2(element, year + element.date, j === saveMoney.length - 1))
+                    list.push(this.renderItem_2(element, year + element.date, j === itemNum - 1))
                 }
                 if (itemNum < saveMoney.length) {
                     break;
@@ -168,7 +168,7 @@ export default class DetailScreen extends PureComponent {
                 }
                 for (let j = 0; j < itemNum; j++) {
                     const element = saveMoney[j];
-                    list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
+                    list.push(this.renderItem_1(element, year + element.date, j === itemNum - 1))
                 }
                 if (itemNum < saveMoney.length) {
                     break;
@@ -190,7 +190,7 @@ export default class DetailScreen extends PureComponent {
                 }
                 for (let j = 0; j < itemNum; j++) {
                     const element = saveMoney[j];
-                    list.push(this.renderItem_1(element, year + element.date, j === saveMoney.length - 1))
+                    list.push(this.renderItem_1(element, year + element.date, j === itemNum - 1))
                 }
                 if (itemNum < saveMoney.length) {
                     break;
@@ -218,7 +218,7 @@ export default class DetailScreen extends PureComponent {
                 }
 
             }}>
-                <View style={{ backgroundColor: '#fff', marginBottom: 15 }}>
+                <View style={{ backgroundColor: '#fff', marginBottom: 15, borderTopWidth: this.state.selectedIndex === 0 ? 0 : 1, borderTopColor: '#9D9D9D32' }}>
                     <Text style={{ alignSelf: 'center', marginVertical: 12, color: '#11a4e0', fontSize: UI.fontSizeNew.font_10_5 }}>
                         点击加载更多
             </Text>
