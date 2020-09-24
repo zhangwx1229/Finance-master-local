@@ -35,7 +35,7 @@ export default class TaxMine extends PureComponent {
                         }} >{filejson.item_tmp_1}</Text>
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_9, width: 200, alignSelf: 'center', opacity: 0.6, color: "#fff"
-                        }} >{UI.getNumPhone(filejson.item_tmp_3)}</Text>
+                        }} >{UI.getNumPhone(filejson.item_tmp_3, 3, 2)}</Text>
                     </View>
                 </View>
                 <Image style={{

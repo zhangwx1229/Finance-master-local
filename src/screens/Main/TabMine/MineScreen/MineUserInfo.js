@@ -14,7 +14,7 @@ export default class MineUserInfo extends PureComponent {
         const data = [
             { title: '个人主页', sub: '' },
             { title: '身份认证', sub: filejson.item_tmp_2 },
-            { title: '支付宝账号', sub: UI.getNumPhone(filejson.item_tmp_3) },
+            { title: '支付宝账号', sub: UI.getNumPhone(filejson.item_tmp_3, 3, 2) },
             { title: '我的二维码', sub: '' },
             { title: '淘宝会员名', sub: filejson.item_tmp_6 },
             { title: '我的收货地址', sub: '' },
@@ -54,7 +54,7 @@ export default class MineUserInfo extends PureComponent {
                 break;
             case '淘宝会员名':
             case '我的发票抬头':
-                subView = <View style={{ width: UI.size.screenWidth, height: 15, backgroundColor: '#f5f4f8' }} />
+                subView = <View style={{ width: UI.size.screenWidth, height: 20, backgroundColor: '#f5f4f8' }} />
 
                 break;
             default:
@@ -66,7 +66,7 @@ export default class MineUserInfo extends PureComponent {
             }}>
                 <View style={{ backgroundColor: '#fff' }}>
                     <View style={{ flexDirection: 'row', paddingVertical: 10, justifyContent: 'space-between', backgroundColor: '#fff', }}>
-                        <Text numberOfLines={1} style={{ marginLeft: 15, alignSelf: 'center', fontSize: UI.fontSizeNew.font_12, color: '#333333' }} >{title}</Text>
+                        <Text numberOfLines={1} style={{ marginLeft: 15, alignSelf: 'center', fontSize: UI.fontSizeNew.font_12_5, color: '#333333' }} >{title}</Text>
                         <View style={{ marginRight: 10, flexDirection: 'row' }}>
                             <Text numberOfLines={1} style={{ alignSelf: 'center', maxWidth: UI.size.screenWidth - 100 - 15 * 2 - 20, textAlign: 'right', fontSize: UI.fontSizeNew.font_12, color: '#9D9D9D' }} >
                                 {sub}

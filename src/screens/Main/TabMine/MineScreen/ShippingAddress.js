@@ -23,15 +23,14 @@ export default class ShippingAddress extends PureComponent {
         const { name, phone, location } = itme;
         return (
             <View key={location} style={{ backgroundColor: '#fff' }}>
-                <View style={{ width: UI.size.screenWidth, height: 10, backgroundColor: '#f5f4f8' }} />
-                <Text numberOfLines={1} style={{ marginLeft: 15, marginTop: 10, fontSize: UI.fontSizeNew.font_12, color: '#333333' }} >{name}  {UI.getNumPhone(phone)}</Text>
-                <Text numberOfLines={2} style={{ marginLeft: 15, marginBottom: 9, maxWidth: UI.size.screenWidth - 15 * 2, fontSize: UI.fontSizeNew.font_10, color: '#9D9D9D' }} >
+                <View style={{ width: UI.size.screenWidth, height: 10, backgroundColor: '#f5f4f8', borderBottomColor: '#9d9d9d58', borderBottomWidth: 0.5, borderTopColor: "#9d9d9d58", borderTopWidth: 0.5 }} />
+                <Text numberOfLines={1} style={{ marginLeft: 15, marginTop: 10, fontSize: UI.fontSizeNew.font_12, color: '#333333' }} >{name}  {UI.getNumPhone(phone, 3, 2)}</Text>
+                <Text numberOfLines={2} style={{ marginLeft: 15, marginBottom: 15, maxWidth: UI.size.screenWidth - 15 * 2, fontSize: UI.fontSizeNew.font_10, color: '#9D9D9D' }} >
                     {location}
                 </Text>
             </View>
         )
     };
-
 
     render() {
         const image_h = UI.size.screenWidth - 50 * 2

@@ -256,11 +256,16 @@ function getNumNick(str) {
     return '*' + str.slice(-1)
 }
 
-function getNumPhone(str) {
-    let phone = ''
+function getNumPhone(str, start = 3, len = 4) {
+    let phone = str
     const phoneStr = str + ''
+
     if (phoneStr.length === 11) {
-        phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
+        let srr = ''
+        for (let i = 0; i < 11 - start - len; i++) {
+            srr += "*"
+        }
+        phone = phoneStr.slice(0, start) + srr + phoneStr.slice(-len);
     }
     return phone
 }
