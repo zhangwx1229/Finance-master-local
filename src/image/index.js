@@ -21,6 +21,16 @@ const Images = {
     tab_bjt_1: require('./77/tab_bjt_1.jpg'),
     tab_bjt_2: require('./77/tab_bjt_2.jpg'),
     icon_11: require('./77/icon_11.png'),
+    tab_tt_0: require('./77/tab_tt_0.jpg'),
+    tab_tt_1: require('./77/tab_tt_1.jpg'),
+    tab_tt_2: require('./77/tab_tt_2.jpg'),
+
+
+
+
+
+
+
 
 
     tab_home_image_1: require('./1/tab_home_2.jpg'),
