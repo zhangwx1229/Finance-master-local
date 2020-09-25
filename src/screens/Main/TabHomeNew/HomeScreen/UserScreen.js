@@ -169,7 +169,7 @@ export default class UserScreen extends PureComponent {
                 </TouchableWithoutFeedback>
                 <Text style={{
                     color: '#fff',
-                    fontSize: font_12, alignSelf: 'center'
+                    fontSize: font_13, alignSelf: 'center'
                 }} numberOfLines={1} >{UI.getNumNick(filejson.name)}的账户</Text>
                 <Image style={{
                     position: 'absolute', right: 10,

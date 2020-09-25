@@ -91,7 +91,10 @@ export default class TabNav extends React.Component {
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
                             source={focused ? Images.tab_msg_selected : Images.tab_msg}
-                            style={styles.icon}
+                            style={{
+                                width: 24,
+                                height: 24,
+                            }}
                         />
                     ),
                 }}
