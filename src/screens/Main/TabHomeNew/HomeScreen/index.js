@@ -10,6 +10,7 @@ export default class HomeScreen extends PureComponent {
         return (
             <View style={styles.container}>
                 <Image style={{
+
                     width: UI.size.screenWidth,
                     height: (UI.size.screenWidth * 738) / 1080,
                 }} source={Images.tab_home_image_0} />
@@ -19,6 +20,6 @@ export default class HomeScreen extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#f2f2f4' },
+    container: { flex: 1, marginTop: UI.size.statusBarHeight, backgroundColor: '#f2f2f4' },
 
 });

@@ -4,7 +4,7 @@ import { sub } from 'react-native-reanimated';
 import Images from '../../../image';
 import UI, { setWidthList } from '../../../UI';
 import JJRefresh from '../TabHomeNew/HomeScreen/JJRefresh';
-
+const header_h = 100
 export default class TaxMessage extends PureComponent {
     constructor() {
         super()
@@ -17,24 +17,27 @@ export default class TaxMessage extends PureComponent {
         };
     }
 
-    
+
 
     onScroll = (y) => {
-        if (y >= 180 && y <= 180 + 46 && Math.abs(this.state.indexY - y) > 5) {
+        if (y >= 180 && y <= 180 + header_h && Math.abs(this.state.indexY - y) > 5) {
             this.setState({ indexY: y })
             console.debug('===onScroll====', y)
         }
-        if (y > 180 + 46 && this.state.indexY !== 180 + 46) {
-            this.setState({ indexY: 180 + 46 })
+        if (y > 180 + header_h && this.state.indexY !== 180 + header_h) {
+            this.setState({ indexY: 180 + header_h })
         }
     }
 
     renderContent = () => {
         return <View>
             <Image style={{
-                marginTop: 0,
                 width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1781 / 1080
+                height: UI.size.screenWidth * 581 / 1080
+            }} source={Images.tab_tt_00} />
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 1261 / 1080
             }} source={Images.tab_tt_0} />
             <Image style={{
                 width: UI.size.screenWidth,
@@ -48,24 +51,26 @@ export default class TaxMessage extends PureComponent {
     }
 
     renderHeader = () => {
-        const num = (this.state.indexY - 180) / 46
+        const num = (this.state.indexY - 180) / header_h
         return <View style={{
+            marginTop: UI.size.statusBarHeight,
             width: UI.size.screenWidth,
-            height: (UI.size.screenWidth * 146) / 1080,
             backgroundColor: 'rgba(255, 255, 255,' + num + ')',
             justifyContent: 'center'
-
         }}>
-            <View style={{ flexDirection: 'row', marginHorizontal: 15, marginVertical: 9, height: 28, borderRadius: 14, borderColor: '#9d9d9d5f', borderWidth: 0.5, backgroundColor: 'rgba(235, 235, 235,' + num + ')' }} >
-                
+            <View style={{
+                flexDirection: 'row', marginHorizontal: 20,
+                marginVertical: 9, height: 28, borderRadius: 14,
+                backgroundColor: num < 0.5 ? 'rgba(249, 249, 249, 0.3)' : 'rgba(235, 235, 235, 1.0)'
+            }} >
                 <Image style={{
-                    marginLeft:10,
+                    marginLeft: 7,
                     alignSelf: 'center',
                     width: 12,
-                    height: 12, marginRight: 2
-                }} source={Images.icon_11} />
+                    height: 12, marginRight: 5
+                }} source={num > 0.5 ? Images.icon_12 : Images.icon_13} />
                 <Text style={{
-                    fontSize: UI.fontSizeNew.font_11, alignSelf: 'center', color: this.state.indexY === 0 ? '#9d9d9d' : "#333333"
+                    fontSize: UI.fontSizeNew.font_11, alignSelf: 'center', color: num > 0.5 ? "#9d9d9d" : "#fff"
                 }} >搜索</Text>
             </View>
         </View >

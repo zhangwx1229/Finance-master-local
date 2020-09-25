@@ -1,84 +1,83 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View, Text } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { DeviceEventEmitter, Image, StyleSheet, Text, View } from 'react-native';
+import { sub } from 'react-native-reanimated';
 import Images from '../../../../image';
-import UI from '../../../../UI';
-import filejson from '../../../../image/filename.json';
-
-export default class TaxMine extends PureComponent {
-    renderHeader = () => {
-        return <TouchableWithoutFeedback onPress={() => {
-            const {
-                navigation
-            } = this.props;
-            navigation.navigate('MineUserInfo');
-        }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 15, backgroundColor: '#0c79fc' }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{
-                        marginLeft: 15,
-                        width: 52,
-                        height: 52,
-                        borderColor: '#ffffff3c',
-                        borderRadius: 6,
-                        borderWidth: 2,
-                        overflow: 'hidden'
-                    }}>
-                        <Image style={{
-                            width: '100%',
-                            height: '100%',
-                        }} source={Images.headImage} />
-                    </View>
-                    <View style={{ marginLeft: 15, marginRight: 15, alignSelf: 'center' }}>
-                        <Text style={{
-                            fontSize: UI.fontSizeNew.font_12, width: 200, alignSelf: 'center', color: "#fff"
-                        }} >{filejson.item_tmp_1}</Text>
-                        <Text style={{
-                            fontSize: UI.fontSizeNew.font_9, width: 200, alignSelf: 'center', opacity: 0.6, color: "#fff"
-                        }} >{UI.getNumPhone(filejson.item_tmp_3)}</Text>
-                    </View>
-                </View>
-                <Image style={{
-                    width: 12,
-                    height: 12,
-                    alignSelf: 'center',
-                    marginRight: 15
-                }} source={Images.alipay_29} />
-            </View>
-        </TouchableWithoutFeedback>
+import UI, { setWidthList } from '../../../../UI';
+import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+const header_h = 40
+export default class MineScreen extends PureComponent {
+    constructor() {
+        super()
+        const textList = [];
+        for (let i = 0; i < 80; i++) {
+            textList.push(i / 2 + 6);
+        }
+        this.state = {
+            indexY: 40
+        };
     }
+
+    onScroll = (y) => {
+        // if (y < 40) {
+        this.setState({ indexY: y })
+        console.debug('===onScroll====', y)
+        // }
+    }
+
+    renderContent = () => {
+        const num = (40 - this.state.indexY) / (header_h * 20)
+        console.debug('===onScroll==ss==', UI.size.screenWidth * (1 + num))
+        return <View>
+            <View>
+                <Image style={{
+                    alignSelf: 'center', marginTop: 0,
+                    width: UI.size.screenWidth * (1 + num),
+                    height: (UI.size.screenWidth * (1 + num)) * 856 / 1080
+                }} source={Images.header_bg} />
+                <Image style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    alignSelf: 'center',
+                    width: UI.size.screenWidth - 15 * 2,
+                    height: (UI.size.screenWidth - 15 * 2) * 711 / 1020
+                }} source={Images.tab_mine_2} />
+
+            </View>
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 386 / 1080
+            }} source={Images.tab_mine_header} />
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 782 / 1080
+            }} source={Images.tab_mine_0} />
+
+        </View>
+    }
+
     render() {
         const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>
-                <Image style={styles.header} source={Images.tab_mine_new_header} />
-                <ScrollView
-                    style={styles.content}
-                    contentContainerStyle={styles.contentContainerStyle}
-                >
-                    {this.renderHeader()}
-
-                    <Image style={{
-                        width: UI.size.screenWidth,
-                        height: UI.size.screenWidth * 1134 / 1080
-                    }} source={Images.tab_mine_new_0} />
-                    <Image style={{
-                        width: UI.size.screenWidth,
-                        height: UI.size.screenWidth * 1333 / 1080
-                    }} source={Images.tab_mine_new_1} />
-                </ScrollView>
+                <JJRefresh
+                    header_H={40}
+                    foot_H={0}
+                    onScroll={this.onScroll}
+                    indexY={this.state.indexY}
+                    contentView={this.renderContent}
+                />
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff' },
+    container: { flex: 1, backgroundColor: '#fff', },
     content: { flex: 1, backgroundColor: '#f5f4f8' },
     contentContainerStyle: {
         backgroundColor: UI.color.background,
     },
     header: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 144) / 1080,
+        height: (UI.size.screenWidth * 146) / 1080,
     },
 });

@@ -9,7 +9,8 @@ type Props = {
     isShowFoot: Boolean,
     isShowHeader: Boolean,
     header_H: Number,
-    foot_H: Number
+    foot_H: Number,
+    backgroundColor: String
 };
 export default class JJRefresh extends PureComponent {
     constructor(props) {
@@ -170,7 +171,7 @@ export default class JJRefresh extends PureComponent {
             <View style={styles.container}>
                 <ScrollView
                     ref={this.ref}
-                    style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
+                    style={[styles.content, this.scroll_style, { opacity: this.state.opacity }, this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : null]}
                     onLayout={this.onLayout}
                     contentContainerStyle={this.getContentContainerStyle()}
                     onScrollEndDrag={this.onScrollEndDrag}

@@ -16,18 +16,24 @@ const Images = {
     tab_work_2: require('./77/tab_work_2.jpg'),
     tab_work_3: require('./77/tab_work_3.jpg'),
     tab_bjt_header: require('./77/tab_bjt_header.jpeg'),
-    tab_bjt_00: require('./77/tab_bjt_00.jpg'),
     tab_bjt_0: require('./77/tab_bjt_0.jpg'),
     tab_bjt_1: require('./77/tab_bjt_1.jpg'),
     tab_bjt_2: require('./77/tab_bjt_2.jpg'),
+    tab_bjt_3: require('./77/tab_bjt_3.jpg'),
+    tab_bjt_4: require('./77/tab_bjt_4.jpg'),
     icon_11: require('./77/icon_11.png'),
+    icon_12: require('./77/entry_search.png'),
+    icon_13: require('./77/icon_12.png'),
+    tab_tt_00: require('./77/tab_tt_00.jpg'),
     tab_tt_0: require('./77/tab_tt_0.jpg'),
     tab_tt_1: require('./77/tab_tt_1.jpg'),
     tab_tt_2: require('./77/tab_tt_2.jpg'),
-
-
-
-
+    icon_14: require('./77/icon_14.jpg'),
+    icon_15: require('./77/icon_15.jpg'),
+    tab_mine_header: require('./77/tab_mine_header.jpg'),
+    tab_mine_0: require('./77/tab_mine_0.jpg'),
+    tab_mine_2: require('./77/tab_mine_2.jpg'),
+    header_bg: require('./header_bg.jpg'),
 
 
 
@@ -58,9 +64,9 @@ const Images = {
     icon_34: require('./2/icon_34.jpg'),
     headImage: require('./headImage.jpeg'),
 
-    tab_mine_header: require('./2/tab_mine_0.jpg'),
+    // tab_mine_header: require('./2/tab_mine_0.jpg'),
     tab_mine_image_1: require('./2/tab_mine_2.jpg'),
-    tab_mine_image_2: require('./2/tab_mine_3.jpg'),
+    // tab_mine_image_2: require('./2/tab_mine_3.jpg'),
     tab_mouth_header: require('./3/tab_mouth_0.jpg'),
     tab_mouth_image_1: require('./3/tab_mouth_1.jpg'),
     tab_mouth_image_2: require('./3/tab_mouth_2.jpg'),
@@ -88,7 +94,7 @@ const Images = {
     alipay_26: require('./5/alipay_26.png'),
     icon_1: require('./1/icon_1.jpg'),
     icon_2: require('./1/icon_2.jpg'),
-    icon_12: require('./1/icon_12.jpg'),
+    // icon_12: require('./1/icon_12.jpg'),
     icon_6: require('./1/icon_6.jpg'),
     icon_4: require('./1/icon_4.jpg'),
     icon_5: require('./1/icon_5.jpg'),

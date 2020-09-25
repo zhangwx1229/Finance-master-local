@@ -39,7 +39,7 @@ export default class TaxScreen extends PureComponent {
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff' },
+    container: { flex: 1, marginTop: UI.size.statusBarHeight, backgroundColor: '#fff' },
     content: { flex: 1, backgroundColor: '#f5f4f8' },
     contentContainerStyle: {
         backgroundColor: UI.color.background,
