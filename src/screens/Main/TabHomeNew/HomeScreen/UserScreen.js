@@ -17,6 +17,8 @@ let font_10 = UI.fontSizeNew.font_10
 let font_10_5 = UI.fontSizeNew.font_10_5
 let font_30 = UI.fontSizeNew.font_30
 let font_8 = UI.fontSizeNew.font_8
+
+const tar_H = UI.size.statusBarHeight+5
 export default class UserScreen extends PureComponent {
     constructor(props) {
         super(props);
@@ -112,7 +114,7 @@ export default class UserScreen extends PureComponent {
                         height: (UI.size.screenWidth * 555) / 1080,
                     }} source={Images.alipay_115} />
                 </View>
-                <View style={{ position: 'absolute', bottom: 35, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ position: 'absolute', bottom: 38, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View style={{ marginLeft: left, marginRight: right, flex: 1 }}>
                         <View >
                             <Text style={{
@@ -157,7 +159,7 @@ export default class UserScreen extends PureComponent {
             <View style={{
                 flexDirection: 'row',
                 position: 'absolute',
-                top: 20,
+                top: tar_H,
                 width: UI.size.screenWidth,
                 height: (UI.size.screenWidth * 143) / 1080
             }}>
@@ -313,7 +315,7 @@ export default class UserScreen extends PureComponent {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1, marginTop: -20
+        flex: 1, marginTop: -tar_H
     },
     content: {
         flex: 1,

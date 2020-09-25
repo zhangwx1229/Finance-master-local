@@ -7,6 +7,7 @@ import filejson from '../../../../image/filename.json';
 
 export default class TaxMine extends PureComponent {
     renderHeader = () => {
+        //backgroundColor:'#ffffff32'
         return <TouchableWithoutFeedback onPress={() => {
             const {
                 navigation
@@ -33,12 +34,12 @@ export default class TaxMine extends PureComponent {
                         <Text style={{
                             fontSize: UI.fontSizeNew.font_12,   color: "#fff"
                         }} >{filejson.item_tmp_1}</Text>
-                        <View style={{borderRadius:16,height:16,paddingHorizontal:8,marginTop:2,
-                        backgroundColor:'#ffffff32'}}>
+                        {/* <View style={{borderRadius:16,height:16,paddingHorizontal:8,marginTop:2,justifyContent:'center',
+                        }}> */}
                             <Text style={{
-                                fontSize: UI.fontSizeNew.font_9,   opacity: 0.6, color: "#fff"
+                                fontSize: UI.fontSizeNew.font_9, opacity: 0.6, color: "#fff"
                             }} >{UI.getNumPhone(filejson.item_tmp_3, 3, 2)}</Text>
-                        </View>
+                        {/* </View> */}
                     </View>
                 </View>
                 <Image style={{
