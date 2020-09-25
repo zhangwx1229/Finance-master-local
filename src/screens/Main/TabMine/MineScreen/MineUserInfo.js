@@ -47,7 +47,10 @@ export default class MineUserInfo extends PureComponent {
                 coms = <Image style={{ width: 40, height: 40, alignSelf: 'center', borderRadius: 5 }} source={Images.headImage} />
                 break;
             case '身份认证':
-                const sex = 1
+                let sex = 1
+                if (filejson.item_tmp_7 === "男") {
+                    sex = 0
+                }
                 if (sex===0) {//男
                     coms = <Image style={{ width: 18 * 161 / 56, height: 18, marginLeft: 5, alignSelf: 'center' }} source={Images.icon_30} />
                 }else {
