@@ -4,7 +4,6 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 
 export default class CivicCentreScreen extends PureComponent {
-
     clickSearch = () => {
         this.props.navigation.navigate('AccumulationScreen');
     };
@@ -12,29 +11,41 @@ export default class CivicCentreScreen extends PureComponent {
     clickBack = () => {
         this.props.navigation.pop();
     };
+
     render() {
         return (
-            <ScrollView
-                style={styles.content}
-                contentContainerStyle={styles.contentContainerStyle}
-            >
-                <View>
-                    <Image style={styles.image0} source={Images.civic_centre_header} />
-                    <TouchableWithoutFeedback onPress={this.clickBack}>
-                        <View style={styles.click0} />
-                    </TouchableWithoutFeedback>
-                </View>
-                <View>
-                    <Image style={styles.image1} source={Images.civic_centre_image_1} />
-                    <TouchableWithoutFeedback onPress={this.clickSearch}>
-                        <View style={styles.click} />
-                    </TouchableWithoutFeedback>
-                </View>
+            <View style={styles.container}>
+                <ScrollView
+                    style={styles.content}
+                    contentContainerStyle={styles.contentContainerStyle}
+                >
+                    <View>
+                        <Image style={styles.image0} source={Images.civic_centre_header} />
+                        <TouchableWithoutFeedback onPress={this.clickBack}>
+                            <View style={styles.click0} />
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View>
+                        <Image style={styles.image1} source={Images.civic_centre_image_1} />
+                        <TouchableWithoutFeedback onPress={this.clickSearch}>
+                            <View style={styles.click} />
+                        </TouchableWithoutFeedback>
+                    </View>
 
-                <Image style={styles.image2} source={Images.civic_centre_image_2} />
-                <Image style={styles.image3} source={Images.civic_centre_image_3} />
-                <Image style={styles.image4} source={Images.civic_centre_image_4} />
-            </ScrollView >
+                    <Image style={styles.image2} source={Images.civic_centre_image_2} />
+                    <Image style={styles.image3} source={Images.civic_centre_image_3} />
+                    <Image style={styles.image4} source={Images.civic_centre_image_4} />
+                </ScrollView>
+                <Image
+                    style={{
+                        position: 'absolute',
+                        bottom: 0,
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 144) / 1080,
+                    }}
+                    source={Images.icon_100}
+                />
+            </View>
         );
     }
 }

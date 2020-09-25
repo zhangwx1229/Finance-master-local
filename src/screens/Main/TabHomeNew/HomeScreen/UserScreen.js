@@ -109,11 +109,7 @@ export default class UserScreen extends PureComponent {
                 <View >
                     <Image style={{
                         width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 111) / 2160,
-                    }} source={Images.alipay_115_1} />
-                    <Image style={{
-                        width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 961) / 2160,
+                        height: (UI.size.screenWidth * 555) / 1080,
                     }} source={Images.alipay_115} />
                 </View>
                 <View style={{ position: 'absolute', bottom: 35, flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -134,7 +130,6 @@ export default class UserScreen extends PureComponent {
                             fontSize: UI.fontSizeNew.font_11, color: '#fff', opacity: 0.5, textAlign: 'center'
                         }} >账户余额(元)</Text>
                     </View>
-                    <View style={{ position: 'absolute', alignSelf: 'center', left: UI.size.screenWidth / 2 - 0.5, width: 1, height: '80%', opacity: 0.2, backgroundColor: '#fff' }} />
                     <View style={{ marginLeft: right, marginRight: left, flex: 1, }}>
                         <View >
                             <Text style={{

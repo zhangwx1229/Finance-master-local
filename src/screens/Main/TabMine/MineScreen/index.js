@@ -29,13 +29,16 @@ export default class TaxMine extends PureComponent {
                             height: '100%',
                         }} source={Images.headImage} />
                     </View>
-                    <View style={{ marginLeft: 15, marginRight: 15, alignSelf: 'center' }}>
+                    <View style={{ marginLeft: 15, marginRight: 15, alignSelf: 'center',justifyContent:'flex-start' }}>
                         <Text style={{
-                            fontSize: UI.fontSizeNew.font_12, width: 200, alignSelf: 'center', color: "#fff"
+                            fontSize: UI.fontSizeNew.font_12,   color: "#fff"
                         }} >{filejson.item_tmp_1}</Text>
-                        <Text style={{
-                            fontSize: UI.fontSizeNew.font_9, width: 200, alignSelf: 'center', opacity: 0.6, color: "#fff"
-                        }} >{UI.getNumPhone(filejson.item_tmp_3, 3, 2)}</Text>
+                        <View style={{borderRadius:16,height:16,paddingHorizontal:8,marginTop:2,
+                        backgroundColor:'#ffffff32'}}>
+                            <Text style={{
+                                fontSize: UI.fontSizeNew.font_9,   opacity: 0.6, color: "#fff"
+                            }} >{UI.getNumPhone(filejson.item_tmp_3, 3, 2)}</Text>
+                        </View>
                     </View>
                 </View>
                 <Image style={{

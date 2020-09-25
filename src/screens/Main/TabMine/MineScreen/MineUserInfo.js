@@ -47,7 +47,13 @@ export default class MineUserInfo extends PureComponent {
                 coms = <Image style={{ width: 40, height: 40, alignSelf: 'center', borderRadius: 5 }} source={Images.headImage} />
                 break;
             case '身份认证':
-                coms = <Image style={{ width: 18 * 161 / 56, height: 18, marginLeft: 5, alignSelf: 'center' }} source={Images.icon_30} />
+                const sex = 1
+                if (sex===0) {//男
+                    coms = <Image style={{ width: 18 * 161 / 56, height: 18, marginLeft: 5, alignSelf: 'center' }} source={Images.icon_30} />
+                }else {
+                    coms = <Image style={{ width: 18 * 148 / 52, height: 18, marginLeft: 5, alignSelf: 'center' }} source={Images.icon_30_1} />
+                }
+                
                 break;
             case '我的二维码':
                 coms = <Image style={{ width: 18 * 51 / 50, height: 18, marginLeft: 5, alignSelf: 'center' }} source={Images.icon_31} />
