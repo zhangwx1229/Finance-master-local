@@ -1,10 +1,21 @@
 import { isNumber } from 'lodash';
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, View, Text, DeviceEventEmitter } from 'react-native';
+import { Image, StyleSheet, View, Text, DeviceEventEmitter, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI, { setWidthList } from '../../../../UI';
 export default class HomeScreen extends PureComponent {
 
+    componentDidMount() {
+        this.props.navigation.addListener('focus', this.onWillBlur);
+    }
+
+    onWillBlur = () => {
+        StatusBar.setBackgroundColor('#ccc')
+    }
+
+    componentWillUnmount() {
+        this.props.navigation.removeListener();
+    }
 
     render() {
         return (

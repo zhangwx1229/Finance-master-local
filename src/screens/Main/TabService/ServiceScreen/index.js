@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
-import { DeviceEventEmitter, Image, StyleSheet, Text, View } from 'react-native';
+import { DeviceEventEmitter, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { sub } from 'react-native-reanimated';
 import Images from '../../../../image';
 import UI, { setWidthList } from '../../../../UI';
+import color from '../../../../UI/lib/color';
 import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
 const header_h = 100
+const scroll_h = 180
 export default class TaxServer extends PureComponent {
     constructor() {
         super()
@@ -13,10 +15,24 @@ export default class TaxServer extends PureComponent {
             textList.push(i / 2 + 6);
         }
         this.state = {
-            textList: textList, indexY: 180
+            textList: textList, indexY: scroll_h
         };
         this.widthList = {};
+    }
 
+    componentDidMount() {
+        this.props.navigation.addListener('focus', this.onWillBlur);
+    }
+    onWillBlur = () => {
+        const num = (this.state.indexY - scroll_h) / header_h
+        if (num < 0.5) {
+            StatusBar.setBackgroundColor('transparent')
+        } else {
+            StatusBar.setBackgroundColor('#ccc')
+        }
+    }
+    componentWillUnmount() {
+        this.props.navigation.removeListener();
     }
 
     svaeTextList = () => {
@@ -28,12 +44,18 @@ export default class TaxServer extends PureComponent {
     };
 
     onScroll = (y) => {
-        if (y >= 180 && y <= 180 + header_h && Math.abs(this.state.indexY - y) > 5) {
+        if (y >= scroll_h && y <= scroll_h + header_h && Math.abs(this.state.indexY - y) > 5) {
             this.setState({ indexY: y })
-            console.debug('===onScroll====', y)
+            const num = (y - scroll_h) / header_h
+            if (num < 0.5) {
+                StatusBar.setBackgroundColor('transparent')
+            } else {
+                StatusBar.setBackgroundColor('#ccc')
+            }
         }
-        if (y > 180 + header_h && this.state.indexY !== 180 + header_h) {
-            this.setState({ indexY: 180 + header_h })
+        if (y > scroll_h + header_h && this.state.indexY !== scroll_h + header_h) {
+            this.setState({ indexY: scroll_h + header_h })
+            StatusBar.setBackgroundColor('#ccc')
         }
     }
     renderText = () => {
@@ -61,7 +83,7 @@ export default class TaxServer extends PureComponent {
 
     renderContent = () => {
         return <View>
-            <View style={{ marginTop: 27 + 8 - 1 }}>
+            <View style={{ marginTop: UI.size.statusBarHeight + 27 + 8 - 1 }}>
                 <Image style={{
 
                     width: UI.size.screenWidth,
@@ -102,11 +124,11 @@ export default class TaxServer extends PureComponent {
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 1035 / 1080
             }} source={Images.tab_bjt_4} />
-        </View>
+        </View >
     }
 
     renderHeader = () => {
-        const num = (this.state.indexY - 180) / header_h
+        const num = (this.state.indexY - scroll_h) / header_h
         return <View style={{
             marginTop: UI.size.statusBarHeight,
             width: UI.size.screenWidth,
@@ -118,7 +140,7 @@ export default class TaxServer extends PureComponent {
                 marginVertical: 8, height: 27, borderRadius: 14.5,
                 borderColor: num > 0.5 ? 'rgba(235, 235, 235, 1.0)' : '#8f8f8f',
                 borderWidth: 0.5,
-                backgroundColor: num < 0.5 ? 'rgba(249, 249, 249, 1.0)' : 'rgba(235, 235, 235, 1.0)'
+                backgroundColor: num < 0.5 ? 'rgba(249, 249, 249, 0.3)' : 'rgba(235, 235, 235, 1.0)'
             }} >
                 <Text style={{
                     fontSize: UI.fontSizeNew.font_9, alignSelf: 'center', color: "#5c5c5c"
@@ -142,6 +164,7 @@ export default class TaxServer extends PureComponent {
             <View style={styles.container}>
                 {this.renderText()}
                 <JJRefresh foot_H={0}
+                    header_H={scroll_h}
                     onScroll={this.onScroll}
                     backgroundColor={"#fff"}
                     contentView={this.renderContent}

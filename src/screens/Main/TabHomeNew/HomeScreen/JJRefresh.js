@@ -168,39 +168,33 @@ export default class JJRefresh extends PureComponent {
 
     render() {
         return (
-            <View style={styles.container}>
-                <ScrollView
-                    ref={this.ref}
-                    style={[styles.content, this.scroll_style, { opacity: this.state.opacity }, this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : null]}
-                    onLayout={this.onLayout}
-                    contentContainerStyle={this.getContentContainerStyle()}
-                    onScrollEndDrag={this.onScrollEndDrag}
-                    onScroll={this.onScroll}
-                    showsVerticalScrollIndicator={false}
-                >
-                    {this.renderScrollHeader()}
+            <ScrollView
+                ref={this.ref}
+                style={[styles.content, this.scroll_style, { opacity: this.state.opacity }, this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : null]}
+                onLayout={this.onLayout}
+                contentContainerStyle={this.getContentContainerStyle()}
+                onScrollEndDrag={this.onScrollEndDrag}
+                onScroll={this.onScroll}
+                showsVerticalScrollIndicator={false}
+            >
+                {this.renderScrollHeader()}
 
-                    <View onLayout={this.onLayoutContent}>
-                        <View onLayout={this.onLayoutHeader}>
-                            {this.props.headerView ? this.props.headerView() : null}
-                        </View>
-                        {this.props.contentView ? this.props.contentView() : null}
-                        <View onLayout={this.onLayoutFoot}>
-                            {this.props.footView ? this.props.footView() : null}
-                        </View>
+                <View onLayout={this.onLayoutContent}>
+                    <View onLayout={this.onLayoutHeader}>
+                        {this.props.headerView ? this.props.headerView() : null}
                     </View>
-                    {this.contentH > 0 ? null : <View style={{ height: 400 }} />}
-                    {this.renderScrollFoot()}
-                </ScrollView>
-            </View>
+                    {this.props.contentView ? this.props.contentView() : null}
+                    <View onLayout={this.onLayoutFoot}>
+                        {this.props.footView ? this.props.footView() : null}
+                    </View>
+                </View>
+                {this.contentH > 0 ? null : <View style={{ height: 400 }} />}
+                {this.renderScrollFoot()}
+            </ScrollView>
         );
     }
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f4f8',
-    },
     content: {
         flex: 1,
         backgroundColor: '#f5f4f8',

@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
-import { DeviceEventEmitter, Image, StyleSheet, Text, View } from 'react-native';
+import { DeviceEventEmitter, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { sub } from 'react-native-reanimated';
 import Images from '../../../image';
 import UI, { setWidthList } from '../../../UI';
 import JJRefresh from '../TabHomeNew/HomeScreen/JJRefresh';
 const header_h = 100
+const scroll_h = 180
 export default class TaxMessage extends PureComponent {
     constructor() {
         super()
@@ -13,19 +14,37 @@ export default class TaxMessage extends PureComponent {
             textList.push(i / 2 + 6);
         }
         this.state = {
-            indexY: 180
+            indexY: scroll_h
         };
     }
-
-
+    componentDidMount() {
+        this.props.navigation.addListener('focus', this.onWillBlur);
+    }
+    onWillBlur = () => {
+        const num = (this.state.indexY - scroll_h) / header_h
+        if (num < 0.5) {
+            StatusBar.setBackgroundColor('transparent')
+        } else {
+            StatusBar.setBackgroundColor('#ccc')
+        }
+    }
+    componentWillUnmount() {
+        this.props.navigation.removeListener();
+    }
 
     onScroll = (y) => {
-        if (y >= 180 && y <= 180 + header_h && Math.abs(this.state.indexY - y) > 5) {
+        if (y >= scroll_h && y <= scroll_h + header_h && Math.abs(this.state.indexY - y) > 5) {
             this.setState({ indexY: y })
-            console.debug('===onScroll====', y)
+            const num = (y - scroll_h) / header_h
+            if (num < 0.5) {
+                StatusBar.setBackgroundColor('transparent')
+            } else {
+                StatusBar.setBackgroundColor('#ccc')
+            }
         }
-        if (y > 180 + header_h && this.state.indexY !== 180 + header_h) {
-            this.setState({ indexY: 180 + header_h })
+        if (y > scroll_h + header_h && this.state.indexY !== scroll_h + header_h) {
+            this.setState({ indexY: scroll_h + header_h })
+            StatusBar.setBackgroundColor('#ccc')
         }
     }
 
@@ -51,7 +70,7 @@ export default class TaxMessage extends PureComponent {
     }
 
     renderHeader = () => {
-        const num = (this.state.indexY - 180) / header_h
+        const num = (this.state.indexY - scroll_h) / header_h
         return <View style={{
             marginTop: UI.size.statusBarHeight,
             width: UI.size.screenWidth,
@@ -80,7 +99,9 @@ export default class TaxMessage extends PureComponent {
         const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>
-                <JJRefresh foot_H={0}
+                <JJRefresh
+                    foot_H={0}
+                    header_H={scroll_h}
                     onScroll={this.onScroll}
 
                     contentView={this.renderContent}

@@ -1,10 +1,19 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View } from 'react-native';
+import { Image, StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
 
 export default class TaxScreen extends PureComponent {
+    componentDidMount() {
+        this.props.navigation.addListener('focus', this.onWillBlur);
+    }
+    onWillBlur = () => {
+        StatusBar.setBackgroundColor('#ccc')
+    }
+    componentWillUnmount() {
+        this.props.navigation.removeListener();
+    }
     renderContent = () => {
         return <View>
             <Image style={{

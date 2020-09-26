@@ -20,7 +20,6 @@ const Stack = createStackNavigator();
 export default class Navigator extends Component {
     constructor() {
         super()
-
         StatusBar.setBackgroundColor('transparent')
         StatusBar.setBarStyle('dark-content')
         StatusBar.setTranslucent(true);
