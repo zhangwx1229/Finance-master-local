@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { DeviceEventEmitter, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { DeviceEventEmitter, TouchableWithoutFeedback, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { sub } from 'react-native-reanimated';
 import Images from '../../../../image';
 import UI, { setWidthList } from '../../../../UI';
@@ -39,6 +39,15 @@ export default class TaxServer extends PureComponent {
         setWidthList(this.widthList)
         DeviceEventEmitter.emit('FontChange')
     };
+
+    clickSB = () => {
+
+    }
+
+    clickGJJ = () => {
+        // AccumulationScreenNew
+        this.props.navigation.navigate('AccumulationScreenNew')
+    }
 
     onScroll = (y) => {
         if (y >= scroll_h && y <= scroll_h + header_h && Math.abs(this.state.indexY - y) > 5) {
@@ -82,7 +91,6 @@ export default class TaxServer extends PureComponent {
         return <View>
             <View style={{ marginTop: UI.size.statusBarHeight + 27 + 8 - 1 }}>
                 <Image style={{
-
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 301 / 1080
                 }} source={Images.tab_bjt_0} />
@@ -107,12 +115,29 @@ export default class TaxServer extends PureComponent {
             </View>
             <Image style={{
                 width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1131 / 1080
-            }} source={Images.tab_bjt_1} />
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1041 / 1080
-            }} source={Images.tab_bjt_2} />
+                height: UI.size.screenWidth * 492 / 1080
+            }} source={Images.tab_bjt_11} />
+            <View>
+                <Image style={{
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 638 / 1080
+                }} source={Images.tab_bjt_1} />
+                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                    <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.clickSB}>
+                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, top: 10, width: 80, height: 50, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
+            </View>
+            <View>
+                <Image style={{
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 1041 / 1080
+                }} source={Images.tab_bjt_2} />
+                <TouchableWithoutFeedback onPress={this.clickSB}>
+                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 - 60 - 10, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10, width: 60, height: 50, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
+            </View>
             <Image style={{
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 1280 / 1080
