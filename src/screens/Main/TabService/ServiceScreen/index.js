@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import { DeviceEventEmitter, TouchableWithoutFeedback, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { sub } from 'react-native-reanimated';
 import Images from '../../../../image';
 import UI, { setWidthList } from '../../../../UI';
-import color from '../../../../UI/lib/color';
 import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
 const header_h = 100
 const scroll_h = 180
