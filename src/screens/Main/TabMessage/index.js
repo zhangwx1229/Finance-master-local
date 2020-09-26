@@ -23,13 +23,7 @@ export default class TaxMessage extends PureComponent {
         this.props.navigation.addListener('focus', this.onWillBlur);
     }
     onWillBlur = () => {
-        const num = (this.state.indexY - scroll_h) / header_h
-        console.debug('=====ss=====', num)
-        if (num < 0.1) {
-            StatusBar.setBackgroundColor('transparent')
-        } else {
-            StatusBar.setBackgroundColor('rgba(204, 204, 204,' + num + ')')
-        }
+        StatusBar.setBackgroundColor(this.barColor)
     }
     componentWillUnmount() {
         this.props.navigation.removeListener();
