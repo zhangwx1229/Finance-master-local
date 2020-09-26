@@ -5,7 +5,7 @@ import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
 import TitleView from './TitleView';
 import Images from '../../../../image';
 import filejson from '../../../../image/filename.json';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import DateSelectModel from '../../TabHomeNew/common/DateSelectModel';
 type Props = {
     style: Object,
     onClosePress: Function,
@@ -17,6 +17,8 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         super(props);
         this.state = {
             selectIndex: 1,
+            isShowYear: false,
+            selectYear: 0,
             secondDataLsit: [],
             secondOne: '全部',
             secondTwo: '全部',
@@ -98,6 +100,23 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         return list
     }
 
+    clickSearch = (title, date) => {
+        if (title === '开始日期') {
+            this.setState({ isShowYear: true, secondThird: date, selectYear: 0 });
+        } else if (title === '结束日期') {
+            this.setState({ isShowYear: true, secondThird: date, selectYear: 1 });
+        }
+    };
+    onYearCall = ({ year }) => {
+        if (this.state.selectYear === 0) {
+            this.setState({ isShowYear: false, secondThird: year })
+        } else if (this.state.selectYear === 1) {
+            this.setState({ isShowYear: false, secondFour: year })
+        }
+    };
+    onDismiss = () => {
+        this.setState({ isShowYear: false })
+    };
     getIdentityStr(str = '140322199203232432') {
         let id = '';
         const idStr = str + '';
@@ -313,73 +332,76 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         }
         console.debug('===renderItem4====', title, subTitle, subTitleNew)
         return (
-            <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                    }}
-                >
-                    <Text
-                        numberOfLines={1}
+            <TouchableWithoutFeedback onPress={() => {
+                this.clickSearch(title, subTitleNew)
+            }}>
+                <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
+                    <View
                         style={{
-                            maxWidth: 100,
-                            marginLeft: 15,
-                            marginVertical: 12,
-                            fontSize: 12,
-                            color: '#333333',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
                         }}
                     >
-                        {title}
-                    </Text>
-                    <Text
-                        numberOfLines={2}
+                        <Text
+                            numberOfLines={1}
+                            style={{
+                                maxWidth: 100,
+                                marginLeft: 15,
+                                marginVertical: 12,
+                                fontSize: 12,
+                                color: '#333333',
+                            }}
+                        >
+                            {title}
+                        </Text>
+                        <Text
+                            numberOfLines={2}
+                            style={{
+                                textAlign: 'right',
+                                maxWidth: UI.size.screenWidth - 100 - 15 * 2,
+                                marginRight: 15,
+                                marginVertical: 12,
+                                fontSize: 12,
+                                color: '#333333',
+                            }}
+                        >
+                            {subTitleNew}
+                            {subTitle1 ? (
+                                <Text
+                                    numberOfLines={2}
+                                    style={{
+                                        textAlign: 'right',
+                                        maxWidth: UI.size.screenWidth - 100 - 15 * 2,
+                                        marginRight: 15,
+                                        marginVertical: 12,
+                                        fontSize: 12,
+                                        color: 'red',
+                                    }}
+                                >
+                                    {subTitle1}
+                                </Text>
+                            ) : null}
+                            {'  '}
+                            <Image style={{
+                                width: 10 * 21 / 31,
+                                height: 10
+                            }} source={Images.icon_21} />
+                        </Text>
+                    </View>
+                    <View
                         style={{
-                            textAlign: 'right',
-                            maxWidth: UI.size.screenWidth - 100 - 15 * 2,
-                            marginRight: 15,
-                            marginVertical: 12,
-                            fontSize: 12,
-                            color: '#333333',
+                            height: 1,
+                            opacity: 0.3,
+                            backgroundColor: '#9d9d9d',
                         }}
-                    >
-                        {subTitleNew}
-                        {subTitle1 ? (
-                            <Text
-                                numberOfLines={2}
-                                style={{
-                                    textAlign: 'right',
-                                    maxWidth: UI.size.screenWidth - 100 - 15 * 2,
-                                    marginRight: 15,
-                                    marginVertical: 12,
-                                    fontSize: 12,
-                                    color: 'red',
-                                }}
-                            >
-                                {subTitle1}
-                            </Text>
-                        ) : null}
-                        {'  '}
-                        <Image style={{
-                            width: 10 * 21 / 31,
-                            height: 10
-                        }} source={Images.icon_21} />
-                    </Text>
-                </View>
-                <View
-                    style={{
-                        height: 1,
-                        opacity: 0.3,
-                        backgroundColor: '#9d9d9d',
-                    }}
-                />
-                {
-                    isLast ? (
-                        this.renderItem5()
-                    ) : null
-                }
-            </View >
-        );
+                    />
+                    {
+                        isLast ? (
+                            this.renderItem5()
+                        ) : null
+                    }
+                </View >
+            </TouchableWithoutFeedback>);
     };
 
     renderItem5 = () => {
@@ -600,6 +622,10 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         return this.renderList();
                     }}
                 />
+                {this.state.isShowYear ? <DateSelectModel
+                    selectYear={this.state.selectYear === 0 ? this.state.secondThird : this.state.secondFour}
+                    onDismiss={this.onDismiss}
+                    onYearCall={this.onYearCall} /> : null}
             </View>
         );
     }

@@ -15,8 +15,6 @@ import {
 } from './WheelPicker';
 import BirthDayPicker from './BirthDayPicker';
 import Images from '../../../../image';
-
-import filejson from '../../../../image/filename_02.json';
 import UI from '../../../../UI';
 type Props = {
     cureentYear: Number,
@@ -25,40 +23,38 @@ type Props = {
     onSure: (dateInfo: DateInfo) => void,
 };
 
-type State = {
-    yearIndex: number, // 默认年份索引
-};
-
 const TAG = 'LV_DateSelect';
 export default class DateSelect extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
         this.selectedYear = props.selectedYear;
-        this.yearList = this.getYearList(filejson.yearList.length, props.cureentYear);
-        const yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
+        this.yearList = this.getYearList(10, 2020)
+        this.monthList = this.getmonthList()
+        // const yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
         this.state = {
-            yearIndex: yearIndex
+            yearIndex: 0, monthIndex: 0, dayIndex: 0
         };
+        console.debug('===props======', props)
     }
 
     componentDidMount() {
-        this.timeout = setTimeout(() => {
-            const {
-                selectedYear
-            } = this.props;
-            if (selectedYear) {
-                this.selectedYear = selectedYear;
-            }
-            let yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
-            if (yearIndex < 0) {
-                this.selectedYear = 1995;
-                yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
-            }
+        // this.timeout = setTimeout(() => {
+        //     const {
+        //         selectedYear
+        //     } = this.props;
+        //     if (selectedYear) {
+        //         this.selectedYear = selectedYear;
+        //     }
+        //     let yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
+        //     if (yearIndex < 0) {
+        //         this.selectedYear = 1995;
+        //         yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
+        //     }
 
-            this.setState({
-                yearIndex
-            });
-        });
+        //     this.setState({
+        //         yearIndex
+        //     });
+        // });
     }
 
     componentWillUnmount() {
@@ -70,17 +66,53 @@ export default class DateSelect extends React.PureComponent<Props> {
     getYearList = (len, yearEnd) => {
         const yearMap = [];
         for (let index = 0; index < len; index++) {
-            const element = yearEnd - len + index + 1;
+            const year = yearEnd - len + index + 1;
             yearMap.push({
                 index,
-                value: element,
-                text: `${element}`
+                value: year,
+                text: `${year}`
             });
         }
         return yearMap;
     };
+    getmonthList = (len, yearEnd) => {
+        const monthMap = [];
+        for (let i = 1; i <= 12; i++) {
+            monthMap.push({
+                index: i - 1,
+                value: i,
+                text: i < 10 ? '0' + i : i + ''
+            });
+        }
+        return monthMap
+    };
+
+    getDayList = (year, month) => {
+        const dayMap = [];
+        let days = 30
+        if (month == 2 && year % 4 === 0) {
+            days = 28
+        } else if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
+            days = 31
+        }
+        for (let j = 1; j <= days; j++) {
+            dayMap.push({
+                index: j - 1,
+                value: j,
+                text: j < 10 ? '0' + j : j + ''
+            });
+        }
+        return dayMap;
+    };
 
     onYearValueChanged = (item: PickerData) => {
+        if (this.selectedYear === item.value) {
+            return;
+        }
+        this.selectedYear = item.value;
+    };
+
+    onMonthValueChanged = (item: PickerData) => {
         if (this.selectedYear === item.value) {
             return;
         }
@@ -101,7 +133,7 @@ export default class DateSelect extends React.PureComponent<Props> {
 
     renderContent = () => {
         const {
-            yearIndex
+            yearIndex, monthIndex, dayIndex
         } = this.state;
         const {
             onCancel
@@ -144,21 +176,21 @@ export default class DateSelect extends React.PureComponent<Props> {
                     backgroundColor: '#9D9D9D'
                 }} />
             </View>
-            <View style={
-                styles.pickerContainer
-            }>
-                <BirthDayPicker pickerStyle={
-                    styles.pickerStyle
-                }
-                    selectedIndex={
-                        yearIndex
-                    }
-                    datas={
-                        this.yearList
-                    }
-                    onValueChanged={
-                        this.onYearValueChanged
-                    }
+            <View style={styles.pickerContainer}>
+                <BirthDayPicker pickerStyle={styles.pickerStyle}
+                    selectedIndex={yearIndex}
+                    datas={this.yearList}
+                    onValueChanged={this.onYearValueChanged}
+                />
+                <BirthDayPicker pickerStyle={styles.pickerStyle}
+                    selectedIndex={1}
+                    datas={this.yearList}
+                    onValueChanged={this.onMonthValueChanged}
+                />
+                <BirthDayPicker pickerStyle={styles.pickerStyle}
+                    selectedIndex={1}
+                    datas={this.yearList}
+                    onValueChanged={this.onMonthValueChanged}
                 />
             </View>
         </View>
