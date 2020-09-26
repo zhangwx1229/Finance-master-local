@@ -7,6 +7,7 @@ import color from '../../../../UI/lib/color';
 import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
 const header_h = 100
 const scroll_h = 180
+//北京通
 export default class TaxServer extends PureComponent {
     constructor() {
         super()
@@ -18,18 +19,14 @@ export default class TaxServer extends PureComponent {
             textList: textList, indexY: scroll_h
         };
         this.widthList = {};
+        this.barColor = 'transparent'
     }
 
     componentDidMount() {
         this.props.navigation.addListener('focus', this.onWillBlur);
     }
     onWillBlur = () => {
-        const num = (this.state.indexY - scroll_h) / header_h
-        if (num < 0.5) {
-            StatusBar.setBackgroundColor('transparent')
-        } else {
-            StatusBar.setBackgroundColor('#ccc')
-        }
+        StatusBar.setBackgroundColor(this.barColor)
     }
     componentWillUnmount() {
         this.props.navigation.removeListener();
@@ -129,6 +126,12 @@ export default class TaxServer extends PureComponent {
 
     renderHeader = () => {
         const num = (this.state.indexY - scroll_h) / header_h
+        if (num === 0) {
+            this.barColor = 'transparent'
+        } else {
+            this.barColor = 'rgba(204, 204, 204,' + num + ')'
+        }
+        StatusBar.setBackgroundColor(this.barColor)
         return <View style={{
             marginTop: UI.size.statusBarHeight,
             width: UI.size.screenWidth,
