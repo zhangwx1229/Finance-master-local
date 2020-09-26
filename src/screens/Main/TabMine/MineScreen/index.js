@@ -37,12 +37,33 @@ export default class MineScreen extends PureComponent {
     renderContent = () => {
         const sub = 10
         return <View style={{ paddingTop: 70, backgroundColor: 'transparent' }}>
-            <Image style={{
-                alignSelf: 'center',
-                width: UI.size.screenWidth - sub * 2,
-                height: (UI.size.screenWidth - sub * 2) * 711 / 1020,
-                borderRadius: 5
-            }} source={Images.tab_mine_2} />
+            <View>
+                <Image style={{
+                    alignSelf: 'center',
+                    width: UI.size.screenWidth - sub * 2,
+                    height: (UI.size.screenWidth - sub * 2) * 711 / 1020,
+                    borderRadius: 5
+                }} source={Images.tab_mine_2} />
+                <View style={{
+                    position: 'absolute', left: sub + 15, top: 17
+                }}>
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        <Image style={{
+                            width: UI.size.screenWidth * 70 / 360,
+                            height: UI.size.screenWidth * 70 / 360,
+                            borderRadius: UI.size.screenWidth * 70 / (360 * 2),
+                        }} source={Images.tab_mine_2} />
+                        <View style={{ alignSelf: 'center', marginLeft: 10 }}>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, marginBottom: 7, fontSize: UI.fontSizeNew.font_15, color: '#333333' }} >{'嗯打麻将十大大多数的三六九等'}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{'男'}</Text>
+                        </View >
+                    </View>
+                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 16, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{'签名'}</Text>
+                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 4, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{'名片号:'}</Text>
+                </View>
+            </View>
             <Image style={{
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 386 / 1080
@@ -52,7 +73,7 @@ export default class MineScreen extends PureComponent {
                 height: UI.size.screenWidth * 782 / 1080
             }} source={Images.tab_mine_0} />
 
-        </View>
+        </View >
     }
 
     render() {
