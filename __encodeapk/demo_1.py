@@ -75,6 +75,7 @@ def quest_user_list(sheet):
                 app['info'] = row[1]
                 app['save'] = str(round(row[2], 2))
                 app['date'] = row[3]
+                app['company'] = row[4]
 #                app['accountMoney'] =
 
                 listyear.append(app)
