@@ -5,6 +5,7 @@ import Images from '../../../../image';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
 import filejson from '../../../../image/filename.json';
 // import MySearchScreen from '../MySearchScreen';
+// 稳定版本
 export default class HomeScreen extends PureComponent {
     constructor() {
         super();
