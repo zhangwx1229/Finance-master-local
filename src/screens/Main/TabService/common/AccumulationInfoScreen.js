@@ -103,9 +103,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         if (title === '开始日期') {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 0 });
         } else if (title === '结束日期') {
-            this.setState({ isShowYear: true, secondThird: date, selectYear: 1 });
-        } else {
-            console.debug('===clickSearch=====', title, info)
+            this.setState({ isShowYear: true, secondFour: date, selectYear: 1 });
+        } else if (this.state.selectIndex === 2) {
             const index = this.state.selectYearList.indexOf(title)
             if (index < 0) {
                 this.state.selectYearList.push(title)
