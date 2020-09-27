@@ -82,18 +82,21 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             const y_end = this.state.secondFour.slice(0, 4)
             if (y >= y_start && y <= y_end) {
                 for (let j = 0; j < saveMoney.length; j++) {
+                    
                     const { accountMoney, save, date, info, company } = saveMoney[j];
-                    list.push({
-                        type: 5,
-                        data: {
-                            balance: accountMoney,
-                            balance1: save,
-                            business: y + '-' + date,
-                            remittance: y + '-' + date.slice(0, 2),
-                            business1: info, //年度结息 汇缴分配
-                            company: company ? company : '电视剧哦几电视剧哦几哦说电视剧哦几哦说哦说',
-                        },
-                    })
+                    if (date>=this.state.secondThird.slice(5, 10)&&date<=this.state.secondFour.slice(5, 10)) {
+                        list.push({
+                            type: 5,
+                            data: {
+                                balance: accountMoney,
+                                balance1: save,
+                                business: y + '-' + date,
+                                remittance: y + '-' + date.slice(0, 2),
+                                business1: info, //年度结息 汇缴分配
+                                company: company ? company : '电视剧哦几电视剧哦几哦说电视剧哦几哦说哦说',
+                            },
+                        })
+                    }
                 }
             }
         }
@@ -107,11 +110,25 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 1 });
         }
     };
-    onYearCall = ({ year }) => {
+    onYearCall = ({ year,month,day }) => {
+        let date = ''+year
+        console.debug('=======onYearCall=',month,day)
+        if (month<10) {
+            date+='-0'
+        }else {
+            date+='-'
+        }
+        date+=month
+        if (day<10) {
+            date+='-0'
+        }else {
+            date+='-'
+        }
+        date+=day
         if (this.state.selectYear === 0) {
-            this.setState({ isShowYear: false, secondThird: year })
+            this.setState({ isShowYear: false, secondThird: date })
         } else if (this.state.selectYear === 1) {
-            this.setState({ isShowYear: false, secondFour: year })
+            this.setState({ isShowYear: false, secondFour: date })
         }
     };
     onDismiss = () => {

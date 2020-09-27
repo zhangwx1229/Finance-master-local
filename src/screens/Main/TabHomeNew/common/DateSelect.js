@@ -27,9 +27,9 @@ const TAG = 'LV_DateSelect';
 export default class DateSelect extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
-        this.selectedYear = props.selectedYear.slice(0,4);
-        this.selectedMonth = props.selectedYear.slice(5,7);
-        this.selectedDay = props.selectedYear.slice(8,10);
+        this.selectedYear = Math.ceil(props.selectedYear.slice(0,4));
+        this.selectedMonth = Math.ceil(props.selectedYear.slice(5,7));
+        this.selectedDay = Math.ceil(props.selectedYear.slice(8,10));
         const date = new Date();
         const year = date.getFullYear().toString();
         const yearLen = 10
@@ -69,10 +69,10 @@ export default class DateSelect extends React.PureComponent<Props> {
     }
 
     getIndxForList = ()=>{
-        let yearIndex = this.yearList.findIndex(item => item.text === this.selectedYear);
-        let monthIndex = this.monthList.findIndex(item => item.text === this.selectedMonth);
+        let yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
+        let monthIndex = this.monthList.findIndex(item => item.value === this.selectedMonth);
 
-        let dayIndex = this.daysList.findIndex(item => item.text === this.selectedDay);
+        let dayIndex = this.daysList.findIndex(item => item.value === this.selectedDay);
         return{yearIndex:yearIndex>=0?yearIndex:0,monthIndex:monthIndex>=0?monthIndex:0,dayIndex:dayIndex>=0?dayIndex:0}
     }
 
@@ -180,6 +180,8 @@ export default class DateSelect extends React.PureComponent<Props> {
         if (onSure) {
             const dateInfo: DateInfo = {
                 year: this.selectedYear,
+                month: this.selectedMonth,
+                day: this.selectedDay,
             };
             onSure(dateInfo);
         }
