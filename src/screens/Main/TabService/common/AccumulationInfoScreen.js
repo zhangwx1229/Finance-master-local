@@ -16,7 +16,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            selectIndex: 0,
+            selectIndex: 2,
             isShowYear: false,
             selectYear: 0,
             secondDataLsit: [],
@@ -24,6 +24,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             secondTwo: '全部',
             secondThird: '2020-01-01',
             secondFour: '2020-10-01',
+            selectYearList:[]//记录第3组选中的年份
         };
         this.dataList = [
             { type: 1, data: '个人信息' },
@@ -32,22 +33,22 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         ];
         this.list1 = [
             { type: 1, data: '基础信息' },
-            { type: 2, data: { title: '公积金账号', subTitle: '' } },
-            { type: 2, data: { title: '单位名称', subTitle: '' } },
-            { type: 2, data: { title: '单位登记号', subTitle: '' } },
-            { type: 2, data: { title: '所属管理部名称', subTitle: '' } },
+            { type: 2, data: { title: '公积金账号', subTitle: filejson.accountNumber } },
+            { type: 2, data: { title: '单位名称', subTitle: filejson.company } },
+            { type: 2, data: { title: '单位登记号', subTitle: 'null' } },
+            { type: 2, data: { title: '所属管理部名称', subTitle: filejson.administration } },
             { type: 1, data: '账户信息' },
-            { type: 2, data: { title: '个人账户余额(元)', subTitle: '' } },
-            { type: 2, data: { title: '缴存状态', subTitle: '' } },
-            { type: 2, data: { title: '当年缴存金额(元)', subTitle: '' } },
-            { type: 2, data: { title: '当年提取金额(元)', subTitle: '' } },
-            { type: 2, data: { title: '上年结转余额(元)', subTitle: '' } },
-            { type: 2, data: { title: '单位缴存比例', subTitle: '' } },
-            { type: 2, data: { title: '个人缴存比例', subTitle: '' } },
-            { type: 2, data: { title: '单位缴存额(元)', subTitle: '' } },
-            { type: 2, data: { title: '个人缴存额(元)', subTitle: '' } },
-            { type: 2, data: { title: '个人缴存基数(元)', subTitle: '' } },
-            { type: 2, data: { title: '月缴存额(元)', subTitle: '' } },
+            { type: 2, data: { title: '个人账户余额(元)', subTitle: parseFloat(filejson.balance) } },
+            { type: 2, data: { title: '缴存状态', subTitle: '缴存' } },
+            { type: 2, data: { title: '当年缴存金额(元)', subTitle: parseFloat(filejson.currentYearTotal) } },
+            { type: 2, data: { title: '当年提取金额(元)', subTitle: parseFloat(filejson.currentYearExtract) } },
+            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(filejson.lastYearTotal)} },
+            { type: 2, data: { title: '单位缴存比例', subTitle: filejson.companyRatio+'%' } },
+            { type: 2, data: { title: '个人缴存比例', subTitle: filejson.personalRatio+'%' } },
+            { type: 2, data: { title: '单位缴存额(元)', subTitle: parseFloat(filejson.companyQuota) } },
+            { type: 2, data: { title: '个人缴存额(元)', subTitle: parseFloat(filejson.personalQuota) } },
+            { type: 2, data: { title: '个人缴存基数(元)', subTitle: parseFloat(filejson.depositBase)} },
+            { type: 2, data: { title: '月缴存额(元)', subTitle: parseFloat(filejson.recentlyDeposited) } },
         ];
         this.list2 = [
             { type: 1, data: '请选择查询条件' },
@@ -73,18 +74,20 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             const y_end = this.state.secondFour.slice(0, 4);
             if (y >= y_start && y <= y_end) {
                 for (let j = 0; j < saveMoney.length; j++) {
-const { accountMoney, save, date, info, company } = saveMoney[j];
+                    const { accountMoney, save, date, info, company } = saveMoney[j];
                     if (
                         date >= this.state.secondThird.slice(5, 10) &&
                         date <= this.state.secondFour.slice(5, 10)
                     ) {
+                        const isTakeOut = !(info==="年度结息"||info==="汇缴分配")
                         list.push({
                             type: 5,
                             data: {
-                                balance: accountMoney,
-                                balance1: save,
+                                balance: parseFloat(accountMoney),
+                                balance1: parseFloat(isTakeOut?0:save),
                                 business: y + '-' + date,
                                 remittance: y + '-' + date.slice(0, 2),
+                                remittance1: parseFloat(isTakeOut?save:0),
                                 business1: info, //年度结息 汇缴分配
                                 company: company
                                     ? company
@@ -98,11 +101,20 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
         return list;
     };
 
-    clickSearch = (title, date) => {
+    clickSearch = (title, date,info) => {
         if (title === '开始日期') {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 0 });
         } else if (title === '结束日期') {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 1 });
+        }else {
+            console.debug('===clickSearch=====',title, info)
+            const index = this.state.selectYearList.indexOf(title)
+            if (index<0) {
+                this.state.selectYearList.push(title)
+            }else {
+                this.state.selectYearList.splice(index,1)
+            }
+            this.setState({selectYearList:[...this.state.selectYearList]})
         }
     };
 
@@ -322,23 +334,18 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
                         }}
                         onPress={() => {
                             if (this.state.selectIndex !== 2) {
-                                this.setState({ selectIndex: 2 });
+                                this.setState({ selectIndex: 2,selectYearList:[] });
                                 if (!this.list_3) {
                                     this.list_3 = [];
                                     for (let i = 0; i < filejson.billInfo.length; i++) {
-                                        //                         "currentYear": "69120.0",
-                                        // "date": "2019-2020",
-                                        // "interest": "4080.08",
-                                        // "lastYearMoney": "202885.51",
-                                        // "takeOutMoney": "0",
-                                        // "total": "276085.59"
-                                        const { date, total } = filejson.billInfo[i];
+                                        const itme = filejson.billInfo[i];
                                         this.list_3.push({
                                             type: 4,
                                             data: {
-                                                title: date,
+                                                title: itme.date,
                                                 subTitle: '本息合计',
-                                                subTitle1: total,
+                                                subTitle1: itme.total,
+                                                info:itme
                                             },
                                         });;
                                     }
@@ -355,7 +362,7 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
         );
     };
 
-    renderItem4 = ({ title, subTitle, subTitle1 }) => {
+    renderItem4 = ({ title, subTitle, subTitle1,info }) => {
         let isLast = false;
         let subTitleNew = subTitle;
         if (title === '结束日期') {
@@ -368,11 +375,16 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
         } else if (title === '经办渠道') {
             subTitleNew = this.state.secondOne;
         }
-        console.debug('===renderItem4====', title, subTitle, subTitleNew);
+        let isShow = false
+        if (info&&this.state.selectYearList.includes(title)) {
+            isShow = true
+        }
+        console.debug('===renderItem4====', title, this.state.selectYearList);
         return (
-            <TouchableWithoutFeedback
+            <View>
+                <TouchableWithoutFeedback
                 onPress={() => {
-                    this.clickSearch(title, subTitleNew);;
+                    this.clickSearch(title, subTitleNew, info);;
                 }}
             >
                 <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
@@ -442,6 +454,90 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
                     {isLast ? this.renderItem5() : null}
                 </View>
             </TouchableWithoutFeedback>
+                {!isShow?null:<View style={{backgroundColor:'#fff',flexDirection:'row',borderBottomColor:"#9d9d9d48",borderBottomWidth:1}}>
+                    <Text style={{
+                            marginLeft: 15,
+                            marginVertical: 12,
+                            fontSize: UI.fontSizeNew.font_12,
+                            color: '#333333',
+                        }} >
+                        明细
+                    </Text>
+                    <View style={{marginLeft:40}}>
+                    <Image
+                                style={{
+                                    position:'absolute',bottom:8,left:-37,
+                                    width:85,
+                                    height: 85,
+                                }}
+                                source={Images.icon_6}
+                            />
+                        <Text 
+                            numberOfLines={1} 
+                            style={{
+                                marginTop: 12,
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: '#333333',
+                            }} >
+                            上年结转(元)：{parseFloat(info.lastYearMoney)}
+                        </Text>
+                        <Text 
+                            numberOfLines={1} 
+                            style={{
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: '#333333',
+                            }} >
+                            本年缴存(含转入)：<Text 
+                            numberOfLines={1} 
+                            style={{
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: 'green',
+                            }} >
+                            +{parseFloat(info.currentYear)}
+                        </Text>
+                        </Text>
+                        <Text 
+                            numberOfLines={1} 
+                            style={{
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: '#333333',
+                            }} >
+                            本年提取(元)：<Text 
+                            numberOfLines={1} 
+                            style={{
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: 'red',
+                            }} >
+                            -{parseFloat(info.takeOutMoney)}
+                        </Text>
+                        </Text>
+                        <Text 
+                            numberOfLines={1} 
+                            style={{
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: '#333333',
+                            }} >
+                            利息(元)：<Text 
+                            numberOfLines={1} 
+                            style={{
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: 'green',
+                            }} >
+                            +{parseFloat(info.interest)}
+                        </Text>
+                        </Text>
+                        <Text 
+                            numberOfLines={1} 
+                            style={{
+                                marginBottom:13,
+                                fontSize: UI.fontSizeNew.font_12,
+                                color: '#333333',
+                            }} >
+                            本息合计(元)：{parseFloat(info.total)}
+                        </Text>
+                        </View>
+                </View>}
+            </View>
         );
     };
 
@@ -505,12 +601,8 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
         business1,
         company,
     }) => {
-        let type = 0;
         let remittanceDetail = '';
-        if (business1 === '年度结息') {
-            type = 1;
-        } else if (business1 === '汇缴分配') {
-            type = 2;
+        if (business1 === '汇缴分配') {
             remittanceDetail = '汇缴月份: ' + remittance;
         }
         return (
@@ -557,8 +649,7 @@ const { accountMoney, save, date, info, company } = saveMoney[j];
                             color: 'green',
                         }}
                     >
-                        {type === 0 ? '- ' : '+ '}
-                        {balance1}
+                        + {balance1}
                     </Text>
                 </View>
                 <View
