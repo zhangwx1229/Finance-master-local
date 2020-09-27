@@ -12,7 +12,7 @@ type Props = {
     onPress: Function,
 };
 
-export default class AccumulationScreen extends React.PureComponent<Props> {
+export default class AccumulationInfoScreen extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,12 +24,12 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             secondTwo: '全部',
             secondThird: '2020-01-01',
             secondFour: '2020-10-01',
-            selectYearList:[]//记录第3组选中的年份
+            selectYearList: []//记录第3组选中的年份
         };
         this.dataList = [
             { type: 1, data: '个人信息' },
             { type: 2, data: { title: '姓名', subTitle: filejson.name } },
-            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr('640872194505118510',3,4) } },
+            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr('640872194505118510', 3, 4) } },
         ];
         this.list1 = [
             { type: 1, data: '基础信息' },
@@ -42,12 +42,12 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             { type: 2, data: { title: '缴存状态', subTitle: '缴存' } },
             { type: 2, data: { title: '当年缴存金额(元)', subTitle: parseFloat(filejson.currentYearTotal) } },
             { type: 2, data: { title: '当年提取金额(元)', subTitle: parseFloat(filejson.currentYearExtract) } },
-            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(filejson.lastYearTotal)} },
-            { type: 2, data: { title: '单位缴存比例', subTitle: filejson.companyRatio+'%' } },
-            { type: 2, data: { title: '个人缴存比例', subTitle: filejson.personalRatio+'%' } },
+            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(filejson.lastYearTotal) } },
+            { type: 2, data: { title: '单位缴存比例', subTitle: filejson.companyRatio + '%' } },
+            { type: 2, data: { title: '个人缴存比例', subTitle: filejson.personalRatio + '%' } },
             { type: 2, data: { title: '单位缴存额(元)', subTitle: parseFloat(filejson.companyQuota) } },
             { type: 2, data: { title: '个人缴存额(元)', subTitle: parseFloat(filejson.personalQuota) } },
-            { type: 2, data: { title: '个人缴存基数(元)', subTitle: parseFloat(filejson.depositBase)} },
+            { type: 2, data: { title: '个人缴存基数(元)', subTitle: parseFloat(filejson.depositBase) } },
             { type: 2, data: { title: '月缴存额(元)', subTitle: parseFloat(filejson.recentlyDeposited) } },
         ];
         this.list2 = [
@@ -61,9 +61,9 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         this.list_3 = null;
     }
 
-    componentDidMount() {}
+    componentDidMount() { }
 
-    componentWillUnmount() {}
+    componentWillUnmount() { }
 
     getList = () => {
         const list = [];
@@ -79,15 +79,15 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         date >= this.state.secondThird.slice(5, 10) &&
                         date <= this.state.secondFour.slice(5, 10)
                     ) {
-                        const isTakeOut = !(info==="年度结息"||info==="汇缴分配")
+                        const isTakeOut = !(info === "年度结息" || info === "汇缴分配")
                         list.push({
                             type: 5,
                             data: {
                                 balance: parseFloat(accountMoney),
-                                balance1: parseFloat(isTakeOut?0:save),
+                                balance1: parseFloat(isTakeOut ? 0 : save),
                                 business: y + '-' + date,
                                 remittance: y + '-' + date.slice(0, 2),
-                                remittance1: parseFloat(isTakeOut?save:0),
+                                remittance1: parseFloat(isTakeOut ? save : 0),
                                 business1: info, //年度结息 汇缴分配
                                 company: company
                                     ? company
@@ -101,20 +101,20 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         return list;
     };
 
-    clickSearch = (title, date,info) => {
+    clickSearch = (title, date, info) => {
         if (title === '开始日期') {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 0 });
         } else if (title === '结束日期') {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 1 });
-        }else {
-            console.debug('===clickSearch=====',title, info)
+        } else {
+            console.debug('===clickSearch=====', title, info)
             const index = this.state.selectYearList.indexOf(title)
-            if (index<0) {
+            if (index < 0) {
                 this.state.selectYearList.push(title)
-            }else {
-                this.state.selectYearList.splice(index,1)
+            } else {
+                this.state.selectYearList.splice(index, 1)
             }
-            this.setState({selectYearList:[...this.state.selectYearList]})
+            this.setState({ selectYearList: [...this.state.selectYearList] })
         }
     };
 
@@ -172,7 +172,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     listView.push(this.renderItem6(data));
                 }
             }
-            if (this.state.secondDataLsit.length>0) {
+            if (this.state.secondDataLsit.length > 0) {
                 listView.push(this.renderFoot(1));
             }
         } else {
@@ -191,7 +191,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     listView.push(this.renderItem4(data));
                 }
             }
-            if (this.list_3&&this.list_3.length>0) {
+            if (this.list_3 && this.list_3.length > 0) {
                 listView.push(this.renderFoot());
             }
         }
@@ -334,7 +334,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         }}
                         onPress={() => {
                             if (this.state.selectIndex !== 2) {
-                                this.setState({ selectIndex: 2,selectYearList:[] });
+                                this.setState({ selectIndex: 2, selectYearList: [] });
                                 if (!this.list_3) {
                                     this.list_3 = [];
                                     for (let i = 0; i < filejson.billInfo.length; i++) {
@@ -345,7 +345,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                                                 title: itme.date,
                                                 subTitle: '本息合计',
                                                 subTitle1: itme.total,
-                                                info:itme
+                                                info: itme
                                             },
                                         });;
                                     }
@@ -362,7 +362,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         );
     };
 
-    renderItem4 = ({ title, subTitle, subTitle1,info }) => {
+    renderItem4 = ({ title, subTitle, subTitle1, info }) => {
         let isLast = false;
         let subTitleNew = subTitle;
         if (title === '结束日期') {
@@ -376,101 +376,101 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             subTitleNew = this.state.secondOne;
         }
         let isShow = false
-        if (info&&this.state.selectYearList.includes(title)) {
+        if (info && this.state.selectYearList.includes(title)) {
             isShow = true
         }
         console.debug('===renderItem4====', title, this.state.selectYearList);
         return (
             <View>
                 <TouchableWithoutFeedback
-                onPress={() => {
-                    this.clickSearch(title, subTitleNew, info);;
-                }}
-            >
-                <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                        }}
-                    >
-                        <Text
-                            numberOfLines={1}
+                    onPress={() => {
+                        this.clickSearch(title, subTitleNew, info);;
+                    }}
+                >
+                    <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
+                        <View
                             style={{
-                                maxWidth: 100,
-                                marginLeft: 15,
-                                marginVertical: 12,
-                                fontSize: UI.fontSizeNew.font_12,
-                                color: '#333333',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
                             }}
                         >
-                            {title}
-                        </Text>
-                        <Text
-                            numberOfLines={1}
-                            style={{
-                                textAlign: 'right',
-                                maxWidth: UI.size.screenWidth - 100 - 15 * 2,
-                                marginRight: 30,
-                                marginVertical: 12,
-                                fontSize: UI.fontSizeNew.font_12,
-                                color: '#333333',
-                            }}
-                        >
-                            {subTitleNew}
-                            {subTitle1 ? (
-                                <Text
-                                    style={{
-                                        fontSize: UI.fontSizeNew.font_12,
-                                        color: '#ee9c30',
-                                    }}
-                                >
-                                    {' ¥'}
-                                    {subTitle1}
-                                </Text>
-                            ) : null}
-                        </Text>
-                        <Image
+                            <Text
+                                numberOfLines={1}
                                 style={{
-                                    position:'absolute',
-                                    right:15,
-                                    alignSelf:'center',
-                                    width: isShow?10:((10 * 21) / 31),
-                                    height: isShow?((10 * 21) / 31):10,
+                                    maxWidth: 100,
+                                    marginLeft: 15,
+                                    marginVertical: 12,
+                                    fontSize: UI.fontSizeNew.font_12,
+                                    color: '#333333',
                                 }}
-                                source={isShow?Images.icon_22:Images.icon_21}
+                            >
+                                {title}
+                            </Text>
+                            <Text
+                                numberOfLines={1}
+                                style={{
+                                    textAlign: 'right',
+                                    maxWidth: UI.size.screenWidth - 100 - 15 * 2,
+                                    marginRight: 30,
+                                    marginVertical: 12,
+                                    fontSize: UI.fontSizeNew.font_12,
+                                    color: '#333333',
+                                }}
+                            >
+                                {subTitleNew}
+                                {subTitle1 ? (
+                                    <Text
+                                        style={{
+                                            fontSize: UI.fontSizeNew.font_12,
+                                            color: '#ee9c30',
+                                        }}
+                                    >
+                                        {' ¥'}
+                                        {subTitle1}
+                                    </Text>
+                                ) : null}
+                            </Text>
+                            <Image
+                                style={{
+                                    position: 'absolute',
+                                    right: 15,
+                                    alignSelf: 'center',
+                                    width: isShow ? 10 : ((10 * 21) / 31),
+                                    height: isShow ? ((10 * 21) / 31) : 10,
+                                }}
+                                source={isShow ? Images.icon_22 : Images.icon_21}
                             />
+                        </View>
+                        <View
+                            style={{
+                                height: 1,
+                                opacity: 0.3,
+                                backgroundColor: '#9d9d9d',
+                            }}
+                        />
+                        {isLast ? this.renderItem5() : null}
                     </View>
-                    <View
-                        style={{
-                            height: 1,
-                            opacity: 0.3,
-                            backgroundColor: '#9d9d9d',
-                        }}
-                    />
-                    {isLast ? this.renderItem5() : null}
-                </View>
-            </TouchableWithoutFeedback>
-                {!isShow?null:<View style={{backgroundColor:'#fff',flexDirection:'row',borderBottomColor:"#9d9d9d48",borderBottomWidth:1}}>
+                </TouchableWithoutFeedback>
+                {!isShow ? null : <View style={{ backgroundColor: '#fff', flexDirection: 'row', borderBottomColor: "#9d9d9d48", borderBottomWidth: 1 }}>
                     <Text style={{
-                            marginLeft: 15,
-                            marginVertical: 12,
-                            fontSize: UI.fontSizeNew.font_12,
-                            color: '#333333',
-                        }} >
+                        marginLeft: 15,
+                        marginVertical: 12,
+                        fontSize: UI.fontSizeNew.font_12,
+                        color: '#333333',
+                    }} >
                         明细
                     </Text>
-                    <View style={{marginLeft:40}}>
-                    <Image
-                                style={{
-                                    position:'absolute',bottom:8,left:-37,
-                                    width:85,
-                                    height: 85,
-                                }}
-                                source={Images.icon_6}
-                            />
-                        <Text 
-                            numberOfLines={1} 
+                    <View style={{ marginLeft: 40 }}>
+                        <Image
+                            style={{
+                                position: 'absolute', bottom: 8, left: -37,
+                                width: 85,
+                                height: 85,
+                            }}
+                            source={Images.icon_6}
+                        />
+                        <Text
+                            numberOfLines={1}
                             style={{
                                 marginTop: 12,
                                 fontSize: UI.fontSizeNew.font_12,
@@ -478,61 +478,61 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                             }} >
                             上年结转(元)：{parseFloat(info.lastYearMoney)}
                         </Text>
-                        <Text 
-                            numberOfLines={1} 
+                        <Text
+                            numberOfLines={1}
                             style={{
                                 fontSize: UI.fontSizeNew.font_12,
                                 color: '#333333',
                             }} >
-                            本年缴存(含转入)：<Text 
-                            numberOfLines={1} 
-                            style={{
-                                fontSize: UI.fontSizeNew.font_12,
-                                color: 'green',
-                            }} >
-                            +{parseFloat(info.currentYear)}
+                            本年缴存(含转入)：<Text
+                                numberOfLines={1}
+                                style={{
+                                    fontSize: UI.fontSizeNew.font_12,
+                                    color: 'green',
+                                }} >
+                                +{parseFloat(info.currentYear)}
+                            </Text>
                         </Text>
-                        </Text>
-                        <Text 
-                            numberOfLines={1} 
-                            style={{
-                                fontSize: UI.fontSizeNew.font_12,
-                                color: '#333333',
-                            }} >
-                            本年提取(元)：<Text 
-                            numberOfLines={1} 
-                            style={{
-                                fontSize: UI.fontSizeNew.font_12,
-                                color: 'red',
-                            }} >
-                            -{parseFloat(info.takeOutMoney)}
-                        </Text>
-                        </Text>
-                        <Text 
-                            numberOfLines={1} 
+                        <Text
+                            numberOfLines={1}
                             style={{
                                 fontSize: UI.fontSizeNew.font_12,
                                 color: '#333333',
                             }} >
-                            利息(元)：<Text 
-                            numberOfLines={1} 
+                            本年提取(元)：<Text
+                                numberOfLines={1}
+                                style={{
+                                    fontSize: UI.fontSizeNew.font_12,
+                                    color: 'red',
+                                }} >
+                                -{parseFloat(info.takeOutMoney)}
+                            </Text>
+                        </Text>
+                        <Text
+                            numberOfLines={1}
                             style={{
                                 fontSize: UI.fontSizeNew.font_12,
-                                color: 'green',
+                                color: '#333333',
                             }} >
-                            +{parseFloat(info.interest)}
+                            利息(元)：<Text
+                                numberOfLines={1}
+                                style={{
+                                    fontSize: UI.fontSizeNew.font_12,
+                                    color: 'green',
+                                }} >
+                                +{parseFloat(info.interest)}
+                            </Text>
                         </Text>
-                        </Text>
-                        <Text 
-                            numberOfLines={1} 
+                        <Text
+                            numberOfLines={1}
                             style={{
-                                marginBottom:13,
+                                marginBottom: 13,
                                 fontSize: UI.fontSizeNew.font_12,
                                 color: '#333333',
                             }} >
                             本息合计(元)：{parseFloat(info.total)}
                         </Text>
-                        </View>
+                    </View>
                 </View>}
             </View>
         );
@@ -730,12 +730,12 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         );
     };
 
-    renderFoot = (type=0) => {
+    renderFoot = (type = 0) => {
         return (
-            <View style={{ paddingVertical:12,backgroundColor:type===0?'#fff':'transparent' }}>
+            <View style={{ paddingVertical: 12, backgroundColor: type === 0 ? '#fff' : 'transparent' }}>
                 <Text
                     style={{
-                        alignSelf:'center',
+                        alignSelf: 'center',
                         maxWidth: UI.size.screenWidth - 15 * 2,
                         fontSize: UI.fontSizeNew.font_12_5,
                         color: '#9d9d9d',
