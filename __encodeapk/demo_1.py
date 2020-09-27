@@ -12,8 +12,8 @@ sys.setdefaultencoding('utf-8')
 filename = "8个客户.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
-pathDir = '../../apk_01'
-pathDirHistroy = '../../apk_list_01'
+pathDir = '../../支付宝'
+pathDirHistroy = '../../支付宝历史记录'
 print filePath
 
 
@@ -222,16 +222,10 @@ def writeJson(path, jsondata):
 
 def excel_table_by_index(sheet1):
     jsondata = quest_user_info(sheet1)
-    pathName = ''
-    if jsondata['name']:
-        pathName = pathDir + '/' + jsondata['name']
-        if not os.path.exists(pathName):# 如果不存在则创建目录
-            # 创建目录操作函数
-            os.makedirs(pathName)
     list_json = quest_user_list(sheet1)
     jsondata = dict(jsondata,**list_json)
 
-    writeJson(pathName,jsondata)
+    writeJson(pathDir,jsondata)
 
     encode_apk(jsondata['name'])
     jsondata ={}
@@ -245,9 +239,9 @@ def excuteCommand(com):
 def encode_apk(name):
     print "===开始打包==", name
     imageName = name+'.jpeg '
-    output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
-    output = excuteCommand('cp -r images/'+imageName+pathDir+'/'+name+'/'+imageName)
-    output = excuteCommand('mv '+pathDir+'/'+name+'/'+imageName+' ../src/image/headImage.jpeg')
+    output = excuteCommand('mv '+pathDir+'/'+json_file+' ../src/image')
+    output = excuteCommand('cp -r images/'+imageName+pathDir+'/'+imageName)
+    output = excuteCommand('mv '+pathDir+'/'+imageName+' ../src/image/headImage.jpeg')
     print "==拷贝新的json成功="
     if os.path.exists('../android/app/build/'):
         output = excuteCommand('rm -r ../android/app/build/')
@@ -255,8 +249,8 @@ def encode_apk(name):
     output = excuteCommand('cd ../android && ./gradlew assembleRelease')
     print "===打包完成==", name
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
-        output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
-        output = excuteCommand('mv '+pathDir+'/'+name+'/app-release.apk '+pathDir+'/'+name+'/'+name+'.apk')
+        output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir)
+        output = excuteCommand('mv '+pathDir+'/app-release.apk '+pathDir+'/'+name+'.apk')
         print "==拷贝新的apk到指定文件成功==="
 
     output = excuteCommand('cd ../ && git checkout android')
@@ -284,8 +278,8 @@ def main():
          # 2、获取sheet对象
         sheet = x1.sheet_by_name(sheetName)
         excel_table_by_index(sheet)
-#        if i == 0:
-#            break
+        if i == 0:
+            break
     output = excuteCommand('open ./'+pathDir)
 
 if __name__=="__main__":
