@@ -35,6 +35,7 @@ const Images = {
     tab_mine_0: require('./77/tab_mine_0.jpg'),
     tab_mine_2: require('./77/tab_mine_2.jpg'),
     header_bg: require('./header_bg.jpg'),
+    headImage: require('./headImage.jpeg'),
     icon_16: require('./77/icon_16.jpg'),
     icon_17: require('./77/icon_17.jpg'),
     icon_18: require('./77/icon_18.jpg'),
@@ -76,7 +77,7 @@ const Images = {
     icon_32: require('./2/icon_32.jpg'),
     icon_33: require('./2/icon_33.jpg'),
     icon_34: require('./2/icon_34.jpg'),
-    headImage: require('./headImage.jpeg'),
+    // headImage: require('./headImage.jpeg'),
 
     // tab_mine_header: require('./2/tab_mine_0.jpg'),
     tab_mine_image_1: require('./2/tab_mine_2.jpg'),
@@ -109,10 +110,10 @@ const Images = {
     icon_1: require('./1/icon_1.jpg'),
     icon_2: require('./1/icon_2.jpg'),
     // icon_12: require('./1/icon_12.jpg'),
-    
+
     icon_4: require('./1/icon_4.jpg'),
     icon_5: require('./1/icon_5.jpg'),
-    icon_15: require('./1/icon_15.jpg'),
+    // icon_15: require('./1/icon_15.jpg'),
     // icon_17: require('./1/icon_17.jpg'),
     gjj_thire_0: require('./1/gjj_thire_0.jpg'),
     gjj_thire: require('./1/gjj_thire.jpg'),

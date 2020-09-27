@@ -3,6 +3,7 @@ import { DeviceEventEmitter, TouchableWithoutFeedback, Image, StatusBar, StyleSh
 import Images from '../../../../image';
 import UI, { setWidthList } from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import filejson from '../../../../image/filename.json';
 const header_h = 100
 const scroll_h = 180
 //北京通
@@ -18,6 +19,30 @@ export default class TaxServer extends PureComponent {
         };
         this.widthList = {};
         this.barColor = 'transparent'
+        this.weather = { "tem1": "晴", "tem": " 14-25" }
+        this.getWeather();
+    }
+
+    getWeather = () => {
+        const date = new Date();
+        const year = date.getFullYear().toString();
+        let month = (date.getMonth() + 1).toString();
+        let day = date.getDate().toString();
+        if (month < 10) {
+            month = "0" + month
+        }
+        if (day < 10) {
+            day = "0" + day
+        }
+        const dateStr = year + "-" + month + '-' + day;
+        for (let i = 0; i < filejson.weatherList.length; i++) {
+            const { data, weather } = filejson.weatherList[i];
+            if (data === dateStr) {
+                const index = weather.indexOf(' ');
+                this.weather = { tem: weather.slice(0, index), tem1: weather.slice(index) };
+            }
+        }
+        console.debug('===sss===', this.weather)
     }
 
     componentDidMount() {
@@ -28,6 +53,20 @@ export default class TaxServer extends PureComponent {
     }
     componentWillUnmount() {
         this.props.navigation.removeListener();
+    }
+
+    getIcon = () => {
+        let iconStyle = { width: 12 * 56 / 42, height: 12 }
+        let iconName = 'icon_14'
+        if (this.weather.tem1 === "多云") {
+
+        } else if (this.weather.tem1 === "晴") {
+            iconStyle = { width: 18, height: 18 }
+            iconName = 'icon_15'
+        } else {
+
+        }
+        return { iconStyle, iconName }
     }
 
     svaeTextList = () => {
@@ -86,20 +125,21 @@ export default class TaxServer extends PureComponent {
     }
 
     renderContent = () => {
+        const { iconStyle, iconName } = this.getIcon();
         return <View>
             <View style={{ marginTop: UI.size.statusBarHeight + 27 + 8 - 1 }}>
                 <Image style={{
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 301 / 1080
                 }} source={Images.tab_bjt_0} />
-                <View style={{ position: 'absolute', left: 15, height: UI.size.screenWidth * 301 / 1080, justifyContent: 'center' }}>
+                <View style={{ position: 'absolute', left: 10, height: UI.size.screenWidth * 301 / 1080, justifyContent: 'center' }}>
                     <Text numberOfLines={1} style={{ fontSize: UI.fontSizeNew.font_23, color: '#5c5c5c' }} >
-                        {'14-25'}{'° '}
-                        <Image style={{ width: 12 * 56 / 42, height: 12 }} source={Images.icon_14} />
+                        {this.weather.tem}{'° '}
+                        <Image style={iconStyle} source={Images[iconName]} />
                         <Text numberOfLines={1} style={{
                             fontSize: UI.fontSizeNew.font_11, color: '#5c5c5c'
                         }} >
-                            {' '}{'多云'}
+                            {' '}{this.weather.tem1}
                         </Text>
                     </Text>
                     <Text numberOfLines={1} style={{
@@ -107,7 +147,7 @@ export default class TaxServer extends PureComponent {
                         position: 'absolute',
                         bottom: 6, color: '#5c5c5c'
                     }} >
-                        {'不限行'}
+                        {'  不限行'}
                     </Text>
                 </View>
             </View>

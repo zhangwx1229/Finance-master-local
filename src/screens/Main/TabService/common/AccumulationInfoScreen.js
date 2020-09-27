@@ -29,13 +29,13 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         this.dataList = [
             { type: 1, data: '个人信息' },
             { type: 2, data: { title: '姓名', subTitle: filejson.name } },
-            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr('640872194505118510', 3, 4) } },
+            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr(filejson.item_tmp_1, 3, 4) } },
         ];
         this.list1 = [
             { type: 1, data: '基础信息' },
             { type: 2, data: { title: '公积金账号', subTitle: filejson.accountNumber } },
             { type: 2, data: { title: '单位名称', subTitle: filejson.company } },
-            { type: 2, data: { title: '单位登记号', subTitle: 'null' } },
+            { type: 2, data: { title: '单位登记号', subTitle: filejson.item_tmp_2 } },
             { type: 2, data: { title: '所属管理部名称', subTitle: filejson.administration } },
             { type: 1, data: '账户信息' },
             { type: 2, data: { title: '个人账户余额(元)', subTitle: parseFloat(filejson.balance) } },
@@ -90,8 +90,6 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                                 remittance1: parseFloat(isTakeOut ? save : 0),
                                 business1: info, //年度结息 汇缴分配
                                 company: company
-                                    ? company
-                                    : '电视剧哦几电视剧哦几哦说电视剧哦几哦说哦说',
                             },
                         });
                     }
@@ -238,7 +236,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     <Text
                         numberOfLines={1}
                         style={{
-                            maxWidth: 160,
+                            maxWidth: 120,
                             marginLeft: 15,
                             marginVertical: 12,
                             fontSize: UI.fontSizeNew.font_12,
@@ -251,7 +249,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             textAlign: 'right',
-                            maxWidth: UI.size.screenWidth - 160 - 15 * 2,
+                            maxWidth: UI.size.screenWidth - 120 - 15 * 2,
                             marginRight: 15,
                             marginVertical: 12,
                             fontSize: UI.fontSizeNew.font_12,
@@ -381,13 +379,13 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         }
         console.debug('===renderItem4====', title, this.state.selectYearList);
         return (
-            <View>
+            <View key={title + this.state.selectIndex} >
                 <TouchableWithoutFeedback
                     onPress={() => {
                         this.clickSearch(title, subTitleNew, info);;
                     }}
                 >
-                    <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
+                    <View style={{ backgroundColor: '#fff' }}>
                         <View
                             style={{
                                 flexDirection: 'row',
@@ -621,7 +619,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     <Text
                         numberOfLines={1}
                         style={{
-                            maxWidth: UI.size.screenWidth - 160 - 15 * 2,
+                            maxWidth: UI.size.screenWidth - 120 - 15 * 2,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
@@ -641,7 +639,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             textAlign: 'right',
-                            maxWidth: 160,
+                            maxWidth: 120,
                             fontSize: UI.fontSizeNew.font_12,
                             color: 'green',
                         }}
@@ -659,7 +657,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     <Text
                         numberOfLines={1}
                         style={{
-                            maxWidth: UI.size.screenWidth - 160 - 15 * 2,
+                            maxWidth: UI.size.screenWidth - 120 - 15 * 2,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
@@ -670,7 +668,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             textAlign: 'right',
-                            maxWidth: 160,
+                            maxWidth: 120,
                             fontSize: UI.fontSizeNew.font_12,
                             color: 'red',
                         }}
@@ -688,7 +686,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     <Text
                         numberOfLines={1}
                         style={{
-                            maxWidth: UI.size.screenWidth - 160 - 15 * 2,
+                            maxWidth: UI.size.screenWidth - 120 - 15 * 2,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
@@ -699,7 +697,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             textAlign: 'right',
-                            maxWidth: 160,
+                            maxWidth: 120,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}

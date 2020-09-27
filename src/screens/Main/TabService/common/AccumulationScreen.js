@@ -14,7 +14,6 @@ export default class AccumulationScreen extends PureComponent {
     }
 
     clickGJJ = () => {
-        // AccumulationScreenNew
         this.props.navigation.navigate('AccumulationInfoScreen')
     }
 

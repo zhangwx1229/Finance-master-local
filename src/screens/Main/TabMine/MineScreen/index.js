@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { DeviceEventEmitter, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { sub } from 'react-native-reanimated';
+import { Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Images from '../../../../image';
-import UI, { setWidthList } from '../../../../UI';
+import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import filejson from '../../../../image/filename.json';
 const header_h = 70
 export default class MineScreen extends PureComponent {
     constructor() {
@@ -36,7 +36,7 @@ export default class MineScreen extends PureComponent {
 
     renderContent = () => {
         const sub = 10
-        return <View style={{ paddingTop: 70, backgroundColor: 'transparent' }}>
+        return <View style={{ paddingTop: 65, backgroundColor: 'transparent' }}>
             <View>
                 <Image style={{
                     alignSelf: 'center',
@@ -54,14 +54,14 @@ export default class MineScreen extends PureComponent {
                             width: UI.size.screenWidth * 70 / 360,
                             height: UI.size.screenWidth * 70 / 360,
                             borderRadius: UI.size.screenWidth * 70 / (360 * 2),
-                        }} source={Images.tab_mine_2} />
+                        }} source={Images.headImage} />
                         <View style={{ alignSelf: 'center', marginLeft: 10 }}>
-                            <Text numberOfLines={1} style={{ maxWidth: 150, marginBottom: 7, fontSize: UI.fontSizeNew.font_15, color: '#333333' }} >{'嗯打麻将十大大多数的三六九等'}</Text>
-                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{'男'}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, marginBottom: 7, fontSize: UI.fontSizeNew.font_15, color: '#333333' }} >{filejson.item_tmp_3}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_4}</Text>
                         </View >
                     </View>
-                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 16, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{'签名'}</Text>
-                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 4, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{'名片号:'}</Text>
+                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 16, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_5}</Text>
+                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 4, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >名片号: {filejson.item_tmp_6}</Text>
                 </View>
             </View>
             <Image style={{
@@ -86,8 +86,8 @@ export default class MineScreen extends PureComponent {
                     top: 0,
                     alignSelf: 'center',
                     width: UI.size.screenWidth * (1 + num),
-                    height: (UI.size.screenWidth * (1 + num)) * 611 / 1080
-                }} source={Images.header_bg} />
+                    height: (UI.size.screenWidth * (1 + num)) * 1080 / 1440
+                }} source={Images.headImage} />
                 <JJRefresh
                     header_H={header_h}
                     foot_H={0}
