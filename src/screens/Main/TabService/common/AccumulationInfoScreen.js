@@ -411,7 +411,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                             style={{
                                 textAlign: 'right',
                                 maxWidth: UI.size.screenWidth - 100 - 15 * 2,
-                                marginRight: 15,
+                                marginRight: 30,
                                 marginVertical: 12,
                                 fontSize: UI.fontSizeNew.font_12,
                                 color: '#333333',
@@ -420,12 +420,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                             {subTitleNew}
                             {subTitle1 ? (
                                 <Text
-                                    numberOfLines={1}
                                     style={{
-                                        textAlign: 'right',
-                                        maxWidth: UI.size.screenWidth - 100 - 15 * 2,
-                                        marginRight: 15,
-                                        marginVertical: 12,
                                         fontSize: UI.fontSizeNew.font_12,
                                         color: '#ee9c30',
                                     }}
@@ -434,15 +429,17 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                                     {subTitle1}
                                 </Text>
                             ) : null}
-                            {'  '}
-                            <Image
-                                style={{
-                                    width: (10 * 21) / 31,
-                                    height: 10,
-                                }}
-                                source={Images.icon_21}
-                            />
                         </Text>
+                        <Image
+                                style={{
+                                    position:'absolute',
+                                    right:15,
+                                    alignSelf:'center',
+                                    width: isShow?10:((10 * 21) / 31),
+                                    height: isShow?((10 * 21) / 31):10,
+                                }}
+                                source={isShow?Images.icon_22:Images.icon_21}
+                            />
                     </View>
                     <View
                         style={{
