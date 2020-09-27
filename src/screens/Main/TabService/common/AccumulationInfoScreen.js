@@ -16,7 +16,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            selectIndex: 2,
+            selectIndex: 0,
             isShowYear: false,
             selectYear: 0,
             secondDataLsit: [],
