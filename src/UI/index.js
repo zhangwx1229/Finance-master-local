@@ -16,98 +16,96 @@ const UI = {
     fontSizeNew: {},
     getNumString,
     getNumNick,
-    getNumPhone
+    getNumPhone,
+    getIdentityStr
 };
 
-
-
 const widthList = {
-    "10": 50,
-    "10.5": 52,
-    "11": 55,
-    "11.5": 58,
-    "12": 60,
-    "12.5": 63,
-    "13": 64,
-    "13.5": 67,
-    "14": 70,
-    "14.5": 72,
-    "15": 75,
-    "15.5": 78,
-    "16": 80,
-    "16.5": 83,
-    "17": 86,
-    "17.5": 88,
-    "18": 90,
-    "18.5": 92,
-    "19": 95,
-    "19.5": 98,
-    "20": 99,
-    "20.5": 102,
-    "21": 104,
-    "21.5": 107,
-    "22": 110,
-    "22.5": 112,
-    "23": 115,
-    "23.5": 116,
-    "24": 119,
-    "24.5": 122,
-    "25": 124,
-    "25.5": 127,
-    "26": 130,
-    "26.5": 132,
-    "27": 135,
-    "27.5": 138,
-    "28": 140,
-    "28.5": 142,
-    "29": 144,
-    "29.5": 147,
-    "30": 148,
-    "30.5": 151,
-    "31": 154,
-    "31.5": 156,
-    "32": 159,
-    "32.5": 162,
-    "33": 164,
-    "33.5": 166,
-    "34": 168,
-    "34.5": 171,
-    "35": 174,
-    "35.5": 176,
-    "36": 179,
-    "36.5": 182,
-    "37": 184,
-    "37.5": 187,
-    "38": 190,
-    "38.5": 191,
-    "39": 194,
-    "39.5": 196,
-    "40": 198,
-    "40.5": 200,
-    "41": 203,
-    "41.5": 206,
-    "42": 208,
-    "42.5": 211,
-    "43": 214,
-    "43.5": 216,
-    "44": 218,
-    "44.5": 220,
-    "45": 223,
-    "45.5": 226,
-    "6": 31,
-    "6.5": 34,
-    "7": 36,
-    "7.5": 39,
-    "8": 40,
-    "8.5": 43,
-    "9": 46,
-    "9.5": 48
-}
+    '10': 50,
+    '10.5': 52,
+    '11': 55,
+    '11.5': 58,
+    '12': 60,
+    '12.5': 63,
+    '13': 64,
+    '13.5': 67,
+    '14': 70,
+    '14.5': 72,
+    '15': 75,
+    '15.5': 78,
+    '16': 80,
+    '16.5': 83,
+    '17': 86,
+    '17.5': 88,
+    '18': 90,
+    '18.5': 92,
+    '19': 95,
+    '19.5': 98,
+    '20': 99,
+    '20.5': 102,
+    '21': 104,
+    '21.5': 107,
+    '22': 110,
+    '22.5': 112,
+    '23': 115,
+    '23.5': 116,
+    '24': 119,
+    '24.5': 122,
+    '25': 124,
+    '25.5': 127,
+    '26': 130,
+    '26.5': 132,
+    '27': 135,
+    '27.5': 138,
+    '28': 140,
+    '28.5': 142,
+    '29': 144,
+    '29.5': 147,
+    '30': 148,
+    '30.5': 151,
+    '31': 154,
+    '31.5': 156,
+    '32': 159,
+    '32.5': 162,
+    '33': 164,
+    '33.5': 166,
+    '34': 168,
+    '34.5': 171,
+    '35': 174,
+    '35.5': 176,
+    '36': 179,
+    '36.5': 182,
+    '37': 184,
+    '37.5': 187,
+    '38': 190,
+    '38.5': 191,
+    '39': 194,
+    '39.5': 196,
+    '40': 198,
+    '40.5': 200,
+    '41': 203,
+    '41.5': 206,
+    '42': 208,
+    '42.5': 211,
+    '43': 214,
+    '43.5': 216,
+    '44': 218,
+    '44.5': 220,
+    '45': 223,
+    '45.5': 226,
+    '6': 31,
+    '6.5': 34,
+    '7': 36,
+    '7.5': 39,
+    '8': 40,
+    '8.5': 43,
+    '9': 46,
+    '9.5': 48,
+};
 
-
-let currentWidthList = {}
+let currentWidthList = {};
 export function setWidthList(list) {
-    currentWidthList = list
+    currentWidthList = list;
     const fonts = {
         font_6: getFontSize(6),
         font_6_5: getFontSize(6.5),
@@ -188,83 +186,95 @@ export function setWidthList(list) {
         font_44: getFontSize(44),
         font_44_5: getFontSize(44.5),
         font_45: getFontSize(45),
-        font_45_5: getFontSize(45.5)
-    }
+        font_45_5: getFontSize(45.5),
+    };
     UI.fontSizeNew = fonts;
 }
 
 export function getFontSize(size) {
     if (currentWidthList === {}) {
-        return size * UI.size.windowScale
+        return size * UI.size.windowScale;
     }
     const key = widthList[size + ''];
     const scal = key / 360;
-    if (360 === UI.size.screenWidth) {
-        return size
+    if (UI.size.screenWidth === 360) {
+        return size;
     }
-    const value = UI.size.screenWidth * scal
-    let fontSize = 0
+    const value = UI.size.screenWidth * scal;
+    let fontSize = 0;
     let sub = 100000;
     for (const key in currentWidthList) {
         if (Math.abs(value - currentWidthList[key]) <= sub) {
-            fontSize = Math.ceil(key)
+            fontSize = Math.ceil(key);
             if (Math.abs(value - currentWidthList[key]) === sub) {
                 break;
             }
-            sub = Math.ceil(Math.abs((value - currentWidthList[key]) * 1000)) / 1000
+            sub = Math.ceil(Math.abs((value - currentWidthList[key]) * 1000)) / 1000;
         }
     }
-    return fontSize
+    return fontSize;
 }
 
 function getNumString(numstr) {
     const num = parseFloat(numstr);
     if (num > 1000 * 1000) {
-        const num_0 = Math.floor(num / (1000 * 1000))
-        const num_1 = Math.floor((num - num_0 * 1000 * 1000) / 1000)
-        const num_2 = num - num_0 * 1000 * 1000 - num_1 * 1000
+        const num_0 = Math.floor(num / (1000 * 1000));
+        const num_1 = Math.floor((num - num_0 * 1000 * 1000) / 1000);
+        const num_2 = num - num_0 * 1000 * 1000 - num_1 * 1000;
 
-        let ss = ','
+        let ss = ',';
         if (num_2 < 10) {
-            ss = ',00'
+            ss = ',00';
         } else if (num_2 < 100) {
-            ss = ',0'
+            ss = ',0';
         } else {
-            ss = ','
+            ss = ',';
         }
-        return num_0 + ',' + num_1 + ss + num_2.toFixed(2)
+        return num_0 + ',' + num_1 + ss + num_2.toFixed(2);
     } else if (num > 1000) {
-        const num_0 = Math.floor(num / 1000)
-        const num_1 = num - num_0 * 1000
-        let ss = ','
+        const num_0 = Math.floor(num / 1000);
+        const num_1 = num - num_0 * 1000;
+        let ss = ',';
         if (num_1 < 10) {
-            ss = ',00'
+            ss = ',00';
         } else if (num_1 < 100) {
-            ss = ',0'
+            ss = ',0';
         } else {
-            ss = ','
+            ss = ',';
         }
-        return num_0 + ss + num_1.toFixed(2)
+        return num_0 + ss + num_1.toFixed(2);
     }
-    return '' + num.toFixed(2)
+    return '' + num.toFixed(2);
 }
 
 function getNumNick(str) {
     if (str.length > 2) {
-        return '*' + str.slice(-2)
+        return '*' + str.slice(-2);
     }
-    return '*' + str.slice(-1)
+    return '*' + str.slice(-1);
 }
 
 function getNumPhone(str) {
-    let phone = ''
-    const phoneStr = str + ''
+    let phone = '';
+    const phoneStr = str + '';
     if (phoneStr.length === 11) {
         phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
     }
-    return phone
+    return phone;
 }
 
-
+function getIdentityStr(str, startLen=0, endLen=0) {
+    const idStr = str + '';
+    let id = idStr;
+    // 140322199003212411
+    if (idStr.length === 18&&startLen>0&&endLen>0) {
+        let sub = '';
+        for (let i = 0; i < 18 - startLen - endLen; i++) {
+            sub += '*';
+        }
+        id = idStr.slice(0, startLen) + sub + idStr.slice(-endLen);
+    }
+    return id;
+}
 
 export default UI;

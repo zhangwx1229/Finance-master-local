@@ -16,19 +16,19 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            selectIndex: 1,
+            selectIndex: 0,
             isShowYear: false,
             selectYear: 0,
             secondDataLsit: [],
             secondOne: '全部',
             secondTwo: '全部',
-            secondThird: '2018-01-01',
+            secondThird: '2020-01-01',
             secondFour: '2020-10-01',
         };
         this.dataList = [
             { type: 1, data: '个人信息' },
             { type: 2, data: { title: '姓名', subTitle: filejson.name } },
-            { type: 2, data: { title: '身份证号', subTitle: '140***********2432' } },
+            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr('640872194505118510',3,4) } },
         ];
         this.list1 = [
             { type: 1, data: '基础信息' },
@@ -51,40 +51,33 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
         ];
         this.list2 = [
             { type: 1, data: '请选择查询条件' },
-            { type: 3, data: { title: '经办渠道', } },
+            { type: 3, data: { title: '经办渠道' } },
             { type: 3, data: { title: '业务类型' } },
             { type: 3, data: { title: '开始日期' } },
-            { type: 3, data: { title: '结束日期' } }
+            { type: 3, data: { title: '结束日期' } },
         ];
-        this.list3 = [
-            { type: 1, data: '账单信息' },
-            {
-                type: 4,
-                data: {
-                    title: '2019-2020',
-                    subTitle: '本息合计',
-                    subTitle1: '¥12121121.98',
-                },
-            },
-        ];
+        this.list3 = [{ type: 1, data: '账单信息' }];
+        this.list_3 = null;
     }
 
-    componentDidMount() { }
+    componentDidMount() {}
 
-    componentWillUnmount() { }
+    componentWillUnmount() {}
 
     getList = () => {
-        const list = []
+        const list = [];
         for (let i = 0; i < filejson.totalDetailed.length; i++) {
             const { saveMoney, year } = filejson.totalDetailed[i];
-            const y = year.slice(0, 4)
-            const y_start = this.state.secondThird.slice(0, 4)
-            const y_end = this.state.secondFour.slice(0, 4)
+            const y = year.slice(0, 4);
+            const y_start = this.state.secondThird.slice(0, 4);
+            const y_end = this.state.secondFour.slice(0, 4);
             if (y >= y_start && y <= y_end) {
                 for (let j = 0; j < saveMoney.length; j++) {
-                    
-                    const { accountMoney, save, date, info, company } = saveMoney[j];
-                    if (date>=this.state.secondThird.slice(5, 10)&&date<=this.state.secondFour.slice(5, 10)) {
+const { accountMoney, save, date, info, company } = saveMoney[j];
+                    if (
+                        date >= this.state.secondThird.slice(5, 10) &&
+                        date <= this.state.secondFour.slice(5, 10)
+                    ) {
                         list.push({
                             type: 5,
                             data: {
@@ -93,15 +86,17 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                                 business: y + '-' + date,
                                 remittance: y + '-' + date.slice(0, 2),
                                 business1: info, //年度结息 汇缴分配
-                                company: company ? company : '电视剧哦几电视剧哦几哦说电视剧哦几哦说哦说',
+                                company: company
+                                    ? company
+                                    : '电视剧哦几电视剧哦几哦说电视剧哦几哦说哦说',
                             },
-                        })
+                        });
                     }
                 }
             }
         }
-        return list
-    }
+        return list;
+    };
 
     clickSearch = (title, date) => {
         if (title === '开始日期') {
@@ -110,42 +105,32 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             this.setState({ isShowYear: true, secondThird: date, selectYear: 1 });
         }
     };
-    onYearCall = ({ year,month,day }) => {
-        let date = ''+year
-        console.debug('=======onYearCall=',month,day)
-        if (month<10) {
-            date+='-0'
-        }else {
-            date+='-'
+
+    onYearCall = ({ year, month, day }) => {
+        let date = '' + year;
+        console.debug('=======onYearCall=', month, day);;
+        if (month < 10) {
+            date += '-0';
+        } else {
+            date += '-';
         }
-        date+=month
-        if (day<10) {
-            date+='-0'
-        }else {
-            date+='-'
+        date += month;
+        if (day < 10) {
+            date += '-0';
+        } else {
+            date += '-';
         }
-        date+=day
+        date += day;
         if (this.state.selectYear === 0) {
-            this.setState({ isShowYear: false, secondThird: date })
+            this.setState({ isShowYear: false, secondThird: date });
         } else if (this.state.selectYear === 1) {
-            this.setState({ isShowYear: false, secondFour: date })
+            this.setState({ isShowYear: false, secondFour: date });
         }
     };
+
     onDismiss = () => {
-        this.setState({ isShowYear: false })
+        this.setState({ isShowYear: false });
     };
-    getIdentityStr(str = '140322199203232432') {
-        let id = '';
-        const idStr = str + '';
-        if (idStr.length === 18) {
-            let sub = '';
-            for (let i = 0; i < 11; i++) {
-                sub += '*';
-            }
-            id = idStr.slice(0, 3) + sub + idStr.slice(-4);
-        }
-        return id;
-    }
 
     renderList = () => {
         const listView = [];
@@ -175,8 +160,15 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     listView.push(this.renderItem6(data));
                 }
             }
+            if (this.state.secondDataLsit.length>0) {
+                listView.push(this.renderFoot(1));
+            }
         } else {
-            const list = this.dataList.concat(this.list3);
+            let list = this.dataList.concat(this.list3);
+            if (this.list_3) {
+                list = list.concat(this.list_3);
+            }
+
             for (let i = 0; i < list.length; i++) {
                 const { type, data } = list[i];
                 if (type === 1) {
@@ -186,6 +178,9 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                 } else if (type === 4) {
                     listView.push(this.renderItem4(data));
                 }
+            }
+            if (this.list_3&&this.list_3.length>0) {
+                listView.push(this.renderFoot());
             }
         }
         return listView;
@@ -198,7 +193,12 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                 style={{ justifyContent: 'center', backgroundColor: '#f2f2f3' }}
             >
                 <Text
-                    style={{ marginLeft: 15, marginVertical: 10, fontSize: 12, color: '#9d9d9d' }}
+                    style={{
+                        marginLeft: 15,
+                        marginVertical: 10,
+                        fontSize: UI.fontSizeNew.font_12,
+                        color: '#9d9d9d',
+                    }}
                 >
                     {data}
                 </Text>
@@ -226,10 +226,10 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     <Text
                         numberOfLines={1}
                         style={{
-                            maxWidth: 100,
+                            maxWidth: 160,
                             marginLeft: 15,
                             marginVertical: 12,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -239,10 +239,10 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             textAlign: 'right',
-                            maxWidth: UI.size.screenWidth - 100 - 15 * 2,
+                            maxWidth: UI.size.screenWidth - 160 - 15 * 2,
                             marginRight: 15,
                             marginVertical: 12,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -251,16 +251,16 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                 </View>
                 {isLast ? (
                     this.renderItem3()
-                ) : (
-                        isFirstLast ? null : <View
-                            style={{
-                                marginLeft: 15,
-                                height: 1,
-                                opacity: 0.3,
-                                backgroundColor: '#9d9d9d',
-                            }}
-                        />
-                    )}
+                ) : isFirstLast ? null : (
+                    <View
+                        style={{
+                            marginLeft: 15,
+                            height: 1,
+                            opacity: 0.3,
+                            backgroundColor: '#9d9d9d',
+                        }}
+                    />
+                )}
             </View>
         );
     };
@@ -283,7 +283,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     <Text
                         style={{
                             paddingVertical: 9,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 0 ? 1 : 0,
                             borderBottomColor: 'red',
@@ -299,7 +299,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     <Text
                         style={{
                             paddingVertical: 9,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 1 ? 1 : 0,
                             borderBottomColor: 'red',
@@ -315,7 +315,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                     <Text
                         style={{
                             paddingVertical: 9,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 2 ? 1 : 0,
                             borderBottomColor: 'red',
@@ -323,6 +323,27 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         onPress={() => {
                             if (this.state.selectIndex !== 2) {
                                 this.setState({ selectIndex: 2 });
+                                if (!this.list_3) {
+                                    this.list_3 = [];
+                                    for (let i = 0; i < filejson.billInfo.length; i++) {
+                                        //                         "currentYear": "69120.0",
+                                        // "date": "2019-2020",
+                                        // "interest": "4080.08",
+                                        // "lastYearMoney": "202885.51",
+                                        // "takeOutMoney": "0",
+                                        // "total": "276085.59"
+                                        const { date, total } = filejson.billInfo[i];
+                                        this.list_3.push({
+                                            type: 4,
+                                            data: {
+                                                title: date,
+                                                subTitle: '本息合计',
+                                                subTitle1: total,
+                                            },
+                                        });;
+                                    }
+                                }
+
                             }
                         }}
                     >
@@ -336,22 +357,24 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
 
     renderItem4 = ({ title, subTitle, subTitle1 }) => {
         let isLast = false;
-        let subTitleNew = subTitle
+        let subTitleNew = subTitle;
         if (title === '结束日期') {
             isLast = true;
-            subTitleNew = this.state.secondFour
+            subTitleNew = this.state.secondFour;
         } else if (title === '开始日期') {
-            subTitleNew = this.state.secondThird
+            subTitleNew = this.state.secondThird;
         } else if (title === '业务类型') {
-            subTitleNew = this.state.secondTwo
+            subTitleNew = this.state.secondTwo;
         } else if (title === '经办渠道') {
-            subTitleNew = this.state.secondOne
+            subTitleNew = this.state.secondOne;
         }
-        console.debug('===renderItem4====', title, subTitle, subTitleNew)
+        console.debug('===renderItem4====', title, subTitle, subTitleNew);
         return (
-            <TouchableWithoutFeedback onPress={() => {
-                this.clickSearch(title, subTitleNew)
-            }}>
+            <TouchableWithoutFeedback
+                onPress={() => {
+                    this.clickSearch(title, subTitleNew);;
+                }}
+            >
                 <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
                     <View
                         style={{
@@ -365,44 +388,48 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                                 maxWidth: 100,
                                 marginLeft: 15,
                                 marginVertical: 12,
-                                fontSize: 12,
+                                fontSize: UI.fontSizeNew.font_12,
                                 color: '#333333',
                             }}
                         >
                             {title}
                         </Text>
                         <Text
-                            numberOfLines={2}
+                            numberOfLines={1}
                             style={{
                                 textAlign: 'right',
                                 maxWidth: UI.size.screenWidth - 100 - 15 * 2,
                                 marginRight: 15,
                                 marginVertical: 12,
-                                fontSize: 12,
+                                fontSize: UI.fontSizeNew.font_12,
                                 color: '#333333',
                             }}
                         >
                             {subTitleNew}
                             {subTitle1 ? (
                                 <Text
-                                    numberOfLines={2}
+                                    numberOfLines={1}
                                     style={{
                                         textAlign: 'right',
                                         maxWidth: UI.size.screenWidth - 100 - 15 * 2,
                                         marginRight: 15,
                                         marginVertical: 12,
-                                        fontSize: 12,
-                                        color: 'red',
+                                        fontSize: UI.fontSizeNew.font_12,
+                                        color: '#ee9c30',
                                     }}
                                 >
+                                    {' ¥'}
                                     {subTitle1}
                                 </Text>
                             ) : null}
                             {'  '}
-                            <Image style={{
-                                width: 10 * 21 / 31,
-                                height: 10
-                            }} source={Images.icon_21} />
+                            <Image
+                                style={{
+                                    width: (10 * 21) / 31,
+                                    height: 10,
+                                }}
+                                source={Images.icon_21}
+                            />
                         </Text>
                     </View>
                     <View
@@ -412,13 +439,10 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                             backgroundColor: '#9d9d9d',
                         }}
                     />
-                    {
-                        isLast ? (
-                            this.renderItem5()
-                        ) : null
-                    }
-                </View >
-            </TouchableWithoutFeedback>);
+                    {isLast ? this.renderItem5() : null}
+                </View>
+            </TouchableWithoutFeedback>
+        );
     };
 
     renderItem5 = () => {
@@ -436,7 +460,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                 <Text
                     style={{
                         paddingVertical: 9,
-                        fontSize: 12,
+                        fontSize: UI.fontSizeNew.font_12,
                         marginRight: 15,
                         textAlign: 'center',
                         color: '#333333',
@@ -445,7 +469,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         borderRadius: 5,
                     }}
                     onPress={() => {
-                        const list = this.getList()
+                        const list = this.getList();
                         this.setState({ secondDataLsit: [] });
                     }}
                 >
@@ -454,7 +478,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                 <Text
                     style={{
                         paddingVertical: 9,
-                        fontSize: 12,
+                        fontSize: UI.fontSizeNew.font_12,
                         textAlign: 'center',
                         color: '#fff',
                         backgroundColor: 'red',
@@ -462,7 +486,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         borderRadius: 5,
                     }}
                     onPress={() => {
-                        const list = this.getList()
+                        const list = this.getList();
                         this.setState({ secondDataLsit: list });
                     }}
                 >
@@ -509,7 +533,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         numberOfLines={1}
                         style={{
                             maxWidth: UI.size.screenWidth - 160 - 15 * 2,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -517,7 +541,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         <Text
                             numberOfLines={1}
                             style={{
-                                fontSize: 12,
+                                fontSize: UI.fontSizeNew.font_12,
                                 color: '#000',
                             }}
                         >
@@ -529,7 +553,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         style={{
                             textAlign: 'right',
                             maxWidth: 160,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: 'green',
                         }}
                     >
@@ -548,7 +572,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         numberOfLines={1}
                         style={{
                             maxWidth: UI.size.screenWidth - 160 - 15 * 2,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -559,7 +583,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         style={{
                             textAlign: 'right',
                             maxWidth: 160,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: 'red',
                         }}
                     >
@@ -577,7 +601,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         numberOfLines={1}
                         style={{
                             maxWidth: UI.size.screenWidth - 160 - 15 * 2,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -588,7 +612,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         style={{
                             textAlign: 'right',
                             maxWidth: 160,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -607,7 +631,7 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             maxWidth: UI.size.screenWidth - 15 * 2,
-                            fontSize: 12,
+                            fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                         }}
                     >
@@ -617,16 +641,43 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
             </View>
         );
     };
-    renderTitle = () => {
-        return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 145) / 1080,
-                }} source={Images.icon_20} />
-            } />
-        </View >
+
+    renderFoot = (type=0) => {
+        return (
+            <View style={{ paddingVertical:12,backgroundColor:type===0?'#fff':'transparent' }}>
+                <Text
+                    style={{
+                        alignSelf:'center',
+                        maxWidth: UI.size.screenWidth - 15 * 2,
+                        fontSize: UI.fontSizeNew.font_12_5,
+                        color: '#9d9d9d',
+                    }}
+                >
+                    没有更多了
+                </Text>
+            </View>
+        );
     };
+
+    renderTitle = () => {
+        return (
+            <View style={{ marginTop: UI.size.statusBarHeight }}>
+                <TitleView
+                    navigation={this.props.navigation}
+                    imageComponent={() => (
+                        <Image
+                            style={{
+                                width: UI.size.screenWidth,
+                                height: (UI.size.screenWidth * 145) / 1080,
+                            }}
+                            source={Images.icon_20}
+                        />
+                    )}
+                />
+            </View>
+        );;
+    };
+
     render() {
         return (
             <View style={{ width: '100%', height: '100%' }}>
@@ -639,10 +690,17 @@ export default class AccumulationScreen extends React.PureComponent<Props> {
                         return this.renderList();
                     }}
                 />
-                {this.state.isShowYear ? <DateSelectModel
-                    selectYear={this.state.selectYear === 0 ? this.state.secondThird : this.state.secondFour}
-                    onDismiss={this.onDismiss}
-                    onYearCall={this.onYearCall} /> : null}
+                {this.state.isShowYear ? (
+                    <DateSelectModel
+                        selectYear={
+                            this.state.selectYear === 0
+                                ? this.state.secondThird
+                                : this.state.secondFour
+                        }
+                        onDismiss={this.onDismiss}
+                        onYearCall={this.onYearCall}
+                    />
+                ) : null}
             </View>
         );
     }
