@@ -233,7 +233,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathName,jsondata)
 
-    encode_apk(jsondata['name'])
+#    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):
