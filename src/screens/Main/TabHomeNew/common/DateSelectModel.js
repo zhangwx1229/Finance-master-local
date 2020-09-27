@@ -18,15 +18,8 @@ const Item_H = 40;
 export default class DateSelectModel extends React.Component<Props> {
     renderChildrens = () => {
         const { style, onDismiss, onYearCall } = this.props;
-        return (
-            <View
-                style={{
-                    justifyContent: 'center',
-                }}
-            >
-                <DateSelect selectedYear={this.props.selectYear} cureentYear={2020} onCancel={onDismiss} onSure={onYearCall} />
-            </View>
-        );
+        return <DateSelect selectedYear={this.props.selectYear} cureentYear={2020} onCancel={onDismiss} onSure={onYearCall} />
+
     };
 
     content = (onDismiss) => {
@@ -72,61 +65,8 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         width: '100%',
-        height: 350,
+        height: 300,
         backgroundColor: '#fff',
     },
     touchImage: { width: 40, height: 20 },
 });
-/**
- *
- *
- *  <ScrollView
-          ref={(e) => {
-            this.scrollRef = e;
-          }}
-          style={{
-            width: '100%',
-            height: Item_H * 3,
-            marginTop: (400 - Title_H - Item_H * 3) / 2,
-            borderBottomColor: '#d4d4d4',
-            borderTopColor: '#d4d4d4',
-            borderBottomWidth: 1,
-            borderTopWidth: 1,
-          }}
-          horizontal={false}
-          keyboardDismissMode="on-drag"
-          showsVerticalScrollIndicator={false}
-          onScroll={(event) => {
-            const {y} = event.nativeEvent.contentOffset; // 滑动距离
-            this.offsetY = y;
-          }}
-          onScrollEndDrag={(event) => {
-            if (this.scrollRef) {
-              if (this.offsetY <= (Item_H * 3) / 2) {
-                this.scrollRef.scrollTo({y: Item_H / 2});
-              } else {
-                this.scrollRef.scrollTo({y: (Item_H * 3) / 2});
-              }
-            }
-          }}
-        >
-          <View
-            style={{
-              width: '100%',
-              height: Item_H,
-              marginTop: Item_H / 2,
-              backgroundColor: 'orange',
-            }}
-          >
-            <Text style={styles.subTitle}>年度</Text>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              height: Item_H,
-              marginBottom: Item_H / 2,
-              backgroundColor: 'blue',
-            }}
-          />
-        </ScrollView>
-*/

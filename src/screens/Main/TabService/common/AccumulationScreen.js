@@ -3,7 +3,7 @@ import { TouchableWithoutFeedback, Image, StyleSheet, View } from 'react-native'
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from './TitleView';
-import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 const header_h = 100
 const scroll_h = 180
 //北京通

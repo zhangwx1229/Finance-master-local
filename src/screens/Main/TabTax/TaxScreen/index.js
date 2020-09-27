@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, ScrollView, View, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 
 export default class TaxScreen extends PureComponent {
     componentDidMount() {

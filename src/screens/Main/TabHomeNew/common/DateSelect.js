@@ -27,16 +27,16 @@ const TAG = 'LV_DateSelect';
 export default class DateSelect extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
-        this.selectedYear = Math.ceil(props.selectedYear.slice(0,4));
-        this.selectedMonth = Math.ceil(props.selectedYear.slice(5,7));
-        this.selectedDay = Math.ceil(props.selectedYear.slice(8,10));
+        this.selectedYear = Math.ceil(props.selectedYear.slice(0, 4));
+        this.selectedMonth = Math.ceil(props.selectedYear.slice(5, 7));
+        this.selectedDay = Math.ceil(props.selectedYear.slice(8, 10));
         const date = new Date();
         const year = date.getFullYear().toString();
         const yearLen = 10
         this.yearList = this.getYearList(yearLen, year)
         this.monthList = this.getMonthList()
         this.daysList = this.getDayList(2020, 1)
-        const {yearIndex,monthIndex,dayIndex} = this.getIndxForList()
+        const { yearIndex, monthIndex, dayIndex } = this.getIndxForList()
         this.state = {
             yearIndex: yearIndex, monthIndex: monthIndex, dayIndex: dayIndex
         };
@@ -68,12 +68,12 @@ export default class DateSelect extends React.PureComponent<Props> {
         }
     }
 
-    getIndxForList = ()=>{
+    getIndxForList = () => {
         let yearIndex = this.yearList.findIndex(item => item.value === this.selectedYear);
         let monthIndex = this.monthList.findIndex(item => item.value === this.selectedMonth);
 
         let dayIndex = this.daysList.findIndex(item => item.value === this.selectedDay);
-        return{yearIndex:yearIndex>=0?yearIndex:0,monthIndex:monthIndex>=0?monthIndex:0,dayIndex:dayIndex>=0?dayIndex:0}
+        return { yearIndex: yearIndex >= 0 ? yearIndex : 0, monthIndex: monthIndex >= 0 ? monthIndex : 0, dayIndex: dayIndex >= 0 ? dayIndex : 0 }
     }
 
     getYearList = (len, yearEnd) => {
@@ -101,24 +101,24 @@ export default class DateSelect extends React.PureComponent<Props> {
     };
 
     getDayList = (year, month) => {
-        if (!year||!month) {
+        if (!year || !month) {
             year = Math.ceil(this.selectedYear)
             month = Math.ceil(this.selectedMonth)
         }
-        console.debug('===getDayList====',year,month)
+        console.debug('===getDayList====', year, month)
         const dayMap = [];
         let days = 30
-        if (month == 2 ) {
+        if (month == 2) {
             if (year % 4 === 0) {
                 days = 28
-            }else {
+            } else {
                 days = 29
             }
         } else if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
             days = 31
         }
         if (this.daysList) {
-            return this.daysList.slice(0,days)
+            return this.daysList.slice(0, days)
         }
         for (let j = 1; j <= days; j++) {
             dayMap.push({
@@ -146,24 +146,24 @@ export default class DateSelect extends React.PureComponent<Props> {
         let days = 30
         const year = Math.ceil(this.selectedYear)
         const month = Math.ceil(this.selectedMonth)
-        if (month == 2 ) {
+        if (month == 2) {
             if (year % 4 === 0) {
                 days = 28
-            }else {
+            } else {
                 days = 29
             }
         } else if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
             days = 31
         }
-        
-        if (Math.ceil(this.selectedDay)>days) {
-             this.setState({dayIndex:Math.ceil(this.selectedDay)-1,monthIndex:item.index},()=>{
-                this.setState({dayIndex:0})
-             })
-             return
+
+        if (Math.ceil(this.selectedDay) > days) {
+            this.setState({ dayIndex: Math.ceil(this.selectedDay) - 1, monthIndex: item.index }, () => {
+                this.setState({ dayIndex: 0 })
+            })
+            return
         }
-        this.setState({monthIndex:item.index})
-        
+        this.setState({ monthIndex: item.index })
+
     };
 
     onDayValueChanged = (item: PickerData) => {
@@ -195,34 +195,27 @@ export default class DateSelect extends React.PureComponent<Props> {
             onCancel
         } = this.props;
         return (<View>
-            <View style={
-                styles.headerContainer
-            }>
-                <TouchableOpacity style={
-                    styles.cancelButton
-                }
-                    onPress={
-                        onCancel
-                    }>
-                    <Image style={
-                        styles.touchImage
-                    }
-                        source={
-                            Images.icon_date_cancel
-                        } />
+            <View style={styles.headerContainer}>
+                <TouchableOpacity style={styles.cancelButton}
+                    onPress={onCancel}>
+                    <Text
+                        style={{
+                            fontSize: UI.fontSizeNew.font_12,
+                            color: '#333333',
+                        }}
+                    >
+                        取消
+                    </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={
-                    styles.sureButton
-                }
-                    onPress={
-                        this.onPressSure
+                <TouchableOpacity style={styles.sureButton}
+                    onPress={this.onPressSure
                     }>
-                    <Image style={
-                        styles.touchImage
-                    }
-                        source={
-                            Images.icon_date_conform
-                        } />
+                    <Text style={{
+                        fontSize: UI.fontSizeNew.font_12, color: '#333333',
+                    }}
+                    >
+                        确定
+                    </Text>
                 </TouchableOpacity>
                 <View style={{
                     position: 'absolute',
@@ -233,17 +226,17 @@ export default class DateSelect extends React.PureComponent<Props> {
                 }} />
             </View>
             <View style={styles.pickerContainer}>
-                <BirthDayPicker pickerStyle={styles.pickerStyle}
+                <BirthDayPicker
                     selectedIndex={yearIndex}
                     datas={this.yearList}
                     onValueChanged={this.onYearValueChanged}
                 />
-                <BirthDayPicker pickerStyle={styles.pickerStyle}
+                <BirthDayPicker
                     selectedIndex={monthIndex}
                     datas={this.monthList}
                     onValueChanged={this.onMonthValueChanged}
                 />
-                <BirthDayPicker pickerStyle={styles.pickerStyle}
+                <BirthDayPicker
                     selectedIndex={dayIndex}
                     datas={this.getDayList()}
                     onValueChanged={this.onDayValueChanged}
@@ -304,5 +297,4 @@ const styles = StyleSheet.create({
         width: 15 * 124 * UI.size.scale / 64,
         height: 15 * UI.size.scale
     },
-    pickerStyle:{height:100,backgroundColor:'red'}
 });

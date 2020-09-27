@@ -11,21 +11,6 @@ import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import TabNav from '../TabNav';
-import CivicCentreScreen from '../../screens/Main/TabHomeNew/HomeScreen/CivicCentreScreen';
-import AccumulationScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationScreen';
-import AccumulationServerScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationServerScreen';
-// import AccumulationInfoScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccumulationInfoScreen';
-import UserScreen from '../../screens/Main/TabHomeNew/HomeScreen/UserScreen';
-import DetailScreen from '../../screens/Main/TabHomeNew/HomeScreen/DetailScreen';
-import AccountStatementScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccountStatementScreen';
-import AccountSearchScreen from '../../screens/Main/TabHomeNew/HomeScreen/AccountSearchScreen';
-import LoanSearch from '../../screens/Main/TabHomeNew/HomeScreen/LoanSearch';
-import MineUserInfo from '../../screens/Main/TabMine/MineScreen/MineUserInfo';
-import ShippingAddress from '../../screens/Main/TabMine/MineScreen/ShippingAddress';
-
-
-
-
 import AccumulationScreenNew from '../../screens/Main/TabService/common/AccumulationScreen';
 import AccumulationInfoScreen from '../../screens/Main/TabService/common/AccumulationInfoScreen';
 
@@ -45,24 +30,6 @@ export default class StackNav extends Component {
                 <Stack.Screen name="Home" component={TabNav} />
                 <Stack.Screen name="AccumulationScreenNew" component={AccumulationScreenNew} />
                 <Stack.Screen name="AccumulationInfoScreen" component={AccumulationInfoScreen} />
-
-
-
-
-
-
-                <Stack.Screen name="CivicCentreScreen" component={CivicCentreScreen} />
-                {/* <Stack.Screen name="AccumulationScreen" component={AccumulationScreen} /> */}
-                <Stack.Screen name="AccumulationServerScreen" component={AccumulationServerScreen} />
-                <Stack.Screen name="UserScreen" component={UserScreen} />
-                <Stack.Screen name="DetailScreen" component={DetailScreen} />
-                <Stack.Screen name="AccountStatementScreen" component={AccountStatementScreen} />
-                <Stack.Screen name="AccountSearchScreen" component={AccountSearchScreen} />
-                <Stack.Screen name="LoanSearch" component={LoanSearch} />
-                <Stack.Screen name="MineUserInfo" component={MineUserInfo} />
-                <Stack.Screen name="ShippingAddress" component={ShippingAddress} />
-
-
             </Stack.Navigator>
         );
     }

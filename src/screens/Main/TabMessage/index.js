@@ -3,7 +3,7 @@ import { DeviceEventEmitter, Image, StatusBar, StyleSheet, Text, View } from 're
 import { sub } from 'react-native-reanimated';
 import Images from '../../../image';
 import UI, { setWidthList } from '../../../UI';
-import JJRefresh from '../TabHomeNew/HomeScreen/JJRefresh';
+import JJRefresh from '../TabHomeNew/common/JJRefresh';
 const header_h = 100
 const scroll_h = 180
 //头条

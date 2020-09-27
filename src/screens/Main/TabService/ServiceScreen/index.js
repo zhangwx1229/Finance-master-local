@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { DeviceEventEmitter, TouchableWithoutFeedback, Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Images from '../../../../image';
 import UI, { setWidthList } from '../../../../UI';
-import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import filejson from '../../../../image/filename.json';
 const header_h = 100
 const scroll_h = 180

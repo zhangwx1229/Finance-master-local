@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback, Image, Text } from 'react-native';
 import UI from '../../../../UI';
-import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import TitleView from './TitleView';
 import Images from '../../../../image';
 import filejson from '../../../../image/filename.json';
@@ -730,7 +730,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
 
     renderFoot = (type = 0) => {
         return (
-            <View style={{ paddingVertical: 12, backgroundColor: type === 0 ? '#fff' : 'transparent' }}>
+            <View key={"renderFoot" + type} style={{ paddingVertical: 12, backgroundColor: type === 0 ? '#fff' : 'transparent' }}>
                 <Text
                     style={{
                         alignSelf: 'center',
@@ -747,7 +747,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
 
     renderTitle = () => {
         return (
-            <View style={{ marginTop: UI.size.statusBarHeight }}>
+            <View key={"renderTitle"} style={{ marginTop: UI.size.statusBarHeight }}>
                 <TitleView
                     navigation={this.props.navigation}
                     imageComponent={() => (

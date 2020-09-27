@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Image, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import JJRefresh from '../../TabHomeNew/HomeScreen/JJRefresh';
+import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import filejson from '../../../../image/filename.json';
 const header_h = 70
 export default class MineScreen extends PureComponent {
