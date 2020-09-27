@@ -102,7 +102,7 @@ export default class UserScreen extends PureComponent {
     }
 
     renderHeader = () => {
-        const balance = UI.getNumString(275776.56)//filejson.balance
+        const balance = UI.getNumString(filejson.balance)//filejson.balance
         const recentlyDeposited = UI.getNumString(filejson.recentlyDeposited)
         const left = 0
         const right = 0.5

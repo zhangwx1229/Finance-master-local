@@ -16,7 +16,7 @@ import {
 import BirthDayPicker from './BirthDayPicker';
 import Images from '../../../../image';
 
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 import UI from '../../../../UI';
 type Props = {
     cureentYear: Number,
