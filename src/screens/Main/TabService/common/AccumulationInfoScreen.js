@@ -204,8 +204,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                 <Text
                     style={{
                         marginLeft: 15,
-                        marginVertical: 10,
-                        fontSize: UI.fontSizeNew.font_12,
+                        marginVertical: 12,
+                        fontSize: UI.fontSizeNew.font_11,
                         color: '#9d9d9d',
                     }}
                 >
@@ -224,6 +224,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         if (title === '所属管理部名称') {
             isFirstLast = true;
         }
+        const vertical = 14
         return (
             <View key={title + this.state.selectIndex} style={{ backgroundColor: '#fff' }}>
                 <View
@@ -237,8 +238,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         style={{
                             maxWidth: 120,
                             marginLeft: 15,
-                            marginVertical: 12,
-                            fontSize: UI.fontSizeNew.font_12,
+                            marginVertical: vertical,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -250,8 +251,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             textAlign: 'right',
                             maxWidth: UI.size.screenWidth - 120 - 15 * 2,
                             marginRight: 15,
-                            marginVertical: 12,
-                            fontSize: UI.fontSizeNew.font_12,
+                            marginVertical: vertical,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -291,7 +292,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                 >
                     <Text
                         style={{
-                            paddingVertical: 9,
+                            paddingVertical: 12,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 0 ? 1 : 0,
@@ -307,7 +308,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     </Text>
                     <Text
                         style={{
-                            paddingVertical: 9,
+                            paddingVertical: 12,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 1 ? 1 : 0,
@@ -323,7 +324,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     </Text>
                     <Text
                         style={{
-                            paddingVertical: 9,
+                            paddingVertical: 12,
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 2 ? 1 : 0,
@@ -377,6 +378,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             isShow = true
         }
         console.debug('===renderItem4====', title, this.state.selectYearList);
+        const vertical = 14
         return (
             <View key={title + this.state.selectIndex} >
                 <TouchableWithoutFeedback
@@ -396,8 +398,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                                 style={{
                                     maxWidth: 100,
                                     marginLeft: 15,
-                                    marginVertical: 12,
-                                    fontSize: UI.fontSizeNew.font_12,
+                                    marginVertical: vertical,
+                                    fontSize: UI.fontSizeNew.font_11,
                                     color: '#333333',
                                 }}
                             >
@@ -409,8 +411,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                                     textAlign: 'right',
                                     maxWidth: UI.size.screenWidth - 100 - 15 * 2,
                                     marginRight: 30,
-                                    marginVertical: 12,
-                                    fontSize: UI.fontSizeNew.font_12,
+                                    marginVertical: vertical,
+                                    fontSize: UI.fontSizeNew.font_11,
                                     color: '#333333',
                                 }}
                             >
@@ -418,7 +420,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                                 {subTitle1 ? (
                                     <Text
                                         style={{
-                                            fontSize: UI.fontSizeNew.font_12,
+                                            fontSize: UI.fontSizeNew.font_11,
                                             color: '#ee9c30',
                                         }}
                                     >
@@ -452,7 +454,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     <Text style={{
                         marginLeft: 15,
                         marginVertical: 12,
-                        fontSize: UI.fontSizeNew.font_12,
+                        fontSize: UI.fontSizeNew.font_11,
                         color: '#333333',
                     }} >
                         明细
@@ -470,7 +472,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             numberOfLines={1}
                             style={{
                                 marginTop: 12,
-                                fontSize: UI.fontSizeNew.font_12,
+                                fontSize: UI.fontSizeNew.font_11,
                                 color: '#333333',
                             }} >
                             上年结转(元)：{parseFloat(info.lastYearMoney)}
@@ -478,13 +480,13 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         <Text
                             numberOfLines={1}
                             style={{
-                                fontSize: UI.fontSizeNew.font_12,
+                                fontSize: UI.fontSizeNew.font_11,
                                 color: '#333333',
                             }} >
                             本年缴存(含转入)：<Text
                                 numberOfLines={1}
                                 style={{
-                                    fontSize: UI.fontSizeNew.font_12,
+                                    fontSize: UI.fontSizeNew.font_11,
                                     color: 'green',
                                 }} >
                                 +{parseFloat(info.currentYear)}
@@ -493,13 +495,13 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         <Text
                             numberOfLines={1}
                             style={{
-                                fontSize: UI.fontSizeNew.font_12,
+                                fontSize: UI.fontSizeNew.font_11,
                                 color: '#333333',
                             }} >
                             本年提取(元)：<Text
                                 numberOfLines={1}
                                 style={{
-                                    fontSize: UI.fontSizeNew.font_12,
+                                    fontSize: UI.fontSizeNew.font_11,
                                     color: 'red',
                                 }} >
                                 -{parseFloat(info.takeOutMoney)}
@@ -508,13 +510,13 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         <Text
                             numberOfLines={1}
                             style={{
-                                fontSize: UI.fontSizeNew.font_12,
+                                fontSize: UI.fontSizeNew.font_11,
                                 color: '#333333',
                             }} >
                             利息(元)：<Text
                                 numberOfLines={1}
                                 style={{
-                                    fontSize: UI.fontSizeNew.font_12,
+                                    fontSize: UI.fontSizeNew.font_11,
                                     color: 'green',
                                 }} >
                                 +{parseFloat(info.interest)}
@@ -524,7 +526,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             numberOfLines={1}
                             style={{
                                 marginBottom: 13,
-                                fontSize: UI.fontSizeNew.font_12,
+                                fontSize: UI.fontSizeNew.font_11,
                                 color: '#333333',
                             }} >
                             本息合计(元)：{parseFloat(info.total)}
@@ -536,6 +538,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
     };
 
     renderItem5 = () => {
+        const vertical = 10
         return (
             <View
                 key={'renderItem5' + this.state.selectIndex}
@@ -549,12 +552,12 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             >
                 <Text
                     style={{
-                        paddingVertical: 9,
-                        fontSize: UI.fontSizeNew.font_12,
+                        paddingVertical: vertical,
+                        fontSize: UI.fontSizeNew.font_11,
                         marginRight: 15,
                         textAlign: 'center',
                         color: '#333333',
-                        backgroundColor: 'red',
+                        backgroundColor: '#fff',
                         flex: 1,
                         borderRadius: 5,
                     }}
@@ -567,11 +570,11 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                 </Text>
                 <Text
                     style={{
-                        paddingVertical: 9,
-                        fontSize: UI.fontSizeNew.font_12,
+                        paddingVertical: vertical,
+                        fontSize: UI.fontSizeNew.font_11,
                         textAlign: 'center',
                         color: '#fff',
-                        backgroundColor: 'red',
+                        backgroundColor: '#de2f31',
                         flex: 2,
                         borderRadius: 5,
                     }}
@@ -599,6 +602,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         if (business1 === '汇缴分配') {
             remittanceDetail = '汇缴月份: ' + remittance;
         }
+        const bottom = 14
         return (
             <View key={business + balance} style={{ backgroundColor: '#fff' }}>
                 <View
@@ -612,14 +616,14 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                         marginHorizontal: 15,
-                        marginTop: 10,
+                        marginTop: bottom,
                     }}
                 >
                     <Text
                         numberOfLines={1}
                         style={{
                             maxWidth: UI.size.screenWidth - 120 - 15 * 2,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -627,7 +631,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         <Text
                             numberOfLines={1}
                             style={{
-                                fontSize: UI.fontSizeNew.font_12,
+                                fontSize: UI.fontSizeNew.font_11,
                                 color: '#000',
                             }}
                         >
@@ -639,7 +643,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         style={{
                             textAlign: 'right',
                             maxWidth: 120,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: 'green',
                         }}
                     >
@@ -657,7 +661,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={1}
                         style={{
                             maxWidth: UI.size.screenWidth - 120 - 15 * 2,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -668,7 +672,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         style={{
                             textAlign: 'right',
                             maxWidth: 120,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: 'red',
                         }}
                     >
@@ -686,7 +690,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={1}
                         style={{
                             maxWidth: UI.size.screenWidth - 120 - 15 * 2,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -697,7 +701,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         style={{
                             textAlign: 'right',
                             maxWidth: 120,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -709,14 +713,14 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                         marginHorizontal: 15,
-                        marginBottom: 10,
+                        marginBottom: bottom,
                     }}
                 >
                     <Text
                         numberOfLines={2}
                         style={{
                             maxWidth: UI.size.screenWidth - 15 * 2,
-                            fontSize: UI.fontSizeNew.font_12,
+                            fontSize: UI.fontSizeNew.font_11,
                             color: '#333333',
                         }}
                     >
@@ -729,12 +733,12 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
 
     renderFoot = (type = 0) => {
         return (
-            <View key={"renderFoot" + type} style={{ paddingVertical: 12, backgroundColor: type === 0 ? '#fff' : 'transparent' }}>
+            <View key={"renderFoot" + type} style={{ paddingVertical: 10, backgroundColor: type === 0 ? '#fff' : 'transparent' }}>
                 <Text
                     style={{
                         alignSelf: 'center',
                         maxWidth: UI.size.screenWidth - 15 * 2,
-                        fontSize: UI.fontSizeNew.font_12_5,
+                        fontSize: UI.fontSizeNew.font_11_5,
                         color: '#9d9d9d',
                     }}
                 >
