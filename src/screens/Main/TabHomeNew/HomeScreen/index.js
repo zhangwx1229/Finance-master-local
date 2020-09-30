@@ -17,11 +17,11 @@ export default class HomeScreen extends PureComponent {
             textList: textList,
         };
         this.widthList = {};
-        this.weather = '晴 27℃'
+        this.weather = '晴 21℃'
         this.getWeather();
     }
 
-    getWeather=()=>{
+    getWeather = () => {
         const date = new Date();
         const year = date.getFullYear().toString();
         let month = (date.getMonth() + 1).toString();
