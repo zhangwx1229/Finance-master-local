@@ -78,11 +78,12 @@ export default class TaxServer extends PureComponent {
     };
 
     clickSB = () => {
-
+        // 点击进入社保
+        this.props.navigation.navigate('SocialSecurityScreen')
     }
 
     clickGJJ = () => {
-        // AccumulationScreenNew
+        // 点击进入公积金
         this.props.navigation.navigate('AccumulationScreenNew')
     }
 
