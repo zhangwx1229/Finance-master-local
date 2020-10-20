@@ -19,10 +19,10 @@ export default class SocialSecurityScreen extends PureComponent {
 
     renderUserInfo = () => {
         return <View style={{
-            flexDirection: 'row', marginHorizontal: 10, borderWidth: 1, borderBottomWidth: 3, borderColor: '#9d9d9d42'
+            flexDirection: 'row', marginHorizontal: 10, borderWidth: 1, borderBottomWidth: 3, borderColor: '#9d9d9d62'
         }}>
             <View style={{
-                marginLeft: 7, marginTop: 7, padding: 17, alignSelf: 'flex-start',
+                marginLeft: 7, marginTop: 7, padding: 14, alignSelf: 'flex-start',
                 borderWidth: 1, borderColor: '#9d9d9d42', backgroundColor: '#eee',
             }}>
                 <Text
@@ -36,7 +36,7 @@ export default class SocialSecurityScreen extends PureComponent {
             </View>
             <View>
                 <View style={{
-                    marginLeft: 10, marginTop: 10, flexDirection: 'row'
+                    marginLeft: 10, marginTop: 7, flexDirection: 'row'
                 }}>
                     <Text
                         style={{
@@ -73,7 +73,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 </Text>
                 </View>
                 <View style={{
-                    marginLeft: 10, marginTop: 6, flexDirection: 'row'
+                    marginLeft: 10, marginTop: 4, flexDirection: 'row'
                 }}>
                     <Text
                         style={{
@@ -93,7 +93,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 </Text>
                 </View>
                 <View style={{
-                    marginLeft: 10, marginTop: 6, marginBottom: 10, flexDirection: 'row'
+                    marginLeft: 10, marginTop: 4, marginBottom: 10, flexDirection: 'row'
                 }}>
                     <Text
                         style={{
@@ -121,11 +121,11 @@ export default class SocialSecurityScreen extends PureComponent {
             marginHorizontal: 10, marginTop: 10, borderWidth: 1, borderBottomWidth: 3, borderColor: '#9d9d9d42', backgroundColor: '#eee'
         }}>
             <View style={{
-                marginTop: 20, paddingHorizontal: 30, paddingVertical: 6, alignSelf: 'flex-start', backgroundColor: '#53a0e7',
+                marginTop: 20, paddingHorizontal: 25, paddingVertical: 6, alignSelf: 'flex-start', backgroundColor: '#53a0e7',
             }}>
                 <Text
                     style={{
-                        fontSize: UI.fontSizeNew.font_12,
+                        fontSize: UI.fontSizeNew.font_11,
                         color: '#fff',
                     }}
                 >
@@ -136,7 +136,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 numberOfLines={2}
                 style={{
                     marginHorizontal: 5,
-                    marginTop: 5,
+                    marginTop: 6,
                     fontWeight: 'bold',
                     fontSize: UI.fontSizeNew.font_12,
                     color: '#333333',
@@ -145,11 +145,11 @@ export default class SocialSecurityScreen extends PureComponent {
                 但大困境但大困境但大困境但大
                 </Text>
             <View style={{
-                marginTop: 15, paddingHorizontal: 30, paddingVertical: 6, alignSelf: 'flex-start', backgroundColor: '#53a0e7',
+                marginTop: 17, paddingHorizontal: 25, paddingVertical: 6, alignSelf: 'flex-start', backgroundColor: '#53a0e7',
             }}>
                 <Text
                     style={{
-                        fontSize: UI.fontSizeNew.font_12,
+                        fontSize: UI.fontSizeNew.font_11,
                         color: '#fff',
                     }}
                 >
@@ -160,7 +160,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 numberOfLines={2}
                 style={{
                     marginHorizontal: 5,
-                    marginTop: 5,
+                    marginTop: 7,
                     fontWeight: 'bold',
                     fontSize: UI.fontSizeNew.font_12,
                     color: '#333333',
@@ -169,8 +169,8 @@ export default class SocialSecurityScreen extends PureComponent {
                 但大困境但大困境但大困境但大
                 </Text>
             <View style={{
-                marginTop: 7, marginHorizontal: 10, flexDirection: 'row',
-                borderWidth: 1, borderBottomWidth: 0.5, borderColor: '#9d9d9d42', backgroundColor: '#fff',
+                marginTop: 10, marginHorizontal: 10, flexDirection: 'row',
+                borderBottomWidth: 0.5, borderWidth: 1, borderColor: '#9d9d9d42', backgroundColor: '#fff',
             }}>
                 <Text
                     style={{
@@ -178,19 +178,19 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'right',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     缴费人员类别：
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 8,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     外埠农村动力
@@ -206,19 +206,19 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'right',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     医疗参保人员类别：
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 8,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     在职职工
@@ -235,19 +235,19 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'right',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     养老保险实际缴费年限：
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 8,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     4年7个月
@@ -264,19 +264,19 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'right',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     医疗保险实际缴费年限：
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 8,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     4年7个月
@@ -322,7 +322,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 >
                     参加险种
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 4,
@@ -335,7 +335,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 >
                     险种状态
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 5,
@@ -359,31 +359,31 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     养老
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 4,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     (正常)缴费
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 5,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     30000
@@ -400,31 +400,31 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     失业
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 4,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     (正常)缴费
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 5,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     30000
@@ -440,31 +440,31 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     工伤
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 4,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     (正常)缴费
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 5,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     30000
@@ -480,31 +480,31 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     生育
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 4,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     (正常)缴费
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 5,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     30000
@@ -520,31 +520,31 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     医疗
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 4,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2',
                     }}
                 >
                     (正常)缴费
                 </Text>
-                <View style={{ width: 1, height: 30, backgroundColor: '#9d9d9d42' }} />
+                <View style={{ width: 1, height: 35, backgroundColor: '#9d9d9d42' }} />
                 <Text
                     style={{
                         flex: 5,
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333',
+                        color: '#333333b2b2',
                     }}
                 >
                     30000
@@ -557,8 +557,8 @@ export default class SocialSecurityScreen extends PureComponent {
         return <View >
             <View>
                 <Image style={{
-                    marginTop: 16,
-                    marginBottom: 13,
+                    marginTop: 18,
+                    marginBottom: 14,
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 424 / 1080
                 }} source={Images.icon_24} />
@@ -581,7 +581,7 @@ export default class SocialSecurityScreen extends PureComponent {
                     fontSize: UI.fontSizeNew.font_11,
                     alignSelf: 'center',
                     textAlign: 'center',
-                    color: '#333333',
+                    color: '#333333b2',
                 }}
             >
                 北京市人力资源和社会保障局    提供服务
