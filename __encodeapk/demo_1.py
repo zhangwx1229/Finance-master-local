@@ -9,7 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-filename = "10个客户的公积金.xlsx"
+filename = "客户马兰霞公积金.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../支付宝'
