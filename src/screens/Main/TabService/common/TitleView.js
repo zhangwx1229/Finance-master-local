@@ -12,9 +12,13 @@ export default class TitleView extends PureComponent {
     }
     clickClose = () => {
         const {
-            navigation
+            navigation, type
         } = this.props;
-        navigation.navigate("AccumulationScreenNew")
+        if (type === 1) {
+            navigation.pop()
+        } else {
+            navigation.navigate("AccumulationScreenNew")
+        }
     }
     render() {
         // transparent

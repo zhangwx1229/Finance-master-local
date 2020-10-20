@@ -13,8 +13,8 @@ export default class SocialSecurityScreen extends PureComponent {
 
     }
 
-    clickGJJ = () => {
-        this.props.navigation.navigate('AccumulationInfoScreen')
+    clickSBSearch = () => {
+        this.props.navigation.navigate('SocialSecuritySearchScreen')
     }
 
     renderUserInfo = () => {
@@ -544,7 +544,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         fontSize: UI.fontSizeNew.font_11,
                         alignSelf: 'center',
                         textAlign: 'center',
-                        color: '#333333b2b2',
+                        color: '#333333b2',
                     }}
                 >
                     30000
@@ -562,7 +562,7 @@ export default class SocialSecurityScreen extends PureComponent {
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 424 / 1080
                 }} source={Images.icon_24} />
-                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                <TouchableWithoutFeedback onPress={this.clickSBSearch}>
                     <View style={{
                         position: 'absolute', right: 10, top: 16,
                         width: (UI.size.screenWidth - 10 * 4) / 3, height: (UI.size.screenWidth * 424 / 1080 - 20) / 2, backgroundColor: 'red'
@@ -590,7 +590,7 @@ export default class SocialSecurityScreen extends PureComponent {
     }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} imageComponent={() =>
+            <TitleView navigation={this.props.navigation} type={1} imageComponent={() =>
                 <Image style={{
                     width: UI.size.screenWidth,
                     height: (UI.size.screenWidth * 145) / 1080,
