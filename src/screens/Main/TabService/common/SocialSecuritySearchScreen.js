@@ -4,22 +4,39 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from './TitleView';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
+import DateSelectModel from '../../TabHomeNew/common/DateSelectModel';
 const header_h = 100
 const scroll_h = 180
 //北京通
 export default class SocialSecuritySearchScreen extends PureComponent {
     constructor() {
         super()
+        this.state = { isShowYear: false, year: '2020-01' }
         this.data = [['养老', 18000, 2880, 1440], ['失业', 18060, 2880, 1440], ['工伤', 18030, 2880, 1440], ['医疗', 18040, 2880, 1440]]
     }
 
-    clickSB = () => {
-
+    clickDate = () => {
+        this.setState({ isShowYear: true })
     }
 
     clickSBSearch = () => {
-        this.props.navigation.navigate('SocialSecuritySearchScreen')
+        // this.props.navigation.navigate('SocialSecuritySearchScreen')
+
     }
+
+    onYearCall = ({ month, year }) => {
+        let date = year
+        if (month < 10) {
+            date = date + '-0' + month
+        } else {
+            date = date + '-' + month
+        }
+        this.setState({ isShowYear: false, year: date })
+    };
+
+    onDismiss = () => {
+        this.setState({ isShowYear: false })
+    };
 
     renderUserInfo = () => {
         return <View style={{
@@ -207,7 +224,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                 style={{
                     fontSize: UI.fontSizeNew.font_10,
                     marginLeft: 10,
-                    marginVertical: 8,
+                    marginVertical: 11,
                     alignSelf: 'flex-start',
                     textAlign: 'center',
                     color: '#333333',
@@ -227,7 +244,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     }
 
     renderSearch = () => {
-        return <View style={{ flexDirection: 'row', marginVertical: 10 }}>
+        return <View style={{ flexDirection: 'row', marginVertical: 13 }}>
             <Text
                 style={{
                     marginHorizontal: 10,
@@ -251,22 +268,23 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                         color: '#9d9d9d',
                     }}
                 >
-                    2020-01
+                    {this.state.year}
                 </Text>
-                <Image style={{
-                    marginTop: 6,
-                    marginRight: 5,
-                    width: 20,
-                    height: 20
-                }} source={Images.icon_26} />
+                <TouchableWithoutFeedback onPress={this.clickDate}>
+                    <Image style={{
+                        marginTop: 6,
+                        marginRight: 5,
+                        width: 20,
+                        height: 20
+                    }} source={Images.icon_26} />
+                </TouchableWithoutFeedback>
             </View>
-
             <TouchableWithoutFeedback onPress={this.clickSBSearch}>
                 <Image style={{
                     alignSelf: 'center',
                     marginLeft: 5,
-                    width: 20 * 166 / 71,
-                    height: 20,
+                    width: 23 * 166 / 71,
+                    height: 23,
                 }} source={Images.icon_25} />
             </TouchableWithoutFeedback>
         </View>
@@ -284,11 +302,12 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     };
 
     render() {
-        const image_h = UI.size.screenWidth - 50 * 2
+        const { isShowYear, year } = this.state;
         return (
             <View style={styles.container}>
                 {this.renderTitle()}
                 {this.renderContent()}
+                {isShowYear ? <DateSelectModel selectYear={year} onDismiss={this.onDismiss} onYearCall={this.onYearCall} /> : null}
             </View>
         );
     }

@@ -35,8 +35,6 @@ type Props = {
 
 const TAG = 'WheelPicker';
 
-let font_10 = UI.fontSizeNew.font_10
-let font_13 = UI.fontSizeNew.font_13
 export default class WheelPicker extends React.PureComponent<Props> {
     // eslint-disable-next-line react/sort-comp
     panResponder: PanResponderInstance;
@@ -162,7 +160,7 @@ export default class WheelPicker extends React.PureComponent<Props> {
             upItems[index] = this.createCell(
                 `up_${index}`,
                 index,
-                [styles.upText, { fontSize: font_10 }, itemStyle],
+                [styles.upText, { fontSize: UI.fontSizeNew.font_12 }, itemStyle],
                 UP_DOWN_CELL_HEIGHT,
                 item.text,
             );
@@ -170,7 +168,7 @@ export default class WheelPicker extends React.PureComponent<Props> {
                 `mid_${index}`,
                 index,
                 [styles.middleText, {
-                    fontSize: font_13
+                    fontSize: UI.fontSizeNew.font_14
                 }, itemStyle],
                 MIDDLE_CELL_HEIGHT,
                 item.text,
@@ -179,7 +177,7 @@ export default class WheelPicker extends React.PureComponent<Props> {
                 `down_${index}`,
                 index,
                 [styles.downText, {
-                    fontSize: font_10,
+                    fontSize: UI.fontSizeNew.font_12,
                 }, itemStyle],
                 UP_DOWN_CELL_HEIGHT,
                 item.text,
@@ -189,8 +187,6 @@ export default class WheelPicker extends React.PureComponent<Props> {
     };
 
     render() {
-        font_10 = UI.fontSizeNew.font_10
-        font_13 = UI.fontSizeNew.font_13
         const { selectedIndex: index, datas: itemDatas, pickerStyle } = this.props;
         const { length } = itemDatas;
         const upViewStyle = {

@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         width: '100%',
-        height: 300,
+        height: 273,
         backgroundColor: '#fff',
     },
     touchImage: { width: 40, height: 20 },
