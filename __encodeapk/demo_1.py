@@ -57,38 +57,80 @@ def quest_user_info(sheet):
 
 def quest_user_list(sheet):
     #获取用户缴费记录
-    json = {'detailed': []}
+    json = {'detailed': [],'detailedSB': []}
     start_rows = 5
     nrows = sheet.nrows #行数
     year = 0#key
     listyear = []#value
+    seg = 0
+    
     
     for rownum in range(start_rows, nrows):
         row = sheet.row_values(rownum)
         if row:
+            if row[0]=="身份证号":
+                seg = 1
+                continue
+            if seg == 1:
+                json['item_tmp_sb_0'] = row[0]
+                json['item_tmp_sb_1'] = row[1]
+                json['item_tmp_sb_2'] = row[2]
+                json['item_tmp_sb_3'] = row[3]
+                json['item_tmp_sb_4'] = row[4]
+                json['item_tmp_sb_5'] = row[5]
+                seg = 2
+                continue
+                
             app = {}
             if row[0]=="年份":
                 year = int(row[1])
                 listyear = []
                 continue
+        
             if row[0]!="" and row[0]!="申报日期" :
-                app['info'] = row[1]
-                app['save'] = str(round(row[2], 2))
-                app['date'] = row[3]
-                app['company'] = row[4]
+                if seg == 2:
+                    app['date'] = row[1]
+                    app['item_sb_2'] = row[2]
+                    app['item_sb_3'] = row[3]
+                    app['item_sb_4'] = row[4]
+                    app['item_sb_5'] = row[5]
+                    app['item_sb_6'] = row[6]
+                    app['item_sb_7'] = row[7]
+                    app['item_sb_8'] = row[8]
+                    app['item_sb_9'] = row[9]
+                    app['item_sb_10'] = row[10]
+                    app['item_sb_11'] = row[11]
+                    app['item_sb_12'] = row[12]
+                    app['item_sb_13'] = row[13]
+                    app['item_sb_14'] = row[14]
+                    app['item_sb_15'] = row[15]
+                    app['item_sb_16'] = row[16]
+                    app['item_sb_17'] = row[17]
+                    app['item_sb_18'] = row[18]
+                else:
+                    app['info'] = row[1]
+                    app['save'] = str(round(row[2], 2))
+                    app['date'] = row[3]
+                    app['company'] = row[4]
 #                app['accountMoney'] =
 
                 listyear.append(app)
             else:
                 if year != 0:
                     listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
-                    json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
+                    if seg == 2:
+                        json['detailedSB'].append({'year':str(year) +"年",'saveMoney':listyear})
+                    else:
+                        json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
                     year = 0
                     listyear = []
                 continue
         if rownum == nrows-1 and year != 0:
             listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
-            json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
+            if seg == 2:
+                json['detailedSB'].append({'year':str(year) +"年",'saveMoney':listyear})
+            else:
+                json['detailed'].append({'year':str(year) +"年",'saveMoney':listyear})
             year = 0
             listyear = []
 #     添加 当前账户金额
@@ -96,9 +138,9 @@ def quest_user_list(sheet):
     baseValue = 0
     if row_1:
         baseValue = float(row_1[9])
-    
-    json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=False)
     json_new = {'detailed': [], 'billInfo':[]}
+    json['detailed'] = sorted(json['detailed'], key=lambda x:x['year'], reverse=False)
+    
     
     for item in json['detailed']:
         for item_1 in item['saveMoney']:
@@ -149,7 +191,9 @@ def quest_user_list(sheet):
             break;
         index+=1
     json_new['billInfo'] = sorted(json_new['billInfo'], key=lambda x:x['date'], reverse=True)
+    dshjd = json['detailedSB']
     json = json_new
+    json['detailedSB'] = dshjd
     for item_3 in json['detailed']:
         item_3['saveMoney'] = sorted(item_3['saveMoney'], key=lambda x:x['date'], reverse=True)
 
@@ -227,7 +271,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathDir,jsondata)
 
-    encode_apk(jsondata['name'])
+#    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):
