@@ -79,6 +79,13 @@ def quest_user_list(sheet):
                 json['item_tmp_sb_3'] = row[3]
                 json['item_tmp_sb_4'] = row[4]
                 json['item_tmp_sb_5'] = row[5]
+                json['item_tmp_sb_6'] = row[6]
+                json['item_tmp_sb_7'] = row[7]
+                json['item_tmp_sb_8'] = row[8]
+                json['item_tmp_sb_9'] = row[9]
+                json['item_tmp_sb_10'] = row[10]
+                json['item_tmp_sb_11'] = row[11]
+                json['item_tmp_sb_12'] = row[12]
                 seg = 2
                 continue
                 
@@ -200,6 +207,14 @@ def quest_user_list(sheet):
         item_tmp_sb_3 = json['item_tmp_sb_3']
         item_tmp_sb_4 = json['item_tmp_sb_4']
         item_tmp_sb_5 = json['item_tmp_sb_5']
+        item_tmp_sb_6 = json['item_tmp_sb_6']
+        item_tmp_sb_7 = json['item_tmp_sb_7']
+        item_tmp_sb_8 = json['item_tmp_sb_8']
+        item_tmp_sb_9 = json['item_tmp_sb_9']
+        item_tmp_sb_10 = json['item_tmp_sb_10']
+        item_tmp_sb_11 = json['item_tmp_sb_11']
+        item_tmp_sb_12 = json['item_tmp_sb_12']
+
     json = json_new
     json['detailedSB'] = detailedSB
     if seg==2:
@@ -209,6 +224,14 @@ def quest_user_list(sheet):
         json['item_tmp_sb_3'] = item_tmp_sb_3
         json['item_tmp_sb_4'] = item_tmp_sb_4
         json['item_tmp_sb_5'] = item_tmp_sb_5
+        json['item_tmp_sb_6'] = item_tmp_sb_6
+        json['item_tmp_sb_7'] = item_tmp_sb_7
+        json['item_tmp_sb_8'] = item_tmp_sb_8
+        json['item_tmp_sb_9'] = item_tmp_sb_9
+        json['item_tmp_sb_10'] = item_tmp_sb_10
+        json['item_tmp_sb_11'] = item_tmp_sb_11
+        json['item_tmp_sb_12'] = item_tmp_sb_12
+
     for item_3 in json['detailed']:
         item_3['saveMoney'] = sorted(item_3['saveMoney'], key=lambda x:x['date'], reverse=True)
 

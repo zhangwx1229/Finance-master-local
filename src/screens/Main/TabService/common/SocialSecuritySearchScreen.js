@@ -3,16 +3,63 @@ import { TouchableWithoutFeedback, Image, Text, StyleSheet, View } from 'react-n
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from './TitleView';
-import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import DateSelectModel from '../../TabHomeNew/common/DateSelectModel';
+import filejson from '../../../../image/filename.json';
 const header_h = 100
 const scroll_h = 180
 //北京通
 export default class SocialSecuritySearchScreen extends PureComponent {
-    constructor() {
-        super()
-        this.state = { isShowYear: false, year: '2020-01' }
-        this.data = [['养老', 18000, 2880, 1440], ['失业', 18060, 2880, 1440], ['工伤', 18030, 2880, 1440], ['医疗', 18040, 2880, 1440]]
+    constructor(props) {
+        super(props)
+        const { route } = props;
+        this.data = null;
+        let year = '2020-01'
+        if (route.params && route.params.selectYear) {
+            year = route.params.selectYear
+        }
+
+        this.state = { isShowYear: false, year: year }
+        this.data = [];
+        this.info = []
+        this.getData();
+        this.oldDate = year
+    }
+
+    getData = () => {
+        const { year } = this.state;
+        const yearStr = year.slice(0, 4) + '年'
+        const monthStr = year.slice(5, 5 + 2)
+        for (let i = 0; i < filejson.detailedSB.length; i++) {
+            const element = filejson.detailedSB[i];
+            if (element.year === yearStr) {
+                if (element.saveMoney.length > 0) {
+                    for (let j = 0; j < element.saveMoney.length; j++) {
+                        const itme = element.saveMoney[j];
+                        if (itme.date === year) {
+                            this.info = [itme.item_sb_2, itme.item_sb_3]
+
+                            if (itme.item_sb_4 !== "") {//养老
+                                this.data.push(['养老', itme.item_sb_4, itme.item_sb_5, itme.item_sb_6])
+                            }
+                            if (itme.item_sb_7 !== "") {//失业
+                                this.data.push(['失业', itme.item_sb_7, itme.item_sb_8, itme.item_sb_9])
+                            }
+                            if (itme.item_sb_10 !== "") {//工伤
+                                this.data.push(['工伤', itme.item_sb_10, itme.item_sb_11, itme.item_sb_12])
+                            }
+                            if (itme.item_sb_13 !== "") {//生育
+                                this.data.push(['生育', itme.item_sb_13, itme.item_sb_14, itme.item_sb_15])
+                            }
+                            if (itme.item_sb_16 !== "") {//医疗
+                                this.data.push(['医疗', itme.item_sb_16, itme.item_sb_17, itme.item_sb_18])
+                            }
+                            break
+                        }
+                    }
+                }
+
+            }
+        }
     }
 
     clickDate = () => {
@@ -20,7 +67,9 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     }
 
     clickSBSearch = () => {
-        // this.props.navigation.navigate('SocialSecuritySearchScreen')
+        console.debug('========', this.state.year)
+        this.setState({ year: this.oldDate })
+        this.props.navigation.push('SocialSecuritySearchScreen', { selectYear: this.state.year })
 
     }
 
@@ -31,6 +80,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
         } else {
             date = date + '-' + month
         }
+        this.oldDate = this.state.year
         this.setState({ isShowYear: false, year: date })
     };
 
@@ -52,7 +102,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                         color: '#333333',
                     }}
                 >
-                    张惟新
+                    {filejson.name}
                 </Text>
             </View>
             <View>
@@ -72,7 +122,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                         color: '#9d9d9d',
                     }}
                 >
-                    单位名称叔叔
+                    {this.info[0]}
                 </Text>
                 <Text
                     style={{
@@ -90,7 +140,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                         color: '#9d9d9d',
                     }}
                 >
-                    缴费区县
+                    {this.info[1]}
                 </Text>
             </View>
         </View >
@@ -292,7 +342,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} type={1} imageComponent={() =>
+            <TitleView navigation={this.props.navigation} type={2} imageComponent={() =>
                 <Image style={{
                     width: UI.size.screenWidth,
                     height: (UI.size.screenWidth * 145) / 1080,

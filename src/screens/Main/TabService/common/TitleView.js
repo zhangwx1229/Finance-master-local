@@ -16,6 +16,8 @@ export default class TitleView extends PureComponent {
         } = this.props;
         if (type === 1) {
             navigation.pop()
+        } else if (type === 2) {
+            navigation.navigate("Home")
         } else {
             navigation.navigate("AccumulationScreenNew")
         }

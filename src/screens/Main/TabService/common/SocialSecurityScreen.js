@@ -4,6 +4,7 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from './TitleView';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
+import filejson from '../../../../image/filename.json';
 const header_h = 100
 const scroll_h = 180
 //北京通
@@ -14,10 +15,12 @@ export default class SocialSecurityScreen extends PureComponent {
     }
 
     clickSBSearch = () => {
-        this.props.navigation.navigate('SocialSecuritySearchScreen')
+        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: '2020-06' })
     }
 
     renderUserInfo = () => {
+        const dateStr = filejson.item_tmp_sb_0 + ''
+        const date = dateStr.slice(6, 6 + 4) + '-' + dateStr.slice(10, 10 + 2) + '-' + dateStr.slice(12, 12 + 2);
         return <View style={{
             flexDirection: 'row', marginHorizontal: 10, borderWidth: 1, borderBottomWidth: 3, borderColor: '#9d9d9d62'
         }}>
@@ -52,8 +55,8 @@ export default class SocialSecurityScreen extends PureComponent {
                             color: '#9d9d9d',
                         }}
                     >
-                        男
-                </Text>
+                        {filejson.item_tmp_7}
+                    </Text>
                     <Text
                         style={{
                             marginLeft: 30,
@@ -69,8 +72,8 @@ export default class SocialSecurityScreen extends PureComponent {
                             color: '#9d9d9d',
                         }}
                     >
-                        汉族
-                </Text>
+                        {filejson.item_tmp_sb_3}
+                    </Text>
                 </View>
                 <View style={{
                     marginLeft: 10, marginTop: 4, flexDirection: 'row'
@@ -89,8 +92,8 @@ export default class SocialSecurityScreen extends PureComponent {
                             color: '#9d9d9d',
                         }}
                     >
-                        男
-                </Text>
+                        {date}
+                    </Text>
                 </View>
                 <View style={{
                     marginLeft: 10, marginTop: 4, marginBottom: 10, flexDirection: 'row'
@@ -109,8 +112,8 @@ export default class SocialSecurityScreen extends PureComponent {
                             color: '#9d9d9d',
                         }}
                     >
-                        男
-                </Text>
+                        {UI.getIdentityStr(filejson.item_tmp_sb_0, 1, 1)}
+                    </Text>
                 </View>
             </View>
         </View>
@@ -142,8 +145,8 @@ export default class SocialSecurityScreen extends PureComponent {
                     color: '#333333',
                 }}
             >
-                但大困境但大困境但大困境但大
-                </Text>
+                {filejson.item_tmp_sb_6}
+            </Text>
             <View style={{
                 marginTop: 17, paddingHorizontal: 25, paddingVertical: 6, alignSelf: 'flex-start', backgroundColor: '#53a0e7',
             }}>
@@ -166,8 +169,8 @@ export default class SocialSecurityScreen extends PureComponent {
                     color: '#333333',
                 }}
             >
-                但大困境但大困境但大困境但大
-                </Text>
+                {filejson.item_tmp_sb_7}
+            </Text>
             <View style={{
                 marginTop: 10, marginHorizontal: 10, flexDirection: 'row',
                 borderBottomWidth: 0.5, borderWidth: 1, borderColor: '#9d9d9d42', backgroundColor: '#fff',
@@ -193,7 +196,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    外埠农村动力
+                    {filejson.item_tmp_sb_8}
                 </Text>
             </View>
             <View style={{
@@ -221,7 +224,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    在职职工
+                    {filejson.item_tmp_sb_9}
                 </Text>
             </View>
 
@@ -250,7 +253,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    4年7个月
+                    {filejson.item_tmp_sb_10}
                 </Text>
             </View>
 
@@ -279,7 +282,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    4年7个月
+                    {filejson.item_tmp_sb_11}
                 </Text>
             </View>
             <View style={{
@@ -304,8 +307,8 @@ export default class SocialSecurityScreen extends PureComponent {
                     color: '#333333',
                 }}
             >
-                申报月均工资收入(元)：31000
-                </Text>
+                申报月均工资收入(元)：{filejson.item_tmp_sb_12}
+            </Text>
             <View style={{
                 marginTop: 7, marginHorizontal: 10, flexDirection: 'row',
                 borderWidth: 1, borderBottomWidth: 0.5, borderColor: '#9d9d9d42', backgroundColor: '#fff',
@@ -386,7 +389,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    30000
+                    {filejson.item_tmp_sb_12}
                 </Text>
             </View>
 
@@ -427,7 +430,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    30000
+                    {filejson.item_tmp_sb_12}
                 </Text>
             </View>
             <View style={{
@@ -467,7 +470,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    30000
+                    {filejson.item_tmp_sb_12}
                 </Text>
             </View>
             <View style={{
@@ -507,7 +510,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    30000
+                    {filejson.item_tmp_sb_12}
                 </Text>
             </View>
             <View style={{
@@ -547,7 +550,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333b2',
                     }}
                 >
-                    30000
+                    {filejson.item_tmp_sb_12}
                 </Text>
             </View>
         </View>
