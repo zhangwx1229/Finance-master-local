@@ -5,7 +5,7 @@ import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import TitleView from './TitleView';
 import Images from '../../../../image';
 import filejson from '../../../../image/filename.json';
-import DateSelectModel from '../../TabHomeNew/common/DateSelectModel';
+import DateSelectModel from './DateSelectModel';
 type Props = {
     style: Object,
     onClosePress: Function,
