@@ -191,9 +191,21 @@ def quest_user_list(sheet):
             break;
         index+=1
     json_new['billInfo'] = sorted(json_new['billInfo'], key=lambda x:x['date'], reverse=True)
-    dshjd = json['detailedSB']
+    detailedSB = json['detailedSB']
+    item_tmp_sb_0 = row[0]
+    item_tmp_sb_1 = row[1]
+    item_tmp_sb_2 = row[2]
+    item_tmp_sb_3 = row[3]
+    item_tmp_sb_4 = row[4]
+    item_tmp_sb_5 = row[5]
     json = json_new
-    json['detailedSB'] = dshjd
+    json['detailedSB'] = detailedSB
+    json['item_tmp_sb_0'] = item_tmp_sb_0
+    json['item_tmp_sb_1'] = item_tmp_sb_1
+    json['item_tmp_sb_2'] = item_tmp_sb_2
+    json['item_tmp_sb_3'] = item_tmp_sb_3
+    json['item_tmp_sb_4'] = item_tmp_sb_4
+    json['item_tmp_sb_5'] = item_tmp_sb_5
     for item_3 in json['detailed']:
         item_3['saveMoney'] = sorted(item_3['saveMoney'], key=lambda x:x['date'], reverse=True)
 
