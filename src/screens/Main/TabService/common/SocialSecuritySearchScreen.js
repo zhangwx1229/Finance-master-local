@@ -67,10 +67,10 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     }
 
     clickSBSearch = () => {
-        console.debug('========', this.state.year)
-        this.setState({ year: this.oldDate })
-        this.props.navigation.push('SocialSecuritySearchScreen', { selectYear: this.state.year })
-
+        if (this.oldDate !== this.state.year) {
+            this.setState({ year: this.oldDate })
+            this.props.navigation.push('SocialSecuritySearchScreen', { selectYear: this.state.year })
+        }
     }
 
     onYearCall = ({ month, year }) => {

@@ -15,7 +15,7 @@ export default class SocialSecurityScreen extends PureComponent {
     }
 
     clickSBSearch = () => {
-        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: '2020-06' })
+        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: '2020-01' })
     }
 
     renderUserInfo = () => {
