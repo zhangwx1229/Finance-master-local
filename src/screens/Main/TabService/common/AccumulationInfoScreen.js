@@ -29,13 +29,13 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         this.dataList = [
             { type: 1, data: '个人信息' },
             { type: 2, data: { title: '姓名', subTitle: filejson.name } },
-            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr(filejson.item_tmp_1, 3, 4) } },
+            { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr(filejson.item_tmp_sb_0, 3, 4) } },
         ];
         this.list1 = [
             { type: 1, data: '基础信息' },
             { type: 2, data: { title: '公积金账号', subTitle: filejson.accountNumber } },
             { type: 2, data: { title: '单位名称', subTitle: filejson.company } },
-            { type: 2, data: { title: '单位登记号', subTitle: filejson.item_tmp_2 } },
+            { type: 2, data: { title: '单位登记号', subTitle: filejson.item_tmp_sb_1 } },
             { type: 2, data: { title: '所属管理部名称', subTitle: filejson.administration } },
             { type: 1, data: '账户信息' },
             { type: 2, data: { title: '个人账户余额(元)', subTitle: parseFloat(filejson.balance) } },

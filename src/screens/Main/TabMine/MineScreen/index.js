@@ -56,12 +56,12 @@ export default class MineScreen extends PureComponent {
                             borderRadius: UI.size.screenWidth * 70 / (360 * 2),
                         }} source={Images.headImage} />
                         <View style={{ alignSelf: 'center', marginLeft: 10 }}>
-                            <Text numberOfLines={1} style={{ maxWidth: 150, marginBottom: 7, fontSize: UI.fontSizeNew.font_15, color: '#333333' }} >{filejson.item_tmp_3}</Text>
-                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_4}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, marginBottom: 7, fontSize: UI.fontSizeNew.font_15, color: '#333333' }} >{filejson.item_tmp_sb_2}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_3}</Text>
                         </View >
                     </View>
-                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 16, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_5}</Text>
-                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 4, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >名片号: {filejson.item_tmp_6}</Text>
+                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 16, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_sb_4}</Text>
+                    <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 4, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >名片号: {filejson.item_tmp_sb_5}</Text>
                 </View>
             </View>
             <Image style={{
