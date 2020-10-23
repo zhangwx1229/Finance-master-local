@@ -196,7 +196,7 @@ export default class VodPlayerList extends React.Component {
             <View key={index} style={{ width, height }}>
                 <Text style={{ fontWeight: '500', fontSize: 50 }}>
                     {item}
-                    {/* {tmp} */}
+                    {tmp}
                 </Text>
             </View>
         );
