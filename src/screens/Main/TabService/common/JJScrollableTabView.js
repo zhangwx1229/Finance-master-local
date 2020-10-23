@@ -8,12 +8,14 @@ type Props = {
     isHorizontal: Boolean,
     listData: Array,
     onRenderScene: item => void,
+    onFootToEnd: () => void,
+    onHeadToEnd: () => void,
 };
 export default class JJScrollableTabView extends React.Component<Props> {
     constructor(props) {
         super(props);
         const { listData, isLoop, isHorizontal } = props;
-        this.isLoop = false;
+        this.isLoop = true;
         this.horizontal = false;
         if (isLoop && isLoop === true) {
             this.isLoop = true;
@@ -22,7 +24,7 @@ export default class JJScrollableTabView extends React.Component<Props> {
             this.horizontal = false;
         }
         this.scrollRef = null;
-        this.state = { isTmp: false, viewList: [listData[0], listData[1], listData[2]] };
+        this.state = { isTmp: this.isLoop, viewList: [listData[0], listData[1], listData[2]] };
         this.isDragDown = false;
         this.offsetIndex = 0;
         this.offsetStart = 0;
@@ -32,20 +34,37 @@ export default class JJScrollableTabView extends React.Component<Props> {
         this.w = 0;
         this.h = 0;
         this.page = 0;
-        this.tmpData = null;
+        this.tmpData = {
+            index: 0,
+            item: listData[0],
+        };
         this.isNochange = false; //是否要改变
         this.isBoundary = false; //是否到边界了
+        this.pageIndex = 0;
+        this.isDestroy = false
     }
 
     componentDidMount() {
         if (this.isLoop) {
-            setTimeout(() => {
+            this.timeout = setTimeout(() => {
+                if (this.isDestroy) {
+                    return
+                }
                 this.resetCenter();
-            }, 1000);
+                this.creatTimer()
+            }, 300);
         }
     }
 
-    componentWillUnmount() {}
+    componentWillUnmount() {
+        this.isDestroy = true
+        if (this.centerTimer) {
+            clearInterval(this.centerTimer);
+        }
+        if (this.timeout) {
+            clearTimeout(this.timeout)
+        }
+    }
 
     goNext = () => {
         this.isDragDown = true;
@@ -161,26 +180,28 @@ export default class JJScrollableTabView extends React.Component<Props> {
         }
         if (!this.state.isTmp) {
             this.setState({ isTmp: true }, () => {
-                this.centerTimer = setInterval(() => {
-                    let off = this.h;
-                    if (this.horizontal) {
-                        off = this.w;
-                    }
-                    if (this.offsetIndex === off) {
-                        if (this.centerTimer) {
-                            clearInterval(this.centerTimer);
-                        }
-                        setTimeout(() => {
-                            this.setState({ isTmp: false });
-                        }, 1000);
-                    } else {
-                        this.scrollCenter();
-                    }
-                }, 10);
+                this.creatTimer()
                 this.resetCenter();
             });
         }
     };
+
+    creatTimer = () => {
+        this.centerTimer = setInterval(() => {
+            let off = this.h;
+            if (this.horizontal) {
+                off = this.w;
+            }
+            if (this.offsetIndex === off) {
+                if (this.centerTimer) {
+                    clearInterval(this.centerTimer);
+                }
+                this.setState({ isTmp: false });
+            } else {
+                this.scrollCenter();
+            }
+        }, 10);
+    }
 
     resetCenter = () => {
         this.isScroll = false;
@@ -293,27 +314,37 @@ export default class JJScrollableTabView extends React.Component<Props> {
         }
 
         if (this.isLoop) {
+            index = this.page
             if (this.offsetStart < offIndex) {
                 this.isDragDown = true;
-                index = 2;
+                index += 1;
+                if (index > this.props.listData.length - 1) {
+                    index = 0
+                }
             } else {
                 this.isDragDown = false;
+                index -= 1;
+                if (index < 0) {
+                    index = this.props.listData.length - 1
+                }
             }
-
             this.tmpData = {
-                index: this.state.viewList[index],
-                item: this.state.viewList[index],
-                ds: 'jdskk',
-                width: this.w,
-                height: this.h,
+                index: index,
+                item: this.props.listData[index],
             };
             this.startScroll(isQuick);
         } else {
             if (this.offsetStart === offIndex) {
                 this.isBoundary = true;
                 if (this.offsetStart === 0) {
+                    if (this.props.onHeadToEnd) {
+                        this.props.onHeadToEnd()
+                    }
                     console.debug('====到头了=====', this.offsetStart, offIndex);
                 } else if (this.offsetStart === 2 * offset) {
+                    if (this.props.onFootToEnd) {
+                        this.props.onFootToEnd()
+                    }
                     console.debug('====到低了=====', this.offsetStart, offIndex);
                 }
             } else {
@@ -321,27 +352,19 @@ export default class JJScrollableTabView extends React.Component<Props> {
                     this.isDragDown = true;
                     if (this.page === this.props.listData.length - 2) {
                         this.isBoundary = true;
-                        index = 1;
-                    } else {
-                        index = 2;
                     }
-                    // if (condition) {
-                    // }
-                    // index = 2;
+                    index = this.page + 1;
                 } else {
                     this.isDragDown = false;
+                    index = this.page - 1;
                     if (this.page === 1) {
                         this.isBoundary = true;
                     }
                 }
                 this.tmpData = {
-                    index: this.state.viewList[index],
-                    item: this.state.viewList[index],
-                    ds: 'jdskk',
-                    width: this.w,
-                    height: this.h,
+                    index: index,
+                    item: this.props.listData[index],
                 };
-                console.debug('====到头了==ss===', this.page, this.state.viewList, index);
                 this.startScroll(isQuick);
             }
         }
@@ -359,7 +382,7 @@ export default class JJScrollableTabView extends React.Component<Props> {
         const viewArr = [];
         for (let i = 0; i < 3; i += 1) {
             viewArr.push(
-                onRenderScene({ index: i, item: viewList[i], width: this.w, height: this.h }),
+                onRenderScene({ index: this.page + i, item: viewList[i], width: this.w, height: this.h }),
             );
         }
         return viewArr;
@@ -367,13 +390,17 @@ export default class JJScrollableTabView extends React.Component<Props> {
 
     renderTmpView = () => {
         const { onRenderScene } = this.props;
-        // return null;
-        return onRenderScene(this.tmpData);
+        return <View style={{ backgroundColor: '#fff' }}>
+            {onRenderScene({
+                ...this.tmpData, index: 'tmp_' + this.tmpData.index,
+                tmp: 'tmp', width: this.w, height: this.h
+            })}
+        </View>
     };
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 <ScrollView
                     ref={this.ref}
                     overScrollMode="always"

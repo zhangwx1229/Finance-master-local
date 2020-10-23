@@ -191,12 +191,12 @@ export default class VodPlayerList extends React.Component {
     //     );
     // };
 
-    onRenderScene = ({ index, item, width, height, ds }) => {
+    onRenderScene = ({ index, item, width, height, tmp }) => {
         return (
-            <View key={index} style={{ width, height, backgroundColor: item }}>
+            <View key={index} style={{ width, height }}>
                 <Text style={{ fontWeight: '500', fontSize: 50 }}>
                     {item}
-                    {ds}
+                    {/* {tmp} */}
                 </Text>
             </View>
         );
@@ -205,7 +205,7 @@ export default class VodPlayerList extends React.Component {
     render() {
         return (
             <JJScrollableTabView
-                listData={['blue', 'orange', 'green', 'red']} // , 'green', 'red'
+                listData={['blue', 'orange', 'green', 'red', '#334564']} // , 'green', 'red'
                 onRenderScene={this.onRenderScene}
             />
         );
