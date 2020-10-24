@@ -135,16 +135,14 @@ export default class SearchDetailView extends PureComponent {
                 backgroundColor: '#fff', justifyContent: 'center',
             }} >
                 <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
-                    <Text style={{ fontSize: font_12, color: '#333333', }} >
-                        收入合计  <Image style={{ width: 15 * UI.size.scale, height: 15 * UI.size.scale }} source={Images.icon_wenhao} /> ：
-          </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : 0}元 </Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
+                    <Text style={{ fontSize: font_12, color: '#333333', }} >收入合计 <Image style={{ width: 17 * UI.size.scale, height: 17 * UI.size.scale }} source={Images.icon_wenhao} /> ：</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : 0}元</Text>
                 </View >
-                <View style={{ marginLeft: 10, width: UI.size.screenWidth - 10 * 2, height: 0.5, opacity: 0.5, backgroundColor: '#9D9D9D' }} />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 15, marginTop: 7, alignItems: 'center', }} >
-                    <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计： </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} > {this.state.opacity === 1 ? this.total_1 : 0}元</Text>
+                <View style={{ marginLeft: 15, width: UI.size.screenWidth - 15 * 2, height: 1, opacity: 0.5, backgroundColor: '#9D9D9D' }} />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, marginBottom: 15, marginTop: 7, alignItems: 'center', }} >
+                    <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计：</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_1 : 0}元</Text>
                 </View >
             </View>
         );
@@ -161,23 +159,23 @@ export default class SearchDetailView extends PureComponent {
                     this.item_H = height
                 }} >
                     <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                    <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <View style={{ flexDirection: 'row', marginHorizontal: 15, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemTitle, {
                             fontSize: font_13
-                        }]} > 工资薪金 </Text>
+                        }]} >工资薪金</Text>
                         <Text style={[styles.itemDate, {
                             fontSize: font_13
-                        }]} > {data.date.slice(0, 7)} </Text>
+                        }]} >{data.date.slice(0, 7)}</Text>
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} > 所得项目小类：{data.item_1}</Text>
-                    <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} >所得项目小类：{data.item_1}</Text>
+                    <View style={{ flexDirection: 'row', marginHorizontal: 15, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemDetail, {
                             fontSize: font_12
-                        }]} numberOfLines={1} > 扣缴义务人：{data.item_2}</Text>
-                        <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
+                        }]} numberOfLines={1} >扣缴义务人：{data.item_2}</Text>
+                        <Image style={{ position: 'absolute', right: -5, width: 30, height: 30, }} source={Images.p1_12} />
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} numberOfLines={1} > 收入：{data.item_4.toFixed(2)}元</Text>
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额：{data.item_5.toFixed(2)}元</Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} numberOfLines={1} >收入：{data.item_4.toFixed(2)}元</Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15, marginBottom: 25 }]} numberOfLines={1}  >已申报税额：{data.item_5.toFixed(2)}元</Text>
                 </View >
             </TouchableOpacity>
         );
