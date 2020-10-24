@@ -143,6 +143,8 @@ def main():
          # 2、获取sheet对象
         sheet = x1.sheet_by_name(sheetName)
         excel_table_by_index(sheet)
+        if i > 1:
+            break
     output = excuteCommand('open ./'+pathDir)
 
 if __name__=="__main__":
