@@ -125,11 +125,11 @@ const styles = StyleSheet.create({
     },
     image_0: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1996) / 1440,
+        height: (UI.size.screenWidth * 1490) / 1080,
     },
     image_1: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 2211) / 1440,
+        height: (UI.size.screenWidth * 1658) / 1080,
     },
     image_2: {
         width: UI.size.screenWidth,
