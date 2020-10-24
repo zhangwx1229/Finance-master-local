@@ -1,3 +1,4 @@
+@@ -0,0 +1,475 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 
@@ -10,7 +11,7 @@ type Props = {
     onRenderScene: item => void,
     onFootToEnd: () => void,
     onHeadToEnd: () => void,
-    onComplete: (index) => void,
+    onComplete: index => void,
 };
 export default class JJScrollableTabView extends React.Component<Props> {
     constructor(props) {
@@ -42,29 +43,29 @@ export default class JJScrollableTabView extends React.Component<Props> {
         this.isNochange = false; //是否要改变
         this.isBoundary = false; //是否到边界了
         this.pageIndex = 0;
-        this.isDestroy = false
-        this.showIndex = 0
+        this.isDestroy = false;
+        this.showIndex = 0;
     }
 
     componentDidMount() {
         if (this.isLoop) {
             this.timeout = setTimeout(() => {
                 if (this.isDestroy) {
-                    return
+                    return;
                 }
                 this.resetCenter();
-                this.creatTimer()
+                this.creatTimer();
             }, 300);
         }
     }
 
     componentWillUnmount() {
-        this.isDestroy = true
+        this.isDestroy = true;
         if (this.centerTimer) {
             clearInterval(this.centerTimer);
         }
         if (this.timeout) {
-            clearTimeout(this.timeout)
+            clearTimeout(this.timeout);
         }
     }
 
@@ -156,7 +157,10 @@ export default class JJScrollableTabView extends React.Component<Props> {
                         this.isNochange = true;
                         this.scrollTo(this.w, true);
                     }
-                } else if (this.offsetIndex < this.h * 0.5 || this.offsetIndex > this.h * (1 + 0.5)) {
+                } else if (
+                    this.offsetIndex < this.h * 0.5 ||
+                    this.offsetIndex > this.h * (1 + 0.5)
+                ) {
                     this.scrollIndex();
                 } else {
                     this.isNochange = true;
@@ -170,19 +174,19 @@ export default class JJScrollableTabView extends React.Component<Props> {
                 let isChange = false;
                 if (this.showIndex === this.props.listData.length - 2) {
                     if (this.offsetIndex < off * (1 + 0.5)) {
-                        isChange = true
+                        isChange = true;
                     } else {
-                        off *= 2
+                        off *= 2;
                     }
                 } else if (this.showIndex === 1) {
                     if (this.offsetIndex > off * 0.5) {
-                        isChange = true
+                        isChange = true;
                     } else {
-                        off = 0
+                        off = 0;
                     }
                 } else {
                     if (this.offsetIndex < off * 0.5 || this.offsetIndex > off * (1 + 0.5)) {
-                        isChange = true
+                        isChange = true;
                     }
                 }
                 if (isChange) {
@@ -203,7 +207,7 @@ export default class JJScrollableTabView extends React.Component<Props> {
         }
         if (!this.state.isTmp) {
             this.setState({ isTmp: true }, () => {
-                this.creatTimer()
+                this.creatTimer();
                 this.resetCenter();
             });
         }
@@ -221,14 +225,14 @@ export default class JJScrollableTabView extends React.Component<Props> {
                 }
                 this.setState({ isTmp: false }, () => {
                     if (this.props.onComplete) {
-                        this.props.onComplete(this.showIndex)
+                        this.props.onComplete(this.showIndex);
                     }
                 });
             } else {
                 this.scrollCenter();
             }
         }, 10);
-    }
+    };
 
     resetCenter = () => {
         this.isScroll = false;
@@ -329,51 +333,52 @@ export default class JJScrollableTabView extends React.Component<Props> {
         let offIndex = 0;
         let offset = 0;
         let isQuick = false;
+        console.debug('========onScrollEndDrag=====', event.nativeEvent.velocity.y);
         const { x, y } = event.nativeEvent.contentOffset; // 滑动距离
         if (this.horizontal) {
             offIndex = x;
             offset = this.w;
-            isQuick = Math.abs(event.nativeEvent.velocity.x) > 2;
+            isQuick = Math.abs(event.nativeEvent.velocity.x) > 3;
         } else {
             offIndex = y;
             offset = this.h;
-            isQuick = Math.abs(event.nativeEvent.velocity.y) > 2;
+            isQuick = Math.abs(event.nativeEvent.velocity.y) > 3;
         }
         if (this.isLoop) {
-            index = this.page
+            index = this.page;
             if (this.offsetStart < offIndex) {
                 this.isDragDown = true;
                 index += 1;
                 if (index > this.props.listData.length - 1) {
-                    index = 0
+                    index = 0;
                 }
             } else {
                 this.isDragDown = false;
                 index -= 1;
                 if (index < 0) {
-                    index = this.props.listData.length - 1
+                    index = this.props.listData.length - 1;
                 }
             }
             this.tmpData = {
                 index: index,
                 item: this.props.listData[index],
             };
-            this.showIndex = index
+            this.showIndex = index;
             this.startScroll(isQuick);
         } else {
             if (this.offsetStart === offIndex) {
                 this.isBoundary = true;
                 if (this.offsetStart === 0) {
                     if (this.props.onHeadToEnd) {
-                        this.props.onHeadToEnd()
+                        this.props.onHeadToEnd();
                     }
-                    this.showIndex = 0
+                    this.showIndex = 0;
                     console.debug('====到头了=====', this.offsetStart, offIndex);
                 } else if (this.offsetStart === 2 * offset) {
                     if (this.props.onFootToEnd) {
-                        this.props.onFootToEnd()
+                        this.props.onFootToEnd();
                     }
-                    this.showIndex = this.props.listData.length - 1
+                    this.showIndex = this.props.listData.length - 1;
                     console.debug('====到低了=====', this.offsetStart, offIndex);
                 }
             } else {
@@ -394,7 +399,7 @@ export default class JJScrollableTabView extends React.Component<Props> {
                     index: index,
                     item: this.props.listData[index],
                 };
-                this.showIndex = index
+                this.showIndex = index;
                 this.startScroll(isQuick);
             }
         }
@@ -412,7 +417,12 @@ export default class JJScrollableTabView extends React.Component<Props> {
         const viewArr = [];
         for (let i = 0; i < 3; i += 1) {
             viewArr.push(
-                onRenderScene({ index: this.page + i, item: viewList[i], width: this.w, height: this.h }),
+                onRenderScene({
+                    index: this.page + i,
+                    item: viewList[i],
+                    width: this.w,
+                    height: this.h,
+                }),
             );
         }
         return viewArr;
@@ -420,12 +430,17 @@ export default class JJScrollableTabView extends React.Component<Props> {
 
     renderTmpView = () => {
         const { onRenderScene } = this.props;
-        return <View style={{ backgroundColor: '#fff' }}>
-            {onRenderScene({
-                ...this.tmpData, index: 'tmp_' + this.tmpData.index,
-                tmp: 'tmp', width: this.w, height: this.h
-            })}
-        </View>
+        return (
+            <View style={{ backgroundColor: '#fff' }}>
+                {onRenderScene({
+                    ...this.tmpData,
+                    index: 'tmp_' + this.tmpData.index,
+                    tmp: 'tmp',
+                    width: this.w,
+                    height: this.h,
+                })}
+            </View>
+        );
     };
 
     render() {
