@@ -143,7 +143,7 @@ def main():
          # 2、获取sheet对象
         sheet = x1.sheet_by_name(sheetName)
         excel_table_by_index(sheet)
-        if i > 1:
+        if i > 0:
             break
     output = excuteCommand('open ./'+pathDir)
 
