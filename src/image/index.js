@@ -11,6 +11,7 @@ const Images = {
     tab_mine: require('./77/tab_mine.jpg'),
     tab_home_image_0: require('./77/tab_home.jpg'),
     tab_work_header: require('./77/tab_work_header.jpg'),
+    tab_work_00: require('./77/tab_work_00.jpg'),
     tab_work_0: require('./77/tab_work_0.jpg'),
     tab_work_1: require('./77/tab_work_1.jpg'),
     tab_work_2: require('./77/tab_work_2.jpg'),

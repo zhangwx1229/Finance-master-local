@@ -82,6 +82,11 @@ export default class TaxServer extends PureComponent {
         this.props.navigation.navigate('SocialSecurityScreen')
     }
 
+    clickAll = () => {
+        // 点击进入全部
+        this.props.navigation.navigate('SocialAllScreen')
+    }
+
     clickGJJ = () => {
         // 点击进入公积金
         this.props.navigation.navigate('AccumulationScreenNew')
@@ -175,6 +180,9 @@ export default class TaxServer extends PureComponent {
                 }} source={Images.tab_bjt_2} />
                 <TouchableWithoutFeedback onPress={this.clickSB}>
                     <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 - 60 - 10, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10, width: 60, height: 50, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.clickAll}>
+                    <View style={{ position: 'absolute', right: 20, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10 * 3 + 60, width: 60, height: 50, backgroundColor: 'red' }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{

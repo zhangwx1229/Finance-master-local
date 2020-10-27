@@ -280,7 +280,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                     color: '#333333',
                 }}
             >
-                单位：元(保留两位小数)
+                单位：元 (保留两位小数)
                 </Text>
         </View>
     }
@@ -315,7 +315,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                     style={{
                         alignSelf: 'center',
                         fontSize: UI.fontSizeNew.font_11,
-                        color: '#9d9d9d',
+                        color: '#333',
                     }}
                 >
                     {this.state.year}

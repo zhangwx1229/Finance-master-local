@@ -4,7 +4,7 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 //办事
-export default class TaxScreen extends PureComponent {
+export default class SocialAllScreen extends PureComponent {
     componentDidMount() {
         this.props.navigation.addListener('focus', this.onWillBlur);
     }

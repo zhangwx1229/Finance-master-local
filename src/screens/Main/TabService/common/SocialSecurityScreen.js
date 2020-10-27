@@ -34,7 +34,7 @@ export default class SocialSecurityScreen extends PureComponent {
                         color: '#333333',
                     }}
                 >
-                    张惟新
+                    {filejson.name}
                 </Text>
             </View>
             <View>

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Image, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Image, StatusBar, StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
@@ -25,7 +25,15 @@ export default class MineScreen extends PureComponent {
     componentWillUnmount() {
         this.props.navigation.removeListener();
     }
+    clickSB = () => {
+        // 点击进入社保
+        this.props.navigation.navigate('SocialSecurityScreen')
+    }
 
+    clickGJJ = () => {
+        // 点击进入公积金
+        this.props.navigation.navigate('AccumulationScreenNew')
+    }
     onScroll = (y) => {
         if (y < header_h) {
             this.setState({ indexY: y })
@@ -68,11 +76,18 @@ export default class MineScreen extends PureComponent {
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 386 / 1080
             }} source={Images.tab_mine_header} />
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 782 / 1080
-            }} source={Images.tab_mine_0} />
-
+            <View>
+                <Image style={{
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 782 / 1080
+                }} source={Images.tab_mine_0} />
+                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                    <View style={{ position: 'absolute', left: 0, top: 3, width: UI.size.screenWidth, height: 40, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.clickSB}>
+                    <View style={{ position: 'absolute', left: 0, top: 3 * 3 + 40, width: UI.size.screenWidth, height: 40, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
+            </View>
         </View >
     }
 
