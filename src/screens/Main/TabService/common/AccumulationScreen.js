@@ -9,10 +9,6 @@ const scroll_h = 180
 //北京通
 export default class AccumulationScreen extends PureComponent {
 
-    clickSB = () => {
-
-    }
-
     clickGJJ = () => {
         this.props.navigation.navigate('AccumulationInfoScreen')
     }

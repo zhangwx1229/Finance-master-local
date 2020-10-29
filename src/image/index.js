@@ -52,14 +52,18 @@ const Images = {
     icon_27: require('./77/icon_27.jpg'),
     icon_28: require('./77/icon_28.jpg'),
     icon_29: require('./77/icon_29.jpg'),
-
-
-
-
-
-
-
-
+    icon_30: require('./77/icon_30.jpg'),
+    icon_31: require('./77/icon_31.jpg'),
+    icon_32: require('./77/icon_32.jpg'),
+    icon_33: require('./77/icon_33.jpg'),
+    icon_34: require('./77/icon_34.jpg'),
+    icon_35: require('./77/icon_35.jpg'),
+    icon_36: require('./77/icon_36.jpg'),
+    icon_37: require('./77/icon_37.jpg'),
+    icon_38: require('./77/icon_38.jpg'),
+    icon_39: require('./77/icon_39.jpg'),
+    icon_40: require('./77/icon_40.jpg'),
+    icon_41: require('./77/icon_41.png'),
 
 
 
@@ -86,11 +90,11 @@ const Images = {
     tab_mine_new_0: require('./2/tab_mine_new_0.jpg'),
     tab_mine_new_1: require('./2/tab_mine_new_1.jpg'),
     alipay_29: require('./5/alipay_29.png'),
-    icon_30: require('./2/icon_30.jpg'),
-    icon_31: require('./2/icon_31.jpg'),
-    icon_32: require('./2/icon_32.jpg'),
-    icon_33: require('./2/icon_33.jpg'),
-    icon_34: require('./2/icon_34.jpg'),
+    // icon_30: require('./2/icon_30.jpg'),
+    // icon_31: require('./2/icon_31.jpg'),
+    // icon_32: require('./2/icon_32.jpg'),
+    // icon_33: require('./2/icon_33.jpg'),
+    // icon_34: require('./2/icon_34.jpg'),
     // headImage: require('./headImage.jpeg'),
 
     // tab_mine_header: require('./2/tab_mine_0.jpg'),

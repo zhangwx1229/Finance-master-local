@@ -16,6 +16,8 @@ import AccumulationInfoScreen from '../../screens/Main/TabService/common/Accumul
 import SocialSecurityScreen from '../../screens/Main/TabService/common/SocialSecurityScreen';
 import SocialSecuritySearchScreen from '../../screens/Main/TabService/common/SocialSecuritySearchScreen';
 import SocialAllScreen from '../../screens/Main/TabService/common/SocialAllScreen';
+import RealEstateSearchScreen from '../../screens/Main/TabService/common/RealEstateSearchScreen';
+import FaceRecognitionScreen from '../../screens/Main/TabService/common/FaceRecognitionScreen';
 
 
 const Stack = createStackNavigator();
@@ -36,6 +38,8 @@ export default class StackNav extends Component {
                 <Stack.Screen name="SocialSecurityScreen" component={SocialSecurityScreen} />
                 <Stack.Screen name="SocialSecuritySearchScreen" component={SocialSecuritySearchScreen} />
                 <Stack.Screen name="SocialAllScreen" component={SocialAllScreen} />
+                <Stack.Screen name="RealEstateSearchScreen" component={RealEstateSearchScreen} />
+                <Stack.Screen name="FaceRecognitionScreen" component={FaceRecognitionScreen} />
 
             </Stack.Navigator>
         );
