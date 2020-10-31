@@ -6,6 +6,11 @@ import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 //办事
 export default class SocialAllScreen extends PureComponent {
 
+    clickBack = () => {
+        // 点击进入社保
+        this.props.navigation.pop()
+    }
+
     clickSB = () => {
         // 点击进入社保
         this.props.navigation.navigate('SocialSecurityScreen')
@@ -73,7 +78,12 @@ export default class SocialAllScreen extends PureComponent {
         const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>
-                <Image style={styles.header} source={Images.icon_30} />
+                <View >
+                    <Image style={styles.header} source={Images.icon_30} />
+                    <TouchableWithoutFeedback onPress={this.clickBack}>
+                        <View style={{ position: 'absolute', left: 0, width: 30, height: 30, backgroundColor: 'red' }} />
+                    </TouchableWithoutFeedback>
+                </View>
                 <JJRefresh
                     foot_H={0}
                     header_H={0}
