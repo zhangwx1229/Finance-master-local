@@ -2,25 +2,29 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, TouchableWithoutFeedback, View, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import TitleView from './TitleView';
-export default class RealEstateSearchScreen extends PureComponent {
+export default class RealEstateDetailScreen extends PureComponent {
 
-    onPress = () => {
-        this.props.navigation.navigate('FaceRecognitionScreen')
+    onPressOne = () => {
     }
 
+    onPressTwo = () => {
+    }
+
+    onBack = () => {
+        this.props.navigation.navigate('RealEstateSearchScreen')
+    }
     onClose = () => {
         this.props.navigation.navigate('SocialAllScreen')
     }
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} onClose={this.onClose} imageComponent={() =>
+            <TitleView navigation={this.props.navigation} onBack={this.onBack} onClose={this.onClose} imageComponent={() =>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 143) / 1080,
-                }} source={Images.icon_44} />
+                    height: (UI.size.screenWidth * 145) / 1080,
+                }} source={Images.icon_42} />
             } />
         </View >
     };
@@ -30,13 +34,15 @@ export default class RealEstateSearchScreen extends PureComponent {
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 {this.renderTitle()}
                 <View >
-
                     <Image style={{
                         width: UI.size.screenWidth,
-                        height: UI.size.screenWidth * 1086 / 1080
-                    }} source={Images.icon_36} />
-                    <TouchableWithoutFeedback onPress={this.onPress}>
-                        <View style={{ position: 'absolute', left: 20, bottom: 0, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: 'red' }} />
+                        height: UI.size.screenWidth * 1842 / 1080
+                    }} source={Images.icon_43} />
+                    <TouchableWithoutFeedback onPress={this.onPressOne}>
+                        <View style={{ position: 'absolute', left: 20, top: 15, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: 'red' }} />
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={this.onPressTwo}>
+                        <View style={{ position: 'absolute', left: 20, top: 75, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: 'red' }} />
                     </TouchableWithoutFeedback>
                 </View>
             </View>

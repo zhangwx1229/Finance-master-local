@@ -5,12 +5,20 @@ import UI, { getFontSize } from '../../../../UI';
 let font_13_5 = UI.fontSizeNew.font_13_5
 export default class TitleView extends PureComponent {
     clickBack = () => {
+        if (this.props.onBack) {
+            this.props.onBack()
+            return
+        }
         const {
             navigation
         } = this.props;
         navigation.pop()
     }
     clickClose = () => {
+        if (this.props.onClose) {
+            this.props.onClose()
+            return
+        }
         const {
             navigation, type
         } = this.props;

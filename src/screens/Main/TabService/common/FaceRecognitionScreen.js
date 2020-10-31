@@ -4,40 +4,60 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import Camera, { RNCamera } from 'react-native-camera';
 export default class FaceRecognitionScreen extends PureComponent {
-
+    state = { hei: 0 }
+    componentDidMount() {
+        this.timer = setTimeout(() => {
+            this.onPress();
+        }, 1000 * 3);
+    }
+    componentWillUnmount() {
+        this.timer && clearTimeout(this.timer)
+    }
     onPress = () => {
         // 点击进入社保
-        // this.props.navigation.navigate('SocialSecurityScreen')
+        this.props.navigation.navigate('RealEstateDetailScreen')
     }
     render() {
-        const image_h = UI.size.screenWidth - 50 * 2
+        const { hei } = this.state;
         return (
-            <View style={{ flex: 1, marginTop: 20, backgroundColor: 'blue' }}>
+            <View style={{ flex: 1, marginTop: 20 }}>
+                <View style={{
+                    position: 'absolute', top: 20, width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 1031 / 1080 + hei
+                }}>
+                    <RNCamera
+                        ref={(cam) => {
+                            this.camera = cam;
+                        }}
+                        captureQuality="medium"
+                        style={styles.preview}
+                        type={'front'}
+                        useNativeZoom={true}
+                        zoom={0.05}
+                        captureAudio={false}
+                    />
+                </View>
                 <Image style={{
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 131 / 1080
                 }} source={Images.icon_40} />
-                <View style={{ width: '100%', height: 23, opacity: 0.2, backgroundColor: '#fff' }} />
+                <View style={{ flex: 1, opacity: 0.3, maxHeight: UI.size.screenWidth * 131 / 1080 - 10, backgroundColor: '#000' }} onLayout={e => {
+                    let { height } = e.nativeEvent.layout;
+                    if (hei === 0) {
+                        this.setState({ hei: height })
+                    }
+                }} />
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 1071 / 1080,
-                    opacity: 0.2
+                    height: UI.size.screenWidth * 1031 / 1080,
+                    opacity: 0.3,
+
                 }} source={Images.icon_41} />
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 843 / 1080
+                    height: UI.size.screenWidth * 584 / 1080
                 }} source={Images.icon_39} />
-                <RNCamera
-                    ref={(cam) => {
-                        this.camera = cam;
-                    }}
-                    captureQuality="medium"
-                    style={styles.preview}
-                    type={'front'}
-                >
-                    <Text style={styles.button} >[切换摄像头]</Text >
-                    <Text style={styles.button} >[拍照]</Text >
-                </RNCamera >
+                <View style={{ flex: 1, backgroundColor: '#006a87' }} />
             </View>
         );
     }
