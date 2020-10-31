@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, TouchableWithoutFeedback, View, StatusBar } from 'react-native';
+import { Image, StyleSheet, Text, View, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import Camera, { Constants } from 'react-native-camera';
+import Camera, { RNCamera } from 'react-native-camera';
 export default class FaceRecognitionScreen extends PureComponent {
 
     onPress = () => {
@@ -27,16 +27,17 @@ export default class FaceRecognitionScreen extends PureComponent {
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 843 / 1080
                 }} source={Images.icon_39} />
-                < Camera
+                <RNCamera
                     ref={(cam) => {
                         this.camera = cam;
                     }}
+                    captureQuality="medium"
                     style={styles.preview}
-                    type={Camera.constants.Type.back}
-                    aspect={Camera.constants.Aspect.fill}>
-                    < Text style={styles.button} onPress={this.switchCamera.bind(this)}>[切换摄像头]</ Text >
-                    < Text style={styles.button} onPress={this.takePicture.bind(this)}>[拍照]</ Text >
-                </ Camera >
+                    type={'front'}
+                >
+                    <Text style={styles.button} >[切换摄像头]</Text >
+                    <Text style={styles.button} >[拍照]</Text >
+                </RNCamera >
             </View>
         );
     }
