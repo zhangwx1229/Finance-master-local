@@ -6,6 +6,7 @@ import TitleView from './TitleView';
 export default class RealEstateDetailScreen extends PureComponent {
 
     onPressOne = () => {
+        this.props.navigation.navigate('RealEstateSearchDetailScreen')
     }
 
     onPressTwo = () => {
@@ -29,7 +30,6 @@ export default class RealEstateDetailScreen extends PureComponent {
         </View >
     };
     render() {
-        const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 {this.renderTitle()}

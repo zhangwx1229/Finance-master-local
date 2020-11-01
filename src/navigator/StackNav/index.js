@@ -19,6 +19,7 @@ import SocialAllScreen from '../../screens/Main/TabService/common/SocialAllScree
 import RealEstateSearchScreen from '../../screens/Main/TabService/common/RealEstateSearchScreen';
 import FaceRecognitionScreen from '../../screens/Main/TabService/common/FaceRecognitionScreen';
 import RealEstateDetailScreen from '../../screens/Main/TabService/common/RealEstateDetailScreen';
+import RealEstateSearchDetailScreen from '../../screens/Main/TabService/common/RealEstateSearchDetailScreen';
 
 
 const Stack = createStackNavigator();
@@ -42,6 +43,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="RealEstateSearchScreen" component={RealEstateSearchScreen} />
                 <Stack.Screen name="FaceRecognitionScreen" component={FaceRecognitionScreen} />
                 <Stack.Screen name="RealEstateDetailScreen" component={RealEstateDetailScreen} />
+                <Stack.Screen name="RealEstateSearchDetailScreen" component={RealEstateSearchDetailScreen} />
 
             </Stack.Navigator>
         );

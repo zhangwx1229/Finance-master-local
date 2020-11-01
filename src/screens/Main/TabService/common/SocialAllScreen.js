@@ -75,7 +75,6 @@ export default class SocialAllScreen extends PureComponent {
     }
 
     render() {
-        const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>
                 <View >
@@ -90,7 +89,6 @@ export default class SocialAllScreen extends PureComponent {
                     contentView={this.renderContent}
                     onScroll={this.onScroll}
                 />
-
             </View>
         );
     }
