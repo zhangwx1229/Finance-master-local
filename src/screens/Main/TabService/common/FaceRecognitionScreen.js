@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, Text, View, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import Camera, { RNCamera } from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
 export default class FaceRecognitionScreen extends PureComponent {
     state = { hei: 0 }
     componentDidMount() {

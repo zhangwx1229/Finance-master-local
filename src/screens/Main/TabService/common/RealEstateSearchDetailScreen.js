@@ -4,6 +4,7 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import TitleView from './TitleView';
+import filejson from '../../../../image/filename.json';
 export default class RealEstateSearchDetailScreen extends PureComponent {
 
     onPressOne = () => {
@@ -67,7 +68,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                     <TextInput
                         style={{ fontSize: UI.fontSizeNew.font_11, width: UI.size.screenWidth - 150, height: 40 }}
                         placeholder="请输入查询人"
-                        value="大叔的,12121"
+                        value={filejson.name + ',' + filejson.item_tmp_sb_0}
                         placeholderTextColor={'#9d9d9d69'}
                         onChangeText={(text) => this.setState({ text })}
                     />
