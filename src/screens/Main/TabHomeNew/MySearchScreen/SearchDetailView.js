@@ -13,11 +13,12 @@ import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
 import filejson from '../../../../image/filename_02.json';
 import DateSelectModel from '../common/DateSelectModel';
+
+let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
+let font_10 = UI.fontSizeNew.font_10
 export default class SearchDetailView extends PureComponent {
-    static navigationOptions = ({ navigation }) => ({
-        title: `SearchDetailView with ${navigation.state.params.user}`,
-    });
+
     constructor(props) {
         super(props);
         const { route } = props;
@@ -34,8 +35,14 @@ export default class SearchDetailView extends PureComponent {
             this.total_0 += item.item_4
             this.total_1 += item.item_5
         }
-        this.total_0 = Math.ceil(this.total_0 * 100) / 100
-        this.total_1 = Math.ceil(this.total_1 * 100) / 100
+        this.total_0 = this.total_0.toFixed(2)
+        this.total_1 = this.total_1.toFixed(2)
+        this.state = { opacity: 0 }
+        this.item_H = 0
+        this.offset_y = 0
+        this.offset_olf_y = 0
+        this.scroll_style = {}
+        this.isDestroy = false;
     }
 
     clickSelect = data => {
@@ -44,6 +51,71 @@ export default class SearchDetailView extends PureComponent {
         } = this.props;
         navigation.navigate('DetailInfoView', { data });
     };
+    componentWillUnmount() {
+        this.isDestroy = true;
+        if (this.scrollTimer) {
+            clearInterval(this.scrollTimer)
+        }
+    }
+
+    onScrollEndDrag = (e) => {
+        const { contentOffset } = e.nativeEvent;
+        if (this.scrollTimer) {
+            clearInterval(this.scrollTimer)
+        }
+        this.scrollTimer = setInterval(() => {
+            if (this.isDestroy) {
+                if (this.scrollTimer) {
+                    clearInterval(this.scrollTimer)
+                }
+                return
+            }
+            if (Math.abs(this.offset_olf_y - this.offset_y) > 0) {
+                if (Math.abs(this.offset_olf_y - this.offset_y) < 5) {
+                    if (this.scrollTimer) {
+                        clearInterval(this.scrollTimer)
+                    }
+                    if (this.scrollRef) {
+                        if (this.offset_y < 300) {
+                            this.scrollRef.scrollTo({ y: 300, animated: true });
+                        } else if (this.offset_y > this.data.length * this.item_H + 300 - this.scroll_style.height) {
+                            this.scrollRef.scrollTo({ y: this.data.length * this.item_H + 300 - this.scroll_style.height, animated: true });
+                        }
+                    }
+                }
+                this.offset_olf_y = this.offset_y
+            } else {
+                if (this.scrollTimer) {
+                    clearInterval(this.scrollTimer)
+                }
+                if (this.scrollRef) {
+                    if (this.offset_y < 300) {
+                        this.scrollRef.scrollTo({ y: 300, animated: true });
+                    } else if (this.offset_y > this.data.length * this.item_H + 300 - this.scroll_style.height) {
+                        this.scrollRef.scrollTo({ y: this.data.length * this.item_H + 300 - this.scroll_style.height, animated: true });
+                    }
+                }
+            }
+        }, 50);
+    }
+
+    onLayout = (e) => {
+        const { height, width } = e.nativeEvent.layout;
+        if (!this.scroll_style.width) {
+            if (this.scrollRef) {
+                if (this.offset_y < 300) {
+                    this.scrollRef.scrollTo({ y: 300, animated: false, });
+                }
+            }
+            this.scroll_style = { height, width }
+            setTimeout(() => {
+                if (this.isDestroy) {
+                    return
+                }
+                this.setState({ opacity: 1 })
+            });
+        }
+    }
 
     rightView = () => (
         <TouchableOpacity style={
@@ -60,24 +132,21 @@ export default class SearchDetailView extends PureComponent {
     renderHeader = () => {
         return (
             <View style={{
-                flex: 1, backgroundColor: '#fff', justifyContent: 'center',
+                backgroundColor: '#fff', justifyContent: 'center',
             }} >
                 <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
-                    <Text style={{ fontSize: font_12, color: '#333333', }} >
-                        收入合计 <Image style={{ width: 15 * UI.size.scale, height: 15 * UI.size.scale }} source={Images.icon_wenhao} />：
-          </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >
-                        {this.total_0}元
-        </Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, marginBottom: 9, marginTop: 15, alignItems: 'center', }} >
+                    <Text style={{ fontSize: font_12, color: '#333333', }} >收入合计 <Image style={{ width: 17 * UI.size.scale, height: 17 * UI.size.scale }} source={Images.icon_wenhao} /> <Text style={{
+                        fontSize: UI.fontSizeNew.font_14, color: '#333333'
+                    }} > : </Text></Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : 0}元</Text>
                 </View >
-                <View style={{ flex: 1, height: 0.5, backgroundColor: '#9D9D9D' }}
-                />
-                <View style={{
-                    flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 15, marginTop: 7, alignItems: 'center',
-                }} >
-                    <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计： </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} > {this.total_1}元</Text>
+                <View style={{ marginLeft: 15, width: UI.size.screenWidth - 15 * 2, height: 1, opacity: 0.5, backgroundColor: '#9D9D9D' }} />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, marginBottom: 15, marginTop: 7, alignItems: 'center', }} >
+                    <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计<Text style={{
+                        fontSize: UI.fontSizeNew.font_14, color: '#333333'
+                    }} > : </Text></Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_1 : 0}元</Text>
                 </View >
             </View>
         );
@@ -89,29 +158,41 @@ export default class SearchDetailView extends PureComponent {
                 key={index + ''} style={styles.click}
                 activeOpacity={1}
                 onPress={() => { this.clickSelect(data); }} >
-                <View style={styles.contentBg} >
+                <View style={styles.contentBg} onLayout={(e) => {
+                    const { height, width } = e.nativeEvent.layout;
+                    this.item_H = height
+                }} >
                     <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                    <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <View style={{ flexDirection: 'row', marginHorizontal: 15, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemTitle, {
-                            fontSize: font_12
-                        }]} > 工资薪金 </Text>
+                            fontSize: font_13
+                        }]} >工资薪金</Text>
                         <Text style={[styles.itemDate, {
-                            fontSize: font_12
-                        }]} > {data.date.slice(0, 7)} </Text>
+                            fontSize: font_13
+                        }]} >{data.date.slice(0, 7)}</Text>
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} > 所得项目小类：{data.item_1}</Text>
-                    <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} >所得项目小类<Text style={[styles.itemDetail, {
+                        fontSize: UI.fontSizeNew.font_14
+                    }]} > : </Text>{data.item_1}</Text>
+                    <View style={{ flexDirection: 'row', marginHorizontal: 15, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemDetail, {
                             fontSize: font_12
-                        }]} numberOfLines={1} > 扣缴义务人：{data.item_2}</Text>
-                        <Image style={{ position: 'absolute', right: 0, width: 30, height: 30, }} source={Images.p1_12} />
+                        }]} numberOfLines={1} >扣缴义务人<Text style={[styles.itemDetail, {
+                            fontSize: UI.fontSizeNew.font_14
+                        }]} > : </Text>{data.item_2}</Text>
+                        <Image style={{ position: 'absolute', right: -5, width: 30, height: 30, }} source={Images.p1_12} />
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10 }]} numberOfLines={1} > 收入：{data.item_4}</Text>
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 10, marginBottom: 25 }]} numberOfLines={1}  > 已申报税额：{data.item_5} </Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} numberOfLines={1} >收入<Text style={[styles.itemDetail, {
+                        fontSize: UI.fontSizeNew.font_14
+                    }]} > : </Text>{data.item_4.toFixed(2)}元</Text>
+                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15, marginBottom: 25 }]} numberOfLines={1}  >已申报税额<Text style={[styles.itemDetail, {
+                        fontSize: UI.fontSizeNew.font_14
+                    }]} > : </Text>{data.item_5.toFixed(2)}元</Text>
                 </View >
             </TouchableOpacity>
         );
     };
+
     renderList = () => {
         const comList = []
         let i = 0
@@ -122,8 +203,21 @@ export default class SearchDetailView extends PureComponent {
         return comList;
     }
 
+    renderScrollHeader = () => {
+        return <View style={{ width: '100%', height: 300, backgroundColor: '#f5f6f9' }} />
+    }
+
+    renderScrollFoot = () => {
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: 300, backgroundColor: '#f5f6f9' }} >
+            <Text style={{ marginTop: 15, color: '#333333', fontSize: font_10 }}>我是有底线的
+            </Text>
+        </View>
+    }
+
     render() {
+        font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
+        font_10 = UI.fontSizeNew.font_10
         if (this.data === null) {
             return null
         }
@@ -132,12 +226,21 @@ export default class SearchDetailView extends PureComponent {
             <TitleView title={'收入纳税明细查询'
             } rightView={this.rightView} navigation={navigation}
             />
+            {this.renderHeader(0)}
             <ScrollView
-                style={styles.content}
+                ref={(e) => { this.scrollRef = e }}
+                style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
+                onLayout={this.onLayout}
                 contentContainerStyle={styles.contentContainerStyle}
+                onScrollEndDrag={this.onScrollEndDrag}
+                onScroll={(e) => {
+                    const { contentOffset } = e.nativeEvent;
+                    this.offset_y = contentOffset.y
+                }}
                 showsVerticalScrollIndicator={false} >
-                {this.renderHeader(0)}
+                {this.renderScrollHeader()}
                 {this.renderList()}
+                {this.renderScrollFoot()}
             </ScrollView>
         </View >
         );
@@ -149,7 +252,7 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        backgroundColor: '#f5f6f9'
+        backgroundColor: '#f5f6f9',
     },
     contentContainerStyle: {
         backgroundColor: UI.color.background,
@@ -168,7 +271,7 @@ const styles = StyleSheet.create({
     },
     itemDate: {
         color: '#333333',
-        marginTop: 15,
+        marginTop: 20,
         marginRight: 30,
     },
     itemDetail: {

@@ -13,8 +13,8 @@ sys.setdefaultencoding('utf-8')
 filename = "text_02.xlsx"
 json_file = 'filename_02.json'
 filePath = os.path.join(os.getcwd(), filename)
-pathDir = '../../apk_02'
-pathDirHistroy = '../../apk_list_02'
+pathDir = '../../个税'
+pathDirHistroy = '../../个税历史记录'
 print filePath
 
 
@@ -63,14 +63,14 @@ def quest_user_list(sheet):
                 listyear.append(app)
             else:
                 if year != 0:
-                    listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
+                    listyear = sorted(listyear, key=lambda x:x['date'], reverse=True)
                     json[year] = listyear
                     json['yearList'].append(year)
                     year = 0
                     listyear = []
                 continue
         if rownum == nrows-1 and year != 0:
-            listyear = sorted(listyear, key=lambda x:x['date'], reverse=False)
+            listyear = sorted(listyear, key=lambda x:x['date'], reverse=True)
             json[year] = listyear
             json['yearList'].append(year)
             year = 0
@@ -93,16 +93,10 @@ def writeJson(path, jsondata):
 
 def excel_table_by_index(sheet1):
     jsondata = quest_user_info(sheet1)
-    pathName = ''
-    if jsondata['name']:
-        pathName = pathDir + '/' + jsondata['name']
-        if not os.path.exists(pathName):# 如果不存在则创建目录
-            # 创建目录操作函数
-            os.makedirs(pathName)
     list_json = quest_user_list(sheet1)
     jsondata = dict(jsondata,**list_json)
 
-    writeJson(pathName,jsondata)
+    writeJson(pathDir,jsondata)
 
     encode_apk(jsondata['name'])
     jsondata ={}
@@ -114,14 +108,16 @@ def excuteCommand(com):
     return out.decode()
 
 def encode_apk(name):
-    output = excuteCommand('cp -r '+pathDir+'/'+name+'/'+json_file+' ../src/image')
+    output = excuteCommand('mv '+pathDir+'/'+json_file+' ../src/image')
     print "==拷贝新的json成功="
     if os.path.exists('../android/app/build/'):
         output = excuteCommand('rm -r ../android/app/build/')
     
     output = excuteCommand('cd ../android && ./gradlew assembleRelease')
+    print "===打包完成==", name
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
-        output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir+'/'+name)
+        output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir)
+        output = excuteCommand('mv '+pathDir+'/app-release.apk '+pathDir+'/'+name+'.apk')
         print "==拷贝新的apk到指定文件成功==="
 
     output = excuteCommand('cd ../ && git checkout android')
@@ -147,6 +143,8 @@ def main():
          # 2、获取sheet对象
         sheet = x1.sheet_by_name(sheetName)
         excel_table_by_index(sheet)
+        if i > 0:
+            break
     output = excuteCommand('open ./'+pathDir)
 
 if __name__=="__main__":

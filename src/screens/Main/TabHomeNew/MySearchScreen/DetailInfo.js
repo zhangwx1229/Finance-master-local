@@ -53,14 +53,14 @@ export default class DetailInfo extends PureComponent {
                         收入：
           </Text>
                     <Text style={{ fontSize: font_12, color: '#333333' }} >
-                        {this.data.item_4}元
+                        {this.data.item_4.toFixed(2)}元
         </Text>
                 </View >
                 <View style={{
                     flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 5, marginTop: 7, alignItems: 'center',
                 }} >
                     <Text style={{ fontSize: font_12, color: '#9D9D9D', }} >已申报税额： </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} > {this.data.item_5}元</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} > {this.data.item_5.toFixed(2)}元</Text>
                 </View >
                 <Image
                     style={{
@@ -161,7 +161,7 @@ export default class DetailInfo extends PureComponent {
                     }]} > 本期收入： </Text>
                     <Text style={[styles.itemDate1, {
                         fontSize: font_12
-                    }]} > {this.data.item_4}元 </Text>
+                    }]} > {this.data.item_4.toFixed(2)}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle1, {
@@ -169,7 +169,7 @@ export default class DetailInfo extends PureComponent {
                     }]} > 本期免税收入： </Text>
                     <Text style={[styles.itemDate1, {
                         fontSize: font_12
-                    }]} > {this.data.item_10}元 </Text>
+                    }]} > {this.data.item_10.toFixed(2)}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle1, {
@@ -177,7 +177,7 @@ export default class DetailInfo extends PureComponent {
                     }]} > 本期减免费用： </Text>
                     <Text style={[styles.itemDate1, {
                         fontSize: font_12
-                    }]} > {this.data.item_11}元 </Text>
+                    }]} > {this.data.item_11.toFixed(2)}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 10, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle1, {
@@ -185,7 +185,7 @@ export default class DetailInfo extends PureComponent {
                     }]} > 本期专项扣除：</Text>
                     <Text style={[styles.itemDate1, {
                         fontSize: font_12
-                    }]} > {this.data.item_12}元 <Image style={{ width: 13 * UI.size.scale, height: 13 * 22 * UI.size.scale / 33, }} source={Images.detail_info_jian} /></Text>
+                    }]} > {this.data.item_12.toFixed(2)}元 <Image style={{ width: 13 * UI.size.scale, height: 13 * 22 * UI.size.scale / 33, }} source={Images.detail_info_jian} /></Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle1, {
@@ -193,7 +193,7 @@ export default class DetailInfo extends PureComponent {
                     }]} > 本期其他扣除：</Text>
                     <Text style={[styles.itemDate1, {
                         fontSize: font_12
-                    }]} > {this.data.item_13}元 </Text>
+                    }]} > {this.data.item_13.toFixed(2)}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginBottom: 12, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle1, {
@@ -201,7 +201,7 @@ export default class DetailInfo extends PureComponent {
                     }]} > 本期准予扣除的捐赠项目：</Text>
                     <Text style={[styles.itemDate1, {
                         fontSize: font_12
-                    }]} > {this.data.item_14}元 </Text>
+                    }]} > {this.data.item_14.toFixed(2)}元 </Text>
                 </View >
                 <View style={{ width: '100%', height: 80, backgroundColor: '#f5f6f9' }} />
             </View >
