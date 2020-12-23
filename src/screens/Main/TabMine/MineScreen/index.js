@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { TouchableWithoutFeedback,Image, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, StyleSheet, ScrollView, Text, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import filename from '../../../../image/filename_02.json';
@@ -18,12 +18,14 @@ export default class TaxScreen extends PureComponent {
         }
     }
 
-    onPressOne=()=>{
+    onPressOne = () => {
         console.debug('===onPressOne=====')
+        this.props.navigation.navigate('MIneInfoScreen');
     }
 
-    onPressTwo=()=>{
+    onPressTwo = () => {
         console.debug('===onPressTwo=====')
+        this.props.navigation.navigate('MineTaskScreen');
     }
 
     render() {
@@ -55,10 +57,10 @@ export default class TaxScreen extends PureComponent {
                 <View>
                     <Image style={styles.image} source={Images.tab_mine_image} />
                     <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{position:'absolute',top:5,width:'100%',height:40}}/>
+                        <View style={{ position: 'absolute', top: 5, width: '100%', height: 40, backgroundColor: 'red' }} />
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={this.onPressTwo}>
-                        <View style={{position:'absolute',top:15+40,width:'100%'}}/>
+                        <View style={{ position: 'absolute', top: 15 + 40, width: '100%', height: 40, backgroundColor: 'red' }} />
                     </TouchableWithoutFeedback>
                 </View>
                 <View style={{ height: 60, backgroundColor: '#f5f6f9' }} />

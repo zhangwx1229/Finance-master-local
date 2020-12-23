@@ -15,25 +15,31 @@ import MySearchScreen from '../../screens/Main/TabHomeNew/MySearchScreen';
 import SearchView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchView';
 import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchDetailView';
 import DetailInfoView from '../../screens/Main/TabHomeNew/MySearchScreen/DetailInfo';
+import MIneInfoScreen from '../../screens/Main/TabMine/MineScreen/MIneInfoScreen';
+import MineTaskScreen from '../../screens/Main/TabMine/MineScreen/MineTaskScreen';
 
 const Stack = createStackNavigator();
 
 export default class StackNav extends Component {
-  render () {
-    return (
-      <Stack.Navigator
-        headerMode="none"
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          animationEnabled: false,
-        }}
-      >
-        <Stack.Screen name="Home" component={TabNav} />
-        <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
-        <Stack.Screen name="SearchView" component={SearchView} />
-        <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
-        <Stack.Screen name="DetailInfoView" component={DetailInfoView} />
-      </Stack.Navigator>
-    );
-  }
+    render() {
+        return (
+            <Stack.Navigator
+                headerMode="none"
+                screenOptions={{
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                    animationEnabled: false,
+                }}
+            >
+                <Stack.Screen name="Home" component={TabNav} />
+                <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
+                <Stack.Screen name="SearchView" component={SearchView} />
+                <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
+                <Stack.Screen name="DetailInfoView" component={DetailInfoView} />
+                <Stack.Screen name="MIneInfoScreen" component={MIneInfoScreen} />
+                <Stack.Screen name="MineTaskScreen" component={MineTaskScreen} />
+
+
+            </Stack.Navigator>
+        );
+    }
 }
