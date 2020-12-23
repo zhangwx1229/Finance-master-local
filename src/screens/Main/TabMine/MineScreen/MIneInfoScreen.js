@@ -8,7 +8,7 @@ const Head_H = (UI.size.screenWidth * 349) / 1080
 const Head_Avatar_W = Head_H * 0.5
 
 let font_12_5 = UI.fontSizeNew.font_12_5
-export default class TaxScreen extends PureComponent {
+export default class MIneInfoScreen extends PureComponent {
     constructor() {
         super()
         this.phone = ""

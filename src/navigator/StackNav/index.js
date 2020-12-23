@@ -11,7 +11,6 @@ import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CardStyleInterpolators } from '@react-navigation/stack';
 import TabNav from '../TabNav';
-import SettingScreen from '../../screens/Main/TabMine/SettingScreen';
 import MySearchScreen from '../../screens/Main/TabHomeNew/MySearchScreen';
 import SearchView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchView';
 import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchDetailView';
@@ -30,7 +29,6 @@ export default class StackNav extends Component {
         }}
       >
         <Stack.Screen name="Home" component={TabNav} />
-        <Stack.Screen name="Setting" component={SettingScreen} />
         <Stack.Screen name="MySearchScreen" component={MySearchScreen} />
         <Stack.Screen name="SearchView" component={SearchView} />
         <Stack.Screen name="SearchDetailView" component={SearchDetailView} />
