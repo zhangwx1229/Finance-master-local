@@ -28,18 +28,6 @@ export default class MIneInfoDetailScreen extends PureComponent {
         this.props.navigation.pop()
     }
 
-    onPressOne = () => {
-        this.props.navigation.pop()
-    }
-
-    onPressTwo = () => {
-        this.props.navigation.pop()
-    }
-
-    onPressThree = () => {
-        this.props.navigation.pop()
-    }
-
     renderItem = (title, subTitle, placeText = '', isSeg = false, isLine = true) => {
         const isSelect = subTitle.length > 0
         return (
@@ -122,7 +110,7 @@ export default class MIneInfoDetailScreen extends PureComponent {
         return (<View style={styles.container} >
             <Image style={{ position: 'absolute', width: UI.size.screenWidth, height: UI.size.screenWidth * 130 / 1080 }} source={Images.icon_1} />
             <TouchableWithoutFeedback onPress={this.back}>
-                <View style={{ marginLeft: 5, width: 50, height: 40, backgroundColor: 'red' }} />
+                <View style={{ marginLeft: 5, width: 50, height: 40 }} />
             </TouchableWithoutFeedback>
             <ScrollView
                 style={styles.content}

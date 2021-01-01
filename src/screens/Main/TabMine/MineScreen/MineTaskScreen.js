@@ -1,21 +1,17 @@
 import React, { PureComponent } from 'react';
 import {
-    Image,
     StyleSheet,
     ScrollView,
     View,
     TouchableOpacity,
-    FlatList,
     Text,
 } from 'react-native';
-import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from '../../TabHomeNew/common/TitleView';
 import filejson from '../../../../image/filename_02.json';
 
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
-let font_10 = UI.fontSizeNew.font_10
 export default class SearchDetailView extends PureComponent {
 
     constructor(props) {
@@ -98,7 +94,6 @@ export default class SearchDetailView extends PureComponent {
     render() {
         font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
-        font_10 = UI.fontSizeNew.font_10
         if (this.data === null) {
             return null
         }

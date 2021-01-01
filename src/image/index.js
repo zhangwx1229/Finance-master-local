@@ -57,5 +57,10 @@ const Images = {
     icon_12: require('./icon_12.jpg'),
     icon_13: require('./icon_13.jpg'),
 
+    icon_6: require('./icon_6.jpg'),
+    icon_7: require('./icon_7.jpg'),
+    icon_8: require('./icon_8.jpg'),
+    icon_9: require('./icon_9.jpg'),
+    icon_10: require('./icon_10.jpg'),
 };
 export default Images;

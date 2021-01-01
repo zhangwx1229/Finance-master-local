@@ -18,6 +18,8 @@ import DetailInfoView from '../../screens/Main/TabHomeNew/MySearchScreen/DetailI
 import MIneInfoScreen from '../../screens/Main/TabMine/MineScreen/MIneInfoScreen';
 import MineTaskScreen from '../../screens/Main/TabMine/MineScreen/MineTaskScreen';
 import MIneInfoDetailScreen from '../../screens/Main/TabMine/MineScreen/MIneInfoDetailScreen';
+import MineTaxPreference from '../../screens/Main/TabMine/MineScreen/MineTaxPreference';
+import MineIdentityInfo from '../../screens/Main/TabMine/MineScreen/MineIdentityInfo';
 
 const Stack = createStackNavigator();
 
@@ -39,7 +41,8 @@ export default class StackNav extends Component {
                 <Stack.Screen name="MIneInfoScreen" component={MIneInfoScreen} />
                 <Stack.Screen name="MineTaskScreen" component={MineTaskScreen} />
                 <Stack.Screen name="MIneInfoDetailScreen" component={MIneInfoDetailScreen} />
-
+                <Stack.Screen name="MineTaxPreference" component={MineTaxPreference} />
+                <Stack.Screen name="MineIdentityInfo" component={MineIdentityInfo} />
 
             </Stack.Navigator>
         );

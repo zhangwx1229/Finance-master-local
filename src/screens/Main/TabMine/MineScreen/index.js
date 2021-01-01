@@ -19,12 +19,10 @@ export default class TaxScreen extends PureComponent {
     }
 
     onPressOne = () => {
-        console.debug('===onPressOne=====')
         this.props.navigation.navigate('MIneInfoScreen');
     }
 
     onPressTwo = () => {
-        console.debug('===onPressTwo=====')
         this.props.navigation.navigate('MineTaskScreen');
     }
 
@@ -57,10 +55,10 @@ export default class TaxScreen extends PureComponent {
                 <View>
                     <Image style={styles.image} source={Images.tab_mine_image} />
                     <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{ position: 'absolute', top: 5, width: '100%', height: 40, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', top: 5, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={this.onPressTwo}>
-                        <View style={{ position: 'absolute', top: 15 + 40, width: '100%', height: 40, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', top: 15 + 40, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback>
                 </View>
                 <View style={{ height: 60, backgroundColor: '#f5f6f9' }} />
