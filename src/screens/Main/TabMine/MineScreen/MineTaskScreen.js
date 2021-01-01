@@ -72,7 +72,6 @@ export default class SearchDetailView extends PureComponent {
                         }]} numberOfLines={1} >扣缴义务人<Text style={[styles.itemDetail, {
                             fontSize: UI.fontSizeNew.font_14
                         }]} > : </Text>{data.item_2}</Text>
-                        <Image style={{ position: 'absolute', right: -5, width: 30, height: 30, }} source={Images.p1_12} />
                     </View >
                     <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} numberOfLines={1} >收入<Text style={[styles.itemDetail, {
                         fontSize: UI.fontSizeNew.font_14

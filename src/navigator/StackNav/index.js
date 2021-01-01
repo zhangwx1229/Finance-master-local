@@ -17,6 +17,7 @@ import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/Searc
 import DetailInfoView from '../../screens/Main/TabHomeNew/MySearchScreen/DetailInfo';
 import MIneInfoScreen from '../../screens/Main/TabMine/MineScreen/MIneInfoScreen';
 import MineTaskScreen from '../../screens/Main/TabMine/MineScreen/MineTaskScreen';
+import MIneInfoDetailScreen from '../../screens/Main/TabMine/MineScreen/MIneInfoDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="DetailInfoView" component={DetailInfoView} />
                 <Stack.Screen name="MIneInfoScreen" component={MIneInfoScreen} />
                 <Stack.Screen name="MineTaskScreen" component={MineTaskScreen} />
+                <Stack.Screen name="MIneInfoDetailScreen" component={MIneInfoDetailScreen} />
 
 
             </Stack.Navigator>

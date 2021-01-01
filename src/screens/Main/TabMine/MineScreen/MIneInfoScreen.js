@@ -1,84 +1,68 @@
 import React, { PureComponent } from 'react';
-import { TouchableWithoutFeedback,Image, StyleSheet, ScrollView, Text, View } from 'react-native';
+import {
+    Image,
+    StyleSheet,
+    View,
+} from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import filename from '../../../../image/filename_02.json';
-const Head_W = UI.size.screenWidth
-const Head_H = (UI.size.screenWidth * 349) / 1080
-const Head_Avatar_W = Head_H * 0.5
+import filejson from '../../../../image/filename_02.json';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-let font_12_5 = UI.fontSizeNew.font_12_5
 export default class MIneInfoScreen extends PureComponent {
-    constructor() {
-        super()
-        this.phone = ""
-        const phoneStr = filename.phone + ''
-        if (phoneStr.length === 11) {
-            this.phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
+    constructor(props) {
+        super(props);
+        this.data = filejson['2020'];
+    }
+
+    componentWillUnmount() {
+        this.isDestroy = true;
+        if (this.scrollTimer) {
+            clearInterval(this.scrollTimer)
         }
     }
 
-    onPressOne=()=>{
-        console.debug('===onPressOne=====')
+    back = () => {
+        this.props.navigation.pop()
     }
 
-    onPressTwo=()=>{
-        console.debug('===onPressTwo=====')
+    onPressOne = () => {
+        this.props.navigation.navigate('MIneInfoDetailScreen');
+    }
+
+    onPressTwo = () => {
+        this.props.navigation.pop()
+    }
+
+    onPressThree = () => {
+        this.props.navigation.pop()
     }
 
     render() {
-        font_12_5 = UI.fontSizeNew.font_12_5
-        return (
-            <ScrollView
-                style={styles.content}
-                contentContainerStyle={styles.contentContainerStyle}
-            >
-                <View style={{
-                    width: Head_W,
-                    height: Head_H, flexDirection: 'row'
-                }}>
-                    <Image style={styles.header} source={Images.tab_mine_p4_bg} />
-                    <Image style={{ marginLeft: 20, marginTop: Head_H - 20 - Head_Avatar_W, width: Head_Avatar_W, height: Head_Avatar_W }}
-                        source={filename.sex === '男' ? Images.tab_mine_p4_avatar_3 : Images.tab_mine_p4_avatar_2} />
-                    <View style={{ justifyContent: 'center', marginLeft: 10, marginTop: Head_H - 20 - Head_Avatar_W, height: Head_Avatar_W }}>
-                        <Text style={{
-                            fontSize: font_12_5,
-                            color: '#fff',
-                            marginBottom: 5
-                        }}>{filename.name}</Text>
-                        {this.phone.length > 0 ? <Text style={{
-                            fontSize: font_12_5,
-                            color: '#fff',
-                        }}>{this.phone}</Text> : null}
-                    </View>
-                </View>
-                <View>
-                    <Image style={styles.image} source={Images.tab_mine_image} />
-                    <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{position:'absolute',top:5,width:'100%',height:40}}/>
-                    </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={this.onPressTwo}>
-                        <View style={{position:'absolute',top:15+40,width:'100%'}}/>
-                    </TouchableWithoutFeedback>
-                </View>
-                <View style={{ height: 60, backgroundColor: '#f5f6f9' }} />
-            </ScrollView >
+        if (this.data === null) {
+            return null
+        }
+        return (<View style={styles.container} >
+            <Image style={{ position: 'absolute', width: UI.size.screenWidth, height: UI.size.screenWidth * 572 / 1080 }} source={Images.icon_11} />
+            <TouchableWithoutFeedback onPress={this.back}>
+                <View style={{ marginLeft: 5, width: 50, height: 40, backgroundColor: 'red' }} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.onPressOne}>
+                <View style={{ marginLeft: 5, marginTop: 15, width: UI.size.screenWidth - 5 * 2, height: 40, backgroundColor: 'red' }} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.onPressTwo}>
+                <View style={{ marginLeft: 5, marginTop: 8, width: UI.size.screenWidth - 5 * 2, height: 40, backgroundColor: 'red' }} />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.onPressThree}>
+                <View style={{ marginLeft: 5, marginTop: 5, width: UI.size.screenWidth - 5 * 2, height: 40, backgroundColor: 'red' }} />
+            </TouchableWithoutFeedback>
+        </View >
         );
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1 },
-    content: { flex: 1, backgroundColor: '#f5f6f9' },
-    contentContainerStyle: {
-        backgroundColor: UI.color.background,
+    container: {
+        flex: 1
     },
-    image: {
-        width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1515) / 1080,
-    },
-    header: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute'
-    },
+
 });

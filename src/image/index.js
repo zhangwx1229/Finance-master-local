@@ -47,5 +47,15 @@ const Images = {
     detail_info_jian: require('./detail_info_jian.jpg'),
     detail_jishu: require('./detail_jishu.jpg'),
     detail_hear: require('./detail_hear.jpg'),
+
+    icon_11: require('./icon_11.jpg'),
+    icon_1: require('./icon_1.jpg'),
+    icon_2: require('./icon_2.jpg'),
+    icon_3: require('./icon_3.jpg'),
+    icon_4: require('./icon_4.jpg'),
+    icon_5: require('./icon_5.jpg'),
+    icon_12: require('./icon_12.jpg'),
+    icon_13: require('./icon_13.jpg'),
+
 };
 export default Images;
