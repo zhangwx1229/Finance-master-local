@@ -82,10 +82,10 @@ export default class MineScreen extends PureComponent {
                     height: UI.size.screenWidth * 782 / 1080
                 }} source={Images.tab_mine_0} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 0, top: 3, width: UI.size.screenWidth, height: 40, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: 0, top: 3, width: UI.size.screenWidth, height: 40, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: 0, top: 3 * 3 + 40, width: UI.size.screenWidth, height: 40, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: 0, top: 3 * 3 + 40, width: UI.size.screenWidth, height: 40, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
         </View >

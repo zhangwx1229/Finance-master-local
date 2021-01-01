@@ -167,10 +167,10 @@ export default class TaxServer extends PureComponent {
                     height: UI.size.screenWidth * 638 / 1080
                 }} source={Images.tab_bjt_1} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, top: 10, width: 80, height: 50, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <View>
@@ -179,10 +179,10 @@ export default class TaxServer extends PureComponent {
                     height: UI.size.screenWidth * 1041 / 1080
                 }} source={Images.tab_bjt_2} />
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 - 60 - 10, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10, width: 60, height: 50, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 - 60 - 10, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10, width: 60, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickAll}>
-                    <View style={{ position: 'absolute', right: 20, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10 * 3 + 60, width: 60, height: 50, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', right: 20, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10 * 3 + 60, width: 60, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{

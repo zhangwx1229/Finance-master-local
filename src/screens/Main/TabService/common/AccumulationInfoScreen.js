@@ -296,7 +296,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 0 ? 1 : 0,
-                            borderBottomColor: 'red',
+                            borderBottomColor: UI.color.tempColor,
                         }}
                         onPress={() => {
                             if (this.state.selectIndex !== 0) {
@@ -312,7 +312,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 1 ? 1 : 0,
-                            borderBottomColor: 'red',
+                            borderBottomColor: UI.color.tempColor,
                         }}
                         onPress={() => {
                             if (this.state.selectIndex !== 1) {
@@ -328,7 +328,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             fontSize: UI.fontSizeNew.font_12,
                             color: '#333333',
                             borderBottomWidth: this.state.selectIndex === 2 ? 1 : 0,
-                            borderBottomColor: 'red',
+                            borderBottomColor: UI.color.tempColor,
                         }}
                         onPress={() => {
                             if (this.state.selectIndex !== 2) {
@@ -502,7 +502,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                                 numberOfLines={1}
                                 style={{
                                     fontSize: UI.fontSizeNew.font_11,
-                                    color: 'red',
+                                    color: UI.color.tempColor,
                                 }} >
                                 -{parseFloat(info.takeOutMoney)}
                             </Text>
@@ -673,7 +673,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             textAlign: 'right',
                             maxWidth: 120,
                             fontSize: UI.fontSizeNew.font_11,
-                            color: 'red',
+                            color: UI.color.tempColor,
                         }}
                     >
                         - {remittance1}

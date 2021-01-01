@@ -36,7 +36,7 @@ export default class RealEstateSearchScreen extends PureComponent {
                         height: UI.size.screenWidth * 1086 / 1080
                     }} source={Images.icon_36} />
                     <TouchableWithoutFeedback onPress={this.onPress}>
-                        <View style={{ position: 'absolute', left: 20, bottom: 0, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', left: 20, bottom: 0, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: UI.color.tempColor }} />
                     </TouchableWithoutFeedback>
                 </View>
             </View>

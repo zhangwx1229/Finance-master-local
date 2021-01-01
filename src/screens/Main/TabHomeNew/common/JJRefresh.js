@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
 //     isShowFoot={true}
 //     isShowHeader={false}
 //     footView={() => <View style={{ width: 200, height: 50, backgroundColor: 'blue' }} />}
-//     headerView={() => <View style={{ width: 200, height: 50, backgroundColor: 'red' }} />}
-//     contentView={() => <View style={{ width: 200, height: 50, backgroundColor: 'red' }} />}
+//     headerView={() => <View style={{ width: 200, height: 50, backgroundColor: UI.color.tempColor }} />}
+//     contentView={() => <View style={{ width: 200, height: 50, backgroundColor: UI.color.tempColor }} />}
 // />; */
 // }

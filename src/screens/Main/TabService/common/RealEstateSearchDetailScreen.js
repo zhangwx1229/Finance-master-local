@@ -31,7 +31,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         style={{
                             alignSelf: 'flex-end',
                             fontSize: UI.fontSizeNew.font_12,
-                            color: 'red',
+                            color: UI.color.tempColor,
                         }}
                     >
                         *
@@ -58,7 +58,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         style={{
                             alignSelf: 'flex-end',
                             fontSize: UI.fontSizeNew.font_12,
-                            color: 'red',
+                            color: UI.color.tempColor,
                         }}
                     >
                         *
@@ -94,7 +94,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                             height: 10 * 24 / 25
                         }} source={Images.icon_48} />
                         {/* <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{ position: 'absolute', alignSelf: 'center', width: 60, height: 45, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', alignSelf: 'center', width: 60, height: 45, backgroundColor: UI.color.tempColor }} />
                     </TouchableWithoutFeedback> */}
                     </View>
                     <View style={{ borderColor: '#33333322', flexDirection: 'row', borderWidth: 1 }}>
@@ -112,7 +112,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                     marginHorizontal: 22,
                     marginTop: 16,
                     fontSize: UI.fontSizeNew.font_12,
-                    color: 'red',
+                    color: UI.color.tempColor,
                 }}
             >
                 权利人查询也支持以姓名和身份证号码或机构名称直接查询
@@ -161,7 +161,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         height: UI.size.screenWidth * 235 / 1080
                     }} source={Images.icon_47} />
                     <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{ position: 'absolute', alignSelf: 'center', width: 60, height: 45, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', alignSelf: 'center', width: 60, height: 45, backgroundColor: UI.color.tempColor }} />
                     </TouchableWithoutFeedback>
                 </View>
                 <View style={{ height: 20, backgroundColor: '#f5f5f5' }} />

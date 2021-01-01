@@ -568,7 +568,7 @@ export default class SocialSecurityScreen extends PureComponent {
                 <TouchableWithoutFeedback onPress={this.clickSBSearch}>
                     <View style={{
                         position: 'absolute', right: 10, top: 16,
-                        width: (UI.size.screenWidth - 10 * 4) / 3, height: (UI.size.screenWidth * 424 / 1080 - 20) / 2, backgroundColor: 'red'
+                        width: (UI.size.screenWidth - 10 * 4) / 3, height: (UI.size.screenWidth * 424 / 1080 - 20) / 2, backgroundColor: UI.color.tempColor
                     }} />
                 </TouchableWithoutFeedback>
             </View>

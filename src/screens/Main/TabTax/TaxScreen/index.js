@@ -26,7 +26,7 @@ export default class TaxScreen extends PureComponent {
                     height: UI.size.screenWidth * 928 / 1080
                 }} source={Images.tab_work_00} />
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', right: 40, bottom: 0, width: UI.size.screenWidth / 2 - 50, height: 40, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', right: 40, bottom: 0, width: UI.size.screenWidth / 2 - 50, height: 40, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{

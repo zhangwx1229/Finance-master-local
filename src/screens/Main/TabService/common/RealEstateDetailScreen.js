@@ -39,10 +39,10 @@ export default class RealEstateDetailScreen extends PureComponent {
                         height: UI.size.screenWidth * 1842 / 1080
                     }} source={Images.icon_43} />
                     <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{ position: 'absolute', left: 20, top: 15, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', left: 20, top: 15, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: UI.color.tempColor }} />
                     </TouchableWithoutFeedback>
                     <TouchableWithoutFeedback onPress={this.onPressTwo}>
-                        <View style={{ position: 'absolute', left: 20, top: 75, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', left: 20, top: 75, width: UI.size.screenWidth - 20 * 2, height: 45, backgroundColor: UI.color.tempColor }} />
                     </TouchableWithoutFeedback>
                 </View>
             </View>

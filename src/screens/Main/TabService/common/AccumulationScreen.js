@@ -24,7 +24,7 @@ export default class AccumulationScreen extends PureComponent {
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{
                         position: 'absolute', left: 20, bottom: 30,
-                        width: 60, height: 60, backgroundColor: 'red'
+                        width: 60, height: 60, backgroundColor: UI.color.tempColor
                     }} />
                 </TouchableWithoutFeedback>
             </View>
@@ -36,7 +36,7 @@ export default class AccumulationScreen extends PureComponent {
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{
                         position: 'absolute', left: 10, top: 50,
-                        width: 200, height: 40, backgroundColor: 'red'
+                        width: 200, height: 40, backgroundColor: UI.color.tempColor
                     }} />
                 </TouchableWithoutFeedback>
             </View>

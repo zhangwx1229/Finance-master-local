@@ -38,10 +38,10 @@ export default class SocialAllScreen extends PureComponent {
                     height: UI.size.screenWidth * 641 / 1080
                 }} source={Images.icon_31} />
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: 20, bottom: 30, width: 70, height: 70, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: 20, bottom: 30, width: 70, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 20 + 70 + 10, bottom: 30, width: 70, height: 70, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: 20 + 70 + 10, bottom: 30, width: 70, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{
@@ -54,13 +54,13 @@ export default class SocialAllScreen extends PureComponent {
                     height: UI.size.screenWidth * 1665 / 1080
                 }} source={Images.icon_33} />
                 <TouchableWithoutFeedback onPress={this.clickBDC}>
-                    <View style={{ position: 'absolute', right: 20, top: 130, width: UI.size.screenWidth / 2 - 50, height: 60, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', right: 20, top: 130, width: UI.size.screenWidth / 2 - 50, height: 60, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', right: 20, top: 40, width: UI.size.screenWidth / 2 - 50, height: 60, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', right: 20, top: 40, width: UI.size.screenWidth / 2 - 50, height: 60, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: 20, top: 130, width: UI.size.screenWidth / 2 - 50, height: 60, backgroundColor: 'red' }} />
+                    <View style={{ position: 'absolute', left: 20, top: 130, width: UI.size.screenWidth / 2 - 50, height: 60, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{
@@ -80,7 +80,7 @@ export default class SocialAllScreen extends PureComponent {
                 <View >
                     <Image style={styles.header} source={Images.icon_30} />
                     <TouchableWithoutFeedback onPress={this.clickBack}>
-                        <View style={{ position: 'absolute', left: 0, width: 30, height: 30, backgroundColor: 'red' }} />
+                        <View style={{ position: 'absolute', left: 0, width: 30, height: 30, backgroundColor: UI.color.tempColor }} />
                     </TouchableWithoutFeedback>
                 </View>
                 <JJRefresh
