@@ -37,10 +37,30 @@ def quest_user_info(sheet):
     print "======获取个人用户信息="
     return json
 
-def quest_user_list(sheet):
+def quest_company_list(sheet):
+    #获取用户就职记录
+    json = {'workList': []}
+    start_rows = 4
+    ncols = sheet.ncols #列数
+    for colnum in range(0, ncols):
+        col = sheet.col_values(colnum)
+        if col[start_rows]=='公司名称':
+            app = {}
+            col_next = sheet.col_values(colnum+1)
+            col_next_next = sheet.col_values(colnum+2)
+            app['item_1'] = col_next[start_rows]
+            app['item_2'] = col_next[start_rows+1]
+            app['item_3'] = col_next[start_rows+2]
+            app['item_4'] = col_next_next[start_rows+3]
+            app['item_5'] = col_next_next[start_rows+4]
+            json['workList'].append(app)
+    print "======获取用户缴费list="
+    return json
+
+def quest_year_list(sheet):
     #获取用户缴费记录
     json = {'yearList': []}
-    start_rows = 5
+    start_rows = 19
     nrows = sheet.nrows #行数
     year = 0#key
     listyear = []#value
@@ -101,8 +121,10 @@ def writeJson(path, jsondata):
 
 def excel_table_by_index(sheet1):
     jsondata = quest_user_info(sheet1)
-    list_json = quest_user_list(sheet1)
+    company_json = quest_company_list(sheet1)
+    list_json = quest_year_list(sheet1)
     jsondata = dict(jsondata,**list_json)
+    jsondata = dict(jsondata,**company_json)
 
     writeJson(pathDir,jsondata)
 
