@@ -205,7 +205,7 @@ export default class VodPlayerList extends React.Component {
     render() {
         return (
             <JJScrollableTabView
-                listData={['blue', 'orange', 'green', UI.color.tempColor, '#334564']} // , 'green', UI.color.tempColor
+                listData={['blue', 'orange', 'green', 'red', '#334564']} // , 'green', 'red'
                 onRenderScene={this.onRenderScene}
             />
         );
