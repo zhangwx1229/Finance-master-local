@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 
 export default class MIneInfoScreen extends PureComponent {
     constructor(props) {

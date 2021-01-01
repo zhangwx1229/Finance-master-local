@@ -2,7 +2,7 @@ import { isNumber } from 'lodash';
 import React, { PureComponent } from 'react';
 import { Image, StyleSheet, ScrollView, View, Text, TouchableWithoutFeedback, DeviceEventEmitter } from 'react-native';
 import Images from '../../../../image';
-import { name } from '../../../../image/filename_02.json';
+import { name } from '../../../../image/filename.json';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
 // import MySearchScreen from '../MySearchScreen';
 let font_12_5 = UI.fontSizeNew.font_12_5

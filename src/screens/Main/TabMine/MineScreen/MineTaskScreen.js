@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import UI from '../../../../UI';
 import TitleView from '../../TabHomeNew/common/TitleView';
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12

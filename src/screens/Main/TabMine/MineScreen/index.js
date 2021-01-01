@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { TouchableWithoutFeedback, Image, StyleSheet, ScrollView, Text, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import filename from '../../../../image/filename_02.json';
+import filename from '../../../../image/filename.json';
 const Head_W = UI.size.screenWidth
 const Head_H = (UI.size.screenWidth * 349) / 1080
 const Head_Avatar_W = Head_H * 0.5

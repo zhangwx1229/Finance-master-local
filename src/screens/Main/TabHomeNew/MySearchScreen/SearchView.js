@@ -12,7 +12,7 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
 import DateSelectModel from '../common/DateSelectModel';
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 let font_12 = UI.fontSizeNew.font_12
 export default class SearchView extends PureComponent {
     constructor() {

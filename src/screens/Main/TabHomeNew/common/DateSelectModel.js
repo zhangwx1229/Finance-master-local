@@ -4,7 +4,7 @@ import Modal from 'react-native-root-modal';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import DateSelect from './DateSelect';
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 const TAG = 'DateSelectModel';
 type Props = {
     visible: boolean,

@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 
 
 filename = "text_02.xlsx"
-json_file = 'filename_02.json'
+json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../个税'
 pathDirHistroy = '../../个税历史记录'
@@ -20,12 +20,20 @@ print filePath
 
 def quest_user_info(sheet):
     #获取第二行的所有内容
+    row_0 = sheet.row_values(0)
     row_1 = sheet.row_values(1)
+    ncols = sheet.ncols #行数
     json = {}
     if row_1:
         json['name'] = row_1[0]
         json['phone'] = row_1[1]
         json['sex'] = row_1[2]
+        for i in range(3, ncols):
+            if row_0[i]:
+                name = 'item_'+str(i)
+                json[name] = row_1[i]
+            else:
+                break
     print "======获取个人用户信息="
     return json
 
@@ -98,7 +106,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathDir,jsondata)
 
-    encode_apk(jsondata['name'])
+#    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):
@@ -143,8 +151,8 @@ def main():
          # 2、获取sheet对象
         sheet = x1.sheet_by_name(sheetName)
         excel_table_by_index(sheet)
-        if i > 0:
-            break
+#        if i > 0:
+#            break
     output = excuteCommand('open ./'+pathDir)
 
 if __name__=="__main__":

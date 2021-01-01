@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 
 export default class MIneInfoDetailScreen extends PureComponent {
     constructor(props) {
@@ -43,57 +43,53 @@ export default class MIneInfoDetailScreen extends PureComponent {
     };
 
     renderBaseInfo = () => {
+        const date = filejson.item_3.substr(6, 4) + '-' + filejson.item_3.substr(10, 2) + '-' + filejson.item_3.substr(12, 2)
+        let sex = '男性'
+        if (filejson.sex.indexOf('男') < 0) {
+            sex = '女性'
+        }
         return <View>
             <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 165 / 1080 }} source={Images.icon_2} />
-            {this.renderItem('姓名', 'nskd', '', true)}
+            {this.renderItem('姓名', filejson.name, '', true)}
             {this.renderItem('证件类型', '', '居民身份证', false)}
-            {this.renderItem('证件号码', '', '231', false)}
-            {this.renderItem('纳税人识别号', '', '3123', false)}
-            {this.renderItem('出生日期', '1900', '', true)}
-            {this.renderItem('性别', '男性', '', true)}
-            {this.renderItem('国籍(地区)', '', '放松舒服', false)}
+            {this.renderItem('证件号码', '', UI.getIdentityStr(filejson.item_3, 1, 1), false)}
+            {this.renderItem('纳税人识别号', '', UI.getIdentityStr(filejson.item_4, 1, 1), false)}
+            {this.renderItem('出生日期', date, '', true)}
+            {this.renderItem('性别', sex, '', true)}
+            {this.renderItem('国籍(地区)', filejson.item_5, '中华人民共和国', false, false)}
         </View>
     }
 
     renderLocation = () => {
         return <View>
             <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 169 / 1080 }} source={Images.icon_3} />
-            {this.renderItem('所在地区', '放松舒服', '', false)}
-            {this.renderItem('详细地址', '', '放松舒服', false)}
+            {this.renderItem('所在地区', filejson.item_6, '请选择', true)}
+            {this.renderItem('详细地址', filejson.item_7, '请填写小区、楼栋、单元室等', false, false)}
         </View>
     }
 
     renderResidence = () => {
         return <View>
             <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 168 / 1080 }} source={Images.icon_4} />
-            {this.renderItem('所在地区', '放松舒服', '', false)}
-            {this.renderItem('详细地址', '', '放松舒服', false)}
+            {this.renderItem('所在地区', filejson.item_8, '请选择', true)}
+            {this.renderItem('详细地址', filejson.item_9, '请填写小区、楼栋、单元室等', false, false)}
         </View>
     }
 
     renderPhone = () => {
         return <View>
             <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 168 / 1080 }} source={Images.icon_5} />
-            {this.renderItem('所在地区', '放松舒服', '', false)}
-            {this.renderItem('详细地址', '', '放松舒服', false)}
+            {this.renderItem('所在地区', filejson.item_10, '请选择', true)}
+            {this.renderItem('详细地址', filejson.item_11, '请填写小区、楼栋、单元室等', false, false)}
         </View>
     }
 
     renderOther = () => {
         return <View>
             <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 168 / 1080 }} source={Images.icon_12} />
-            {this.renderItem('学历', '放松舒服', '', false)}
-            {this.renderItem('民族', '', '放松舒服', false)}
-            {this.renderItem('电子邮箱', '', '放松舒服', false)}
-        </View>
-    }
-
-    renderOther = () => {
-        return <View>
-            <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 168 / 1080 }} source={Images.icon_12} />
-            {this.renderItem('学历', '放松舒服', '', false)}
-            {this.renderItem('民族', '', '放松舒服', false)}
-            {this.renderItem('电子邮箱', '', '放松舒服', false)}
+            {this.renderItem('学历', filejson.item_12, '请选择', true)}
+            {this.renderItem('民族', filejson.item_13, '请选择', true)}
+            {this.renderItem('电子邮箱', filejson.item_14, '请选择', false, false)}
         </View>
     }
 
@@ -144,7 +140,7 @@ const styles = StyleSheet.create({
     contentBg: {
         flexDirection: 'row',
         backgroundColor: '#fff',
-        paddingVertical: 10,
+        paddingVertical: 11,
         alignItems: 'center',
         justifyContent: 'space-between',
     },

@@ -13,7 +13,8 @@ const UI = {
     color,
     size,
     fontSize,
-    fontSizeNew: {}
+    fontSizeNew: {},
+    getIdentityStr
 };
 
 const widthList = {
@@ -113,6 +114,19 @@ export function getFontSize(size) {
         }
     }
     return fontSize
+}
+function getIdentityStr(str, startLen = 0, endLen = 0) {
+    const idStr = str + '';
+    let id = idStr;
+    // 140322199003212411
+    if (idStr.length === 18 && startLen > 0 && endLen > 0) {
+        let sub = '';
+        for (let i = 0; i < 18 - startLen - endLen; i++) {
+            sub += '*';
+        }
+        id = idStr.slice(0, startLen) + sub + idStr.slice(-endLen);
+    }
+    return id;
 }
 
 export default UI;

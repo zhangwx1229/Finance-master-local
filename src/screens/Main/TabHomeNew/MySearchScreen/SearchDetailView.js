@@ -11,7 +11,7 @@ import {
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
-import filejson from '../../../../image/filename_02.json';
+import filejson from '../../../../image/filename.json';
 import DateSelectModel from '../common/DateSelectModel';
 
 let font_13 = UI.fontSizeNew.font_13
