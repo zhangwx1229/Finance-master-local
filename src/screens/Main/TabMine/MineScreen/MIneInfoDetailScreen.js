@@ -34,7 +34,7 @@ export default class MIneInfoDetailScreen extends PureComponent {
             <View style={styles.contentBg}>
                 <View style={{ flexDirection: 'row' }}>
                     <Text style={[styles.subTitle, { fontSize: UI.fontSizeNew.font_12 }]}>{title}</Text>
-                    <Text style={[styles.year, { color: !isSelect ? '#9d9d9d' : '#333', fontSize: UI.fontSizeNew.font_12_5 }]}>{!isSelect ? placeText : subTitle}</Text>
+                    <Text numberOfLines={2} style={[styles.year, { color: !isSelect ? '#9d9d9d' : '#333', fontSize: UI.fontSizeNew.font_12_5 }]}>{!isSelect ? placeText : subTitle}</Text>
                 </View>
                 {isSeg ? <Image style={styles.contentImage} source={Images.p4_9} /> : null}
                 {isLine ? <View style={{ position: 'absolute', bottom: 0, right: 0, width: UI.size.screenWidth - 20, height: 1, backgroundColor: '#f5f6f9' }} /> : null}
@@ -140,18 +140,19 @@ const styles = StyleSheet.create({
     contentBg: {
         flexDirection: 'row',
         backgroundColor: '#fff',
-        paddingVertical: 11,
+        paddingVertical: 12,
         alignItems: 'center',
         justifyContent: 'space-between',
     },
-    subTitle: { marginLeft: 20, color: '#333333cf' },
+    subTitle: { width: 110, marginLeft: 20, color: '#333333cf' },
     year: {
-        position: 'absolute',
-        left: 130,
+        maxWidth: UI.size.screenWidth - 130 - 23,
     },
     contentImage: {
+        position: 'absolute',
+        top: 11,
+        right: 7,
         width: 23,
         height: 23,
-        marginRight: 10,
     },
 });

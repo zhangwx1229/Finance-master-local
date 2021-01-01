@@ -11,7 +11,7 @@ import TitleView from '../../TabHomeNew/common/TitleView';
 import filejson from '../../../../image/filename.json';
 
 let font_13 = UI.fontSizeNew.font_13
-let font_12 = UI.fontSizeNew.font_12
+let font_11_5 = UI.fontSizeNew.font_11_5
 export default class SearchDetailView extends PureComponent {
 
     constructor(props) {
@@ -39,20 +39,20 @@ export default class SearchDetailView extends PureComponent {
                             fontSize: font_13
                         }]} >{data.item_1.length > 0 ? data.item_1 : '-'}</Text>
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} >统一社会信用代码<Text style={[styles.itemDetail, {
+                    <Text style={[styles.itemDetail, { fontSize: font_11_5, marginLeft: 15 }]} >统一社会信用代码<Text style={[styles.itemDetail, {
                         fontSize: UI.fontSizeNew.font_14
                     }]} > : </Text>{data.item_2.length > 0 ? data.item_2 : '-'}</Text>
                     <View style={{ flexDirection: 'row', marginHorizontal: 15, justifyContent: 'space-between' }} >
                         <Text style={[styles.itemDetail, {
-                            fontSize: font_12
+                            fontSize: font_11_5
                         }]} numberOfLines={1} >职务<Text style={[styles.itemDetail, {
                             fontSize: UI.fontSizeNew.font_14
                         }]} > : </Text>{data.item_3.length > 0 ? data.item_3 : '-'}</Text>
                     </View >
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15 }]} numberOfLines={1} >任职受雇日期<Text style={[styles.itemDetail, {
+                    <Text style={[styles.itemDetail, { fontSize: font_11_5, marginLeft: 15 }]} numberOfLines={1} >任职受雇日期<Text style={[styles.itemDetail, {
                         fontSize: UI.fontSizeNew.font_14
                     }]} > : </Text>{data.item_4.length > 0 ? data.item_4 : '-'}</Text>
-                    <Text style={[styles.itemDetail, { fontSize: font_12, marginLeft: 15, marginBottom: 16 }]} numberOfLines={1}  >离职日期<Text style={[styles.itemDetail, {
+                    <Text style={[styles.itemDetail, { fontSize: font_11_5, marginLeft: 15, marginBottom: 16 }]} numberOfLines={1}  >离职日期<Text style={[styles.itemDetail, {
                         fontSize: UI.fontSizeNew.font_14
                     }]} > : </Text>{data.item_5.length > 0 ? data.item_5 : '-'}</Text>
                 </View >
@@ -73,7 +73,7 @@ export default class SearchDetailView extends PureComponent {
 
     render() {
         font_13 = UI.fontSizeNew.font_13
-        font_12 = UI.fontSizeNew.font_12
+        font_11_5 = UI.fontSizeNew.font_11_5
         if (this.data === null) {
             return null
         }
