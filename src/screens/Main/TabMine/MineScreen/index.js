@@ -25,6 +25,9 @@ export default class TaxScreen extends PureComponent {
     onPressTwo = () => {
         this.props.navigation.navigate('MineTaskScreen');
     }
+    onPressOut = () => {
+        this.props.navigation.navigate('MineLogInScreen');
+    }
 
     render() {
         font_12_5 = UI.fontSizeNew.font_12_5
@@ -61,6 +64,9 @@ export default class TaxScreen extends PureComponent {
                         <View style={{ position: 'absolute', top: 15 + 40, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback>
                 </View>
+                <TouchableWithoutFeedback onPress={this.onPressOut}>
+                    <View style={{ position: 'absolute', bottom: 65, width: '100%', height: 40, backgroundColor: 'red' }} />
+                </TouchableWithoutFeedback>
                 <View style={{ height: 60, backgroundColor: '#f5f6f9' }} />
             </ScrollView >
         );
