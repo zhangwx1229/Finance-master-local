@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { TouchableWithoutFeedback, Image, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, DeviceEventEmitter, StyleSheet, ScrollView, Text, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import filename from '../../../../image/filename.json';
@@ -9,12 +9,24 @@ const Head_Avatar_W = Head_H * 0.5
 
 let font_12_5 = UI.fontSizeNew.font_12_5
 export default class TaxScreen extends PureComponent {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        this.state = { isLogin: filename.item_17 != 0 }
         this.phone = ""
         const phoneStr = filename.phone + ''
         if (phoneStr.length === 11) {
             this.phone = phoneStr.slice(0, 3) + '****' + phoneStr.slice(-4);
+        }
+    }
+    componentDidMount() {
+        this.listener = DeviceEventEmitter.addListener('RNLogInEvent', () => {
+
+            this.setState({ isLogin: true })
+        })
+    }
+    componentWillUnmount() {
+        if (this.listener) {
+            this.listener.remove()
         }
     }
 
@@ -31,6 +43,15 @@ export default class TaxScreen extends PureComponent {
 
     render() {
         font_12_5 = UI.fontSizeNew.font_12_5
+        let avatar = Images.p4_avatar_1
+        if (this.state.isLogin) {
+            if (filename.sex === '男') {
+                avatar = Images.tab_mine_p4_avatar_3
+            } else {
+                avatar = Images.tab_mine_p4_avatar_2
+            }
+        }
+
         return (
             <ScrollView
                 style={styles.content}
@@ -40,10 +61,19 @@ export default class TaxScreen extends PureComponent {
                     width: Head_W,
                     height: Head_H, flexDirection: 'row'
                 }}>
-                    <Image style={styles.header} source={Images.tab_mine_p4_bg} />
-                    <Image style={{ marginLeft: 20, marginTop: Head_H - 20 - Head_Avatar_W, width: Head_Avatar_W, height: Head_Avatar_W }}
-                        source={filename.sex === '男' ? Images.tab_mine_p4_avatar_3 : Images.tab_mine_p4_avatar_2} />
-                    <View style={{ justifyContent: 'center', marginLeft: 10, marginTop: Head_H - 20 - Head_Avatar_W, height: Head_Avatar_W }}>
+                    <TouchableWithoutFeedback onPress={this.onPressOut}>
+                        <Image style={styles.header} source={Images.tab_mine_p4_bg} />
+                    </TouchableWithoutFeedback>
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', }}>
+                        <Image style={{ marginLeft: 20, marginTop: Head_H - 20 - Head_Avatar_W, width: Head_Avatar_W, height: Head_Avatar_W }}
+                            source={avatar} />
+                        {this.state.isLogin ? null : <Text style={{
+                            marginLeft: 10, alignSelf: 'center', marginTop: 20,
+                            fontSize: font_12_5,
+                            color: '#fff',
+                        }}>登陆/注册</Text>}
+                    </View>
+                    {this.state.isLogin ? <View style={{ justifyContent: 'center', marginLeft: 10, marginTop: Head_H - 20 - Head_Avatar_W, height: Head_Avatar_W }}>
                         <Text style={{
                             fontSize: font_12_5,
                             color: '#fff',
@@ -53,10 +83,11 @@ export default class TaxScreen extends PureComponent {
                             fontSize: font_12_5,
                             color: '#fff',
                         }}>{this.phone}</Text> : null}
-                    </View>
+                    </View> : null}
                 </View>
                 <View>
                     <Image style={styles.image} source={Images.tab_mine_image} />
+                    {this.state.isLogin ? <Image style={styles.imageout} source={Images.tab_mine_image_out} /> : null}
                     <TouchableWithoutFeedback onPress={this.onPressOne}>
                         <View style={{ position: 'absolute', top: 5, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback>
@@ -64,9 +95,11 @@ export default class TaxScreen extends PureComponent {
                         <View style={{ position: 'absolute', top: 15 + 40, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback>
                 </View>
-                <TouchableWithoutFeedback onPress={this.onPressOut}>
-                    <View style={{ position: 'absolute', bottom: 65, width: '100%', height: 40, backgroundColor: 'red' }} />
-                </TouchableWithoutFeedback>
+                {
+                    this.state.isLogin ? <TouchableWithoutFeedback onPress={() => { this.setState({ isLogin: false }) }}>
+                        <View style={{ position: 'absolute', bottom: 65, width: '100%', height: 40 }} />
+                    </TouchableWithoutFeedback> : null
+                }
                 <View style={{ height: 60, backgroundColor: '#f5f6f9' }} />
             </ScrollView >
         );
@@ -80,7 +113,11 @@ const styles = StyleSheet.create({
     },
     image: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1515) / 1080,
+        height: (UI.size.screenWidth * 1323) / 1080,
+    },
+    imageout: {
+        width: UI.size.screenWidth,
+        height: (UI.size.screenWidth * 190) / 1080,
     },
     header: {
         width: '100%',

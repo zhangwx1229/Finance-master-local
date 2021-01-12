@@ -28,6 +28,11 @@ class UnlockView extends Component<Props> {
         this.setState = () => { }; // 在出现“Warning: Can only update a mounted or mounting...”告警的界面添加改代码
     }
 
+    resetLeft = () => {
+        this.left = leftRight;
+        this.setState({});
+    }
+
     createPan = () => {
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,

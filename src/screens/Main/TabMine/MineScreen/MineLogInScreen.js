@@ -4,7 +4,7 @@ import {
     StyleSheet,
     View,
     Text,
-    TextInput,
+    TextInput, DeviceEventEmitter,
     TouchableWithoutFeedback, Modal, ScrollView, TouchableOpacity
 } from 'react-native';
 import Images from '../../../../image';
@@ -18,7 +18,8 @@ export default class MineLogInScreen extends Component {
         super(props);
         this.state = { isCom: false, userName: '', pass: '', visible: false }
         this.data = filejson['2020'];
-        this.isCom = false
+        this.isCom = false;
+        this.errNum = 0
     }
 
     componentWillUnmount() {
@@ -37,7 +38,17 @@ export default class MineLogInScreen extends Component {
             return
         }
         if (this.isCom) {
-            this.props.navigation.navigate('Mine');
+            if (filejson.item_15 == userName && filejson.item_16 == pass) {
+                DeviceEventEmitter.emit('RNLogInEvent')
+                this.props.navigation.navigate('Mine');
+            } else {
+                this.setState({ visible: true }, () => {
+                    this.errNum++
+                    if (this.errNum > 4) {
+                        this.errNum = 4
+                    }
+                })
+            }
         } else {
             this.setState({ visible: true })
         }
@@ -58,18 +69,63 @@ export default class MineLogInScreen extends Component {
     }
 
     content = (onDismiss) => {
+        if (!this.isCom) {
+            return (
+                <View style={{ flex: 1, backgroundColor: '#0000002f', justifyContent: 'center' }}>
+                    <View style={{ alignSelf: 'center' }}>
+                        <View style={{ justifyContent: 'flex-end', alignItems: 'center', width: UI.size.screenWidth - 50 * 2, height: 120, borderRadius: 5, backgroundColor: '#fff' }} >
+                            <Text style={{ fontSize: UI.fontSizeNew.font_12, color: '#333', marginRight: 25 }}>请先拖动滑块验证</Text>
+                            <View style={{ width: '100%', marginTop: 18, height: 1, backgroundColor: '#f1f2f6' }} />
+                            <TouchableOpacity
+                                style={{ width: '100%', height: 45, justifyContent: 'center' }}
+                                onPress={() => { this.setState({ visible: false }) }}
+                                activeOpacity={1}
+                            >
+                                <Text style={{ alignSelf: 'center', fontSize: UI.fontSizeNew.font_12, color: UI.color.blue1, marginRight: 25 }}>确定</Text></TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            );
+        }
+        let errText = (4 - this.errNum) + '次输入错误后，账号将被锁定，需通过找回密码解锁，或120分钟后自动解锁'
+        if (4 - this.errNum === 0) {
+            errText = '账号或密码多次输入错误，是否找回密码？活着120分钟后再试'
+        }
         return (
             <View style={{ flex: 1, backgroundColor: '#0000002f', justifyContent: 'center' }}>
                 <View style={{ alignSelf: 'center' }}>
-                    <View style={{ justifyContent: 'flex-end', alignItems: 'center', width: UI.size.screenWidth - 50 * 2, height: 120, borderRadius: 5, backgroundColor: '#fff' }} >
-                        <Text style={{ fontSize: UI.fontSizeNew.font_12, color: '#333', marginRight: 25 }}>请先拖动滑块验证</Text>
+                    <View style={{ justifyContent: 'flex-end', alignItems: 'center', width: UI.size.screenWidth - 50 * 2, borderRadius: 5, backgroundColor: '#fff' }} >
+                        <Text style={{ fontSize: UI.fontSizeNew.font_13, marginTop: 18, marginBottom: 10, color: '#333', fontWeight: 'bold', marginRight: 25 }}>提示</Text>
+                        <Text style={{ marginHorizontal: 10, textAlign: 'center', fontSize: UI.fontSizeNew.font_11, color: '#333', marginRight: 25 }}>{errText}</Text>
                         <View style={{ width: '100%', marginTop: 18, height: 1, backgroundColor: '#f1f2f6' }} />
-                        <TouchableOpacity
-                            style={{ width: '100%', height: 45, justifyContent: 'center' }}
-                            onPress={() => { this.setState({ visible: false }) }}
-                            activeOpacity={1}
+                        <View
+                            style={{ width: '100%', height: 45, flexDirection: 'row', justifyContent: 'center' }}
                         >
-                            <Text style={{ alignSelf: 'center', fontSize: UI.fontSizeNew.font_12, color: UI.color.blue1, marginRight: 25 }}>确定</Text></TouchableOpacity>
+                            <TouchableOpacity
+                                style={{ flex: 1, height: 45, flexDirection: 'row', justifyContent: 'center' }}
+                                onPress={() => {
+                                    this.isCom = false;
+                                    this.setState({ visible: false });
+                                    this.unlockRef.resetLeft()
+                                }}
+                                activeOpacity={1}
+                            >
+                                <Text style={{ alignSelf: 'center', fontSize: UI.fontSizeNew.font_13, color: '#333' }}>{this.errNum === 4 ? '我知道了' : '找回密码'}</Text>
+                            </TouchableOpacity>
+                            {this.errNum === 4 ? null : <View style={{ height: '100%', width: 1, backgroundColor: '#f1f2f6' }} />}
+                            {this.errNum === 4 ? null : <TouchableOpacity
+                                style={{ flex: 1, height: 45, flexDirection: 'row', justifyContent: 'center' }}
+                                onPress={() => {
+                                    this.isCom = false;
+                                    this.setState({ visible: false })
+                                    this.unlockRef.resetLeft()
+                                }}
+                                activeOpacity={1}
+                            >
+                                <Text style={{ alignSelf: 'center', fontSize: UI.fontSizeNew.font_13, color: UI.color.blue1, }}>重新输入</Text>
+                            </TouchableOpacity>}
+
+                        </View>
                     </View>
                 </View>
             </View>
@@ -115,7 +171,7 @@ export default class MineLogInScreen extends Component {
                 <Image style={{ alignSelf: 'center', marginTop: 40, marginBottom: 60, width: 85, height: 85 }} source={Images.p4_avatar_1} />
                 {this.renderPassword()}
                 <View style={{ marginTop: 15 }}>
-                    <UnlockView onComplete={this.onComplete} />
+                    <UnlockView ref={(e) => { this.unlockRef = e }} onComplete={this.onComplete} />
                 </View>
                 <View style={{ marginTop: 11, flexDirection: 'row', justifyContent: 'flex-end' }}>
                     <Text style={{ fontSize: UI.fontSizeNew.font_11, color: UI.color.blue1, marginRight: 25 }}>找回密码</Text>

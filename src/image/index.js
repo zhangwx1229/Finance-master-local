@@ -19,6 +19,7 @@ const Images = {
     tab_service_image: require('./tab_service_image.jpg'),
     tab_service_image_header: require('./tab_service_image_header.jpg'),
     tab_mine_image: require('./tab_mine_image.jpg'),
+    tab_mine_image_out: require('./tab_mine_image_out.jpg'),
     tab_mine_image_header: require('./tab_mine_image_header.jpg'),
     tab_home_search_image_0: require('./tab_home_search_image_0.jpg'),
     tab_home_search_image_4: require('./tab_home_search_image_4.jpg'),

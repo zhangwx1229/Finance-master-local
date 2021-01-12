@@ -87,6 +87,9 @@ def quest_year_list(sheet):
                 app['item_12'] = row[12]
                 app['item_13'] = row[13]
                 app['item_14'] = row[14]
+                app['item_15'] = row[15]
+                app['item_16'] = row[16]
+                app['item_17'] = row[17]
                 
                 listyear.append(app)
             else:
