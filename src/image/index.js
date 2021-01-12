@@ -65,11 +65,11 @@ const Images = {
     icon_11: require('./icon_11.jpg'),
     icon_12: require('./icon_12.jpg'),
     icon_13: require('./icon_13.jpg'),
-    icon_14: require('./icon_14.jpg'),
+    p4_avatar_1: require('./p4_avatar_1.png'),
     icon_15: require('./icon_15.jpg'),
     icon_16: require('./icon_16.jpg'),
     icon_17: require('./icon_17.jpg'),
-    icon_18: require('./icon_18.jpg'),
+    p4_6: require('./icon_wenhao.jpg'),
     icon_19: require('./icon_19.jpg'),
     icon_20: require('./icon_20.jpeg'),
 };
