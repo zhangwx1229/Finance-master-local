@@ -89,7 +89,12 @@ export default class TaxServer extends PureComponent {
 
     clickGJJ = () => {
         // 点击进入公积金
-        this.props.navigation.navigate('AccumulationScreenNew')
+        this.props.navigation.navigate('AccumulationInfoScreen')
+    }
+
+    clickBDC = () => {
+        // 点击进入不动产
+        this.props.navigation.navigate('RealEstateSearchScreen')
     }
 
     onScroll = (y) => {
@@ -136,32 +141,35 @@ export default class TaxServer extends PureComponent {
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth *  1023/1078 
+                    height: UI.size.screenWidth * 1023 / 1078
                 }} source={Images.icon_53_0} />
-                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                <TouchableWithoutFeedback onPress={this.clickAll}>
                     <View style={{ position: 'absolute', right: 20, bottom: 0, width: 70, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{
-                    width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 900/1078 
-                }} source={Images.icon_53} />
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 900 / 1078
+            }} source={Images.icon_53} />
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 1031 / 1080
                 }} source={Images.icon_54_0} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 10, bottom: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', left: 10, bottom: 0, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.clickBDC}>
+                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 - 40, bottom: 0, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, bottom: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', right: 10, bottom: 0, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{
-                    width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 768/1078 
-                }} source={Images.icon_54} />
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 768 / 1078
+            }} source={Images.icon_54} />
         </View >
     }
 
@@ -177,17 +185,18 @@ export default class TaxServer extends PureComponent {
             marginTop: UI.size.statusBarHeight,
             width: UI.size.screenWidth,
             backgroundColor: 'rgba(255, 255, 255,' + num + ')',
-            flexDirection:'row'
+            flexDirection: 'row'
         }}>
-            <View style={{marginLeft:20,marginTop:10,marginRight:3}}>
-            <Text style={{
-                    fontSize: UI.fontSizeNew.font_7 , color: num > 0.5 ? "#9d9d9d" : "#fff"
-                }} >查</Text>
+            <View style={{ marginLeft: 20, marginTop: 10, marginRight: 3 }}>
                 <Text style={{
-                    fontSize: UI.fontSizeNew.font_7,  color: num > 0.5 ? "#9d9d9d" : "#fff"
-                }} >查找0/2</Text>
-                </View>
-            <View style={{flex:1,
+                    fontSize: UI.fontSizeNew.font_7, color: num > 0.5 ? "#9d9d9d" : "#fff"
+                }} >{this.weather.tem1}</Text>
+                <Text style={{
+                    fontSize: UI.fontSizeNew.font_7, color: num > 0.5 ? "#9d9d9d" : "#fff"
+                }} >不限行</Text>
+            </View>
+            <View style={{
+                flex: 1,
                 flexDirection: 'row', marginRight: 20,
                 marginVertical: 9, height: 28, borderRadius: 14,
                 backgroundColor: num < 0.5 ? 'rgba(249, 249, 249, 0.3)' : 'rgba(235, 235, 235, 1.0)'

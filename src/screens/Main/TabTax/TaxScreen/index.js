@@ -20,31 +20,32 @@ export default class TaxScreen extends PureComponent {
     }
     renderContent = () => {
         return <View>
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 114 / 1080
+            }} source={Images.icon_72} />
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 1685 / 1066
+            }} source={Images.icon_65} />
             <View style={{ flex: 1 }}>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 928 / 1080
-                }} source={Images.tab_work_00} />
+                    height: UI.size.screenWidth * 688 / 1080
+                }} source={Images.icon_66_0} />
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', right: 40, bottom: 0, width: UI.size.screenWidth / 2 - 50, height: 40, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', right: 40, bottom: 10, width: UI.size.screenWidth / 2 - 50, height: 40, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{
                 width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 602 / 1080
-            }} source={Images.tab_work_0} />
+                height: UI.size.screenWidth * 903 / 1080
+            }} source={Images.icon_66} />
             <Image style={{
                 width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1303 / 1080
-            }} source={Images.tab_work_1} />
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1305 / 1080
-            }} source={Images.tab_work_2} />
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1303 / 1080
-            }} source={Images.tab_work_3} />
+                height: UI.size.screenWidth * 1590 / 1080
+            }} source={Images.icon_67} />
+
         </View>
     }
 

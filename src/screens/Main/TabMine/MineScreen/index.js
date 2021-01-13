@@ -32,7 +32,7 @@ export default class MineScreen extends PureComponent {
 
     clickGJJ = () => {
         // 点击进入公积金
-        this.props.navigation.navigate('AccumulationScreenNew')
+        this.props.navigation.navigate('AccumulationInfoScreen')
     }
     onScroll = (y) => {
         if (y < header_h) {
@@ -72,20 +72,16 @@ export default class MineScreen extends PureComponent {
                     <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 4, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >名片号: {filejson.item_tmp_sb_5}</Text>
                 </View>
             </View>
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 386 / 1080
-            }} source={Images.tab_mine_header} />
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 782 / 1080
-                }} source={Images.tab_mine_0} />
+                    height: UI.size.screenWidth * 993 / 1080
+                }} source={Images.icon_68} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 0, top: 3, width: UI.size.screenWidth, height: 40, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', right: 50 + 30 + 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: 0, top: 3 * 3 + 40, width: UI.size.screenWidth, height: 40, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', right: 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
         </View >
@@ -116,7 +112,7 @@ export default class MineScreen extends PureComponent {
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff', },
+    container: { flex: 1, backgroundColor: '#f2f2f4' },
 
     header: {
         width: UI.size.screenWidth,

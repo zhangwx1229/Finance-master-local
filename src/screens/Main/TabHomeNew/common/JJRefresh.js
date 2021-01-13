@@ -34,6 +34,12 @@ export default class JJRefresh extends PureComponent {
         }
     }
 
+    scrollTo = (prama) => {
+        if (this.scrollRef) {
+            this.scrollRef.scrollTo(prama);
+        }
+    }
+
     onScrollEndDrag = e => {
         if (this.scrollTimer) {
             clearInterval(this.scrollTimer);
