@@ -45,14 +45,16 @@ export default class TabNav extends React.Component {
             }}
         >
             <Tab.Screen
-                name="TabHome"
-                component={HomeScreen}
+                name="Note"
+                component={ServiceScreen}
                 options={{
-                    tabBarLabel: '消息',
+                    tabBarLabel: '主页',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
-                            source={focused ? Images.tab_home_selected : Images.tab_home}
-                            style={styles.icon}
+                            source={
+                                focused ? Images.tab_service_selected : Images.tab_service
+                            }
+                            style={{ width: 30, height: 30 }}
                         />
                     ),
                 }}
@@ -71,28 +73,13 @@ export default class TabNav extends React.Component {
                 }}
             />
             <Tab.Screen
-                name="Note"
-                component={ServiceScreen}
+                name="TabHome"
+                component={HomeScreen}
                 options={{
-                    tabBarLabel: '北京通',
+                    tabBarLabel: '消息',
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
-                            source={
-                                focused ? Images.tab_service_selected : Images.tab_service
-                            }
-                            style={{ width: 30, height: 30 }}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Message"
-                component={MessageScreen}
-                options={{
-                    tabBarLabel: '头条',
-                    tabBarIcon: ({ focused, color, size }) => (
-                        <Image
-                            source={focused ? Images.tab_msg_selected : Images.tab_msg}
+                            source={focused ? Images.tab_home_selected : Images.tab_home}
                             style={styles.icon}
                         />
                     ),
