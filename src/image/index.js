@@ -71,12 +71,14 @@ const Images = {
     icon_46: require('./77/icon_46.jpg'),
     icon_47: require('./77/icon_47.jpg'),
     icon_48: require('./77/icon_48.jpg'),
-    
+
     icon_50: require('./77/icon_50.jpg'),
     icon_51: require('./77/icon_51.jpg'),
     icon_52: require('./77/icon_52.jpg'),
     icon_53: require('./77/icon_53.jpg'),
+    icon_53_0: require('./77/icon_53_0.jpg'),
     icon_54: require('./77/icon_54.jpg'),
+    icon_54_0: require('./77/icon_54_0.jpg'),
     icon_55: require('./77/icon_55.jpg'),
     icon_56: require('./77/icon_56.jpg'),
     icon_57: require('./77/icon_57.jpg'),

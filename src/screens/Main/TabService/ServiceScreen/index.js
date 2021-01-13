@@ -136,24 +136,32 @@ export default class TaxServer extends PureComponent {
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth *  1923/1078 
-                }} source={Images.icon_53} />
+                    height: UI.size.screenWidth *  1023/1078 
+                }} source={Images.icon_53_0} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', right: 20, bottom: 0, width: 70, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
-            <View>
             <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1799 / 1080
-            }} source={Images.icon_54} />
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 900/1078 
+                }} source={Images.icon_53} />
+            <View>
+                <Image style={{
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 1031 / 1080
+                }} source={Images.icon_54_0} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', left: 10, bottom: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, bottom: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
+            <Image style={{
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 768/1078 
+                }} source={Images.icon_54} />
         </View >
     }
 
