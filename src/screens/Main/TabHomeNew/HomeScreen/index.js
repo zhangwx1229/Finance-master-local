@@ -2,8 +2,9 @@ import { isNumber } from 'lodash';
 import React, { PureComponent } from 'react';
 import { Image, StyleSheet, ScrollView, View, Text, TouchableWithoutFeedback, DeviceEventEmitter } from 'react-native';
 import Images from '../../../../image';
-import { name } from '../../../../image/filename.json';
+import filename from '../../../../image/filename.json';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
+import { GlobalData } from '../../../GlobalData';
 // import MySearchScreen from '../MySearchScreen';
 let font_12_5 = UI.fontSizeNew.font_12_5
 export default class HomeScreen extends PureComponent {
@@ -18,6 +19,7 @@ export default class HomeScreen extends PureComponent {
         };
         this.widthList = {};
         this.sds = {}
+        GlobalData.isLogin = filename.item_17==1
     }
 
     clickSearch = () => {

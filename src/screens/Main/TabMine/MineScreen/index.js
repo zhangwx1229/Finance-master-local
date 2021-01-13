@@ -3,6 +3,7 @@ import { TouchableWithoutFeedback, Image, DeviceEventEmitter, StyleSheet, Scroll
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import filename from '../../../../image/filename.json';
+import { GlobalData } from '../../../GlobalData';
 const Head_W = UI.size.screenWidth
 const Head_H = (UI.size.screenWidth * 349) / 1080
 const Head_Avatar_W = Head_H * 0.5
@@ -11,7 +12,7 @@ let font_12_5 = UI.fontSizeNew.font_12_5
 export default class TaxScreen extends PureComponent {
     constructor(props) {
         super(props)
-        this.state = { isLogin: filename.item_17 != 0 }
+        this.state = { isLogin: GlobalData.isLogin  }
         this.phone = ""
         const phoneStr = filename.phone + ''
         if (phoneStr.length === 11) {
@@ -20,7 +21,6 @@ export default class TaxScreen extends PureComponent {
     }
     componentDidMount() {
         this.listener = DeviceEventEmitter.addListener('RNLogInEvent', () => {
-
             this.setState({ isLogin: true })
         })
     }
@@ -31,14 +31,25 @@ export default class TaxScreen extends PureComponent {
     }
 
     onPressOne = () => {
-        this.props.navigation.navigate('MIneInfoScreen');
+        if (this.state.isLogin) {
+            this.props.navigation.navigate('MIneInfoScreen');
+        }else {
+            this.props.navigation.navigate('MineLogInScreen');
+        }
     }
 
     onPressTwo = () => {
-        this.props.navigation.navigate('MineTaskScreen');
+        if (this.state.isLogin) {
+            this.props.navigation.navigate('MineTaskScreen');
+        }else {
+            this.props.navigation.navigate('MineLogInScreen');
+        }
+        
     }
     onPressOut = () => {
-        this.props.navigation.navigate('MineLogInScreen');
+        if (!this.state.isLogin) {
+            this.props.navigation.navigate('MineLogInScreen');
+        }
     }
 
     render() {
@@ -96,7 +107,8 @@ export default class TaxScreen extends PureComponent {
                     </TouchableWithoutFeedback>
                 </View>
                 {
-                    this.state.isLogin ? <TouchableWithoutFeedback onPress={() => { this.setState({ isLogin: false }) }}>
+                    this.state.isLogin ? <TouchableWithoutFeedback onPress={() => { this.setState({ isLogin: false })
+                    GlobalData.isLogin = false }}>
                         <View style={{ position: 'absolute', bottom: 65, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback> : null
                 }

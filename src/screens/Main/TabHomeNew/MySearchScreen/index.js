@@ -9,12 +9,17 @@ import {
 } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
+import { GlobalData } from '../../../GlobalData';
 import TitleView from '../common/TitleView';
 let font_12_5 = UI.fontSizeNew.font_12_5
 let font_10 = UI.fontSizeNew.font_10
 export default class MySearchScreen extends PureComponent {
     clickSearch = () => {
-        this.props.navigation.navigate('SearchView');
+        if (!GlobalData.isLogin) {
+            this.props.navigation.navigate('MineLogInScreen');
+        }else {
+            this.props.navigation.navigate('SearchView');
+        }
     };
     renderItem = () => {
         return (
