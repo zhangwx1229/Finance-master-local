@@ -133,39 +133,20 @@ export default class TaxServer extends PureComponent {
     renderContent = () => {
         const { iconStyle, iconName } = this.getIcon();
         return <View>
-            <View style={{ marginTop: UI.size.statusBarHeight + 27 + 8 - 1 }}>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 301 / 1080
-                }} source={Images.tab_bjt_0} />
-                <View style={{ position: 'absolute', left: 10, height: UI.size.screenWidth * 301 / 1080, justifyContent: 'center' }}>
-                    <Text numberOfLines={1} style={{ fontSize: UI.fontSizeNew.font_23, color: '#5c5c5c' }} >
-                        {this.weather.tem}{'° '}
-                        <Image style={iconStyle} source={Images[iconName]} />
-                        <Text numberOfLines={1} style={{
-                            fontSize: UI.fontSizeNew.font_11, color: '#5c5c5c'
-                        }} >
-                            {' '}{this.weather.tem1}
-                        </Text>
-                    </Text>
-                    <Text numberOfLines={1} style={{
-                        fontSize: UI.fontSizeNew.font_11,
-                        position: 'absolute',
-                        bottom: 6, color: '#5c5c5c'
-                    }} >
-                        {'  不限行'}
-                    </Text>
-                </View>
-            </View>
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 492 / 1080
-            }} source={Images.tab_bjt_11} />
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 638 / 1080
-                }} source={Images.tab_bjt_1} />
+                    height: UI.size.screenWidth *  1923/1078 
+                }} source={Images.icon_53} />
+                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                    <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
+                </TouchableWithoutFeedback>
+            </View>
+            <View>
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 1799 / 1080
+            }} source={Images.icon_54} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{ position: 'absolute', left: 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
@@ -173,26 +154,6 @@ export default class TaxServer extends PureComponent {
                     <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 + 10, top: 10, width: 80, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
-            <View>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 1041 / 1080
-                }} source={Images.tab_bjt_2} />
-                <TouchableWithoutFeedback onPress={this.clickSB}>
-                    <View style={{ position: 'absolute', left: UI.size.screenWidth / 2 - 60 - 10, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10, width: 60, height: 50, backgroundColor: UI.color.tempColor }} />
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={this.clickAll}>
-                    <View style={{ position: 'absolute', right: 20, top: UI.size.screenWidth * 1041 / (1080 * 2) + 10 * 3 + 60, width: 60, height: 50, backgroundColor: UI.color.tempColor }} />
-                </TouchableWithoutFeedback>
-            </View>
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1280 / 1080
-            }} source={Images.tab_bjt_3} />
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1035 / 1080
-            }} source={Images.tab_bjt_4} />
         </View >
     }
 
@@ -207,27 +168,30 @@ export default class TaxServer extends PureComponent {
         return <View style={{
             marginTop: UI.size.statusBarHeight,
             width: UI.size.screenWidth,
-            backgroundColor: 'rgba(249, 249, 249,' + num + ')',
-            justifyContent: 'center'
+            backgroundColor: 'rgba(255, 255, 255,' + num + ')',
+            flexDirection:'row'
         }}>
-            <View style={{
-                flexDirection: 'row', marginHorizontal: 15,
-                marginVertical: 8, height: 27, borderRadius: 14.5,
-                borderColor: num > 0.5 ? 'rgba(235, 235, 235, 1.0)' : '#8f8f8f',
-                borderWidth: 0.5,
+            <View style={{marginLeft:20,marginTop:10,marginRight:3}}>
+            <Text style={{
+                    fontSize: UI.fontSizeNew.font_7 , color: num > 0.5 ? "#9d9d9d" : "#fff"
+                }} >查</Text>
+                <Text style={{
+                    fontSize: UI.fontSizeNew.font_7,  color: num > 0.5 ? "#9d9d9d" : "#fff"
+                }} >查找0/2</Text>
+                </View>
+            <View style={{flex:1,
+                flexDirection: 'row', marginRight: 20,
+                marginVertical: 9, height: 28, borderRadius: 14,
                 backgroundColor: num < 0.5 ? 'rgba(249, 249, 249, 0.3)' : 'rgba(235, 235, 235, 1.0)'
             }} >
-                <Text style={{
-                    fontSize: UI.fontSizeNew.font_9, alignSelf: 'center', color: "#5c5c5c"
-                }} >   北京</Text>
-                <View style={{ alignSelf: 'center', marginHorizontal: 10, width: 1, height: 15, backgroundColor: '#5c5c5c' }} />
                 <Image style={{
+                    marginLeft: 7,
                     alignSelf: 'center',
-                    width: 14,
-                    height: 14, marginRight: 1
-                }} source={Images.icon_11} />
+                    width: 12,
+                    height: 12, marginRight: 5
+                }} source={num > 0.5 ? Images.icon_12 : Images.icon_13} />
                 <Text style={{
-                    fontSize: UI.fontSizeNew.font_11, alignSelf: 'center', color: '#8f8f8f'
+                    fontSize: UI.fontSizeNew.font_11, alignSelf: 'center', color: num > 0.5 ? "#9d9d9d" : "#fff"
                 }} >查找服务</Text>
             </View>
         </View >
