@@ -47,17 +47,16 @@ export default class MineScreen extends PureComponent {
         const sub = 10
         return <View style={{ paddingTop: 65, backgroundColor: 'transparent' }}>
             <View>
-            {/* <LinearGradient
-                            style={{
-                                position: 'absolute',
-                                width: '100%',
-                                height: '100%',
-                                borderRadius: 15,
-                            }}
-                            colors={['#8C40F6', '#FF60A9']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                        /> */}
+                <LinearGradient
+                    style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                    }}
+                    colors={['#f2f2f400', '#f2f2f480', '#f2f2f4ea', '#f2f2f4f0', '#f2f2f4ff', '#f2f2f4']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+                />
                 <Image style={{
                     alignSelf: 'center',
                     width: UI.size.screenWidth - sub * 2,
