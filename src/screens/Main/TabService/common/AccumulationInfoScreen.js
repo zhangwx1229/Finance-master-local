@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback, Image, Text } from 'react-native';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 import Images from '../../../../image';
 import filejson from '../../../../image/filename.json';
 import DateSelectModel from './DateSelectModel';
@@ -24,7 +24,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             secondTwo: '全部',
             secondThird: '2020-01-01',
             secondFour: '2020-10-01',
-            selectYearList: []//记录第3组选中的年份
+            selectYearList: [],//记录第3组选中的年份
+            isShowContent:false
         };
         this.dataList = [
             { type: 1, data: '个人信息' },
@@ -136,6 +137,10 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             this.setState({ isShowYear: false, secondFour: date });
         }
     };
+
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
+    }
 
     onDismiss = () => {
         this.setState({ isShowYear: false });
@@ -751,23 +756,23 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
     renderTitle = () => {
         return (
             <View key={"renderTitle"} style={{ marginTop: UI.size.statusBarHeight }}>
-                <TitleView
+                <TitleViewNew
                     navigation={this.props.navigation}
-                    imageComponent={() => (
-                        <Image
-                            style={{
-                                width: UI.size.screenWidth,
-                                height: (UI.size.screenWidth * 145) / 1080,
-                            }}
-                            source={Images.icon_20}
-                        />
-                    )}
+                    showText={'公积金查询'}
+                    onLoadEnd={this.onLoadEnd}
                 />
             </View>
         );;
     };
 
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={{ width: '100%', height: '100%' }}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         return (
             <View style={{ width: '100%', height: '100%' }}>
                 {this.renderTitle()}

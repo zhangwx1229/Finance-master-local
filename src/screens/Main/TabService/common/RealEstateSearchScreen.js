@@ -3,9 +3,12 @@ import { Image, StyleSheet, TouchableWithoutFeedback, View, StatusBar } from 're
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 export default class RealEstateSearchScreen extends PureComponent {
-
+    constructor(){
+        super()
+        this.state={isShowContent:false}
+    }
     onPress = () => {
         this.props.navigation.navigate('FaceRecognitionScreen')
     }
@@ -13,24 +16,29 @@ export default class RealEstateSearchScreen extends PureComponent {
     onClose = () => {
         this.props.navigation.navigate('SocialAllScreen')
     }
-
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
+    }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} onClose={this.onClose} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 143) / 1080,
-                }} source={Images.icon_44} />
-            } />
+            <TitleViewNew navigation={this.props.navigation} onClose={this.onClose} 
+             showText={'服务授权'}
+             onLoadEnd={this.onLoadEnd}/>
         </View >
     };
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={{ flex: 1, backgroundColor: '#fff' }}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 {this.renderTitle()}
                 <View >
-
                     <Image style={{
                         width: UI.size.screenWidth,
                         height: UI.size.screenWidth * 1086 / 1080

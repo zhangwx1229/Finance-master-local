@@ -1,23 +1,32 @@
 import React, { PureComponent } from 'react';
 import { TouchableWithoutFeedback, Image, Text, StyleSheet, View } from 'react-native';
 import Images from '../../../../image';
+import moment from 'moment';
 import UI from '../../../../UI';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import filejson from '../../../../image/filename.json';
 const header_h = 100
 const scroll_h = 180
 //北京通
 export default class SocialSecurityScreen extends PureComponent {
-
+    constructor(){
+        super()
+        this.state={isShowContent:false}
+    }
     clickSB = () => {
 
     }
 
     clickSBSearch = () => {
-        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: '2020-01' })
+        const date = moment(new Date().getTime()).format(
+            'YYYY-MM',
+        )
+        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: date })
     }
-
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
+    }
     renderUserInfo = () => {
         const dateStr = filejson.item_tmp_sb_0 + ''
         const date = dateStr.slice(6, 6 + 4) + '-' + dateStr.slice(10, 10 + 2) + '-' + dateStr.slice(12, 12 + 2);
@@ -593,16 +602,20 @@ export default class SocialSecurityScreen extends PureComponent {
     }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} type={1} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 145) / 1080,
-                }} source={Images.icon_23} />
-            } />
+            <TitleViewNew navigation={this.props.navigation} type={1}
+            showText={'社保卡查询'}
+            onLoadEnd={this.onLoadEnd}/>
         </View >
     };
 
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={styles.container}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { TouchableWithoutFeedback, Image, Text, StyleSheet, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 import DateSelectModel from '../../TabHomeNew/common/DateSelectModel';
 import filejson from '../../../../image/filename.json';
 const header_h = 100
@@ -18,7 +18,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
             year = route.params.selectYear
         }
 
-        this.state = { isShowYear: false, year: year }
+        this.state = { isShowYear: false, year: year,isShowContent:false }
         this.data = [];
         this.info = []
         this.getData();
@@ -65,7 +65,9 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     clickDate = () => {
         this.setState({ isShowYear: true })
     }
-
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
+    }
     clickSBSearch = () => {
         if (this.oldDate !== this.state.year) {
             this.setState({ year: this.oldDate })
@@ -342,16 +344,20 @@ export default class SocialSecuritySearchScreen extends PureComponent {
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} type={2} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 145) / 1080,
-                }} source={Images.icon_23} />
-            } />
+            <TitleViewNew navigation={this.props.navigation} type={2}
+             showText={'社保卡查询'}
+             onLoadEnd={this.onLoadEnd}/>
         </View >
     };
 
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={styles.container}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         const { isShowYear, year } = this.state;
         return (
             <View style={styles.container}>

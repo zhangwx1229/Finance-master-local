@@ -3,10 +3,13 @@ import { Image, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } fr
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 import filejson from '../../../../image/filename.json';
 export default class RealEstateSearchDetailScreen extends PureComponent {
-
+    constructor(){
+        super()
+        this.state={isShowContent:false}
+    }
     onPressOne = () => {
     }
 
@@ -16,6 +19,10 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
 
     onClose = () => {
         this.props.navigation.navigate('SocialAllScreen')
+    }
+
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
     }
     renderContent = () => {
         return <View>
@@ -131,15 +138,19 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
     }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} onBack={this.onBack} onClose={this.onClose} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 144) / 1080,
-                }} source={Images.icon_46} />
-            } />
+            <TitleViewNew navigation={this.props.navigation} onBack={this.onBack} onClose={this.onClose} 
+            showText={'权利人查询'}
+            onLoadEnd={this.onLoadEnd}/>
         </View >
     };
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={{ flex: 1, backgroundColor: '#fff' }}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 {this.renderTitle()}
@@ -154,7 +165,6 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                     contentView={this.renderContent}
                 />
                 <View style={{ height: 40, backgroundColor: '#f5f5f5' }} />
-
                 <View >
                     <Image style={{
                         width: UI.size.screenWidth,

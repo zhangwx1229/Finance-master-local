@@ -2,17 +2,22 @@ import React, { PureComponent } from 'react';
 import { TouchableWithoutFeedback, Image, StyleSheet, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 const header_h = 100
 const scroll_h = 180
 //北京通
 export default class AccumulationScreen extends PureComponent {
-
+    constructor(){
+        super()
+        this.state={isShowContent:false}
+    }
     clickGJJ = () => {
         this.props.navigation.navigate('AccumulationInfoScreen')
     }
-
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
+    }
 
     renderContent = () => {
         return <View >
@@ -49,16 +54,20 @@ export default class AccumulationScreen extends PureComponent {
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 145) / 1080,
-                }} source={Images.icon_16} />
-            } />
+            <TitleViewNew navigation={this.props.navigation}
+            showText={'公积金'}
+            onLoadEnd={this.onLoadEnd}/>
         </View >
     };
 
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={styles.container}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         const image_h = UI.size.screenWidth - 50 * 2
         return (
             <View style={styles.container}>

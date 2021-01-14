@@ -2,9 +2,12 @@ import React, { PureComponent } from 'react';
 import { Image, StyleSheet, TouchableWithoutFeedback, View, StatusBar } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import TitleView from './TitleView';
+import TitleViewNew from './TitleViewNew';
 export default class RealEstateDetailScreen extends PureComponent {
-
+constructor(){
+    super()
+    this.state={isShowContent:false}
+}
     onPressOne = () => {
         this.props.navigation.navigate('RealEstateSearchDetailScreen')
     }
@@ -19,17 +22,25 @@ export default class RealEstateDetailScreen extends PureComponent {
         this.props.navigation.navigate('SocialAllScreen')
     }
 
+    onLoadEnd=()=>{
+        this.setState({isShowContent:true})
+    }
+
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleView navigation={this.props.navigation} onBack={this.onBack} onClose={this.onClose} imageComponent={() =>
-                <Image style={{
-                    width: UI.size.screenWidth,
-                    height: (UI.size.screenWidth * 145) / 1080,
-                }} source={Images.icon_42} />
-            } />
+            <TitleViewNew navigation={this.props.navigation} onBack={this.onBack} 
+            showText={'网上查询'}
+            onLoadEnd={this.onLoadEnd}/>
         </View >
     };
     render() {
+        if (!this.state.isShowContent) {
+            return (
+                <View style={{ flex: 1, backgroundColor: '#fff' }}>
+                    {this.renderTitle()}
+                    </View>
+            )
+        }
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 {this.renderTitle()}

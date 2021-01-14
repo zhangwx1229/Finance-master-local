@@ -21,10 +21,6 @@ export default class SocialAllScreen extends Component {
     }
     clickGJJ = () => {
         // 点击进入公积金
-        this.props.navigation.navigate('AccumulationInfoScreen')
-    }
-    clickGJJ1 = () => {
-        // 点击进入公积金1
         this.props.navigation.navigate('AccumulationScreenNew')
     }
     
