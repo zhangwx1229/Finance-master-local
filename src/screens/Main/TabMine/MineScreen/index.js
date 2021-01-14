@@ -4,6 +4,7 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import filejson from '../../../../image/filename.json';
+import LinearGradient from 'react-native-linear-gradient';
 const header_h = 70
 export default class MineScreen extends PureComponent {
     constructor() {
@@ -46,6 +47,17 @@ export default class MineScreen extends PureComponent {
         const sub = 10
         return <View style={{ paddingTop: 65, backgroundColor: 'transparent' }}>
             <View>
+            {/* <LinearGradient
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: 15,
+                            }}
+                            colors={['#8C40F6', '#FF60A9']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 0 }}
+                        /> */}
                 <Image style={{
                     alignSelf: 'center',
                     width: UI.size.screenWidth - sub * 2,

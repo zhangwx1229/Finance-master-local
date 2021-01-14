@@ -23,6 +23,11 @@ export default class SocialAllScreen extends Component {
         // 点击进入公积金
         this.props.navigation.navigate('AccumulationInfoScreen')
     }
+    clickGJJ1 = () => {
+        // 点击进入公积金1
+        this.props.navigation.navigate('AccumulationScreenNew')
+    }
+    
     clickBDC = () => {
         // 点击进入不动产
         this.props.navigation.navigate('RealEstateSearchScreen')
@@ -134,10 +139,19 @@ export default class SocialAllScreen extends Component {
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 1259 / 1080
             }} source={Images.icon_59} />
+            <View style={{ flex: 1 }}>
             <Image style={{
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 1941 / 1080
             }} source={Images.icon_60} />
+                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                    <View style={{ position: 'absolute', right: 30, top: 200, width: UI.size.screenWidth/2-60, height: 70, backgroundColor: UI.color.tempColor }} />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.clickBDC}>
+                    <View style={{ position: 'absolute', left: 30, top: 200+70, width: UI.size.screenWidth/2-60,  height: 70, backgroundColor: UI.color.tempColor }} />
+                </TouchableWithoutFeedback>
+            </View>
+           
             <Image style={{
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 1466 / 1080
