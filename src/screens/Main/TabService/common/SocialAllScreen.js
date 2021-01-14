@@ -58,7 +58,6 @@ export default class SocialAllScreen extends Component {
                 this.setState({ selectIndex: 0 })
             }
         }
-        console.debug('======onScroll===', y, num, num1)
     }
 
     renderSelect = (tag) => {

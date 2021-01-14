@@ -19,7 +19,7 @@ export default class TaxServer extends PureComponent {
         };
         this.widthList = {};
         this.barColor = 'transparent'
-        this.weather = { "tem1": "晴", "tem": " 14-25" }
+        this.weather = { "tem1": "晴", "tem": "不限行" }
         this.getWeather();
     }
 
@@ -39,10 +39,13 @@ export default class TaxServer extends PureComponent {
             const { data, weather } = filejson.weatherList[i];
             if (data === dateStr) {
                 const index = weather.indexOf(' ');
-                this.weather = { tem: weather.slice(0, index), tem1: weather.slice(index) };
+                let tem = weather.slice(index)
+                if (tem.indexOf(' ') == 0) {
+                    tem = weather.slice(index + 1)
+                }
+                this.weather = { tem1: weather.slice(0, index), tem: tem };
             }
         }
-        console.debug('===sss===', this.weather)
     }
 
     componentDidMount() {
@@ -53,20 +56,6 @@ export default class TaxServer extends PureComponent {
     }
     componentWillUnmount() {
         this.props.navigation.removeListener();
-    }
-
-    getIcon = () => {
-        let iconStyle = { width: 12 * 56 / 42, height: 12 }
-        let iconName = 'icon_14'
-        if (this.weather.tem1 === "多云") {
-
-        } else if (this.weather.tem1 === "晴") {
-            iconStyle = { width: 18, height: 18 }
-            iconName = 'icon_15'
-        } else {
-
-        }
-        return { iconStyle, iconName }
     }
 
     svaeTextList = () => {
@@ -136,7 +125,6 @@ export default class TaxServer extends PureComponent {
     }
 
     renderContent = () => {
-        const { iconStyle, iconName } = this.getIcon();
         return <View>
             <View>
                 <Image style={{
@@ -193,7 +181,7 @@ export default class TaxServer extends PureComponent {
                 }} >{this.weather.tem1}</Text>
                 <Text style={{
                     fontSize: UI.fontSizeNew.font_7, color: num > 0.5 ? "#9d9d9d" : "#fff"
-                }} >不限行</Text>
+                }} >{this.weather.tem}</Text>
             </View>
             <View style={{
                 flex: 1,
