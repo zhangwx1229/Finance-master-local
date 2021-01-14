@@ -23,7 +23,7 @@ export default class SocialAllScreen extends Component {
         // 点击进入公积金
         this.props.navigation.navigate('AccumulationScreenNew')
     }
-    
+
     clickBDC = () => {
         // 点击进入不动产
         this.props.navigation.navigate('RealEstateSearchScreen')
@@ -42,8 +42,9 @@ export default class SocialAllScreen extends Component {
                 this.setState({ isShowSelect: false })
             }
         }
-        if (y >= num1) {
-            if (y >= num2) {
+        const sep = 30
+        if (y >= num1 - sep) {
+            if (y >= num2 - sep) {
                 if (this.state.selectIndex !== 2) {
                     this.setState({ selectIndex: 2 })
                 }
@@ -61,22 +62,28 @@ export default class SocialAllScreen extends Component {
     }
 
     renderSelect = (tag) => {
-        let selectView = <Image style={{
+        let selectView = [<Image style={{
+            position: 'absolute',
+            opacity: this.state.selectIndex === 0 ? 1 : 0,
             width: UI.size.screenWidth,
             height: UI.size.screenWidth * 119 / 1080
-        }} source={Images.icon_56} />
-        if (this.state.selectIndex === 1) {
-            selectView = <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 119 / 1080
-            }} source={Images.icon_57} />
-        } else if (this.state.selectIndex === 2) {
-            selectView = <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 119 / 1080
-            }} source={Images.icon_58} />
-        }
-        return <View key={tag ? '111' : '222'}>
+        }} source={Images.icon_56} />]
+        selectView.push(<Image style={{
+            position: 'absolute',
+            opacity: this.state.selectIndex === 1 ? 1 : 0,
+            width: UI.size.screenWidth,
+            height: UI.size.screenWidth * 119 / 1080
+        }} source={Images.icon_57} />)
+        selectView.push(<Image style={{
+            position: 'absolute',
+            opacity: this.state.selectIndex === 2 ? 1 : 0,
+            width: UI.size.screenWidth,
+            height: UI.size.screenWidth * 119 / 1080
+        }} source={Images.icon_58} />)
+        return <View key={tag ? '111' : '222'} style={{
+            width: UI.size.screenWidth,
+            height: UI.size.screenWidth * 119 / 1080
+        }}>
             {selectView}
             <TouchableWithoutFeedback onPress={() => {
                 this.setState({ selectIndex: 0 })
@@ -136,18 +143,18 @@ export default class SocialAllScreen extends Component {
                 height: UI.size.screenWidth * 1259 / 1080
             }} source={Images.icon_59} />
             <View style={{ flex: 1 }}>
-            <Image style={{
-                width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1941 / 1080
-            }} source={Images.icon_60} />
+                <Image style={{
+                    width: UI.size.screenWidth,
+                    height: UI.size.screenWidth * 1941 / 1080
+                }} source={Images.icon_60} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
-                    <View style={{ position: 'absolute', right: 30, top: 200, width: UI.size.screenWidth/2-60, height: 70, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', right: 30, top: 200, width: UI.size.screenWidth / 2 - 60, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickBDC}>
-                    <View style={{ position: 'absolute', left: 30, top: 200+70, width: UI.size.screenWidth/2-60,  height: 70, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', left: 30, top: 200 + 70, width: UI.size.screenWidth / 2 - 60, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
-           
+
             <Image style={{
                 width: UI.size.screenWidth,
                 height: UI.size.screenWidth * 1466 / 1080

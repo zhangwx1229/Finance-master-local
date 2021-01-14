@@ -6,9 +6,9 @@ import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import TitleViewNew from './TitleViewNew';
 import filejson from '../../../../image/filename.json';
 export default class RealEstateSearchDetailScreen extends PureComponent {
-    constructor(){
+    constructor() {
         super()
-        this.state={isShowContent:false}
+        this.state = { isShowContent: false }
     }
     onPressOne = () => {
     }
@@ -21,8 +21,8 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
         this.props.navigation.navigate('SocialAllScreen')
     }
 
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
     renderContent = () => {
         return <View>
@@ -77,6 +77,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         placeholder="请输入查询人"
                         value={filejson.name + ',' + filejson.item_tmp_sb_0}
                         placeholderTextColor={'#9d9d9d69'}
+
                         onChangeText={(text) => this.setState({ text })}
                     />
                 </View>
@@ -108,6 +109,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         <TextInput
                             style={{ fontSize: UI.fontSizeNew.font_11, width: UI.size.screenWidth - 180, height: 40 }}
                             placeholder="请输入查询的内容"
+
                             placeholderTextColor={'#9d9d9d69'}
                             onChangeText={(text) => this.setState({ text })}
                         />
@@ -124,7 +126,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
             >
                 权利人查询也支持以姓名和身份证号码或机构名称直接查询
                 </Text>
-            <View style={{ marginTop: 20, marginHorizontal: 20, padding: 6, backgroundColor: '#fafafa', borderRadius: 8 }}>
+            <View style={{ marginTop: 20, marginBottom: 10, marginHorizontal: 20, padding: 6, backgroundColor: '#fafafa', borderRadius: 8 }}>
                 <Text
                     style={{
                         fontSize: UI.fontSizeNew.font_12,
@@ -138,9 +140,9 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
     }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation} onBack={this.onBack} onClose={this.onClose} 
-            showText={'权利人查询'}
-            onLoadEnd={this.onLoadEnd}/>
+            <TitleViewNew navigation={this.props.navigation} onBack={this.onBack} onClose={this.onClose}
+                showText={'权利人查询'}
+                onLoadEnd={this.onLoadEnd} />
         </View >
     };
     render() {
@@ -148,11 +150,11 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff' }}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         return (
-            <View style={{ flex: 1, backgroundColor: '#fff' }}>
+            <View style={{ justifyContent: 'space-between', width: UI.size.screenWidth, height: UI.size.screenHeight, backgroundColor: '#fff' }}>
                 {this.renderTitle()}
                 <Image style={{
                     width: UI.size.screenWidth,
@@ -164,17 +166,19 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                     backgroundColor={'#fff'}
                     contentView={this.renderContent}
                 />
-                <View style={{ height: 40, backgroundColor: '#f5f5f5' }} />
                 <View >
-                    <Image style={{
-                        width: UI.size.screenWidth,
-                        height: UI.size.screenWidth * 235 / 1080
-                    }} source={Images.icon_47} />
-                    <TouchableWithoutFeedback onPress={this.onPressOne}>
-                        <View style={{ position: 'absolute', alignSelf: 'center', width: 60, height: 45, backgroundColor: UI.color.tempColor }} />
-                    </TouchableWithoutFeedback>
+                    <View style={{ height: 40, backgroundColor: '#f5f5f5' }} />
+                    <View >
+                        <Image style={{
+                            width: UI.size.screenWidth,
+                            height: UI.size.screenWidth * 235 / 1080
+                        }} source={Images.icon_47} />
+                        <TouchableWithoutFeedback onPress={this.onPressOne}>
+                            <View style={{ position: 'absolute', alignSelf: 'center', width: 60, height: 45, backgroundColor: UI.color.tempColor }} />
+                        </TouchableWithoutFeedback>
+                    </View>
+                    <View style={{ height: 20, backgroundColor: '#f5f5f5' }} />
                 </View>
-                <View style={{ height: 20, backgroundColor: '#f5f5f5' }} />
             </View>
         );
     }

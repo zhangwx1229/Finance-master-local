@@ -8,15 +8,15 @@ const header_h = 100
 const scroll_h = 180
 //北京通
 export default class AccumulationScreen extends PureComponent {
-    constructor(){
+    constructor() {
         super()
-        this.state={isShowContent:false}
+        this.state = { isShowContent: false }
     }
     clickGJJ = () => {
         this.props.navigation.navigate('AccumulationInfoScreen')
     }
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
 
     renderContent = () => {
@@ -47,7 +47,7 @@ export default class AccumulationScreen extends PureComponent {
             </View>
             <Image style={{
                 width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1220 / 1080
+                height: UI.size.screenWidth * 1232 / 1080
             }} source={Images.icon_18} />
         </View >
     }
@@ -55,8 +55,8 @@ export default class AccumulationScreen extends PureComponent {
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
             <TitleViewNew navigation={this.props.navigation}
-            showText={'公积金'}
-            onLoadEnd={this.onLoadEnd}/>
+                showText={'公积金'}
+                onLoadEnd={this.onLoadEnd} />
         </View >
     };
 
@@ -65,7 +65,7 @@ export default class AccumulationScreen extends PureComponent {
             return (
                 <View style={styles.container}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         const image_h = UI.size.screenWidth - 50 * 2

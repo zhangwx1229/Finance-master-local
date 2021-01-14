@@ -10,9 +10,9 @@ const header_h = 100
 const scroll_h = 180
 //北京通
 export default class SocialSecurityScreen extends PureComponent {
-    constructor(){
+    constructor() {
         super()
-        this.state={isShowContent:false}
+        this.state = { isShowContent: false }
     }
     clickSB = () => {
 
@@ -24,8 +24,8 @@ export default class SocialSecurityScreen extends PureComponent {
         )
         this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: date })
     }
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
     renderUserInfo = () => {
         const dateStr = filejson.item_tmp_sb_0 + ''
@@ -603,8 +603,9 @@ export default class SocialSecurityScreen extends PureComponent {
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
             <TitleViewNew navigation={this.props.navigation} type={1}
-            showText={'社保卡查询'}
-            onLoadEnd={this.onLoadEnd}/>
+                showText={'社保卡查询'}
+                loging2Text={'fuwu.rsj.beijing.gov.cn/...'}
+                onLoadEnd={this.onLoadEnd} />
         </View >
     };
 
@@ -613,7 +614,7 @@ export default class SocialSecurityScreen extends PureComponent {
             return (
                 <View style={styles.container}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         const image_h = UI.size.screenWidth - 50 * 2

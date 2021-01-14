@@ -4,18 +4,18 @@ import Images from '../../../../image';
 import UI, { getFontSize } from '../../../../UI';
 let font_13_5 = UI.fontSizeNew.font_13_5
 export default class TitleViewNew extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             lineWidth: 0,
-          };
+        };
     }
-    componentDidMount(){
+    componentDidMount() {
         setTimeout(() => {
             this.startAnimated()
-        },300);
+        }, 300);
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         if (this.timer) {
             clearInterval(this.timer)
         }
@@ -47,43 +47,43 @@ export default class TitleViewNew extends Component {
         }
     }
     startAnimated = () => {
-        const sep = 600/10;
+        const sep = 1200 / 10;
         this.timer = setInterval(() => {
-            const rom = Math.ceil(Math.random()*10)
-                const {lineWidth} = this.state;
-                let lin = lineWidth+rom/10
-                if (rom>5||rom<0) {
-                    lin = lineWidth+0.1
+            const rom = Math.ceil(Math.random() * 10)
+            const { lineWidth } = this.state;
+            let lin = lineWidth + rom / 10
+            if (rom > 5 || rom < 0) {
+                lin = lineWidth + 0.1
+            }
+            if (lin > 1) {
+                lin = 1
+                const { onLoadEnd } = this.props
+                if (onLoadEnd) {
+                    onLoadEnd()
                 }
-                if (lin>1) {
-                    lin = 1
-                    const {onLoadEnd}  =this.props
-                    if (onLoadEnd) {
-                        onLoadEnd()
-                    }
+            }
+            if (lineWidth === 1) {
+                lin = 1.1
+                if (this.timer) {
+                    clearInterval(this.timer)
                 }
-                if (lineWidth===1) {
-                    lin = 1.1
-                    if (this.timer) {
-                        clearInterval(this.timer)
-                    }
-                }
-                this.setState({lineWidth:lin})
+            }
+            this.setState({ lineWidth: lin })
         }, sep);
-      };
+    };
     render() {
         const H = (UI.size.screenWidth * 144) / 1080
-        const {lineWidth} = this.state;
-        let wid = lineWidth*100+'%'
-        if (lineWidth>1) {
+        const { lineWidth } = this.state;
+        let wid = lineWidth * 100 + '%'
+        if (lineWidth > 1) {
             wid = '100%'
         }
-        const {showText, logingText, loging2Text} = this.props
-        let statusText = showText||''
-        if (lineWidth>0&&lineWidth<0.8) {
-            statusText = logingText||'正在登录....'
-        }else if (lineWidth>0.8&&lineWidth<1) {
-            statusText = loging2Text||'正在登录....'
+        const { showText, logingText, loging2Text } = this.props
+        let statusText = showText || ''
+        if (lineWidth > 0 && lineWidth < 0.5) {
+            statusText = logingText || '加载中...'
+        } else if (lineWidth > 0.5 && lineWidth < 1) {
+            statusText = loging2Text || '加载中...'
         }
         const hei = (UI.size.screenWidth * 145) / 1080
         return (
@@ -92,8 +92,9 @@ export default class TitleViewNew extends Component {
                     width: UI.size.screenWidth,
                     height: hei,
                 }} source={Images.icon_74} />
-                 <Text numberOfLines={1} style={{position:'absolute',alignSelf:'center',left:hei*2+10,right:hei+10,
-                    fontSize: UI.fontSizeNew.font_14, color:  "#333"
+                <Text numberOfLines={1} style={{
+                    position: 'absolute', alignSelf: 'center', left: hei * 2 + 10, right: hei + 10,
+                    fontSize: UI.fontSizeNew.font_14, color: "#333"
                 }} >{statusText}</Text>
                 <TouchableWithoutFeedback onPress={this.clickBack}>
                     <View style={{ position: 'absolute', left: 10, width: H - 10 * 2, height: H - 10 * 2, backgroundColor: 'transparent' }} />
@@ -101,7 +102,7 @@ export default class TitleViewNew extends Component {
                 <TouchableWithoutFeedback onPress={this.clickClose}>
                     <View style={{ position: 'absolute', left: 10 + H - 10 * 2 + 30, width: H - 10 * 2, height: H - 10 * 2, backgroundColor: 'transparent' }} />
                 </TouchableWithoutFeedback>
-                {lineWidth<=1?<View style={{width:wid,height:1,backgroundColor:'red'}} />:null}
+                {lineWidth <= 1 ? <View style={{ width: wid, height: 1, backgroundColor: '#0C79FC' }} /> : null}
             </View>
         );
     }

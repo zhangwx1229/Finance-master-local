@@ -18,7 +18,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
             year = route.params.selectYear
         }
 
-        this.state = { isShowYear: false, year: year,isShowContent:false }
+        this.state = { isShowYear: false, year: year, isShowContent: false }
         this.data = [];
         this.info = []
         this.getData();
@@ -65,8 +65,8 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     clickDate = () => {
         this.setState({ isShowYear: true })
     }
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
     clickSBSearch = () => {
         if (this.oldDate !== this.state.year) {
@@ -117,7 +117,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                 >
                     单位名称
                 </Text>
-                <Text
+                {this.info[0] ? <Text
                     style={{
                         marginLeft: 10,
                         fontSize: UI.fontSizeNew.font_11,
@@ -125,7 +125,8 @@ export default class SocialSecuritySearchScreen extends PureComponent {
                     }}
                 >
                     {this.info[0]}
-                </Text>
+                </Text> : null}
+
                 <Text
                     style={{
                         marginLeft: 10,
@@ -210,6 +211,22 @@ export default class SocialSecuritySearchScreen extends PureComponent {
         for (let i = 0; i < this.data.length; i++) {
             const element = this.data[i];
             items.push(this.renderItem(element))
+        }
+        if (items.length === 0) {
+            items.push(<View style={{
+                marginHorizontal: 10, flexDirection: 'row', justifyContent: 'center',
+                backgroundColor: '#9d9d9d42',
+            }}><Text
+                style={{
+                    fontSize: UI.fontSizeNew.font_11,
+                    alignSelf: 'center',
+                    textAlign: 'center',
+                    bottom: 1,
+                    color: 'red',
+                }}
+            >
+                    没有查询到数据
+            </Text></View>)
         }
 
         return <View style={{
@@ -345,8 +362,10 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
             <TitleViewNew navigation={this.props.navigation} type={2}
-             showText={'社保卡查询'}
-             onLoadEnd={this.onLoadEnd}/>
+                showText={'社保卡查询'}
+                logingText={'社保卡查询'}
+                loging2Text={'社保卡查询'}
+                onLoadEnd={this.onLoadEnd} />
         </View >
     };
 
@@ -355,7 +374,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
             return (
                 <View style={styles.container}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         const { isShowYear, year } = this.state;
