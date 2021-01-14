@@ -9,7 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-filename = "8个客户.xlsx"
+filename = "text_01.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../北京通'
@@ -309,7 +309,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathDir,jsondata)
 
-#    encode_apk(jsondata['name'])
+    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):
