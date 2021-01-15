@@ -21,6 +21,8 @@ import FaceRecognitionScreen from '../../screens/Main/TabService/common/FaceReco
 import RealEstateDetailScreen from '../../screens/Main/TabService/common/RealEstateDetailScreen';
 import RealEstateSearchDetailScreen from '../../screens/Main/TabService/common/RealEstateSearchDetailScreen';
 import LoginScreen from '../../screens/Main/TabService/common/LoginScreen';
+import SystemScreen from '../../screens/Main/TabService/common/SystemScreen';
+import UserInfoScreen from '../../screens/Main/TabService/common/UserInfoScreen';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +47,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="RealEstateDetailScreen" component={RealEstateDetailScreen} />
                 <Stack.Screen name="RealEstateSearchDetailScreen" component={RealEstateSearchDetailScreen} />
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
+                <Stack.Screen name="UserInfoScreen" component={UserInfoScreen} />
                 
             </Stack.Navigator>
         );
