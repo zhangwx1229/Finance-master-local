@@ -11,6 +11,7 @@ export default class LoginNewScreen extends PureComponent {
         this.state = { phoneNumber: '', timer: 0 };
         this.currentDate = new Date().getTime();
         this.timer = 0;
+        this.isSend = false
     }
 
 
@@ -24,9 +25,12 @@ export default class LoginNewScreen extends PureComponent {
         if (this.timer) {
             clearInterval(this.timer);
         }
+        this.isSend = true
         this.currentDate = new Date().getTime();
+        const num = 60
+        this.setState({ timer: num });
         this.timer = setInterval(() => {
-            const now = 60 - Math.ceil((new Date().getTime() - this.currentDate) / 1000);
+            let now = num - Math.floor((new Date().getTime() - this.currentDate) / 1000);
             if (now < 0) {
                 if (this.timer) {
                     clearInterval(this.timer);
@@ -34,7 +38,7 @@ export default class LoginNewScreen extends PureComponent {
                 now = 0;;
             }
             if (this.state.timer !== now) {
-                this.setState({ timer: now });;
+                this.setState({ timer: now });
             }
         }, 1000);
     };
@@ -50,7 +54,7 @@ export default class LoginNewScreen extends PureComponent {
     };
 
     onChangeNumText = text => {
-        if (this.state.phoneNumber.length === 11 && text.length === 4) {
+        if (this.isSend && this.state.phoneNumber.length === 11 && text.length === 4) {
             this.props.navigation.navigate('Home');
         }
     };
@@ -98,15 +102,13 @@ export default class LoginNewScreen extends PureComponent {
                     style={{
                         flexDirection: 'row',
                         justifyContent: 'space-between',
-                        marginLeft: 31,
-                        marginRight: 25,
+                        marginHorizontal: 25,
                         marginTop: 10,
                     }}
                 >
                     <TextInput
                         style={{
                             fontSize: UI.fontSizeNew.font_12_5,
-                            width: UI.size.screenWidth - 150,
                             height: 40,
                         }}
                         placeholder="请输入短信验证码"
@@ -114,10 +116,9 @@ export default class LoginNewScreen extends PureComponent {
                         placeholderTextColor={'#00000059'}
                         onChangeText={this.onChangeNumText}
                     />
-                    <TouchableWithoutFeedback onPress={this.clickSend}>
+                    <TouchableWithoutFeedback disabled={this.state.phoneNumber.length < 11} onPress={this.clickSend}>
                         <View
                             style={{
-                                width: 80,
                                 height: 40,
                                 justifyContent: 'center',
                                 backgroundColor: UI.color.tempColor,
@@ -125,9 +126,10 @@ export default class LoginNewScreen extends PureComponent {
                         >
                             <Text
                                 style={{
+                                    textAlign: 'right',
                                     alignSelf: 'center',
                                     fontSize: UI.fontSizeNew.font_12_5,
-                                    color: this.state.phoneNumber.length > 0 ? '#333' : '#33333322',
+                                    color: this.state.phoneNumber.length >= 11 ? '#333' : '#33333322',
                                 }}
                             >
                                 {msgText}
