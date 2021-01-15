@@ -11,7 +11,7 @@ export default class SystemScreen extends PureComponent {
     };
 
     onOut = () => {
-        this.props.navigation.navigate('LoginScreen');
+        this.props.navigation.navigate('LoginNewScreen');
     };
 
     onUser = () => {
@@ -25,7 +25,7 @@ export default class SystemScreen extends PureComponent {
                 <View>
                     <Image
                         style={{
-                            marginTop: 100,
+                            marginTop: UI.size.statusBarHeight,
                             width: wid,
                             height: (wid * 407) / 1080,
                         }}
@@ -57,7 +57,6 @@ export default class SystemScreen extends PureComponent {
                 <View>
                     <Image
                         style={{
-                            marginTop: 100,
                             width: wid,
                             height: (wid * 886) / 1080,
                         }}
@@ -67,10 +66,10 @@ export default class SystemScreen extends PureComponent {
                         <View
                             style={{
                                 position: 'absolute',
-                                left: 30,
+                                left: 0,
                                 bottom: 0,
-                                width: UI.size.screenWidth - 30 * 2,
-                                height: 50,
+                                width: UI.size.screenWidth,
+                                height: 40,
                                 backgroundColor: UI.color.tempColor,
                             }}
                         />
@@ -81,13 +80,5 @@ export default class SystemScreen extends PureComponent {
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff' },
-    content: { flex: 1, backgroundColor: '#f5f4f8' },
-    contentContainerStyle: {
-        backgroundColor: UI.color.background,
-    },
-    header: {
-        width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 146) / 1080,
-    },
+    container: { flex: 1, backgroundColor: '#f5f4f8' },
 });

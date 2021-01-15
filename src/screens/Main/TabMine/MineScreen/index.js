@@ -35,6 +35,12 @@ export default class MineScreen extends PureComponent {
         // 点击进入公积金
         this.props.navigation.navigate('AccumulationInfoScreen')
     }
+
+    clickSystem = () => {
+        // 点击进入公积金
+        this.props.navigation.navigate('SystemScreen')
+    }
+
     onScroll = (y) => {
         if (y < header_h) {
             this.setState({ indexY: y })
@@ -93,6 +99,9 @@ export default class MineScreen extends PureComponent {
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSB}>
                     <View style={{ position: 'absolute', right: 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={this.clickSystem}>
+                    <View style={{ position: 'absolute', left: 0, bottom: 0, width: '100%', height: 40, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
         </View >

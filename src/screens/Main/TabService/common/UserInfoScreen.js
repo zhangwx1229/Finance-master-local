@@ -15,21 +15,22 @@ export default class UserInfoScreen extends PureComponent {
         return (
             <View style={styles.container}>
                 <View>
-                <Image
-                    style={{
-                        marginTop: 100,
-                        width: wid,
-                        height: (wid * 791) / 1080,
-                    }}
-                    source={Images.icon_80}
-                />
+                    <Image
+                        style={{
+                            marginTop: UI.size.statusBarHeight,
+                            width: wid,
+                            height: (wid * 791) / 1080,
+                        }}
+                        source={Images.icon_80}
+                    />
                     <TouchableWithoutFeedback onPress={this.onBack}>
                         <View
                             style={{
                                 position: 'absolute',
+                                top: UI.size.statusBarHeight,
                                 left: 0,
                                 width: 50,
-                                height: 50,
+                                height: 40,
                                 backgroundColor: UI.color.tempColor,
                             }}
                         />
@@ -37,7 +38,6 @@ export default class UserInfoScreen extends PureComponent {
                 </View>
                 <Image
                     style={{
-                        marginTop: 100,
                         width: wid,
                         height: (wid * 1018) / 1080,
                     }}
@@ -48,13 +48,5 @@ export default class UserInfoScreen extends PureComponent {
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff' },
-    content: { flex: 1, backgroundColor: '#f5f4f8' },
-    contentContainerStyle: {
-        backgroundColor: UI.color.background,
-    },
-    header: {
-        width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 146) / 1080,
-    },
+    container: { flex: 1, backgroundColor: '#f5f4f8' },
 });

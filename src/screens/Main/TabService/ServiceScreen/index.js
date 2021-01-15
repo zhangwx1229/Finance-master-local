@@ -74,7 +74,7 @@ export default class TaxServer extends PureComponent {
     clickAll = () => {
         // 点击进入全部
         this.props.navigation.navigate('SocialAllScreen')
-        // this.props.navigation.navigate('LoginScreen')
+        // this.props.navigation.navigate('LoginNewScreen')
     }
 
     clickGJJ = () => {

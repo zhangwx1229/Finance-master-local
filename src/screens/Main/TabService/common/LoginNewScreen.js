@@ -5,7 +5,7 @@ import UI from '../../../../UI';
 const header_h = 100;
 const scroll_h = 180;
 //北京通
-export default class LoginScreen extends PureComponent {
+export default class LoginNewScreen extends PureComponent {
     constructor() {
         super();
         this.state = { phoneNumber: '', timer: 0 };
@@ -13,7 +13,6 @@ export default class LoginScreen extends PureComponent {
         this.timer = 0;
     }
 
-    componentDidMount() {}
 
     componentWillUnmount() {
         if (this.timer) {
@@ -41,20 +40,25 @@ export default class LoginScreen extends PureComponent {
     };
 
     clickSend = () => {
-        // this.props.navigation.navigate('AccumulationInfoScreen');
         this.startTimer()
     };
 
-    onChangeText = text => {
+    onChangePhoneText = text => {
         if (text.length === 11) {
-            this.setState({ phoneNumber: text });;
+            this.setState({ phoneNumber: text });
+        }
+    };
+
+    onChangeNumText = text => {
+        if (this.state.phoneNumber.length === 11 && text.length === 4) {
+            this.props.navigation.navigate('Home');
         }
     };
 
     renderInput = () => {
         let msgText = '发送短信'
-        if (this.state.timer>0) {
-            msgText = '发送短信('+this.state.timer+')'
+        if (this.state.timer > 0) {
+            msgText = '发送短信(' + this.state.timer + ')'
         }
         return (
             <View style={{ marginTop: 40 }}>
@@ -75,10 +79,10 @@ export default class LoginScreen extends PureComponent {
                                 width: UI.size.screenWidth - 150,
                                 height: 40,
                             }}
-                            placeholder="请输入查询人"
+                            placeholder="请输入手机号码"
                             // value={filejson.name + ',' + filejson.item_tmp_sb_0}
                             placeholderTextColor={'#00000059'}
-                            onChangeText={this.onChangeText}
+                            onChangeText={this.onChangePhoneText}
                         />
                     </View>
                 </View>
@@ -105,10 +109,10 @@ export default class LoginScreen extends PureComponent {
                             width: UI.size.screenWidth - 150,
                             height: 40,
                         }}
-                        placeholder="请输入查询人"
+                        placeholder="请输入短信验证码"
                         // value={filejson.name + ',' + filejson.item_tmp_sb_0}
                         placeholderTextColor={'#00000059'}
-                        onChangeText={text => {}}
+                        onChangeText={this.onChangeNumText}
                     />
                     <TouchableWithoutFeedback onPress={this.clickSend}>
                         <View
@@ -126,7 +130,7 @@ export default class LoginScreen extends PureComponent {
                                     color: this.state.phoneNumber.length > 0 ? '#333' : '#33333322',
                                 }}
                             >
-                               {msgText}
+                                {msgText}
                             </Text>
                         </View>
                     </TouchableWithoutFeedback>
@@ -139,7 +143,7 @@ export default class LoginScreen extends PureComponent {
                         height: 1,
                     }}
                 />
-            </View>;
+            </View>
         );
     };
 
@@ -149,7 +153,7 @@ export default class LoginScreen extends PureComponent {
             <View style={styles.container}>
                 <Image
                     style={{
-                        marginTop: 100,
+                        marginTop: 110,
                         width: wid,
                         height: (wid * 304) / 1080,
                     }}
@@ -178,13 +182,8 @@ export default class LoginScreen extends PureComponent {
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff' },
-    content: { flex: 1, backgroundColor: '#f5f4f8' },
-    contentContainerStyle: {
-        backgroundColor: UI.color.background,
-    },
-    header: {
+    container: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 146) / 1080,
+        height: UI.size.screenHeight, backgroundColor: '#fff'
     },
 });
