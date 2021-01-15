@@ -24,8 +24,8 @@ export default class AccumulationScreen extends PureComponent {
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 783 / 1080
-                }} source={Images.icon_19} />
+                    height: UI.size.screenWidth * 755 / 1080
+                }} source={Images.icon_75} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{
                         position: 'absolute', left: 20, bottom: 30,
@@ -36,25 +36,34 @@ export default class AccumulationScreen extends PureComponent {
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 1043 / 1080
-                }} source={Images.icon_17} />
+                    height: UI.size.screenWidth * 332 / 1080
+                }} source={Images.icon_76} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{
-                        position: 'absolute', left: 10, top: 50,
+                        position: 'absolute', left: 10, bottom: 10,
                         width: 200, height: 40, backgroundColor: UI.color.tempColor
                     }} />
                 </TouchableWithoutFeedback>
             </View>
             <Image style={{
                 width: UI.size.screenWidth,
-                height: UI.size.screenWidth * 1232 / 1080
-            }} source={Images.icon_18} />
+                height: UI.size.screenWidth * 1265 / 1080
+            }} source={Images.icon_77_0} />
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 785 / 1080
+            }} source={Images.icon_77_1} />
+            <Image style={{
+                width: UI.size.screenWidth,
+                height: UI.size.screenWidth * 985 / 1080
+            }} source={Images.icon_78} />
         </View >
     }
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
             <TitleViewNew navigation={this.props.navigation}
+            type={3}
                 showText={'公积金'}
                 onLoadEnd={this.onLoadEnd} />
         </View >
