@@ -92,7 +92,8 @@ export default class MineScreen extends PureComponent {
             <View>
                 <Image style={{
                     width: UI.size.screenWidth,
-                    height: UI.size.screenWidth * 993 / 1080
+                    height: UI.size.screenWidth * 993 / 1080,
+                    marginBottom: 80
                 }} source={Images.icon_68} />
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{ position: 'absolute', right: 50 + 30 + 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />

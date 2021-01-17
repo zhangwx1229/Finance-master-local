@@ -15,7 +15,7 @@ export default class SystemScreen extends PureComponent {
     };
 
     onUser = () => {
-        this.props.navigation.navigate('UserInfoScreen');
+        // this.props.navigation.navigate('UserInfoScreen');
     };
 
     render() {
