@@ -19,6 +19,7 @@ import SocialAllScreen from '../../screens/Main/TabService/common/SocialAllScree
 import RealEstateSearchScreen from '../../screens/Main/TabService/common/RealEstateSearchScreen';
 import FaceRecognitionScreen from '../../screens/Main/TabService/common/FaceRecognitionScreen';
 import RealEstateDetailScreen from '../../screens/Main/TabService/common/RealEstateDetailScreen';
+import RealEstateInfoScreen from '../../screens/Main/TabService/common/RealEstateInfoScreen';
 import RealEstateSearchDetailScreen from '../../screens/Main/TabService/common/RealEstateSearchDetailScreen';
 import LoginNewScreen from '../../screens/Main/TabService/common/LoginNewScreen';
 import SystemScreen from '../../screens/Main/TabService/common/SystemScreen';
@@ -45,6 +46,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="RealEstateSearchScreen" component={RealEstateSearchScreen} />
                 <Stack.Screen name="FaceRecognitionScreen" component={FaceRecognitionScreen} />
                 <Stack.Screen name="RealEstateDetailScreen" component={RealEstateDetailScreen} />
+                <Stack.Screen name="RealEstateInfoScreen" component={RealEstateInfoScreen} />
                 <Stack.Screen name="RealEstateSearchDetailScreen" component={RealEstateSearchDetailScreen} />
                 <Stack.Screen name="SystemScreen" component={SystemScreen} />
                 <Stack.Screen name="UserInfoScreen" component={UserInfoScreen} />

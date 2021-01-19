@@ -11,6 +11,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
         this.state = { isShowContent: false }
     }
     onPressOne = () => {
+        this.props.navigation.navigate('RealEstateInfoScreen')
     }
 
     onBack = () => {
