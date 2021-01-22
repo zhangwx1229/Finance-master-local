@@ -102,7 +102,7 @@ export default class MineScreen extends PureComponent {
                     <View style={{ position: 'absolute', right: 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickSystem}>
-                    <View style={{ position: 'absolute', left: 0, bottom: 0, width: '100%', height: 40, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', left: 0, bottom: 80, width: '100%', height: 40, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
             </View>
         </View >
