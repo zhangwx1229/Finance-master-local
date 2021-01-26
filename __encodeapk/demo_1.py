@@ -10,7 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-filename = "text_02.xlsx"
+filename = "个税样板.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../个税'
@@ -131,7 +131,7 @@ def excel_table_by_index(sheet1):
 
     writeJson(pathDir,jsondata)
 
-#    encode_apk(jsondata['name'])
+    encode_apk(jsondata['name'])
     jsondata ={}
 
 def excuteCommand(com):

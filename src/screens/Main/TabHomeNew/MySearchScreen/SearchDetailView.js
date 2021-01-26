@@ -222,7 +222,6 @@ export default class SearchDetailView extends PureComponent {
         font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
         font_10 = UI.fontSizeNew.font_10
-        console.debug('=====render===', this.data)
         if (this.data === null) {
             return null
         }
