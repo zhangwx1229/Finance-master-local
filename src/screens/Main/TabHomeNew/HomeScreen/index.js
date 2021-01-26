@@ -19,12 +19,20 @@ export default class HomeScreen extends PureComponent {
         };
         this.widthList = {};
         this.sds = {}
-        GlobalData.isLogin = filename.item_17==1
+        GlobalData.isLogin = filename.item_17 == 1
     }
 
     clickSearch = () => {
         this.props.navigation.navigate('MySearchScreen');
     };
+
+    clickSearchDetail = () => {
+        if (!GlobalData.isLogin) {
+            this.props.navigation.navigate('MineLogInScreen');
+        } else {
+            this.props.navigation.navigate('SearchView');
+        }
+    }
 
     svaeTextList = () => {
         this.setState({ textList: [] });
@@ -103,6 +111,8 @@ export default class HomeScreen extends PureComponent {
                 {/* {this.renderHeader()} */}
                 <ScrollView
                     style={styles.content}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.contentContainerStyle}
                 >
                     <View>
@@ -111,7 +121,23 @@ export default class HomeScreen extends PureComponent {
                             <View style={styles.click} />
                         </TouchableWithoutFeedback>
                     </View>
-                    <Image style={styles.image_1} source={Images.tab_home_image_1} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 1239) / 1080,
+                    }} source={Images.tab_home_image_1_0} />
+                    <View>
+                        <Image style={styles.image_1} source={Images.tab_home_image_1} />
+                        <TouchableWithoutFeedback onPress={this.clickSearchDetail}>
+                            <View style={{
+                                position: 'absolute',
+                                top: 0,
+                                width: UI.size.screenWidth - 10 * 2,
+                                height: 70,
+                                alignSelf: 'center',
+                                backgroundColor: UI.color.tempcolor//'transparent',
+                            }} />
+                        </TouchableWithoutFeedback>
+                    </View>
                     <Image style={styles.image_2} source={Images.tab_home_image_2} />
                 </ScrollView>
             </View>
@@ -127,11 +153,11 @@ const styles = StyleSheet.create({
     },
     image_0: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1490) / 1080,
+        height: (UI.size.screenWidth * 1008) / 1080,
     },
     image_1: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1658) / 1080,
+        height: (UI.size.screenWidth * 957) / 1080,
     },
     image_2: {
         width: UI.size.screenWidth,
@@ -147,6 +173,6 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         alignSelf: 'center',
-        backgroundColor: 'transparent',
+        backgroundColor: UI.color.tempcolor//'transparent',
     },
 });

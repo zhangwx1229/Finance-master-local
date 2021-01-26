@@ -19,5 +19,6 @@ export default {
     // black: '#ccc',
     orange: '#eb795c',
     darkGray: '#999999',
-    blue1: '#0c79fadf'
+    blue1: '#0c79fadf',
+    tempcolor: '#0c79fadf',//transparent 0c79fadf
 };

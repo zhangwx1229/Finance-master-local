@@ -129,7 +129,6 @@ const styles = StyleSheet.create({
         top: -0.5,
         width: slider_W,
         height: slider_H,
-        backgroundColor: 'red',
         justifyContent: 'center'
     },
 });

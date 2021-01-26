@@ -38,6 +38,10 @@ export default class MineLogInScreen extends Component {
         if (!isLog) {
             return
         }
+        DeviceEventEmitter.emit('RNLogInEvent')
+        GlobalData.isLogin = true
+        this.props.navigation.pop()
+        return
         if (this.isCom) {
             if (filejson.item_15 == userName && filejson.item_16 == pass) {
                 DeviceEventEmitter.emit('RNLogInEvent')

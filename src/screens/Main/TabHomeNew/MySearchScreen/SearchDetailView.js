@@ -37,6 +37,10 @@ export default class SearchDetailView extends PureComponent {
         }
         this.total_0 = this.total_0.toFixed(2)
         this.total_1 = this.total_1.toFixed(2)
+        if (this.data.length === 0) {
+            this.total_0 = '0.00'
+            this.total_1 = '0.00'
+        }
         this.state = { opacity: 0 }
         this.item_H = 0
         this.offset_y = 0
@@ -139,14 +143,14 @@ export default class SearchDetailView extends PureComponent {
                     <Text style={{ fontSize: font_12, color: '#333333', }} >收入合计 <Image style={{ width: 17 * UI.size.scale, height: 17 * UI.size.scale }} source={Images.icon_wenhao} /> <Text style={{
                         fontSize: UI.fontSizeNew.font_14, color: '#333333'
                     }} > : </Text></Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : 0}元</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : '0.00'}元</Text>
                 </View >
                 <View style={{ marginLeft: 15, width: UI.size.screenWidth - 15 * 2, height: 1, opacity: 0.5, backgroundColor: '#9D9D9D' }} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, marginBottom: 15, marginTop: 7, alignItems: 'center', }} >
                     <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计<Text style={{
                         fontSize: UI.fontSizeNew.font_14, color: '#333333'
                     }} > : </Text></Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_1 : 0}元</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_1 : '0.00'}元</Text>
                 </View >
             </View>
         );
@@ -218,6 +222,7 @@ export default class SearchDetailView extends PureComponent {
         font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
         font_10 = UI.fontSizeNew.font_10
+        console.debug('=====render===', this.data)
         if (this.data === null) {
             return null
         }
@@ -227,7 +232,7 @@ export default class SearchDetailView extends PureComponent {
             } rightView={this.rightView} navigation={navigation}
             />
             {this.renderHeader(0)}
-            <ScrollView
+            {this.data.length > 0 ? <ScrollView
                 ref={(e) => { this.scrollRef = e }}
                 style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
                 onLayout={this.onLayout}
@@ -242,13 +247,16 @@ export default class SearchDetailView extends PureComponent {
                 {this.renderList()}
                 {this.renderScrollFoot()}
             </ScrollView>
+                : <Image style={{ marginTop: 100, width: UI.size.screenWidth, height: UI.size.screenWidth * 452 / 1080 }}
+                    source={Images.icon_40
+                    } />}
         </View >
         );
     }
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1, backgroundColor: '#f5f6f9',
     },
     content: {
         flex: 1,

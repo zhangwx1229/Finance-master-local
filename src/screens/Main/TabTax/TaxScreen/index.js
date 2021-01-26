@@ -10,9 +10,19 @@ export default class TaxScreen extends PureComponent {
                 <Image style={styles.header} source={Images.tab_tax_image_header} />
                 <ScrollView
                     style={styles.content}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.contentContainerStyle}
                 >
-                    <Image style={styles.image} source={Images.tab_tax_image} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 699) / 1080,
+                    }} source={Images.tab_tax_image_0} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 981) / 1080,
+                    }} source={Images.tab_tax_image_1} />
+                    <View style={{ height: 70 }} />
                 </ScrollView>
             </View>
         );
@@ -22,7 +32,7 @@ const styles = StyleSheet.create({
     container: { flex: 1 },
     content: { flex: 1, backgroundColor: '#f5f6f9' },
     contentContainerStyle: {
-        backgroundColor: UI.color.background,
+        backgroundColor: '#f5f6f9'
     },
     image: {
         width: UI.size.screenWidth,
