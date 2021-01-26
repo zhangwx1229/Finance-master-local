@@ -36,8 +36,13 @@ export default class MineScreen extends PureComponent {
         this.props.navigation.navigate('AccumulationInfoScreen')
     }
 
+    clickUser = () => {
+        // 点击进入身份
+        this.props.navigation.navigate('UserInfoScreen')
+    }
+
     clickSystem = () => {
-        // 点击进入公积金
+        // 点击进入系统
         this.props.navigation.navigate('SystemScreen')
     }
 
@@ -95,6 +100,9 @@ export default class MineScreen extends PureComponent {
                     height: UI.size.screenWidth * 993 / 1080,
                     marginBottom: 80
                 }} source={Images.icon_68} />
+                <TouchableWithoutFeedback onPress={this.clickUser}>
+                    <View style={{ position: 'absolute', left:  30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
+                </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{ position: 'absolute', right: 50 + 30 + 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
