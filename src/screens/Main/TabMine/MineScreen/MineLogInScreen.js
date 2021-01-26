@@ -38,7 +38,6 @@ export default class MineLogInScreen extends Component {
         if (!isLog) {
             return
         }
-        return
         if (this.isCom) {
             if (filejson.item_15 == userName && filejson.item_16 == pass) {
                 DeviceEventEmitter.emit('RNLogInEvent')
