@@ -10,7 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-filename = "text_02.xlsx"
+filename = "个税样板.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../个税'
