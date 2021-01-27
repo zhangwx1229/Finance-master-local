@@ -121,18 +121,6 @@ export default class SearchDetailView extends PureComponent {
         }
     }
 
-    rightView = () => (
-        <TouchableOpacity style={
-            {
-                position: 'absolute', right: 10
-            }
-        }>
-            <Image style={{ width: (15 * 171) * UI.size.scale / 47, height: 15 * UI.size.scale }}
-                source={Images.icon_search_right
-                } />
-        </TouchableOpacity >
-    );
-
     renderHeader = () => {
         return (
             <View style={{
@@ -228,7 +216,7 @@ export default class SearchDetailView extends PureComponent {
         const { navigation } = this.props;
         return (<View style={styles.container} >
             <TitleView title={'收入纳税明细查询'
-            } rightView={this.rightView} navigation={navigation}
+            } rightText={'批量申诉'} navigation={navigation}
             />
             {this.renderHeader(0)}
             {this.data.length > 0 ? <ScrollView

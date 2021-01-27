@@ -13,17 +13,20 @@ export default class TitleView extends PureComponent {
         font_13_5 = UI.fontSizeNew.font_13_5
         return (
             <View style={styles.container}>
-                <View style={styles.viewBg}>
-                    <Image style={styles.backTitle} source={Images.icon_back_title} />
-                    <TouchableOpacity style={styles.backBg} onPress={this.clickSearch}>
-                        <Image style={styles.backImage} source={Images.icon_back} />
-                    </TouchableOpacity>
-
-                </View>
+                <TouchableOpacity style={styles.backBg} onPress={this.clickSearch}>
+                    <Image style={styles.backImage} source={Images.icon_back} />
+                    <Text style={{
+                        color: UI.color.blue1,
+                        fontSize: UI.fontSizeNew.font_11_5,
+                    }}>返回</Text>
+                </TouchableOpacity>
                 <Text style={[styles.title, {
                     fontSize: font_13_5,
                 }]}>{this.props.title}</Text>
-                {this.props.rightView ? this.props.rightView() : null}
+                <Text style={{
+                    color: UI.color.blue1,
+                    fontSize: UI.fontSizeNew.font_11_5,
+                }}>{this.props.rightText}</Text>
             </View>
         );
     }
@@ -33,9 +36,10 @@ const styles = StyleSheet.create({
         width: UI.size.screenWidth,
         height: (UI.size.screenWidth * 168) / 1440,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#fff',
+        paddingHorizontal: 10
     },
     viewBg: {
         position: 'absolute',
@@ -45,7 +49,9 @@ const styles = StyleSheet.create({
     backBg: {
         width: (22 * 62) / 87 + (22 * 117) * UI.size.scale / 87,
         height: 22 * UI.size.scale,
+        flexDirection: 'row',
         alignSelf: 'center',
+        alignItems: 'center'
     },
     backImage: {
         width: (22 * 62) * UI.size.scale / 87,
@@ -59,6 +65,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     title: {
+        position: 'absolute',
+        left: (UI.size.screenWidth - 150) / 2,
+        width: 150,
+        textAlign: 'center',
         color: '#333333',
     },
 });

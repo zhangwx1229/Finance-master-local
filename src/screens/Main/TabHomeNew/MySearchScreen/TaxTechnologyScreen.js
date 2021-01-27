@@ -24,173 +24,162 @@ export default class TaxTechnologyScreen extends PureComponent {
 
     renderHeader = index => {
         return (
-            <View style={{
-                flex: 1, backgroundColor: '#fff', justifyContent: 'center',
-            }} >
-                <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                <Image
-                    style={{
-                        width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 100) / 810,
-                    }}
-                    source={Images.detail_info_0}
-                />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 8, marginTop: 15, alignItems: 'center', }} >
-                    <Text style={{ fontSize: font_12, color: '#9D9D9D', }} >
-                        收入：
-          </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >
-                        {this.data.item_4.toFixed(2)}元
-        </Text>
-                </View >
-                <View style={{
-                    flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10, marginBottom: 5, marginTop: 7, alignItems: 'center',
-                }} >
-                    <Text style={{ fontSize: font_12, color: '#9D9D9D', }} >已申报税额： </Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} > {this.data.item_5.toFixed(2)}元</Text>
-                </View >
-                <Image
-                    style={{
-                        width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 98) / 810,
-                    }}
-                    source={Images.detail_jishu}
-                />
-
-                <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                <Image
-                    style={{
-                        width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 101) / 810,
-                    }}
-                    source={Images.detail_info_1}
-                />
-            </View>
+            <Image
+                style={{
+                    width: UI.size.screenWidth,
+                    height: (UI.size.screenWidth * 388) / 1080,
+                }}
+                source={Images.icon_41}
+            />
         );
     };
+
     renderItem_0 = () => {
         return (
             <View style={styles.contentBg} >
                 <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 3, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 所得项目小类： </Text>
+                    }]} > 累计收入： </Text>
                     <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_1} </Text>
+                    }]} > {this.data.item_1}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 扣缴义务人名称： </Text>
+                    }]} > 累计免税收入： </Text>
                     <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_2} </Text>
+                    }]} > {this.data.item_2}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 扣缴义务人纳税人识别号： </Text>
+                    }]} > 累计减除费用： </Text>
                     <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_6} </Text>
+                    }]} > {this.data.item_6}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 主管税务机关：</Text>
+                    }]} > 累计专项扣除：</Text>
                     <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_7} </Text>
+                    }]} > {this.data.item_7}元 </Text>
+                </View >
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
+                        fontSize: font_12
+                    }]} > 累计专项附加扣除：</Text>
+                    <Text style={[styles.itemDate, {
+                        fontSize: font_12
+                    }]} > {this.data.item_7}元 </Text>
+                </View >
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
+                        fontSize: font_12
+                    }]} > 累计其他扣除：</Text>
+                    <Text style={[styles.itemDate, {
+                        fontSize: font_12
+                    }]} > {this.data.item_7}元 </Text>
                 </View >
                 <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 申报渠道：</Text>
+                    }]} > 累计准予扣除的捐赠额：</Text>
                     <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_8} </Text>
+                    }]} > {this.data.item_8}元 </Text>
                 </View >
-                <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
-                <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 15, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle, {
-                        fontSize: font_12
-                    }]} > 申报日期： </Text>
-                    <Text style={[styles.itemDate, {
-                        fontSize: font_12
-                    }]} > {this.data.date} </Text>
-                </View >
+                <View style={{ width: '100%', height: 1, backgroundColor: '#f5f6f9' }} />
                 <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle, {
-                        fontSize: font_12
-                    }]} > 主税款所属期：</Text>
                     <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_9} </Text>
+                    }]} > 累计应纳税所得额：</Text>
+                    <Text style={[styles.itemDate, {
+                        fontSize: font_12
+                    }]} > {this.data.item_8}元 </Text>
                 </View >
-                <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
             </View >
         );
     };
+
     renderItem_1 = () => {
         return (
             <View style={styles.contentBg} >
                 <Image
                     style={{
                         width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 270) / 810,
+                        height: (UI.size.screenWidth * 168) / 1080,
                     }}
-                    source={Images.detail_info_2}
+                    source={Images.icon_43}
                 />
-                <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginTop: 3, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle1, {
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, marginTop: 3, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 本期收入： </Text>
-                    <Text style={[styles.itemDate1, {
+                    }]} > 累计应纳税所得额： </Text>
+                    <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_4.toFixed(2)}元 </Text>
+                    }]} > {this.data.item_1}元 </Text>
                 </View >
-                <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle1, {
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 本期免税收入： </Text>
-                    <Text style={[styles.itemDate1, {
+                    }]} > 税率/预扣率： </Text>
+                    <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_10.toFixed(2)}元 </Text>
+                    }]} > {this.data.item_2}元 </Text>
                 </View >
-                <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle1, {
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 本期减免费用： </Text>
-                    <Text style={[styles.itemDate1, {
+                    }]} > 速算扣除数： </Text>
+                    <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_11.toFixed(2)}元 </Text>
+                    }]} > {this.data.item_6}元 </Text>
                 </View >
-                <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 10, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle1, {
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 本期专项扣除：</Text>
-                    <Text style={[styles.itemDate1, {
+                    }]} > 累计应纳税额：</Text>
+                    <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_12.toFixed(2)}元 <Image style={{ width: 13 * UI.size.scale, height: 13 * 22 * UI.size.scale / 33, }} source={Images.detail_info_jian} /></Text>
+                    }]} > {this.data.item_7}元 </Text>
                 </View >
-                <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle1, {
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 本期其他扣除：</Text>
-                    <Text style={[styles.itemDate1, {
+                    }]} > 累计已缴税额：</Text>
+                    <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_13.toFixed(2)}元 </Text>
+                    }]} > {this.data.item_7}元 </Text>
                 </View >
-                <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginBottom: 12, justifyContent: 'space-between' }} >
-                    <Text style={[styles.itemTitle1, {
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemTitle, {
                         fontSize: font_12
-                    }]} > 本期准予扣除的捐赠项目：</Text>
-                    <Text style={[styles.itemDate1, {
+                    }]} > 累计减免税额：</Text>
+                    <Text style={[styles.itemDate, {
                         fontSize: font_12
-                    }]} > {this.data.item_14.toFixed(2)}元 </Text>
+                    }]} > {this.data.item_7}元 </Text>
                 </View >
-                <View style={{ width: '100%', height: 80, backgroundColor: '#f5f6f9' }} />
+                <View style={{ width: '100%', height: 1, backgroundColor: '#f5f6f9' }} />
+                <View style={{ flexDirection: 'row', marginHorizontal: 10, marginBottom: 12, justifyContent: 'space-between' }} >
+                    <Text style={[styles.itemDate, {
+                        fontSize: font_12
+                    }]} > 本期申报税额：</Text>
+                    <Text style={[styles.itemDate, {
+                        fontSize: font_12
+                    }]} > {this.data.item_8}元 </Text>
+                </View >
+                <Image
+                    style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 362) / 1080,
+                    }}
+                    source={Images.icon_44}
+                />
             </View >
         );
     };
@@ -207,7 +196,6 @@ export default class TaxTechnologyScreen extends PureComponent {
                 contentContainerStyle={styles.contentContainerStyle}
                 showsVerticalScrollIndicator={false} >
                 {this.renderHeader(0)}
-
                 {this.renderItem_0()}
                 {this.renderItem_1()}
             </ScrollView>
@@ -233,13 +221,13 @@ const styles = StyleSheet.create({
     itemTitle: {
         color: '#9D9D9D',
         marginTop: 12,
-        maxWidth: 120,
+        maxWidth: 160,
         textAlign: 'left'
     },
     itemDate: {
         color: '#333333',
         marginTop: 12,
-        maxWidth: UI.size.screenWidth - 120 - 20 - 5,
+        maxWidth: UI.size.screenWidth - 160 - 20 - 5,
         textAlign: 'right'
     },
     itemTitle1: {

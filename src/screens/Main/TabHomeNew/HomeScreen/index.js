@@ -16,7 +16,7 @@ export default class HomeScreen extends PureComponent {
         }
         this.state = {
             textList: textList,
-            opacity:0
+            opacity: 0
         };
         this.widthList = {};
         this.sds = {}
@@ -27,7 +27,7 @@ export default class HomeScreen extends PureComponent {
         this.props.navigation.navigate('MySearchScreen');
     };
 
-    clickSearchServer= () => {
+    clickSearchServer = () => {
         this.props.navigation.navigate('Learn');
     };
 
@@ -45,12 +45,12 @@ export default class HomeScreen extends PureComponent {
 
     onScroll = (e) => {
         const { contentOffset } = e.nativeEvent;
-        let opt = contentOffset.y/150
-        if (opt>1) {
+        let opt = contentOffset.y / 150
+        if (opt > 1) {
             opt = 1
         }
-        if (this.state.opacity!==opt) {
-            this.setState({opacity:opt})
+        if (this.state.opacity !== opt) {
+            this.setState({ opacity: opt })
         }
     }
 
@@ -94,8 +94,7 @@ export default class HomeScreen extends PureComponent {
             }</View>)
     }
     renderHeader = () => {
-        return <View style={{ position:'absolute',flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49 }}>
-            <Image style={{ position:'absolute',width: '100%', height: '100%',opacity:this.state.opacity }} resizeMode={'cover'} source={Images.icon_47} />
+        return <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49, backgroundColor: 'rgba(12,121,250,' + this.state.opacity + ')' }}>
             <View style={{ flexDirection: 'row', marginLeft: 10, alignSelf: 'center' }}>
                 <Image style={{ width: 26, height: 26 }} source={Images.p1_1} />
                 <Text style={{
@@ -130,8 +129,8 @@ export default class HomeScreen extends PureComponent {
                         <TouchableWithoutFeedback onPress={this.clickSearchServer}>
                             <View style={{
                                 position: 'absolute',
-                                top: (450 * UI.size.screenWidth) / 810+30,
-                                left:30,
+                                top: (450 * UI.size.screenWidth) / 810 + 30,
+                                left: 30,
                                 width: 70,
                                 height: 70,
                                 backgroundColor: UI.color.tempcolor//'transparent',
@@ -143,18 +142,18 @@ export default class HomeScreen extends PureComponent {
                         <TouchableWithoutFeedback onPress={this.clickPublick}>
                             <View style={{
                                 position: 'absolute',
-                                top: (450 * UI.size.screenWidth) / 810+30,
-                                right:30,
+                                top: (450 * UI.size.screenWidth) / 810 + 30,
+                                right: 30,
                                 width: 70,
                                 height: 70,
                                 backgroundColor: UI.color.tempcolor//'transparent',
                             }} />
                         </TouchableWithoutFeedback>
                     </View>
-                        <Image style={{
-                            width: UI.size.screenWidth,
-                            height: (UI.size.screenWidth * 1239) / 1080,
-                        }} source={Images.tab_home_image_1_0} />
+                    <Image style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 1239) / 1080,
+                    }} source={Images.tab_home_image_1_0} />
                     <View>
                         <Image style={styles.image_1} source={Images.tab_home_image_1} />
                         <TouchableWithoutFeedback onPress={this.clickSearchDetail}>
@@ -200,7 +199,7 @@ const styles = StyleSheet.create({
     },
     click: {
         position: 'absolute',
-        top: (450 * UI.size.screenWidth) / 810+30,
+        top: (450 * UI.size.screenWidth) / 810 + 30,
         width: 70,
         height: 70,
         alignSelf: 'center',

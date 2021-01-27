@@ -23,21 +23,9 @@ export default class DetailInfo extends PureComponent {
         this.data = route.params.data
     }
 
-    clickSearchDetail=()=>{
-        // this.props.navigation.navigate('TaxTechnologyScreen',{data:this.data});
+    clickSearchDetail = () => {
+        this.props.navigation.navigate('TaxTechnologyScreen', { data: this.data });
     }
-
-    rightView = () => (
-        <TouchableOpacity style={
-            {
-                position: 'absolute', right: 10
-            }
-        }>
-            <Image style={{ width: 15 * 2 * UI.size.scale, height: 15 * UI.size.scale }}
-                source={Images.detail_hear
-                } />
-        </TouchableOpacity >
-    );
 
     renderHeader = index => {
         return (
@@ -66,7 +54,7 @@ export default class DetailInfo extends PureComponent {
                     <Text style={{ fontSize: font_12, color: '#9D9D9D', }} >已申报税额： </Text>
                     <Text style={{ fontSize: font_12, color: '#333333' }} > {this.data.item_5.toFixed(2)}元</Text>
                 </View >
-                
+
                 <View>
                     <Image
                         style={{
@@ -164,7 +152,7 @@ export default class DetailInfo extends PureComponent {
     renderItem_1 = () => {
         return (
             <View style={styles.contentBg} >
-                 <View>
+                <View>
                     <Image
                         style={{
                             width: UI.size.screenWidth,
@@ -175,7 +163,7 @@ export default class DetailInfo extends PureComponent {
                     <TouchableWithoutFeedback onPress={this.clickSearchDetail}>
                         <View style={{
                             position: 'absolute',
-                            right:100,
+                            right: 100,
                             top: 40,
                             width: 130,
                             height: 30,
@@ -241,7 +229,7 @@ export default class DetailInfo extends PureComponent {
         const { navigation } = this.props;
         return (<View style={styles.container} >
             <TitleView title={'收入纳税明细查询'
-            } rightView={this.rightView} navigation={navigation}
+            } rightText={'申诉'} navigation={navigation}
             />
             <ScrollView
                 style={styles.content}
