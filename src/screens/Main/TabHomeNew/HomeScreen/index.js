@@ -26,6 +26,10 @@ export default class HomeScreen extends PureComponent {
         this.props.navigation.navigate('MySearchScreen');
     };
 
+    clickSearchServer= () => {
+        this.props.navigation.navigate('Learn');
+    };
+
     clickSearchDetail = () => {
         if (!GlobalData.isLogin) {
             this.props.navigation.navigate('MineLogInScreen');
@@ -117,6 +121,16 @@ export default class HomeScreen extends PureComponent {
                 >
                     <View>
                         <Image style={styles.image_0} source={Images.tab_home_image_0} />
+                        <TouchableWithoutFeedback onPress={this.clickSearchServer}>
+                            <View style={{
+        position: 'absolute',
+        top: (450 * UI.size.screenWidth) / 810,
+        left:30,
+        width: 70,
+        height: 70,
+        backgroundColor: UI.color.tempcolor//'transparent',
+    }} />
+                        </TouchableWithoutFeedback>
                         <TouchableWithoutFeedback onPress={this.clickSearch}>
                             <View style={styles.click} />
                         </TouchableWithoutFeedback>
