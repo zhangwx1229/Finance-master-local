@@ -25,7 +25,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             secondThird: '2020-01-01',
             secondFour: '2020-10-01',
             selectYearList: [],//记录第3组选中的年份
-            isShowContent:false
+            isShowContent: false
         };
         this.dataList = [
             { type: 1, data: '个人信息' },
@@ -66,6 +66,14 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
 
     componentWillUnmount() { }
 
+    onClose = () => {
+        const { route } = this.props;
+        this.data = null;
+        if (route.params && route.params.type) {
+            this.props.navigation.pop()
+        }
+        this.props.navigation.pop()
+    }
     getList = () => {
         const list = [];
         for (let i = 0; i < filejson.totalDetailed.length; i++) {
@@ -138,8 +146,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         }
     };
 
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
 
     onDismiss = () => {
@@ -758,6 +766,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             <View key={"renderTitle"} style={{ marginTop: UI.size.statusBarHeight }}>
                 <TitleViewNew
                     navigation={this.props.navigation}
+                    onClose={this.onClose}
                     showText={'公积金查询'}
                     onLoadEnd={this.onLoadEnd}
                 />
@@ -770,7 +779,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             return (
                 <View style={{ width: '100%', height: '100%' }}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         return (

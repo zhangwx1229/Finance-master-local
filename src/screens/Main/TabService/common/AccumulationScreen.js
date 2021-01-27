@@ -13,7 +13,7 @@ export default class AccumulationScreen extends PureComponent {
         this.state = { isShowContent: false }
     }
     clickGJJ = () => {
-        this.props.navigation.navigate('AccumulationInfoScreen')
+        this.props.navigation.navigate('AccumulationInfoScreen', { type: 1 })
     }
     onLoadEnd = () => {
         this.setState({ isShowContent: true })
@@ -63,7 +63,7 @@ export default class AccumulationScreen extends PureComponent {
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
             <TitleViewNew navigation={this.props.navigation}
-            type={3}
+                type={3}
                 showText={'公积金'}
                 onLoadEnd={this.onLoadEnd} />
         </View >

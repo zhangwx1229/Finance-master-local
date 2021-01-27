@@ -42,10 +42,11 @@ export default class TitleViewNew extends Component {
             navigation.pop()
         } else if (type === 2) {
             navigation.navigate("Home")
-        }else if (type === 3) {
+        } else if (type === 3) {
             navigation.pop()
         } else {
-            navigation.navigate("AccumulationScreenNew")
+            navigation.pop()
+            // navigation.navigate("AccumulationScreenNew")
         }
     }
     startAnimated = () => {

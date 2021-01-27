@@ -21,6 +21,11 @@ export default class SocialAllScreen extends Component {
     }
     clickGJJ = () => {
         // 点击进入公积金
+        this.props.navigation.navigate('AccumulationInfoScreen')
+    }
+
+    clickGJJ1 = () => {
+        // 点击进入公积金
         this.props.navigation.navigate('AccumulationScreenNew')
     }
 
@@ -146,7 +151,7 @@ export default class SocialAllScreen extends Component {
                     width: UI.size.screenWidth,
                     height: UI.size.screenWidth * 1941 / 1080
                 }} source={Images.icon_60} />
-                <TouchableWithoutFeedback onPress={this.clickGJJ}>
+                <TouchableWithoutFeedback onPress={this.clickGJJ1}>
                     <View style={{ position: 'absolute', right: 30, top: 200, width: UI.size.screenWidth / 2 - 60, height: 70, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickBDC}>
