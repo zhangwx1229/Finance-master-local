@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     },
     subTitle: { width: 110, marginLeft: 20, color: '#333333cf' },
     year: {
-        maxWidth: UI.size.screenWidth - 130 - 23,
+        maxWidth: UI.size.screenWidth - 130 - 30,
     },
     contentImage: {
         position: 'absolute',

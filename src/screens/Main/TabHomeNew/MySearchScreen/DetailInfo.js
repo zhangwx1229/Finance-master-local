@@ -24,7 +24,7 @@ export default class DetailInfo extends PureComponent {
     }
 
     clickSearchDetail = () => {
-        this.props.navigation.navigate('TaxTechnologyScreen', { data: this.data });
+        // this.props.navigation.navigate('TaxTechnologyScreen', { data: this.data });
     }
 
     renderHeader = index => {

@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     },
     title: {
         position: 'absolute',
-        left: (UI.size.screenWidth - 150) / 2,
-        width: 150,
+        left: (UI.size.screenWidth - 200) / 2,
+        width: 200,
         textAlign: 'center',
         color: '#333333',
     },
