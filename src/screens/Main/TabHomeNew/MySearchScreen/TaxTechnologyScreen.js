@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     FlatList,
     Text,
-    TouchableWithoutFeedback,
 } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
@@ -16,28 +15,12 @@ import TitleView from '../common/TitleView';
 import DateSelectModel from '../common/DateSelectModel';
 
 let font_12 = UI.fontSizeNew.font_12
-export default class DetailInfo extends PureComponent {
+export default class TaxTechnologyScreen extends PureComponent {
     constructor(props) {
         super(props);
         const { route } = props;
         this.data = route.params.data
     }
-
-    clickSearchDetail=()=>{
-        // this.props.navigation.navigate('TaxTechnologyScreen',{data:this.data});
-    }
-
-    rightView = () => (
-        <TouchableOpacity style={
-            {
-                position: 'absolute', right: 10
-            }
-        }>
-            <Image style={{ width: 15 * 2 * UI.size.scale, height: 15 * UI.size.scale }}
-                source={Images.detail_hear
-                } />
-        </TouchableOpacity >
-    );
 
     renderHeader = index => {
         return (
@@ -66,26 +49,14 @@ export default class DetailInfo extends PureComponent {
                     <Text style={{ fontSize: font_12, color: '#9D9D9D', }} >已申报税额： </Text>
                     <Text style={{ fontSize: font_12, color: '#333333' }} > {this.data.item_5.toFixed(2)}元</Text>
                 </View >
-                
-                <View>
-                    <Image
-                        style={{
-                            width: UI.size.screenWidth,
-                            height: (UI.size.screenWidth * 98) / 810,
-                        }}
-                        source={Images.detail_jishu}
-                    />
-                    <TouchableWithoutFeedback onPress={this.clickSearchDetail}>
-                        <View style={{
-                            position: 'absolute',
-                            top: 0,
-                            width: UI.size.screenWidth - 10 * 2,
-                            height: 70,
-                            alignSelf: 'center',
-                            backgroundColor: UI.color.tempcolor//'transparent',
-                        }} />
-                    </TouchableWithoutFeedback>
-                </View>
+                <Image
+                    style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 98) / 810,
+                    }}
+                    source={Images.detail_jishu}
+                />
+
                 <View style={{ width: '100%', height: 10, backgroundColor: '#f5f6f9' }} />
                 <Image
                     style={{
@@ -164,25 +135,13 @@ export default class DetailInfo extends PureComponent {
     renderItem_1 = () => {
         return (
             <View style={styles.contentBg} >
-                 <View>
-                    <Image
-                        style={{
-                            width: UI.size.screenWidth,
-                            height: (UI.size.screenWidth * 270) / 810,
-                        }}
-                        source={Images.detail_info_2}
-                    />
-                    <TouchableWithoutFeedback onPress={this.clickSearchDetail}>
-                        <View style={{
-                            position: 'absolute',
-                            right:100,
-                            top: 40,
-                            width: 130,
-                            height: 30,
-                            backgroundColor: UI.color.tempcolor//'transparent',
-                        }} />
-                    </TouchableWithoutFeedback>
-                </View>
+                <Image
+                    style={{
+                        width: UI.size.screenWidth,
+                        height: (UI.size.screenWidth * 270) / 810,
+                    }}
+                    source={Images.detail_info_2}
+                />
                 <View style={{ flexDirection: 'row', marginLeft: 10, marginRight: 22, marginTop: 3, justifyContent: 'space-between' }} >
                     <Text style={[styles.itemTitle1, {
                         fontSize: font_12
@@ -240,8 +199,8 @@ export default class DetailInfo extends PureComponent {
         font_12 = UI.fontSizeNew.font_12
         const { navigation } = this.props;
         return (<View style={styles.container} >
-            <TitleView title={'收入纳税明细查询'
-            } rightView={this.rightView} navigation={navigation}
+            <TitleView title={'税款计算'
+            } navigation={navigation}
             />
             <ScrollView
                 style={styles.content}

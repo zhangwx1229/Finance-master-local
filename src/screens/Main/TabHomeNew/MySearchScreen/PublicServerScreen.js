@@ -7,35 +7,15 @@ import {
 } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
-import filejson from '../../../../image/filename.json';
 
 export default class PublicServerScreen extends PureComponent {
     constructor(props) {
         super(props);
-        this.data = filejson['2020'];
     }
 
-    componentWillUnmount() {
-        this.isDestroy = true;
-        if (this.scrollTimer) {
-            clearInterval(this.scrollTimer)
-        }
-    }
 
     back = () => {
         this.props.navigation.pop()
-    }
-
-    onPressOne = () => {
-        this.props.navigation.navigate('MIneInfoDetailScreen');
-    }
-
-    onPressTwo = () => {
-        this.props.navigation.navigate('MineTaxPreference');
-    }
-
-    onPressThree = () => {
-        this.props.navigation.navigate('MineIdentityInfo');
     }
 
     render() {

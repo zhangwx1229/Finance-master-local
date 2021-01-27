@@ -14,6 +14,7 @@ import TabNav from '../TabNav';
 import MySearchScreen from '../../screens/Main/TabHomeNew/MySearchScreen';
 import SearchView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchView';
 import SearchDetailView from '../../screens/Main/TabHomeNew/MySearchScreen/SearchDetailView';
+import TaxTechnologyScreen from '../../screens/Main/TabHomeNew/MySearchScreen/TaxTechnologyScreen';
 import DetailInfoView from '../../screens/Main/TabHomeNew/MySearchScreen/DetailInfo';
 import MIneInfoScreen from '../../screens/Main/TabMine/MineScreen/MIneInfoScreen';
 import MineTaskScreen from '../../screens/Main/TabMine/MineScreen/MineTaskScreen';
@@ -22,6 +23,7 @@ import MineTaxPreference from '../../screens/Main/TabMine/MineScreen/MineTaxPref
 import MineIdentityInfo from '../../screens/Main/TabMine/MineScreen/MineIdentityInfo';
 import MineLogInScreen from '../../screens/Main/TabMine/MineScreen/MineLogInScreen';
 import PublicServerScreen from '../../screens/Main/TabHomeNew/MySearchScreen/PublicServerScreen';
+                
 
 const Stack = createStackNavigator();
 
@@ -47,7 +49,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="MineIdentityInfo" component={MineIdentityInfo} />
                 <Stack.Screen name="MineLogInScreen" component={MineLogInScreen} />
                 <Stack.Screen name="PublicServerScreen" component={PublicServerScreen} />
-
+                <Stack.Screen name="TaxTechnologyScreen" component={TaxTechnologyScreen} />
             </Stack.Navigator>
         );
     }
