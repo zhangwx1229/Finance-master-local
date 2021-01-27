@@ -21,6 +21,7 @@ import MIneInfoDetailScreen from '../../screens/Main/TabMine/MineScreen/MIneInfo
 import MineTaxPreference from '../../screens/Main/TabMine/MineScreen/MineTaxPreference';
 import MineIdentityInfo from '../../screens/Main/TabMine/MineScreen/MineIdentityInfo';
 import MineLogInScreen from '../../screens/Main/TabMine/MineScreen/MineLogInScreen';
+import PublicServerScreen from '../../screens/Main/TabHomeNew/MySearchScreen/PublicServerScreen';
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,7 @@ export default class StackNav extends Component {
                 <Stack.Screen name="MineTaxPreference" component={MineTaxPreference} />
                 <Stack.Screen name="MineIdentityInfo" component={MineIdentityInfo} />
                 <Stack.Screen name="MineLogInScreen" component={MineLogInScreen} />
+                <Stack.Screen name="PublicServerScreen" component={PublicServerScreen} />
 
             </Stack.Navigator>
         );

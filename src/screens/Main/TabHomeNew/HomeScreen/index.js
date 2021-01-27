@@ -38,6 +38,10 @@ export default class HomeScreen extends PureComponent {
         }
     }
 
+    clickPublick = () => {
+        this.props.navigation.navigate('PublicServerScreen');
+    }
+
     svaeTextList = () => {
         this.setState({ textList: [] });
         // 360 740 3 
@@ -123,22 +127,34 @@ export default class HomeScreen extends PureComponent {
                         <Image style={styles.image_0} source={Images.tab_home_image_0} />
                         <TouchableWithoutFeedback onPress={this.clickSearchServer}>
                             <View style={{
-        position: 'absolute',
-        top: (450 * UI.size.screenWidth) / 810,
-        left:30,
-        width: 70,
-        height: 70,
-        backgroundColor: UI.color.tempcolor//'transparent',
-    }} />
+                                position: 'absolute',
+                                top: (450 * UI.size.screenWidth) / 810,
+                                left:30,
+                                width: 70,
+                                height: 70,
+                                backgroundColor: UI.color.tempcolor//'transparent',
+                            }} />
                         </TouchableWithoutFeedback>
                         <TouchableWithoutFeedback onPress={this.clickSearch}>
                             <View style={styles.click} />
                         </TouchableWithoutFeedback>
                     </View>
-                    <Image style={{
-                        width: UI.size.screenWidth,
-                        height: (UI.size.screenWidth * 1239) / 1080,
-                    }} source={Images.tab_home_image_1_0} />
+                    <View>
+                        <Image style={{
+                            width: UI.size.screenWidth,
+                            height: (UI.size.screenWidth * 1239) / 1080,
+                        }} source={Images.tab_home_image_1_0} />
+                        <TouchableWithoutFeedback onPress={this.clickPublick}>
+                            <View style={{
+                                position: 'absolute',
+                                top: 50,
+                                width: UI.size.screenWidth - 10 * 2,
+                                height: 120,
+                                alignSelf: 'center',
+                                backgroundColor: UI.color.tempcolor//'transparent',
+                            }} />
+                        </TouchableWithoutFeedback>
+                    </View>
                     <View>
                         <Image style={styles.image_1} source={Images.tab_home_image_1} />
                         <TouchableWithoutFeedback onPress={this.clickSearchDetail}>

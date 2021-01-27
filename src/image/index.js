@@ -77,5 +77,7 @@ const Images = {
     icon_19: require('./icon_19.jpg'),
     icon_20: require('./icon_20.jpeg'),
     icon_40: require('./icon_40.jpg'),
+
+    icon_45: require('./icon_45.jpeg'),
 };
 export default Images;
