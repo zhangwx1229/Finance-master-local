@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { TouchableWithoutFeedback, Text, TextInput, Image, StyleSheet, View } from 'react-native';
+import { TouchableWithoutFeedback, Text, TextInput, Image, StyleSheet, View,ScrollView } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
+import filejson from '../../../../image/filename.json';
 const header_h = 100;
 const scroll_h = 180;
 //北京通
@@ -14,14 +15,14 @@ export default class UserInfoScreen extends PureComponent {
         const wid = UI.size.screenWidth;
         return (
             <View style={styles.container}>
-                <View>
+                    <View>
                     <Image
                         style={{
                             marginTop: UI.size.statusBarHeight,
                             width: wid,
-                            height: (wid * 791) / 1080,
+                            height: (wid * 129) / 1080,
                         }}
-                        source={Images.icon_80}
+                        source={Images.icon_80_0}
                     />
                     <TouchableWithoutFeedback onPress={this.onBack}>
                         <View
@@ -36,6 +37,30 @@ export default class UserInfoScreen extends PureComponent {
                         />
                     </TouchableWithoutFeedback>
                 </View>
+            <ScrollView style={styles.container}>
+            <View>
+                    <Image
+                        style={{
+                            width: wid,
+                            height: (wid * 662) / 1080,
+                        }}
+                        source={Images.icon_80}
+                    />
+                    <View style={{position:'absolute',justifyContent:'flex-end',marginLeft:30,width:UI.size.screenWidth-100,height:100}}>
+                        <View style={{flexDirection:'row'}}>
+                            <Text numberOfLines={1} style={{alignSelf: 'center',marginBottom:3,marginRight:10, fontSize: UI.fontSizeNew.font_16, color: "#fff"}} >{filejson.item_tmp_2}</Text>
+                            <Image
+                                    style={{
+                                        alignSelf:'center',
+                                        height:  13,
+                                        width: 13*162/50,
+                                    }}
+                                    source={Images.icon_85}
+                                />
+                        </View>
+                        <Text numberOfLines={1} style={{ marginVertical:15,fontSize: UI.fontSizeNew.font_11, color: "#fff"}} >北京通号 {filejson.item_tmp_sb_0}</Text>
+                    </View>
+                    </View>
                 <Image
                     style={{
                         width: wid,
@@ -43,10 +68,12 @@ export default class UserInfoScreen extends PureComponent {
                     }}
                     source={Images.icon_81}
                 />
+                <View style={{height:100}}/>
+            </ScrollView>
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#f5f4f8' },
+    container: { flex: 1, backgroundColor: '#f3f1f5' },
 });
