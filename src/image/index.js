@@ -11,6 +11,7 @@ const Images = {
     tab_mine_p4_avatar_3: require('./p4_avatar_3.png'),
     tab_mine_p4_bg: require('./p4_bg.png'),
     tab_home_image_0: require('./tab_home_image_0.jpg'),
+    tab_home_image_0_0: require('./tab_home_image_0_0.png'),
     tab_home_image_1_0: require('./tab_home_image_1_0.jpg'),
     tab_home_image_1: require('./tab_home_image_1.jpg'),
     tab_home_image_2: require('./tab_home_image_2.jpg'),
@@ -79,5 +80,6 @@ const Images = {
     icon_40: require('./icon_40.jpg'),
 
     icon_45: require('./icon_45.jpeg'),
+    icon_47: require('./icon_47.png'),
 };
 export default Images;

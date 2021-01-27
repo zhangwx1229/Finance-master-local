@@ -16,6 +16,7 @@ export default class HomeScreen extends PureComponent {
         }
         this.state = {
             textList: textList,
+            opacity:0
         };
         this.widthList = {};
         this.sds = {}
@@ -40,6 +41,17 @@ export default class HomeScreen extends PureComponent {
 
     clickPublick = () => {
         this.props.navigation.navigate('PublicServerScreen');
+    }
+
+    onScroll = (e) => {
+        const { contentOffset } = e.nativeEvent;
+        let opt = contentOffset.y/150
+        if (opt>1) {
+            opt = 1
+        }
+        if (this.state.opacity!==opt) {
+            this.setState({opacity:opt})
+        }
     }
 
     svaeTextList = () => {
@@ -82,8 +94,9 @@ export default class HomeScreen extends PureComponent {
             }</View>)
     }
     renderHeader = () => {
-        return <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49, backgroundColor: '#0C79FC' }}>
-            <View style={{ flexDirection: 'row', marginLeft: 10, alignSelf: 'center', backgroundColor: 'blue' }}>
+        return <View style={{ position:'absolute',flexDirection: 'row', justifyContent: 'space-between', width: '100%', height: 49 }}>
+            <Image style={{ position:'absolute',width: '100%', height: '100%',opacity:this.state.opacity }} resizeMode={'cover'} source={Images.icon_47} />
+            <View style={{ flexDirection: 'row', marginLeft: 10, alignSelf: 'center' }}>
                 <Image style={{ width: 26, height: 26 }} source={Images.p1_1} />
                 <Text style={{
                     alignSelf: 'center',
@@ -92,21 +105,10 @@ export default class HomeScreen extends PureComponent {
                     fontSize: font_12_5,
                 }}>个人所得税</Text>
             </View>
-            <View style={{ flexDirection: 'row', marginRight: 10, alignSelf: 'center', backgroundColor: 'blue' }}>
+            <View style={{ flexDirection: 'row', marginRight: 10, alignSelf: 'center' }}>
                 <Image style={{ width: 26, height: 26, marginRight: 5 }} source={Images.p1_2} />
                 <Image style={{ width: 26, height: 26, marginRight: 5 }} source={Images.p1_3} />
-                <View>
-                    <Image style={{ width: 26, height: 26 }} source={Images.p1_4} />
-                    <View style={{ position: 'absolute', right: 0, width: 10, height: 10, backgroundColor: 'red', borderRadius: 5 }}>
-                        <Text style={{
-                            alignSelf: 'center',
-                            marginLeft: 3,
-                            color: '#fff',
-                            fontSize: font_12_5,
-                        }}>4</Text>
-                    </View>
-
-                </View>
+                <Image style={{ width: 26, height: 26 }} source={Images.p1_4} />
             </View>
         </View>
     }
@@ -116,19 +118,19 @@ export default class HomeScreen extends PureComponent {
         return (
             <View style={styles.container}>
                 {this.renderText()}
-                {/* {this.renderHeader()} */}
                 <ScrollView
                     style={styles.content}
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.contentContainerStyle}
+                    onScroll={this.onScroll}
                 >
                     <View>
-                        <Image style={styles.image_0} source={Images.tab_home_image_0} />
+                        <Image style={styles.image_0} source={Images.tab_home_image_0_0} />
                         <TouchableWithoutFeedback onPress={this.clickSearchServer}>
                             <View style={{
                                 position: 'absolute',
-                                top: (450 * UI.size.screenWidth) / 810,
+                                top: (450 * UI.size.screenWidth) / 810+30,
                                 left:30,
                                 width: 70,
                                 height: 70,
@@ -141,7 +143,7 @@ export default class HomeScreen extends PureComponent {
                         <TouchableWithoutFeedback onPress={this.clickPublick}>
                             <View style={{
                                 position: 'absolute',
-                                top: (450 * UI.size.screenWidth) / 810,
+                                top: (450 * UI.size.screenWidth) / 810+30,
                                 right:30,
                                 width: 70,
                                 height: 70,
@@ -168,6 +170,7 @@ export default class HomeScreen extends PureComponent {
                     </View>
                     <Image style={styles.image_2} source={Images.tab_home_image_2} />
                 </ScrollView>
+                {this.renderHeader()}
             </View>
         );
     }
@@ -181,7 +184,7 @@ const styles = StyleSheet.create({
     },
     image_0: {
         width: UI.size.screenWidth,
-        height: (UI.size.screenWidth * 1008) / 1080,
+        height: (UI.size.screenWidth * 1243) / 1242,
     },
     image_1: {
         width: UI.size.screenWidth,
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
     },
     click: {
         position: 'absolute',
-        top: (450 * UI.size.screenWidth) / 810,
+        top: (450 * UI.size.screenWidth) / 810+30,
         width: 70,
         height: 70,
         alignSelf: 'center',
