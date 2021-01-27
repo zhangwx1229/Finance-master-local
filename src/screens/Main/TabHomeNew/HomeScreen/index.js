@@ -138,23 +138,21 @@ export default class HomeScreen extends PureComponent {
                         <TouchableWithoutFeedback onPress={this.clickSearch}>
                             <View style={styles.click} />
                         </TouchableWithoutFeedback>
-                    </View>
-                    <View>
-                        <Image style={{
-                            width: UI.size.screenWidth,
-                            height: (UI.size.screenWidth * 1239) / 1080,
-                        }} source={Images.tab_home_image_1_0} />
                         <TouchableWithoutFeedback onPress={this.clickPublick}>
                             <View style={{
                                 position: 'absolute',
-                                top: 50,
-                                width: UI.size.screenWidth - 10 * 2,
-                                height: 120,
-                                alignSelf: 'center',
+                                top: (450 * UI.size.screenWidth) / 810,
+                                right:30,
+                                width: 70,
+                                height: 70,
                                 backgroundColor: UI.color.tempcolor//'transparent',
                             }} />
                         </TouchableWithoutFeedback>
                     </View>
+                        <Image style={{
+                            width: UI.size.screenWidth,
+                            height: (UI.size.screenWidth * 1239) / 1080,
+                        }} source={Images.tab_home_image_1_0} />
                     <View>
                         <Image style={styles.image_1} source={Images.tab_home_image_1} />
                         <TouchableWithoutFeedback onPress={this.clickSearchDetail}>
