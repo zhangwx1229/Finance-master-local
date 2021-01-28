@@ -87,7 +87,7 @@ export default class MineScreen extends PureComponent {
                         }} source={Images.headImage} />
                         <View style={{ alignSelf: 'center', marginLeft: 10 }}>
                             <Text numberOfLines={1} style={{ maxWidth: 150, marginBottom: 7, fontSize: UI.fontSizeNew.font_15, color: '#333333' }} >{filejson.item_tmp_sb_2}</Text>
-                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_3}</Text>
+                            <Text numberOfLines={1} style={{ maxWidth: 150, fontSize: UI.fontSizeNew.font_11, color: '#333' }} >{filejson.item_tmp_7}</Text>
                         </View >
                     </View>
                     <Text numberOfLines={1} style={{ maxWidth: 150, marginTop: 16, fontSize: UI.fontSizeNew.font_11, color: '#9D9D9D' }} >{filejson.item_tmp_sb_4}</Text>
@@ -101,7 +101,7 @@ export default class MineScreen extends PureComponent {
                     marginBottom: 80
                 }} source={Images.icon_68} />
                 <TouchableWithoutFeedback onPress={this.clickUser}>
-                    <View style={{ position: 'absolute', left:  30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
+                    <View style={{ position: 'absolute', left: 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={this.clickGJJ}>
                     <View style={{ position: 'absolute', right: 50 + 30 + 30, top: 40, width: 50, height: 50, backgroundColor: UI.color.tempColor }} />

@@ -9,9 +9,14 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
     constructor() {
         super()
         this.state = { isShowContent: false }
+        this.text0 = ''
+        this.text1 = filejson.name + ',' + filejson.item_tmp_sb_0
+        this.text2 = ''
     }
     onPressOne = () => {
-        this.props.navigation.navigate('RealEstateInfoScreen')
+        if (this.text0.length > 0 && this.text1.length > 0) {
+            this.props.navigation.navigate('RealEstateInfoScreen')
+        }
     }
 
     onBack = () => {
@@ -50,7 +55,7 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         style={{ fontSize: UI.fontSizeNew.font_11, width: UI.size.screenWidth - 150, height: 40 }}
                         placeholder="请输入查询用途"
                         placeholderTextColor={'#9d9d9d69'}
-                        onChangeText={(text) => this.setState({ text })}
+                        onChangeText={(text) => { this.text0 = text }}
                     />
                 </View>
             </View>
@@ -76,10 +81,10 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                     <TextInput
                         style={{ fontSize: UI.fontSizeNew.font_11, width: UI.size.screenWidth - 150, height: 40 }}
                         placeholder="请输入查询人"
+                        // editable={false}
                         value={filejson.name + ',' + filejson.item_tmp_sb_0}
                         placeholderTextColor={'#9d9d9d69'}
-
-                        onChangeText={(text) => this.setState({ text })}
+                        onChangeText={(text) => { this.text1 = text }}
                     />
                 </View>
             </View>
@@ -110,9 +115,8 @@ export default class RealEstateSearchDetailScreen extends PureComponent {
                         <TextInput
                             style={{ fontSize: UI.fontSizeNew.font_11, width: UI.size.screenWidth - 180, height: 40 }}
                             placeholder="请输入查询的内容"
-
                             placeholderTextColor={'#9d9d9d69'}
-                            onChangeText={(text) => this.setState({ text })}
+                            onChangeText={(text) => { this.text2 = text }}
                         />
                     </View>
                 </View>
