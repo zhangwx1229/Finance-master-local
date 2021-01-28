@@ -7,20 +7,34 @@
  * @FilePath: /lvsejunying/src/navigator/TabNav/index.js
  */
 import React from 'react';
-import { Image, StyleSheet, DeviceEventEmitter } from 'react-native';
+import { Image, StyleSheet, AsyncStorage, DeviceEventEmitter } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../../screens/Main/TabHomeNew/HomeScreen';
 import MineScreen from '../../screens/Main/TabMine/MineScreen';
 import UI from '../../UI';
 import ServiceScreen from '../../screens/Main/TabService/ServiceScreen';
 import TaxScreen from '../../screens/Main/TabTax/TaxScreen';
-import MessageScreen from '../../screens/Main/TabMessage';
 import Images from '../../image';
+import filejson from '../../image/filename.json';
 const Tab = createBottomTabNavigator();
 
 export default class TabNav extends React.Component {
     componentDidMount() {
         this.istener = DeviceEventEmitter.addListener('FontChange', this.fontChange)
+
+        setTimeout(() => {
+            AsyncStorage.getItem('UserLoginTag').then((result) => {
+                if (result) {
+                    if (result === '0') {
+                        this.props.navigation.navigate('LoginNewScreen');
+                    }
+                } else {
+                    if (filejson.item_tmp_9 == 0) {
+                        this.props.navigation.navigate('LoginNewScreen');
+                    }
+                }
+            })
+        }, 200);
     }
     fontChange = () => {
         this.setState({});

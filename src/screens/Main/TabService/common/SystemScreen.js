@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { TouchableWithoutFeedback, Text, TextInput, Image, StyleSheet, View } from 'react-native';
+import { TouchableWithoutFeedback, AsyncStorage, Image, StyleSheet, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
+import filejson from '../../../../image/filename.json';
 const header_h = 100;
 const scroll_h = 180;
 //北京通
@@ -11,6 +12,7 @@ export default class SystemScreen extends PureComponent {
     };
 
     onOut = () => {
+        AsyncStorage.setItem('UserLoginTag', '0')
         this.props.navigation.navigate('LoginNewScreen');
     };
 

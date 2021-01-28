@@ -38,6 +38,8 @@ def quest_user_info(sheet):
         json['item_tmp_5'] = row_1[17]
         json['item_tmp_6'] = row_1[18]
         json['item_tmp_7'] = row_1[19]
+        json['item_tmp_8'] = row_1[20]
+        json['item_tmp_9'] = row_1[21]
     
         json['weatherList'] = []
         for rownum in range(1, 10):
