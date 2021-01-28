@@ -3,7 +3,7 @@ import {
     Image,
     StyleSheet,
     View,
-    Text,
+    Text, AsyncStorage,
     TextInput, DeviceEventEmitter,
     TouchableWithoutFeedback, Modal, ScrollView, TouchableOpacity
 } from 'react-native';
@@ -42,6 +42,7 @@ export default class MineLogInScreen extends Component {
             if (filejson.item_15 == userName && filejson.item_16 == pass) {
                 DeviceEventEmitter.emit('RNLogInEvent')
                 GlobalData.isLogin = true
+                AsyncStorage.setItem('FanUserLoginTag', '1')
                 this.props.navigation.pop()
             } else {
                 this.setState({ visible: true }, () => {

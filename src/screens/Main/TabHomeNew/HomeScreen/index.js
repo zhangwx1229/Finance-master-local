@@ -1,6 +1,6 @@
 import { isNumber } from 'lodash';
 import React, { PureComponent } from 'react';
-import { Image, StyleSheet, ScrollView, View, Text, TouchableWithoutFeedback, DeviceEventEmitter } from 'react-native';
+import { Image, StyleSheet, ScrollView, AsyncStorage, View, Text, TouchableWithoutFeedback, DeviceEventEmitter } from 'react-native';
 import Images from '../../../../image';
 import filename from '../../../../image/filename.json';
 import UI, { getFontSize, setWidthList } from '../../../../UI';
@@ -20,6 +20,13 @@ export default class HomeScreen extends PureComponent {
         };
         this.widthList = {};
         this.sds = {}
+        AsyncStorage.getItem('FanUserLoginTag').then((result) => {
+            if (result) {
+                GlobalData.isLogin = result == 1
+            } else {
+                GlobalData.isLogin = filename.item_17 == 1
+            }
+        })
         GlobalData.isLogin = filename.item_17 == 1
     }
 

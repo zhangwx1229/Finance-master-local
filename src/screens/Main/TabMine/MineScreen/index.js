@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { TouchableWithoutFeedback, Image, DeviceEventEmitter, StyleSheet, ScrollView, Text, View } from 'react-native';
+import { TouchableWithoutFeedback, Image, DeviceEventEmitter, AsyncStorage, StyleSheet, ScrollView, Text, View } from 'react-native';
 import Images from '../../../../image';
 import UI from '../../../../UI';
 import filename from '../../../../image/filename.json';
@@ -12,7 +12,7 @@ let font_12_5 = UI.fontSizeNew.font_12_5
 export default class TaxScreen extends PureComponent {
     constructor(props) {
         super(props)
-        this.state = { isLogin: GlobalData.isLogin  }
+        this.state = { isLogin: GlobalData.isLogin }
         this.phone = ""
         const phoneStr = filename.phone + ''
         if (phoneStr.length === 11) {
@@ -33,7 +33,7 @@ export default class TaxScreen extends PureComponent {
     onPressOne = () => {
         if (this.state.isLogin) {
             this.props.navigation.navigate('MIneInfoScreen');
-        }else {
+        } else {
             this.props.navigation.navigate('MineLogInScreen');
         }
     }
@@ -41,10 +41,10 @@ export default class TaxScreen extends PureComponent {
     onPressTwo = () => {
         if (this.state.isLogin) {
             this.props.navigation.navigate('MineTaskScreen');
-        }else {
+        } else {
             this.props.navigation.navigate('MineLogInScreen');
         }
-        
+
     }
     onPressOut = () => {
         if (!this.state.isLogin) {
@@ -107,8 +107,11 @@ export default class TaxScreen extends PureComponent {
                     </TouchableWithoutFeedback>
                 </View>
                 {
-                    this.state.isLogin ? <TouchableWithoutFeedback onPress={() => { this.setState({ isLogin: false })
-                    GlobalData.isLogin = false }}>
+                    this.state.isLogin ? <TouchableWithoutFeedback onPress={() => {
+                        this.setState({ isLogin: false })
+                        AsyncStorage.setItem('FanUserLoginTag', '0')
+                        GlobalData.isLogin = false
+                    }}>
                         <View style={{ position: 'absolute', bottom: 65, width: '100%', height: 40 }} />
                     </TouchableWithoutFeedback> : null
                 }
