@@ -6,6 +6,7 @@ import TitleViewNew from './TitleViewNew';
 import Images from '../../../../image';
 import filejson from '../../../../image/filename.json';
 import DateSelectModel from './DateSelectModel';
+import moment from 'moment';
 type Props = {
     style: Object,
     onClosePress: Function,
@@ -15,6 +16,9 @@ type Props = {
 export default class AccumulationInfoScreen extends React.PureComponent<Props> {
     constructor(props) {
         super(props);
+        const datess = moment(new Date().getTime()).format(
+            'YYYY-MM',
+        )
         this.state = {
             selectIndex: 0,
             isShowYear: false,
@@ -22,8 +26,8 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             secondDataLsit: [],
             secondOne: '全部',
             secondTwo: '全部',
-            secondThird: '2020-01-01',
-            secondFour: '2020-10-01',
+            secondThird: datess + '-01',
+            secondFour: datess + '-30',
             selectYearList: [],//记录第3组选中的年份
             isShowContent: false
         };
@@ -32,6 +36,31 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             { type: 2, data: { title: '姓名', subTitle: filejson.name } },
             { type: 2, data: { title: '身份证号', subTitle: UI.getIdentityStr(filejson.item_tmp_sb_0, 3, 4) } },
         ];
+        let currentYearTotal = 0
+        let currentYearExtract = 0
+        let monthNum = 0
+        for (let i = 0; i < filejson.totalDetailed.length; i++) {
+            let isBreak = false
+            for (let j = 0; j < filejson.totalDetailed[i].saveMoney.length; j++) {
+                const element = filejson.totalDetailed[i].saveMoney[j];
+
+                console.debug('====ss===', element.info, Number(element.save))
+                if (element.info.indexOf('汇缴') >= 0) {
+                    if (i === 0) {
+                        monthNum = Number(element.save)
+                    }
+                    currentYearTotal += Number(element.save)
+                } else if (element.info.indexOf('年度结') >= 0) {
+                    isBreak = true
+                    break;
+                } else {
+                    currentYearExtract += Number(element.save)
+                }
+            }
+            if (isBreak) {
+                break;
+            }
+        }
         this.list1 = [
             { type: 1, data: '基础信息' },
             { type: 2, data: { title: '公积金账号', subTitle: filejson.accountNumber } },
@@ -41,15 +70,15 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             { type: 1, data: '账户信息' },
             { type: 2, data: { title: '个人账户余额(元)', subTitle: parseFloat(filejson.balance) } },
             { type: 2, data: { title: '缴存状态', subTitle: '缴存' } },
-            { type: 2, data: { title: '当年缴存金额(元)', subTitle: parseFloat(filejson.currentYearTotal) } },
-            { type: 2, data: { title: '当年提取金额(元)', subTitle: parseFloat(filejson.currentYearExtract) } },
-            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(filejson.lastYearTotal) } },
+            { type: 2, data: { title: '当年缴存金额(元)', subTitle: parseFloat(currentYearTotal) } },
+            { type: 2, data: { title: '当年提取金额(元)', subTitle: parseFloat(currentYearExtract) } },
+            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(filejson.billInfo[0].total) } },
             { type: 2, data: { title: '单位缴存比例', subTitle: filejson.companyRatio + '%' } },
             { type: 2, data: { title: '个人缴存比例', subTitle: filejson.personalRatio + '%' } },
             { type: 2, data: { title: '单位缴存额(元)', subTitle: parseFloat(filejson.companyQuota) } },
             { type: 2, data: { title: '个人缴存额(元)', subTitle: parseFloat(filejson.personalQuota) } },
             { type: 2, data: { title: '个人缴存基数(元)', subTitle: parseFloat(filejson.depositBase) } },
-            { type: 2, data: { title: '月缴存额(元)', subTitle: parseFloat(filejson.recentlyDeposited) } },
+            { type: 2, data: { title: '月缴存额(元)', subTitle: parseFloat(monthNum) } },
         ];
         this.list2 = [
             { type: 1, data: '请选择查询条件' },
@@ -362,6 +391,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
     };
 
     renderItem4 = ({ title, subTitle, subTitle1, info }) => {
+        console.debug('====info====', info)
         let isLast = false;
         let subTitleNew = subTitle;
         if (title === '结束日期') {

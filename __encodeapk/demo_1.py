@@ -9,7 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-filename = "text_01.xlsx"
+filename = "关登芝北京通样板 -.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../北京通'
@@ -188,8 +188,9 @@ def quest_user_list(sheet):
             else :
                 if item_2['date']<"07-01":
                     takeOutMoney += float(item_2['save'])
-        
-            
+        if float(total_11)==0:
+            break;
+
         currentYear = float(total_11)+float(takeOutMoney)-float(interest)-float(lastYearMoney)
         currentYear = round(currentYear, 2)
         a = item['year'].decode("utf-8")
@@ -247,16 +248,17 @@ def quest_user_list(sheet):
     json['recentlyExtracted'] = '暂无'
     json['recentlyExtractedDate'] = ''
     indis = 0;
+    json['lastYearTotal'] = 0
     for item_1 in json['detailed'][0]['saveMoney']:
         if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
             if item_1['info']=="年度结息":
                 json['lastYearTotal'] = item_1['accountMoney']
-        else :
-            if item_1['date']>"06-30":
-                indis += float(item_1['save'])
-                
-    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal'])+float(indis), 2)
-    json['currentYearTotal'] = str(currentYearTotal)
+
+    if json['lastYearTotal'] ==0:
+        for item_1 in json['detailed'][1]['saveMoney']:
+            if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+                if item_1['info']=="年度结息":
+                    json['lastYearTotal'] = item_1['accountMoney']
     
     
     saveDetailed = []
@@ -275,15 +277,6 @@ def quest_user_list(sheet):
             takeOutDetailed.append({'year':item_4['year'], 'saveMoney': detailed_list1})
     json['saveDetailed'] = saveDetailed
     json['takeOutDetailed'] = takeOutDetailed
-    json['currentYearExtract'] = '0.00'
-    if len(json['takeOutDetailed']) > 0:
-        if  json['takeOutDetailed'][0]['year']==json['saveDetailed'][0]['year'] and len(json['takeOutDetailed'][0]['saveMoney']) > 0:
-            currentYearExtract = 0;
-            for itmm in json['takeOutDetailed'][0]['saveMoney']:
-                if itmm['date']>'06-30':
-                    currentYearExtract+=float(itmm['save'])
-            currentYearExtract = round(currentYearExtract, 2)
-            json['currentYearExtract'] = str(currentYearExtract)
     
     if len(takeOutDetailed) > 0:
         json['recentlyExtracted'] = json['takeOutDetailed'][0]['saveMoney'][0]['save']
