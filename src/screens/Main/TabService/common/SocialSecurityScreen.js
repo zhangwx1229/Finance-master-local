@@ -22,7 +22,7 @@ export default class SocialSecurityScreen extends PureComponent {
         const date = moment(new Date().getTime()).format(
             'YYYY-MM',
         )
-        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: date })
+        this.props.navigation.navigate('SocialSecuritySearchScreen', { selectYear: date, number: 0 })
     }
     onLoadEnd = () => {
         this.setState({ isShowContent: true })
@@ -602,7 +602,7 @@ export default class SocialSecurityScreen extends PureComponent {
     }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation} type={1}
+            <TitleViewNew navigation={this.props.navigation}
                 showText={'社保卡查询'}
                 loging2Text={'fuwu.rsj.beijing.gov.cn/...'}
                 onLoadEnd={this.onLoadEnd} />

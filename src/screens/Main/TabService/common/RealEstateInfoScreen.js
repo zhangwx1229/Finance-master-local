@@ -9,14 +9,12 @@ export default class RealEstateInfoScreen extends PureComponent {
         super()
         this.state = { isShowContent: false }
     }
-    onPressOne = () => {
-        // this.props.navigation.navigate('RealEstateSearchDetailScreen')
-    }
 
-    onPressTwo = () => {
-    }
-
-    onBack = () => {
+    onClose = () => {
+        this.props.navigation.pop()
+        this.props.navigation.pop()
+        this.props.navigation.pop()
+        this.props.navigation.pop()
         this.props.navigation.pop()
     }
 
@@ -26,7 +24,9 @@ export default class RealEstateInfoScreen extends PureComponent {
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation} onClose={this.onBack} onBack={this.onBack}
+            <TitleViewNew
+                navigation={this.props.navigation}
+                onClose={this.onClose}
                 showText={'网上查询'}
                 onLoadEnd={this.onLoadEnd} />
         </View >

@@ -4,10 +4,10 @@ import Images from '../../../../image';
 import UI from '../../../../UI';
 import TitleViewNew from './TitleViewNew';
 export default class RealEstateDetailScreen extends PureComponent {
-constructor(){
-    super()
-    this.state={isShowContent:false}
-}
+    constructor() {
+        super()
+        this.state = { isShowContent: false }
+    }
     onPressOne = () => {
         this.props.navigation.navigate('RealEstateSearchDetailScreen')
     }
@@ -16,21 +16,27 @@ constructor(){
     }
 
     onBack = () => {
-        this.props.navigation.navigate('RealEstateSearchScreen')
+        this.props.navigation.pop()
+        this.props.navigation.pop()
     }
     onClose = () => {
-        this.props.navigation.navigate('SocialAllScreen')
+        this.props.navigation.pop()
+        this.props.navigation.pop()
+        this.props.navigation.pop()
     }
 
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation} onBack={this.onBack} 
-            showText={'网上查询'}
-            onLoadEnd={this.onLoadEnd}/>
+            <TitleViewNew
+                navigation={this.props.navigation}
+                onClose={this.onClose}
+                onBack={this.onBack}
+                showText={'网上查询'}
+                onLoadEnd={this.onLoadEnd} />
         </View >
     };
     render() {
@@ -38,7 +44,7 @@ constructor(){
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff' }}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         return (

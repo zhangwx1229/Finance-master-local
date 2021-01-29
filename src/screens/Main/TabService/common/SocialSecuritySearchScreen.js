@@ -14,8 +14,10 @@ export default class SocialSecuritySearchScreen extends PureComponent {
         const { route } = props;
         this.data = null;
         let year = '2020-01'
+        this.numLen = 0;
         if (route.params && route.params.selectYear) {
             year = route.params.selectYear
+            this.numLen = route.params.number + 1
         }
 
         this.state = { isShowYear: false, year: year, isShowContent: false }
@@ -24,7 +26,12 @@ export default class SocialSecuritySearchScreen extends PureComponent {
         this.getData();
         this.oldDate = year
     }
-
+    onClose = () => {
+        for (let i = 0; i < this.numLen; i++) {
+            this.props.navigation.pop()
+        }
+        this.props.navigation.pop()
+    }
     getData = () => {
         const { year } = this.state;
         const yearStr = year.slice(0, 4) + '年'
@@ -71,7 +78,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
     clickSBSearch = () => {
         if (this.oldDate !== this.state.year) {
             this.setState({ year: this.oldDate })
-            this.props.navigation.push('SocialSecuritySearchScreen', { selectYear: this.state.year })
+            this.props.navigation.push('SocialSecuritySearchScreen', { selectYear: this.state.year, number: this.numLen })
         }
     }
 
@@ -361,7 +368,8 @@ export default class SocialSecuritySearchScreen extends PureComponent {
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation} type={2}
+            <TitleViewNew navigation={this.props.navigation}
+                onClose={this.onClose}
                 showText={'社保卡查询'}
                 logingText={'社保卡查询'}
                 loging2Text={'社保卡查询'}

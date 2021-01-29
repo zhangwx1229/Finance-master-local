@@ -62,18 +62,6 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         this.list_3 = null;
     }
 
-    componentDidMount() { }
-
-    componentWillUnmount() { }
-
-    onClose = () => {
-        const { route } = this.props;
-        this.data = null;
-        if (route.params && route.params.type) {
-            this.props.navigation.pop()
-        }
-        this.props.navigation.pop()
-    }
     getList = () => {
         const list = [];
         for (let i = 0; i < filejson.totalDetailed.length; i++) {
@@ -766,7 +754,6 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             <View key={"renderTitle"} style={{ marginTop: UI.size.statusBarHeight }}>
                 <TitleViewNew
                     navigation={this.props.navigation}
-                    onClose={this.onClose}
                     showText={'公积金查询'}
                     onLoadEnd={this.onLoadEnd}
                 />

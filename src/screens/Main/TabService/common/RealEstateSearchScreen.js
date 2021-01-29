@@ -5,25 +5,23 @@ import UI from '../../../../UI';
 import JJRefresh from '../../TabHomeNew/common/JJRefresh';
 import TitleViewNew from './TitleViewNew';
 export default class RealEstateSearchScreen extends PureComponent {
-    constructor(){
+    constructor() {
         super()
-        this.state={isShowContent:false}
+        this.state = { isShowContent: false }
     }
     onPress = () => {
         this.props.navigation.navigate('FaceRecognitionScreen')
     }
 
-    onClose = () => {
-        this.props.navigation.navigate('SocialAllScreen')
-    }
-    onLoadEnd=()=>{
-        this.setState({isShowContent:true})
+    onLoadEnd = () => {
+        this.setState({ isShowContent: true })
     }
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation} onClose={this.onClose} 
-             showText={'服务授权'}
-             onLoadEnd={this.onLoadEnd}/>
+            <TitleViewNew
+                navigation={this.props.navigation}
+                showText={'服务授权'}
+                onLoadEnd={this.onLoadEnd} />
         </View >
     };
     render() {
@@ -31,7 +29,7 @@ export default class RealEstateSearchScreen extends PureComponent {
             return (
                 <View style={{ flex: 1, backgroundColor: '#fff' }}>
                     {this.renderTitle()}
-                    </View>
+                </View>
             )
         }
         const image_h = UI.size.screenWidth - 50 * 2

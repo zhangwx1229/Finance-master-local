@@ -62,8 +62,8 @@ export default class AccumulationScreen extends PureComponent {
 
     renderTitle = () => {
         return <View style={{ marginTop: UI.size.statusBarHeight }}>
-            <TitleViewNew navigation={this.props.navigation}
-                type={3}
+            <TitleViewNew
+                navigation={this.props.navigation}
                 showText={'公积金'}
                 onLoadEnd={this.onLoadEnd} />
         </View >
