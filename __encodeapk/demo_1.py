@@ -9,7 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-filename = "客户马兰霞公积金.xlsx"
+filename = "关登芝公积金.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../支付宝'
@@ -136,7 +136,8 @@ def quest_user_list(sheet):
             else :
                 if item_2['date']<"07-01":
                     takeOutMoney += float(item_2['save'])
-        
+        if float(total_11)==0:
+            break;
             
         currentYear = float(total_11)+float(takeOutMoney)-float(interest)-float(lastYearMoney)
         currentYear = round(currentYear, 2)
@@ -162,19 +163,18 @@ def quest_user_list(sheet):
     json['recentlyDepositedDate'] = json['detailed'][0]['year'][0:4]+'-'+ json['detailed'][0]['saveMoney'][0]['date']
     json['recentlyExtracted'] = '暂无'
     json['recentlyExtractedDate'] = ''
-    indis = 0;
+    json['lastYearTotal'] = 0
     for item_1 in json['detailed'][0]['saveMoney']:
         if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
             if item_1['info']=="年度结息":
                 json['lastYearTotal'] = item_1['accountMoney']
-        else :
-            if item_1['date']>"06-30":
-                indis += float(item_1['save'])
-                
-    currentYearTotal = round(float(json['balance'])- float(json['lastYearTotal'])+float(indis), 2)
-    json['currentYearTotal'] = str(currentYearTotal)
-    
-    
+
+    if float(json['lastYearTotal'])==0:
+        for item_1 in json['detailed'][0]['saveMoney']:
+            if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+                if item_1['info']=="年度结息":
+                    json['lastYearTotal'] = item_1['accountMoney']
+
     saveDetailed = []
     takeOutDetailed = []
     for item_4 in json['detailed']:
@@ -191,16 +191,7 @@ def quest_user_list(sheet):
             takeOutDetailed.append({'year':item_4['year'], 'saveMoney': detailed_list1})
     json['saveDetailed'] = saveDetailed
     json['takeOutDetailed'] = takeOutDetailed
-    json['currentYearExtract'] = '0.00'
-    if len(json['takeOutDetailed']) > 0:
-        if  json['takeOutDetailed'][0]['year']==json['saveDetailed'][0]['year'] and len(json['takeOutDetailed'][0]['saveMoney']) > 0:
-            currentYearExtract = 0;
-            for itmm in json['takeOutDetailed'][0]['saveMoney']:
-                if itmm['date']>'06-30':
-                    currentYearExtract+=float(itmm['save'])
-            currentYearExtract = round(currentYearExtract, 2)
-            json['currentYearExtract'] = str(currentYearExtract)
-    
+
     if len(takeOutDetailed) > 0:
         json['recentlyExtracted'] = json['takeOutDetailed'][0]['saveMoney'][0]['save']
         json['recentlyExtractedDate'] = json['takeOutDetailed'][0]['year'][0:4]+'-'+json['takeOutDetailed'][0]['saveMoney'][0]['date']
@@ -250,7 +241,7 @@ def encode_apk(name):
     print "===打包完成==", name
     if os.path.exists('../android/app/build/outputs/apk/release/app-release.apk'):#
         output = excuteCommand('cp -r ../android/app/build/outputs/apk/release/app-release.apk '+pathDir)
-        output = excuteCommand('mv '+pathDir+'/app-release.apk '+pathDir+'/'+name+'.apk')
+        output = excuteCommand('mv '+pathDir+'/app-release.apk '+pathDir+'/'+name+'_支付宝.apk')
         print "==拷贝新的apk到指定文件成功==="
 
     output = excuteCommand('cd ../ && git checkout android')

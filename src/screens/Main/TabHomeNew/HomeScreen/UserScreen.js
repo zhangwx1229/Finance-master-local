@@ -18,7 +18,7 @@ let font_10_5 = UI.fontSizeNew.font_10_5
 let font_30 = UI.fontSizeNew.font_30
 let font_8 = UI.fontSizeNew.font_8
 
-const tar_H = UI.size.statusBarHeight+5
+const tar_H = UI.size.statusBarHeight + 5
 export default class UserScreen extends PureComponent {
     constructor(props) {
         super(props);
@@ -207,6 +207,31 @@ export default class UserScreen extends PureComponent {
         </View >
     };
     renderItem_2 = () => {
+        let currentYearTotal = 0
+        let currentYearExtract = 0
+        let monthNum = 0
+        for (let i = 0; i < filejson.totalDetailed.length; i++) {
+            let isBreak = false
+            for (let j = 0; j < filejson.totalDetailed[i].saveMoney.length; j++) {
+                const element = filejson.totalDetailed[i].saveMoney[j];
+
+                console.debug('====ss===', element.info, Number(element.save))
+                if (element.info.indexOf('汇缴') >= 0) {
+                    if (i === 0) {
+                        monthNum = Number(element.save)
+                    }
+                    currentYearTotal += Number(element.save)
+                } else if (element.info.indexOf('年度结') >= 0) {
+                    isBreak = true
+                    break;
+                } else {
+                    currentYearExtract += Number(element.save)
+                }
+            }
+            if (isBreak) {
+                break;
+            }
+        }
         return <View style={{ backgroundColor: '#fff' }}>
             <Image style={{ width: UI.size.screenWidth, height: UI.size.screenWidth * 176 / 1080 }} source={Images.icon_2} />
             <View style={{
@@ -247,21 +272,21 @@ export default class UserScreen extends PureComponent {
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >上年结转额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.lastYearTotal)}元
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.billInfo[0].total)}元
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginTop: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >本年缴存额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.currentYearTotal)}元
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(currentYearTotal)}元
                 </Text>
             </View >
             <View style={{
                 flexDirection: 'row', marginVertical: 10, justifyContent: 'space-between', marginHorizontal: 10, alignItems: 'center'
             }} >
                 <Text style={{ fontSize: font_12, color: UI.color.textGrayBig, backgroundColor: '#fff' }} >本年支取额</Text>
-                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(filejson.currentYearExtract)}元</Text>
+                <Text numberOfLines={1} style={{ fontSize: font_12, color: '#333333' }} > {UI.getNumString(currentYearExtract)}元</Text>
             </View >
         </View >
     };
