@@ -44,7 +44,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             for (let j = 0; j < filejson.totalDetailed[i].saveMoney.length; j++) {
                 const element = filejson.totalDetailed[i].saveMoney[j];
 
-                console.debug('====ss===', element.info, Number(element.save))
+                //console.debug('====ss===', element.info, Number(element.save))
                 if (element.info.indexOf('汇缴') >= 0) {
                     if (i === 0) {
                         monthNum = Number(element.save)
@@ -101,9 +101,10 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             if (y >= y_start && y <= y_end) {
                 for (let j = 0; j < saveMoney.length; j++) {
                     const { accountMoney, save, date, info, company } = saveMoney[j];
+                    const dateNew = y + '-' + date
                     if (
-                        date >= this.state.secondThird.slice(5, 10) &&
-                        date <= this.state.secondFour.slice(5, 10)
+                        dateNew >= this.state.secondThird &&
+                        date <= this.state.secondFour
                     ) {
                         const isTakeOut = !(info === "年度结息" || info === "汇缴分配")
                         list.push({
@@ -143,7 +144,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
 
     onYearCall = ({ year, month, day }) => {
         let date = '' + year;
-        console.debug('=======onYearCall=', month, day);;
+        //console.debug('=======onYearCall=', month, day);;
         if (month < 10) {
             date += '-0';
         } else {
@@ -266,7 +267,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     <Text
                         numberOfLines={1}
                         style={{
-                            maxWidth: 120,
+                            maxWidth: 150,
                             marginLeft: 15,
                             marginVertical: vertical,
                             fontSize: UI.fontSizeNew.font_11,
@@ -279,7 +280,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                         numberOfLines={2}
                         style={{
                             textAlign: 'right',
-                            maxWidth: UI.size.screenWidth - 120 - 15 * 2,
+                            maxWidth: UI.size.screenWidth - 150 - 15 * 2,
                             marginRight: 15,
                             marginVertical: vertical,
                             fontSize: UI.fontSizeNew.font_11,
@@ -391,7 +392,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
     };
 
     renderItem4 = ({ title, subTitle, subTitle1, info }) => {
-        console.debug('====info====', info)
+        //console.debug('====info====', info)
         let isLast = false;
         let subTitleNew = subTitle;
         if (title === '结束日期') {
@@ -408,7 +409,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
         if (info && this.state.selectYearList.includes(title)) {
             isShow = true
         }
-        console.debug('===renderItem4====', title, this.state.selectYearList);
+        //console.debug('===renderItem4====', title, this.state.selectYearList);
         const vertical = 14
         return (
             <View key={title + this.state.selectIndex} >
@@ -784,7 +785,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             <View key={"renderTitle"} style={{ marginTop: UI.size.statusBarHeight }}>
                 <TitleViewNew
                     navigation={this.props.navigation}
-                    showText={'公积金查询'}
+                    showText={'公积金查询sxs'}
                     onLoadEnd={this.onLoadEnd}
                 />
             </View>
