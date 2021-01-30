@@ -2,10 +2,8 @@ import React, { PureComponent } from 'react';
 import {
     Image,
     StyleSheet,
-    ScrollView,
     View,
     TouchableOpacity,
-    FlatList,
     Text,
 } from 'react-native';
 import Images from '../../../../image';
@@ -13,6 +11,7 @@ import UI from '../../../../UI';
 import TitleView from '../common/TitleView';
 import filejson from '../../../../image/filename.json';
 import DateSelectModel from '../common/DateSelectModel';
+import JJRefresh from './JJRefresh';
 
 let font_13 = UI.fontSizeNew.font_13
 let font_12 = UI.fontSizeNew.font_12
@@ -28,7 +27,6 @@ export default class SearchDetailView extends PureComponent {
                 this.data = filejson[route.params.year + ''];
             }
         }
-
         this.total_0 = 0
         this.total_1 = 0
         for (const item of this.data) {
@@ -41,7 +39,7 @@ export default class SearchDetailView extends PureComponent {
             this.total_0 = '0.00'
             this.total_1 = '0.00'
         }
-        this.state = { opacity: 0 }
+        this.state = {}
         this.item_H = 0
         this.offset_y = 0
         this.offset_olf_y = 0
@@ -62,65 +60,6 @@ export default class SearchDetailView extends PureComponent {
         }
     }
 
-    onScrollEndDrag = (e) => {
-        const { contentOffset } = e.nativeEvent;
-        if (this.scrollTimer) {
-            clearInterval(this.scrollTimer)
-        }
-        this.scrollTimer = setInterval(() => {
-            if (this.isDestroy) {
-                if (this.scrollTimer) {
-                    clearInterval(this.scrollTimer)
-                }
-                return
-            }
-            if (Math.abs(this.offset_olf_y - this.offset_y) > 0) {
-                if (Math.abs(this.offset_olf_y - this.offset_y) < 5) {
-                    if (this.scrollTimer) {
-                        clearInterval(this.scrollTimer)
-                    }
-                    if (this.scrollRef) {
-                        if (this.offset_y < 300) {
-                            this.scrollRef.scrollTo({ y: 300, animated: true });
-                        } else if (this.offset_y > this.data.length * this.item_H + 300 - this.scroll_style.height) {
-                            this.scrollRef.scrollTo({ y: this.data.length * this.item_H + 300 - this.scroll_style.height, animated: true });
-                        }
-                    }
-                }
-                this.offset_olf_y = this.offset_y
-            } else {
-                if (this.scrollTimer) {
-                    clearInterval(this.scrollTimer)
-                }
-                if (this.scrollRef) {
-                    if (this.offset_y < 300) {
-                        this.scrollRef.scrollTo({ y: 300, animated: true });
-                    } else if (this.offset_y > this.data.length * this.item_H + 300 - this.scroll_style.height) {
-                        this.scrollRef.scrollTo({ y: this.data.length * this.item_H + 300 - this.scroll_style.height, animated: true });
-                    }
-                }
-            }
-        }, 50);
-    }
-
-    onLayout = (e) => {
-        const { height, width } = e.nativeEvent.layout;
-        if (!this.scroll_style.width) {
-            if (this.scrollRef) {
-                if (this.offset_y < 300) {
-                    this.scrollRef.scrollTo({ y: 300, animated: false, });
-                }
-            }
-            this.scroll_style = { height, width }
-            setTimeout(() => {
-                if (this.isDestroy) {
-                    return
-                }
-                this.setState({ opacity: 1 })
-            });
-        }
-    }
-
     renderHeader = () => {
         return (
             <View style={{
@@ -131,14 +70,14 @@ export default class SearchDetailView extends PureComponent {
                     <Text style={{ fontSize: font_12, color: '#333333', }} >收入合计 <Image style={{ width: 17 * UI.size.scale, height: 17 * UI.size.scale }} source={Images.icon_wenhao} /> <Text style={{
                         fontSize: UI.fontSizeNew.font_14, color: '#333333'
                     }} > : </Text></Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_0 : '0.00'}元</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.total_0}元</Text>
                 </View >
                 <View style={{ marginLeft: 15, width: UI.size.screenWidth - 15 * 2, height: 1, opacity: 0.5, backgroundColor: '#9D9D9D' }} />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 15, marginBottom: 15, marginTop: 7, alignItems: 'center', }} >
                     <Text style={{ fontSize: font_12, color: '#333333', }} >已申报税额合计<Text style={{
                         fontSize: UI.fontSizeNew.font_14, color: '#333333'
                     }} > : </Text></Text>
-                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.state.opacity === 1 ? this.total_1 : '0.00'}元</Text>
+                    <Text style={{ fontSize: font_12, color: '#333333' }} >{this.total_1}元</Text>
                 </View >
             </View>
         );
@@ -196,16 +135,22 @@ export default class SearchDetailView extends PureComponent {
     }
 
     renderScrollHeader = () => {
-        return <View style={{ width: '100%', height: 300, backgroundColor: '#f5f6f9' }} />
+        return <View style={{ width: '100%', height: 200, backgroundColor: '#f5f6f9' }} />
     }
 
     renderScrollFoot = () => {
-        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: 300, backgroundColor: '#f5f6f9' }} >
+        return <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'center', height: 50, backgroundColor: '#f5f6f9' }} >
             <Text style={{ marginTop: 15, color: '#333333', fontSize: font_10 }}>我是有底线的
             </Text>
         </View>
     }
-
+    renderContent = () => {
+        return <View>
+            {/* {this.renderScrollHeader()} */}
+            {this.renderList()}
+            {this.renderScrollFoot()}
+        </View>
+    }
     render() {
         font_13 = UI.fontSizeNew.font_13
         font_12 = UI.fontSizeNew.font_12
@@ -219,21 +164,12 @@ export default class SearchDetailView extends PureComponent {
             } rightText={'批量申诉'} navigation={navigation}
             />
             {this.renderHeader(0)}
-            {this.data.length > 0 ? <ScrollView
-                ref={(e) => { this.scrollRef = e }}
-                style={[styles.content, this.scroll_style, { opacity: this.state.opacity }]}
-                onLayout={this.onLayout}
-                contentContainerStyle={styles.contentContainerStyle}
-                onScrollEndDrag={this.onScrollEndDrag}
-                onScroll={(e) => {
-                    const { contentOffset } = e.nativeEvent;
-                    this.offset_y = contentOffset.y
-                }}
-                showsVerticalScrollIndicator={false} >
-                {this.renderScrollHeader()}
-                {this.renderList()}
-                {this.renderScrollFoot()}
-            </ScrollView>
+            {this.data.length > 0 ? <JJRefresh
+                backgroundColor={'#f5f6f9'}
+                foot_H={0}
+                header_H={200}
+                contentView={this.renderContent}
+            />
                 : <Image style={{ marginTop: 100, width: UI.size.screenWidth, height: UI.size.screenWidth * 452 / 1080 }}
                     source={Images.icon_40
                     } />}
