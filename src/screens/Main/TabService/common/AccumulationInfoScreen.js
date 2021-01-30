@@ -785,7 +785,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             <View key={"renderTitle"} style={{ marginTop: UI.size.statusBarHeight }}>
                 <TitleViewNew
                     navigation={this.props.navigation}
-                    showText={'公积金查询sxs'}
+                    showText={'公积金查询'}
                     onLoadEnd={this.onLoadEnd}
                 />
             </View>
