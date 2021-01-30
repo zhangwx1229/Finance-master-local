@@ -47,11 +47,11 @@ export default class SearchDetailView extends PureComponent {
         this.isDestroy = false;
     }
 
-    clickSelect = data => {
+    clickSelect = (data, index) => {
         const {
             navigation
         } = this.props;
-        navigation.navigate('DetailInfoView', { data });
+        navigation.navigate('DetailInfoView', { data, index });
     };
     componentWillUnmount() {
         this.isDestroy = true;
@@ -88,7 +88,7 @@ export default class SearchDetailView extends PureComponent {
             <TouchableOpacity
                 key={index + ''} style={styles.click}
                 activeOpacity={1}
-                onPress={() => { this.clickSelect(data); }} >
+                onPress={() => { this.clickSelect(data, index); }} >
                 <View style={styles.contentBg} onLayout={(e) => {
                     const { height, width } = e.nativeEvent.layout;
                     this.item_H = height

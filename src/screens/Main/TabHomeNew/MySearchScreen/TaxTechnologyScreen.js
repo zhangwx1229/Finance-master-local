@@ -18,21 +18,19 @@ export default class TaxTechnologyScreen extends PureComponent {
     constructor(props) {
         super(props);
         const { route } = props;
-        const data = route.params.data
+        const { data, index } = route.params
         this.year = data.date.slice(0, 4)
         this.month = Math.ceil(data.date.slice(5, 7))
 
         const list = filejson[this.year + '']
-
         this.dataInfo = {};
-        for (let i = list.length - 1; i >= 13 - this.month; i--) {
+        for (let i = list.length - 1; i >= index; i--) {
             const element = list[i];
             if (!this.dataInfo.item_0) {
                 this.dataInfo.item_0 = element.item_4 + element.item_5
             } else {
                 this.dataInfo.item_0 += (element.item_4 + element.item_5)
             }
-
             if (!this.dataInfo.item_1) {
                 this.dataInfo.item_1 = element.item_10
             } else {
