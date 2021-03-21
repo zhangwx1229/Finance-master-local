@@ -104,7 +104,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                     const dateNew = y + '-' + date
                     if (
                         dateNew >= this.state.secondThird &&
-                        date <= this.state.secondFour
+                        dateNew <= this.state.secondFour
                     ) {
                         const isTakeOut = !(info === "年度结息" || info === "汇缴分配")
                         list.push({
@@ -726,7 +726,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                             color: '#333333',
                         }}
                     >
-                        业务发送日期: {business}
+                        业务发生日期: {business}
                     </Text>
                     <Text
                         numberOfLines={2}

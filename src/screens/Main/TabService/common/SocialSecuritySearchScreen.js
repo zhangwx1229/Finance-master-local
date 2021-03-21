@@ -36,6 +36,7 @@ export default class SocialSecuritySearchScreen extends PureComponent {
         const { year } = this.state;
         const yearStr = year.slice(0, 4) + '年'
         const monthStr = year.slice(5, 5 + 2)
+        console.debug('====year==ss==', yearStr, monthStr)
         for (let i = 0; i < filejson.detailedSB.length; i++) {
             const element = filejson.detailedSB[i];
             if (element.year === yearStr) {
