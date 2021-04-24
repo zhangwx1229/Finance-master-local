@@ -1,23 +1,23 @@
 {
     "accountNumber": "GJJ014302350",
     "administration": "朝阳管理部",
-    "balance": "12840.55",
+    "balance": "13068.55",
     "billInfo": [
         {
             "currentYear": "21304.0",
             "date": "2019-2020",
             "interest": "1147.87",
-            "lastYearMoney": "66249.45",
+            "lastYearMoney": "66477.45",
             "takeOutMoney": "0",
-            "total": "88701.32"
+            "total": "88929.32"
         },
         {
-            "currentYear": "14366.0",
+            "currentYear": "15672.0",
             "date": "2018-2019",
             "interest": "853.07",
-            "lastYearMoney": "51030.38",
+            "lastYearMoney": "49952.38",
             "takeOutMoney": "0",
-            "total": "66249.45"
+            "total": "66477.45"
         }
     ],
     "company": "百岁时代（北京）医疗科技有限公司",
@@ -29,7 +29,7 @@
         {
             "saveMoney": [
                 {
-                    "date": 43831.0,
+                    "date": "2021-01",
                     "item_sb_10": 9276.0,
                     "item_sb_11": 17.62,
                     "item_sb_12": 0.0,
@@ -49,7 +49,7 @@
                     "item_sb_9": 18.55
                 },
                 {
-                    "date": 43832.0,
+                    "date": "2021-02",
                     "item_sb_10": 9276.0,
                     "item_sb_11": 17.62,
                     "item_sb_12": 0.0,
@@ -584,7 +584,7 @@
     "item_tmp_sb_7": "北京市朝阳区社会保险基金管理中心",
     "item_tmp_sb_8": "外埠城镇职工",
     "item_tmp_sb_9": "在职职工",
-    "lastYearTotal": "88701.32",
+    "lastYearTotal": "88929.32",
     "name": "闻秀艳    ",
     "personalQuota": 1113.0,
     "personalRatio": 12.0,
@@ -596,28 +596,28 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "12840.55",
+                    "accountMoney": "13068.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "04-07",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "10614.55",
+                    "accountMoney": "10842.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "03-03",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "8388.55",
+                    "accountMoney": "8616.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "02-03",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "6162.55",
+                    "accountMoney": "6390.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "01-06",
                     "info": "汇缴分配",
@@ -629,91 +629,91 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "3936.55",
+                    "accountMoney": "4164.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "12-09",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "99423.32",
+                    "accountMoney": "99651.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-09",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "97197.32",
+                    "accountMoney": "97425.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "10-10",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "94971.32",
+                    "accountMoney": "95199.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "09-08",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "92745.32",
+                    "accountMoney": "92973.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "08-10",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "90519.32",
+                    "accountMoney": "90747.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "07-03",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "88701.32",
+                    "accountMoney": "88929.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-30",
                     "info": "年度结息",
                     "save": "1147.87"
                 },
                 {
-                    "accountMoney": "87553.45",
+                    "accountMoney": "87781.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-03",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "85735.45",
+                    "accountMoney": "85963.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "05-13",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "83917.45",
+                    "accountMoney": "84145.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "04-09",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "82099.45",
+                    "accountMoney": "82327.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "03-10",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "80281.45",
+                    "accountMoney": "80509.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "02-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "78463.45",
+                    "accountMoney": "78691.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "01-14",
                     "info": "汇缴分配",
@@ -725,91 +725,91 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "76645.45",
+                    "accountMoney": "76873.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "12-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "74827.45",
+                    "accountMoney": "75055.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "73009.45",
+                    "accountMoney": "73237.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "10-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "71191.45",
+                    "accountMoney": "71419.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "09-10",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "69373.45",
+                    "accountMoney": "69601.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "08-12",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "67555.45",
+                    "accountMoney": "67783.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "07-10",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "66249.45",
+                    "accountMoney": "66477.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-30",
                     "info": "年度结息",
                     "save": "853.07"
                 },
                 {
-                    "accountMoney": "65396.38",
+                    "accountMoney": "65624.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-12",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "64090.38",
+                    "accountMoney": "64318.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "05-08",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "62784.38",
+                    "accountMoney": "63012.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "04-10",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "61478.38",
+                    "accountMoney": "61706.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "03-12",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "60172.38",
+                    "accountMoney": "60400.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "02-13",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "58866.38",
+                    "accountMoney": "59094.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "01-11",
                     "info": "汇缴分配",
@@ -821,53 +821,53 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "57560.38",
+                    "accountMoney": "57788.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "12-11",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "56254.38",
+                    "accountMoney": "56482.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-09",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "54948.38",
+                    "accountMoney": "55176.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "10-10",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "53642.38",
+                    "accountMoney": "53870.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "09-11",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "52336.38",
+                    "accountMoney": "52564.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "08-13",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "51030.38",
+                    "accountMoney": "51258.38",
+                    "company": "百岁时代（北京）医疗科技有限公司",
+                    "date": "07-13",
+                    "info": "汇缴分配",
+                    "save": "1306.0"
+                },
+                {
+                    "accountMoney": "49952.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-30",
                     "info": "年度结息",
                     "save": "622.55"
-                },
-                {
-                    "accountMoney": "50407.83",
-                    "company": "百岁时代（北京）医疗科技有限公司",
-                    "date": "06-26",
-                    "info": "汇缴分配",
-                    "save": "1078.0"
                 },
                 {
                     "accountMoney": "49329.83",
@@ -919,7 +919,7 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "1710.55",
+                    "accountMoney": "1938.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-16",
                     "info": "提取资金支付",
@@ -933,28 +933,28 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "12840.55",
+                    "accountMoney": "13068.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "04-07",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "10614.55",
+                    "accountMoney": "10842.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "03-03",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "8388.55",
+                    "accountMoney": "8616.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "02-03",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "6162.55",
+                    "accountMoney": "6390.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "01-06",
                     "info": "汇缴分配",
@@ -966,98 +966,98 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "3936.55",
+                    "accountMoney": "4164.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "12-09",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "1710.55",
+                    "accountMoney": "1938.55",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-16",
                     "info": "提取资金支付",
                     "save": "97712.77"
                 },
                 {
-                    "accountMoney": "99423.32",
+                    "accountMoney": "99651.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-09",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "97197.32",
+                    "accountMoney": "97425.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "10-10",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "94971.32",
+                    "accountMoney": "95199.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "09-08",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "92745.32",
+                    "accountMoney": "92973.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "08-10",
                     "info": "汇缴分配",
                     "save": "2226.0"
                 },
                 {
-                    "accountMoney": "90519.32",
+                    "accountMoney": "90747.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "07-03",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "88701.32",
+                    "accountMoney": "88929.32",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-30",
                     "info": "年度结息",
                     "save": "1147.87"
                 },
                 {
-                    "accountMoney": "87553.45",
+                    "accountMoney": "87781.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-03",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "85735.45",
+                    "accountMoney": "85963.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "05-13",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "83917.45",
+                    "accountMoney": "84145.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "04-09",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "82099.45",
+                    "accountMoney": "82327.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "03-10",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "80281.45",
+                    "accountMoney": "80509.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "02-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "78463.45",
+                    "accountMoney": "78691.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "01-14",
                     "info": "汇缴分配",
@@ -1069,91 +1069,91 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "76645.45",
+                    "accountMoney": "76873.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "12-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "74827.45",
+                    "accountMoney": "75055.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "73009.45",
+                    "accountMoney": "73237.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "10-11",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "71191.45",
+                    "accountMoney": "71419.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "09-10",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "69373.45",
+                    "accountMoney": "69601.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "08-12",
                     "info": "汇缴分配",
                     "save": "1818.0"
                 },
                 {
-                    "accountMoney": "67555.45",
+                    "accountMoney": "67783.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "07-10",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "66249.45",
+                    "accountMoney": "66477.45",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-30",
                     "info": "年度结息",
                     "save": "853.07"
                 },
                 {
-                    "accountMoney": "65396.38",
+                    "accountMoney": "65624.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-12",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "64090.38",
+                    "accountMoney": "64318.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "05-08",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "62784.38",
+                    "accountMoney": "63012.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "04-10",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "61478.38",
+                    "accountMoney": "61706.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "03-12",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "60172.38",
+                    "accountMoney": "60400.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "02-13",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "58866.38",
+                    "accountMoney": "59094.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "01-11",
                     "info": "汇缴分配",
@@ -1165,53 +1165,53 @@
         {
             "saveMoney": [
                 {
-                    "accountMoney": "57560.38",
+                    "accountMoney": "57788.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "12-11",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "56254.38",
+                    "accountMoney": "56482.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "11-09",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "54948.38",
+                    "accountMoney": "55176.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "10-10",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "53642.38",
+                    "accountMoney": "53870.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "09-11",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "52336.38",
+                    "accountMoney": "52564.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "08-13",
                     "info": "汇缴分配",
                     "save": "1306.0"
                 },
                 {
-                    "accountMoney": "51030.38",
+                    "accountMoney": "51258.38",
+                    "company": "百岁时代（北京）医疗科技有限公司",
+                    "date": "07-13",
+                    "info": "汇缴分配",
+                    "save": "1306.0"
+                },
+                {
+                    "accountMoney": "49952.38",
                     "company": "百岁时代（北京）医疗科技有限公司",
                     "date": "06-30",
                     "info": "年度结息",
                     "save": "622.55"
-                },
-                {
-                    "accountMoney": "50407.83",
-                    "company": "百岁时代（北京）医疗科技有限公司",
-                    "date": "06-26",
-                    "info": "汇缴分配",
-                    "save": "1078.0"
                 },
                 {
                     "accountMoney": "49329.83",
