@@ -9,7 +9,7 @@ import subprocess
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-filename = "闻秀艳北京通样板 -.xlsx"
+filename = "李雪峰北京通样板 -.xlsx"
 json_file = 'filename.json'
 filePath = os.path.join(os.getcwd(), filename)
 pathDir = '../../北京通'
@@ -178,16 +178,17 @@ def quest_user_list(sheet):
                     takeOutMoney += float(item_1['save'])
         
         interest = '0.00'
-        for item_2 in json_new['detailed'][index+1]['saveMoney']:
-            if item_2['info']=="年度结息" or item_2['info']=="汇缴分配":
-                if item_2['info']=="年度结息":
-                #获取利息
-                    interest = item_2['save']
-                    total_11 = item_2['accountMoney']
-#                break
-            else :
-                if item_2['date']<"07-01":
-                    takeOutMoney += float(item_2['save'])
+        if len(json_new['detailed'])>index+1:
+            for item_2 in json_new['detailed'][index+1]['saveMoney']:
+                if item_2['info']=="年度结息" or item_2['info']=="汇缴分配":
+                    if item_2['info']=="年度结息":
+                    #获取利息
+                        interest = item_2['save']
+                        total_11 = item_2['accountMoney']
+    #                break
+                else :
+                    if item_2['date']<"07-01":
+                        takeOutMoney += float(item_2['save'])
         if float(total_11)==0:
             break;
 
@@ -255,10 +256,11 @@ def quest_user_list(sheet):
                 json['lastYearTotal'] = item_1['accountMoney']
 
     if json['lastYearTotal'] ==0:
-        for item_1 in json['detailed'][1]['saveMoney']:
-            if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
-                if item_1['info']=="年度结息":
-                    json['lastYearTotal'] = item_1['accountMoney']
+        if len(json['detailed'])>1:
+            for item_1 in json['detailed'][1]['saveMoney']:
+                if item_1['info']=="年度结息" or item_1['info']=="汇缴分配":
+                    if item_1['info']=="年度结息":
+                        json['lastYearTotal'] = item_1['accountMoney']
     
     
     saveDetailed = []

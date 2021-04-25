@@ -61,6 +61,10 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
                 break;
             }
         }
+        let kdsds = 0
+        if (filejson.billInfo.length > 0) {
+            kdsds = filejson.billInfo[0].total
+        }
         this.list1 = [
             { type: 1, data: '基础信息' },
             { type: 2, data: { title: '公积金账号', subTitle: filejson.accountNumber } },
@@ -72,7 +76,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             { type: 2, data: { title: '缴存状态', subTitle: '缴存' } },
             { type: 2, data: { title: '当年缴存金额(元)', subTitle: parseFloat(currentYearTotal) } },
             { type: 2, data: { title: '当年提取金额(元)', subTitle: parseFloat(currentYearExtract) } },
-            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(filejson.billInfo[0].total) } },
+            { type: 2, data: { title: '上年结转余额(元)', subTitle: parseFloat(kdsds) } },
             { type: 2, data: { title: '单位缴存比例', subTitle: filejson.companyRatio + '%' } },
             { type: 2, data: { title: '个人缴存比例', subTitle: filejson.personalRatio + '%' } },
             { type: 2, data: { title: '单位缴存额(元)', subTitle: parseFloat(filejson.companyQuota) } },
