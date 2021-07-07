@@ -82,7 +82,7 @@ export default class AccumulationInfoScreen extends React.PureComponent<Props> {
             { type: 2, data: { title: '单位缴存额(元)', subTitle: parseFloat(filejson.companyQuota) } },
             { type: 2, data: { title: '个人缴存额(元)', subTitle: parseFloat(filejson.personalQuota) } },
             { type: 2, data: { title: '个人缴存基数(元)', subTitle: parseFloat(filejson.depositBase) } },
-            { type: 2, data: { title: '月缴存额(元)', subTitle: parseFloat(monthNum) } },
+            { type: 2, data: { title: '月缴存额(元)', subTitle: parseFloat(filejson.personalQuota + ilejson.companyQuota) } },
         ];
         this.list2 = [
             { type: 1, data: '请选择查询条件' },
